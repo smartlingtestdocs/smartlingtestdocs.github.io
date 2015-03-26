@@ -2,7 +2,6 @@
 layout: page
 title:  Download Files
 ---
-
 **Method:** Download  
 **Type:** GET 
 
