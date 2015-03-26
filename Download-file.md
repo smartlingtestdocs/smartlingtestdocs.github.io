@@ -30,10 +30,10 @@ A locale identifier as specified in project setup. If no locale is specified, or
 Determines the desired format for the download
 
 **Values**  
-<pre>pending</pre> - Smartling returns any translations (including non-published translations).  
-<pre>published</pre> (default)** - Smartling returns only published/pre-published translations.  
-<pre>pseudo</pre> - Smartling returns a modified version of the original text with certain characters transformed and the text expanded. For example, the uploaded string "This is a sample string", will return as "T~hís ~ís á s~ámpl~é str~íñg". Pseudo translations enable you to test how a longer string integrates into your application.  
-<pre>contextMatchingInstrumented</pre> - Smartling returns a modified version of the original file with strings wrapped in a specific set of Unicode symbols that can later be recognized and matched by the Chrome Context Capture Extension.  
+<code>pending</code> - Smartling returns any translations (including non-published translations).  
+<code>published</codecode> (default)** - Smartling returns only published/pre-published translations.  
+<code>pseudo</code> - Smartling returns a modified version of the original text with certain characters transformed and the text expanded. For example, the uploaded string "This is a sample string", will return as "T~hís ~ís á s~ámpl~é str~íñg". Pseudo translations enable you to test how a longer string integrates into your application.  
+<code>contextMatchingInstrumented</code> - Smartling returns a modified version of the original file with strings wrapped in a specific set of Unicode symbols that can later be recognized and matched by the Chrome Context Capture Extension.  
 
 ### includeOriginalStrings (optional)
 Specifies whether Smartling will return the original string or an empty string where no translation is availabe. This parameter is supported for gettext, java properties, custom XML, and JSON files only. 
