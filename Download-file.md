@@ -15,16 +15,19 @@ Downloads the requested file from Smartling.
 
 It is important to check the HTTP response status code. If Smartling finds and returns the file normally, you will receive a 200 SUCCESS response. If you receive any other response status code than 200, the requested file will not be part of the response.
 
-
 When you upload a UTF-16 character encoded file, then /file/get requests for that file will have a character encoding of UTF-16. All other uploaded files will return with a character encoding of UTF-8. You can always use the content-type header in the response of a file/get request can always to determine the character encoding.
 
 ##Parameters
 
-### fileURI (required)
+| fileURI (required) |
+|:--------------------|
+|Value that uniquely identifies the downloaded file|
+
 Value that uniquely identifies the downloaded file
 
-### locale (optional)
-A locale identifier as specified in project setup. If no locale is specified, original content is returned. You can find the list of locales for your project [in the Smartling dashboard](https://dashboard.smartling.com/settings/api). For CSV files only: use the locale code 'all' to download all available locales in a single file.
+|locale (optional)|
+|:-----------------|
+|A locale identifier as specified in project setup. If no locale is specified, original content is returned. You can find the list of locales for your project [in the Smartling dashboard](https://dashboard.smartling.com/settings/api). For CSV files only: use the locale code 'all' to download all available locales in a single file.|
   
 ### retrievalType (optional
 Determines the desired format for the download
