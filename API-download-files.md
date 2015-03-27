@@ -22,21 +22,34 @@ When you upload a UTF-16 character encoded file, then /file/get requests for tha
   <tbody>
     <tr>
       <td><em>Value that uniquely identifies the downloaded file</em></td>
+    </tr>
+    <tr>
       <td><code></code></td>
     </tr>
   </tbody>
 </table>
       
 
+<table>
+  <thead>
+    <tr>
+      <td>Retrieval Type (optional)</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><em>Determines the desired format for the download</em></td>
+    </tr>
+    <tr>
+      <td><code>pending</code>- Smartling returns any translations (including non-published translations).<br/>
+          <code>pending</code>- Smartling returns any translations (including non-published translations).<br/>
+          <code>pending</code>- Smartling returns any translations (including non-published translations).<br/></td>
+    </tr>
+  </tbody>
+</table>
 
 
 
-
-| fileURI (required) |
-|:--------------------|
-|Value that uniquely identifies the downloaded file|
-
-Value that uniquely identifies the downloaded file
 
 |locale (optional)|
 |:-----------------|
