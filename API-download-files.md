@@ -13,6 +13,25 @@ When you upload a UTF-16 character encoded file, then /file/get requests for tha
 
 ##Parameters
 
+<table>
+  <thead>
+    <tr>
+      <td>fileURI (required)</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><em>Value that uniquely identifies the downloaded file</em></td>
+      <td><code></code></td>
+    </tr>
+  </tbody>
+</table>
+      
+
+
+
+
+
 | fileURI (required) |
 |:--------------------|
 |Value that uniquely identifies the downloaded file|
