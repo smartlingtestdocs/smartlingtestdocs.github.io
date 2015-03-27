@@ -30,20 +30,21 @@ When you upload a UTF-16 character encoded file, then /file/get requests for tha
 </table>
       
 
-<table>
+<table style="border: 1px solid black; border-collapse: collapse">
   <thead>
-    <tr>
-      <td>Retrieval Type (optional)</td>
+    <tr style="border: 1px solid black; background-color: #d3d3d3">
+      <td><strong>Retrieval Type (optional)<strong></td>
     </tr>
   </thead>
   <tbody>
-    <tr>
+    <tr style="border: 1px solid black">
       <td><em>Determines the desired format for the download</em></td>
     </tr>
     <tr>
       <td><code>pending</code>- Smartling returns any translations (including non-published translations).<br/>
-          <code>pending</code>- Smartling returns any translations (including non-published translations).<br/>
-          <code>pending</code>- Smartling returns any translations (including non-published translations).<br/></td>
+          <code>published</code>(default) - Smartling returns only published/pre-published translations.<br/>
+          <code>pseudo</code>- Smartling returns a modified version of the original text with certain characters transformed and the text expanded. For example, the uploaded string “This is a sample string”, will return as “T~hís ~ís á s~ámpl~é str~íñg”. Pseudo translations enable you to test how a longer string integrates into your application.<br/>
+          <code>contextMatchingInstrumented</code>- Smartling returns a modified version of the original file with strings wrapped in a specific set of Unicode symbols that can later be recognized and matched by the Chrome Context Capture Extension.</td>
     </tr>
   </tbody>
 </table>
