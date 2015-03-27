@@ -13,7 +13,7 @@ When you upload a UTF-16 character encoded file, then /file/get requests for tha
 
 ##Parameters
 
-<table>
+<table style="border: 1px solid black">
   <thead>
     <tr>
       <td>fileURI (required)</td>
