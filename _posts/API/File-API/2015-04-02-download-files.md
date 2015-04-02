@@ -15,6 +15,7 @@ When you upload a UTF-16 character encoded file, then /file/get requests for tha
 
 ##Parameters
 
+<html>
 <table style="border: 1px solid black">
   <thead>
     <tr>
@@ -49,6 +50,7 @@ When you upload a UTF-16 character encoded file, then /file/get requests for tha
     </tr>
   </tbody>
 </table>
+</html>
 
 
 
