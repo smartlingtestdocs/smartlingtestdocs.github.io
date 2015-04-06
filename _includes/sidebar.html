@@ -16,15 +16,7 @@
 
     </form>
 
-    <nav class="sidebar-nav">
-      <a class="sidebar-nav-item{% if page.url == site.baseurl %} active{% endif %}" href="{{ site.baseurl }}"><i class="fa fa-home"></i> Home</a>
-      <a class="sidebar-nav-item" href="/How-this-Works/"><i class="fa fa-cogs"></i> How This Works</a>
-      <a class="sidebar-nav-item" href="/Whats-included/"><i class="fa fa-check-square-o"></i> What's Included</a>
-      <a class="sidebar-nav-item" href="/file-API/"><i class="fa fa-file-o"></i> File API</a>
-      <a class="sidebar-nav-item" href="/Download-file/"><i class="fa fa-cloud-download"></i> Download File</a>
-      <a class="sidebar-nav-item" href="/Supported-file-types/"><i class="fa fa-thumbs-up"></i> Supported File Types</a>
-      <a class="sidebar-nav-item" href="/java-properties-files/"><i class="fa fa-coffee"></i> Java Properties</a>
-    </nav>
+    {% include navigation.html context="/" %}
 
     <p>&copy; {{ site.time | date: '%Y' }}. All rights reserved.</p>
   </div>

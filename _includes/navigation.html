@@ -1,0 +1,30 @@
+
+
+
+{% assign pages = site.pages | sort:"weight"  %}
+<ul>
+        <li class="show-1"><a href="/">Home</a></li>
+        <li class="show-1"><a href="/pages/API">File API</a></li>
+        <li>
+            <ul>    
+    {% for p in pages %}
+        {% if p.url contains "/pages/API" and p.url != "/pages/API/index.html"%}
+        <li class="{% if page.url contains "/pages/API" %}show-2{% endif %}"><a href="{{p.url}}">{{p.title}}</a></li>
+        {% endif %}
+    {% endfor %}
+            </ul>
+        </li>
+        <li class="show-1"><a href="/pages/supported-file-types">Supported File Types</a></li>
+        <li>
+            <ul>
+    {% for p in pages %}
+        {% if p.url contains "/pages/supported-file-types" and p.url != "/pages/supported-file-types/index.html"%}
+        <li class="{% if page.url contains "/pages/supported-file-types" %}show-2{% endif %}"><a href="{{p.url}}">{{p.title}}</a></li>
+        {% endif %}
+    {% endfor %}
+            </ul>
+        </li>
+</ul>
+
+
+
