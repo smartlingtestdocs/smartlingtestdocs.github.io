@@ -170,6 +170,47 @@ a.sidebar-nav-item:focus {
 .sidebar-nav-item.active {
   font-weight: bold;
 }
+
+/* Navigation Menu Items */
+
+.main-nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.main-nav ul li.hide-1 {
+  display: none;
+}
+
+.main-nav ul li.show-1 {
+  display: list-item;
+}
+
+.main-nav ul li ul li.hide-2 {
+  display: none;
+}
+
+.main-nav ul li ul li.show-2 {
+  display: list-item;
+}
+
+.main-nav ul li ul li ul li.hide-3 {
+  display: none;
+}
+
+.main-nav ul li ul li ul li.show-3 {
+  display: list-item;
+}
+
+.main-nav ul li ul li ul li ul li.hide-4 {
+  display: none;
+}
+
+.main-nav ul li ul li ul li ul li.show-4 {
+  display: list-item;
+}
+
 /* Sticky sidebar
  *
  * Add the `sidebar-sticky` class to the sidebar's container to affix it the
