@@ -1,0 +1,18 @@
+---
+title: searchjson
+---
+{% assign items = site.pages %}
+[
+  {% for item in items %}
+    {% if item.title != searchjson %}
+    {
+      "title"    : "{{ item.title | escape }}",
+      "category" : "{{ item.category }}",
+      "tags"     : "{{ item.tags | join: ', ' }}",
+      "url"      : "{{ item.url }}",
+      "date"     : "{{ item.date }}",
+      "content"  : "{{ item.content | strip_html | strip_newlines | json | escape }}"
+    } {% unless forloop.last %},{% endunless %}
+    {% endif %}
+  {% endfor %}
+]

@@ -7,17 +7,17 @@
     </div>
 
 
-    <form method="get" action="http://www.google.com/search">
+    
 
-      <input type="text" class="search-field"  name="q"
+      <input type="text" class="search-field"  id="search-input"
              maxlength="255" placeholder="Search Docs..." />
-      <!--<input type="submit" value="Go" />-->
-      <input type="hidden" name="sitesearch" value="smartlingtestdocs.github.io" /></td></tr>
+      <ul id="results-container"></ul>
 
-    </form>
+    
 
     {% include navigation.html context="/" %}
 
     <p>&copy; {{ site.time | date: '%Y' }}. All rights reserved.</p>
   </div>
 </div>
+x
