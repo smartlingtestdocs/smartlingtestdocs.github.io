@@ -1,7 +1,7 @@
 ---
 layout: FAPIMethods
 title:  Download Files
-Method: Download
+method: DownloadFiles
 Type: GET
 RubyExample: https://gist.github.com/smartlingtestdocs/ce8e0a459fe5b84246b1
 PHPExample: https://gist.github.com/smartlingtestdocs/ce8e0a459fe5b84246b1
