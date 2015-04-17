@@ -1,51 +1,50 @@
 ---
-
 Methods:
-	- DownloadFiles:
-		Type : GET
-		RubyGist: 
-		PHPGist: 
-		JavaGist:
-		CsharpGist:
-		PythonGist:
-		Parameters:
-			- Name: FileURI
-			  Required: required
-			  Description: 'Value that uniquely identifies the downloaded file.'
+    - DownloadFiles:
+        Type : GET
+        RubyGist: 
+        PHPGist: 
+        JavaGist:
+        CsharpGist:
+        PythonGist:
+        Parameters:
+            - Name: FileURI
+              Required: required
+              Description: 'Value that uniquely identifies the downloaded file.'
 
-			- Name: locale	
-			  Required: optional
-			  Description: 'A locale identifier as specified in project setup. If no locale is specified, original content is returned. You can find the list of locales for your project [in the Smartling dashboard](https://dashboard.smartling.com/settings/api). For CSV files only: use the locale code "all" to download all available locales in a single file.'
+            - Name: locale  
+              Required: optional
+              Description: 'A locale identifier as specified in project setup. If no locale is specified, original content is returned. You can find the list of locales for your project [in the Smartling dashboard](https://dashboard.smartling.com/settings/api). For CSV files only: use the locale code "all" to download all available locales in a single file.'
 
-			- Name: retrievalType
-			  Required: optional
-			  Description: 'Determines the desired format for the download.'
-			  Values:
-			  	- Value: pending
-			  	  Default: FALSE
-			  	  Description: 'Smartling returns any translations (including non-published translations).'
+            - Name: retrievalType
+              Required: optional
+              Description: 'Determines the desired format for the download.'
+              Values:
+                - Value: pending
+                  Default: FALSE
+                  Description: 'Smartling returns any translations (including non-published translations).'
 
-			  	- Value: published
-			  	  Default: TRUE
-			  	  Description: 'Smartling returns only published/pre-published translations.'
+                - Value: published
+                  Default: TRUE
+                  Description: 'Smartling returns only published/pre-published translations.'
 
-			  	- Value: pseudo
-			  	  Default: FALSE
-			  	  Description: 'Smartling returns a modified version of the original text with certain characters transformed and the text expanded. For example, the uploaded string "This is a sample string", will return as "T~hís ~ís á s~ámpl~é str~íñg". Pseudo translations enable you to test how a longer string integrates into your application.'
+                - Value: pseudo
+                  Default: FALSE
+                  Description: 'Smartling returns a modified version of the original text with certain characters transformed and the text expanded. For example, the uploaded string "This is a sample string", will return as "T~hís ~ís á s~ámpl~é str~íñg". Pseudo translations enable you to test how a longer string integrates into your application.'
 
-			  	- Value: contextMatchingInstrumented
-			  	  Default: FALSE
-			  	  Description: 'Smartling returns a modified version of the original file with strings wrapped in a specific set of Unicode symbols that can later be recognized and matched by the Chrome Context Capture Extension.'
+                - Value: contextMatchingInstrumented
+                  Default: FALSE
+                  Description: 'Smartling returns a modified version of the original file with strings wrapped in a specific set of Unicode symbols that can later be recognized and matched by the Chrome Context Capture Extension.'
 
-			- Name: includeOriginalStrings
-			  Required: optional
-			  Description: 'Specifies whether Smartling will return the original string or an empty string where no translation is availabe. This parameter is supported for gettext, java properties, custom XML, and JSON files only.'
-			  Values:
-			  	- Value: True
-			  	  Default: TRUE
-			  	  Description: 'If there is no translation, Smartling returns the original string.'
+            - Name: includeOriginalStrings
+              Required: optional
+              Description: 'Specifies whether Smartling will return the original string or an empty string where no translation is availabe. This parameter is supported for gettext, java properties, custom XML, and JSON files only.'
+              Values:
+                - Value: True
+                  Default: TRUE
+                  Description: 'If there is no translation, Smartling returns the original string.'
 
-			  	- Value: False
-			  	  Default: FALSE
-			  	  Description: 'If there is no translation, Smartling returns an empty string.'
+                - Value: False
+                  Default: FALSE
+                  Description: 'If there is no translation, Smartling returns an empty string.'
 
