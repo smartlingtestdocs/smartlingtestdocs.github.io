@@ -2,10 +2,6 @@
 layout: FAPIMethods
 title:  Download Files
 method: DownloadFiles
-Type: GET
-RubyExample: https://gist.github.com/smartlingtestdocs/ce8e0a459fe5b84246b1
-PHPExample: https://gist.github.com/smartlingtestdocs/ce8e0a459fe5b84246b1
-JavaExample: https://gist.github.com/smartlingtestdocs/c2fd4fcf80cbb732ad9e
 ---
 
 Downloads the requested file from Smartling.
