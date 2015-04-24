@@ -11,7 +11,7 @@
           Required: required
           Description: 'The file contents to upload. This should be submitted via a multipart/form-data POST request.'
 
-        - Name: FileUri
+        - Name: fileUri
           Required: required
           Description: 'Value that uniquely identifies the uploaded file. This ID can be used to request the file back. We recommend you use file path + file name, similar to how version control systems identify the file. Example: /myproject/i18n/ui.properties.'
 
@@ -58,10 +58,10 @@
 
   - Method : DownloadFiles
     Type : GET
-    RubyGist: 
-    PHPGist: 
-    JavaGist:
-    CsharpGist:
+    RubyGist: 4c127a346228bb1f5486
+    PHPGist:  ce8e0a459fe5b84246b1
+    JavaGist: c2fd4fcf80cbb732ad9e
+    CsharpGist: 65171fd5f647f772fb87
     PythonGist:
     Parameters:
         - Name: FileURI
@@ -172,7 +172,7 @@
             Description: The number of strings in the uploaded file that are approved and translated.
 
           - Name: lastUploaded
-            Description: The time and date of the last upload: YYYY-MM-DDThh:mm:ss
+            Description: 'The time and date of the last upload: YYYY-MM-DDThh:mm:ss'
 
           - Name: fileType
             Description: 'The type of file: android, ios, gettext, javaProperties, xliff, yaml, etc'
@@ -186,7 +186,7 @@
     CsharpGist:
     PythonGist:
     Parameters:
-        - Name: fileURI
+        - Name: fileUri
           Required: required
           Description: 'Value that uniquely identifies the file.'
 
@@ -214,13 +214,49 @@
             Description: The number of strings in the uploaded file that are approved and translated.
 
           - Name: lastUploaded
-            Description: The time and date of the last upload: YYYY-MM-DDThh:mm:ss
+            Description: 'The time and date of the last upload: YYYY-MM-DDThh:mm:ss'
 
           - Name: fileType
             Description: 'The type of file: android, ios, gettext, javaProperties, xliff, yaml, etc'
 
-  - Method: Status
-    Url: file/status
+  - Method: Rename
+    Url: file/rename
+    Type : POST
+    RubyGist: 
+    PHPGist: 
+    JavaGist:
+    CsharpGist:
+    PythonGist:
+    Parameters:
+        - Name: fileUri
+          Required: required
+          Description: 'Current value that uniquely identifies the file.'
+
+        - Name: newfileUri
+          Required: required
+          Description: 'The new value for fileUri. We recommend that you use file path + file name, similar to how version control systems identify the file. Example: /myproject/i18n/ui.properties. This must be a fileUri that does not exist in the Smartling database.'
+
+    Return:
+        String: 'Smartling returns a standard response format. The response will contain a SUCCESS response code indicating the file is successfully deleted. The response includes no data.'
+
+  - Method: Delete
+    Url: file/delete
+    Type : DELETE
+    RubyGist: 
+    PHPGist: 
+    JavaGist:
+    CsharpGist:
+    PythonGist:
+    Parameters:
+        - Name: fileUri
+          Required: required
+          Description: 'Value that uniquely identifies the file.'
+
+    Return:
+        String: 'Smartling returns a standard response format. The response will contain a SUCCESS response code indicating the file is successfully deleted. The response includes no data.'
+
+  - Method: LastModified
+    Url: file/last_modified
     Type : GET
     RubyGist: 
     PHPGist: 
@@ -228,15 +264,11 @@
     CsharpGist:
     PythonGist:
     Parameters:
-        - Name: fileURI
+        - Name: fileUri
           Required: required
-          Description: 'Value that uniquely identifies the file.'
+          Description: 'Current value that uniquely identifies the file.'
 
-        - Name: locale
+        - Name: newfileUri
           Required: required
-          Description: 'A locale identifier as specified in project setup. You can find the list of locales for your project on the Smartling dashboard at https://dashboard.smartling.com/settings/api.'
-
-    Return:
-        String: 
-
+          Description: 'The new value for fileUri. We recommend that you use file path + file name, similar to how version control systems identify the file. Example: /myproject/i18n/ui.properties. This must be a fileUri that does not exist in the Smartling database.'
 
