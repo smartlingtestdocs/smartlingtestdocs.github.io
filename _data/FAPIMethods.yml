@@ -44,6 +44,7 @@
 
     Return:
       String: 
+      Json: 
       Parameters:
 
         - Name: overWritten
@@ -151,6 +152,7 @@
 
     Return:
         String: 
+        Json:
         Parameters:
 
           - Name: fileCount
@@ -196,6 +198,7 @@
 
     Return:
         String: 
+        Json:
         Parameters:
 
           - Name: fileUri
@@ -238,6 +241,7 @@
 
     Return:
         String: 'Smartling returns a standard response format. The response will contain a SUCCESS response code indicating the file is successfully deleted. The response includes no data.'
+
 
   - Method: Delete
     Url: file/delete

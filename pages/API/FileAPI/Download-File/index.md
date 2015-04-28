@@ -11,4 +11,3 @@ It is important to check the HTTP response status code. If Smartling finds and r
 When you upload a UTF-16 character encoded file, then /file/get requests for that file will have a character encoding of UTF-16. All other uploaded files will return with a character encoding of UTF-8.
 
 You can always use the content-type header in the response of a file/get request can always to determine the character encoding.
-

@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="{{site.baseurl}}public/css/FAPICodeExamples.css">
+
 {% for FAPIMethod in site.data.FAPIMethods %}
     {% if FAPIMethod.Method == page.method %}
         {% assign RubyGist = FAPIMethod.RubyGist %}
