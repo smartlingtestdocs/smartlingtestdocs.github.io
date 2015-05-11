@@ -1,0 +1,21 @@
+<link rel="stylesheet" href="{{site.baseurl}}public/css/FAPIMethods.css">
+
+{% for FAPIMethod in site.data.FAPIMethods %} 
+    {% if FAPIMethod.Method == {{page.method}}" %}
+
+        {% for Parameter in FAPIMethod.Parameters%}
+            <table class = "{% if Parameter.Required == "required" %}required{% else %}optional{% endif %}">
+                <tr>
+                    <td>{{Parameter.Name}} ({{Parameter.Required}})</td>
+                </tr>
+                <tr>
+                    <td colspan="2">{{Parameter.Description}}</td>
+                {% for Value in Parameter.Values %}
+                <tr>
+                    <td>{{Value.Value}}</td><td>{{Value.Description}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        {% endfor %}
+    {% endif %}
+{% endfor %}

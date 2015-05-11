@@ -7,6 +7,16 @@
     </div>
 
 
+    
+
+      <input type="text" class="search-field"  id="search-input"
+             maxlength="255" placeholder="Search Docs..." />
+      <ul id="results-container"></ul>
+
+    
+
+    {% include navigation.html context="/" %}
+
     <form method="get" action="http://www.google.com/search">
 
       <input type="text" class="search-field"  name="q"
