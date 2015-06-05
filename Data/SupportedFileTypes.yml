@@ -1,0 +1,210 @@
+
+ - file_type: 'JSON'
+   extension: '.json'
+   smartling_identifier: 'json'
+   resource_info: '<a href="http://json.org/">Official JSON Standards</a>'
+   default_placeholders: '!!!!!!!!!!!!'
+   keys_variants: Yes
+   keys_variants_info: 'By default, the full path of keys leading to a string are captured as Key and Variant metadata. Custom key paths can be set and variant behavior turned off with directives'
+   directive_style: set_once
+   string_instructions: No
+
+ - file_type: 'Android XML'
+   extension: '.xml'
+   smartling_identifier: 'android'
+   download_sample: '<a href="">android.xml</a>'
+   resource_info: '<ul><li><a href="http://developer.android.com/guide/topics/resources/string-resource.html">Android String Resources</a></li><li><a href="http://developer.android.com/guide/topics/resources/localization.html">Android Localization</a></li></ul>'
+   default_placeholders: '________'
+   keys_variants: 
+   keys_variants_info: ''
+   directive_style: 
+   string_instructions: 
+
+ - file_type: 'iOS String Files'
+   extension: '.strings'
+   smartling_identifier: 'ios'
+   download_sample: '<a href="">ios.strings</a>'
+   resource_info: '<a href="https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/LoadingResources/Strings/Strings.html">String Resources</a>'
+   default_placeholders: ''
+   keys_variants: 
+   keys_variants_info: ''
+   directive_style: 
+   string_instructions: 
+
+ - file_type: 'iOS Stringsdict'
+   extension: '.stringsdict'
+   smartling_identifier: 'stringsdict'
+   download_sample: '<a href=""></a>'
+   resource_info: '<ul><li><a href="https://developer.apple.com/library/ios/documentation/MacOSX/Conceptual/BPInternational/StringsdictFileFormat/StringsdictFileFormat.html">Stringsdict File Format</a></li><li><a href="https://developer.apple.com/library/ios/documentation/MacOSX/Conceptual/BPInternational/LocalizingYourApp/LocalizingYourApp.html">Localizing your App</a></li></ul>'
+   default_placeholders: ''
+   keys_variants: 
+   keys_variants_info: ''
+   directive_style: 
+   string_instructions: 
+
+ - file_type: 'Gettext PO/POT'
+   extension: '.pot / .po'
+   smartling_identifier: 'gettext'
+   download_sample: '<a href="http://www.gnu.org/software/gettext/">GNU Gettext Documentation</a>'
+   resource_info: '<a href="http://www.gnu.org/software/gettext/">GNU Gettext Documentation</a>'
+   default_placeholders: ''
+   keys_variants: Yes
+   keys_variants_info: '<p>Smartling also supports the msgctxt parameter that allows you to have Smartling capture a string as a variant.  When a gettext string includes msgctxt metadata it will be created as variant using the value of msgctxt.</p><p>For example:</p><pre>msgctxt "Home Page Menu Navigation"<br/>msgid "Home"<br/>msgstr ""<br/>msgctxt "Home Address Label"<br/>msgid "Home"<br/>msgstr ""</pre><p>Will result in two strings for translation. Both with the value "Home". The translators can choose to to make the translation the same or not.  The value of msgctxt displays to translators in the Translation Interface and the Smartling Dashboard.  See the <a href="http://support.smartling.com/entries/22279686-about-variants-translation-management-system">Knowledge Base</a> for more on translation variants.<p>'
+   directive_style: set_throughout
+   string_instructions: 
+
+ - file_type: 'HTML'
+   extension: '.html'
+   smartling_identifier: 'html'
+   download_sample: '<a href=""></a>'
+   resource_info: '<a href="http://www.w3.org/TR/html5/">HTML5 Standards</a>'
+   default_placeholders: ''
+   keys_variants: YES
+   keys_variants_info: ''
+   directive_style: set_throughout
+   string_instructions: 
+
+ - file_type: 'Java Property Files'
+   extension: '.properties'
+   smartling_identifier: 'javaProperties'
+   download_sample: '<a href="">java.properties</a>'
+   resource_info: '<a href="http://docs.oracle.com/javase/tutorial/i18n/index.html">Java Localization Documentation</a>'
+   default_placeholders: ''
+   keys_variants: 
+   keys_variants_info: ''
+   directive_style: 
+   string_instructions: 
+
+ - file_type: 'YAML'
+   extension: '.yml'
+   smartling_identifier: 'yml'
+   download_sample: '<a href="">yaml.yml</a>'
+   resource_info: '<a href="http://guides.rubyonrails.org/i18n.html">Rails Internationalization</a>'
+   default_placeholders: ''
+   keys_variants: 
+   keys_variants_info: ''
+   directive_style: 
+   string_instructions: 
+
+ - file_type: 'XLIFF'
+   extension: '.xml'
+   smartling_identifier: 'xliff'
+   download_sample: '<a href=""></a>'
+   resource_info: '<ul><li><a href="http://en.wikipedia.org/wiki/XLIFF">Background on XLIFF</a></li><li><a href="http://docs.oasis-open.org/xliff/xliff-core/xliff-core.html">OASIS specification</a></li></ul>'
+   default_placeholders: ''
+   keys_variants: 
+   keys_variants_info: ''
+   directive_style: 
+   string_instructions: 
+
+ - file_type: 'Custom XML'
+   extension: '.xml'
+   smartling_identifier: 'xml'
+   download_sample: '<a href=""></a>'
+   resource_info: '<a href="http://www.w3.org/standards/xml/">XML Standards</a>'
+   default_placeholders: ''
+   keys_variants: 
+   keys_variants_info: ''
+   directive_style: 
+   string_instructions: 
+
+ - file_type: ''
+   extension: ''
+   smartling_identifier: ''
+   download_sample: '<a href=""></a>'
+   resource_info: ''
+   default_placeholders: ''
+   keys_variants: 
+   keys_variants_info: ''
+   directive_style: 
+   string_instructions: 
+
+ - file_type: ''
+   extension: ''
+   smartling_identifier: ''
+   download_sample: '<a href=""></a>'
+   resource_info: ''
+   default_placeholders: ''
+   keys_variants: 
+   keys_variants_info: ''
+   directive_style: 
+   string_instructions: 
+
+ - file_type: ''
+   extension: ''
+   smartling_identifier: ''
+   download_sample: '<a href=""></a>'
+   resource_info: ''
+   default_placeholders: ''
+   keys_variants: 
+   keys_variants_info: ''
+   directive_style: 
+   string_instructions: 
+
+ - file_type: ''
+   extension: ''
+   smartling_identifier: ''
+   download_sample: '<a href=""></a>'
+   resource_info: ''
+   default_placeholders: ''
+   keys_variants: 
+   keys_variants_info: ''
+   directive_style: 
+   string_instructions: 
+
+ - file_type: ''
+   extension: ''
+   smartling_identifier: ''
+   download_sample: '<a href=""></a>'
+   resource_info: ''
+   default_placeholders: ''
+   keys_variants: 
+   keys_variants_info: ''
+   directive_style: 
+   string_instructions: 
+
+ - file_type: ''
+   extension: ''
+   smartling_identifier: ''
+   download_sample: '<a href=""></a>'
+   resource_info: ''
+   default_placeholders: ''
+   keys_variants: 
+   keys_variants_info: ''
+   directive_style: 
+   string_instructions: 
+
+ - file_type: ''
+   extension: ''
+   smartling_identifier: ''
+   download_sample: '<a href=""></a>'
+   resource_info: ''
+   default_placeholders: ''
+   keys_variants: 
+   keys_variants_info: ''
+   directive_style: 
+   string_instructions: 
+
+ - file_type: ''
+   extension: ''
+   smartling_identifier: ''
+   download_sample: '<a href=""></a>'
+   resource_info: ''
+   default_placeholders: ''
+   keys_variants: 
+   keys_variants_info: ''
+   directive_style: 
+   string_instructions: 
+
+ - file_type: ''
+   extension: ''
+   smartling_identifier: ''
+   download_sample: '<a href=""></a>'
+   resource_info: ''
+   default_placeholders: ''
+   keys_variants: 
+   keys_variants_info: ''
+   directive_style: 
+   string_instructions: 
+
+ - 
