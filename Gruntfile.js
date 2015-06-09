@@ -12,9 +12,11 @@ module.exports = function(grunt) {
                 },
 
                 files: {
-                    "public/css/bootstrap.css": "public/css/bootstrap.less" // destination file and source file
+                    "public/css/bootstrap.css": "public/css/bootstrap.less",
+                    "public/css/smartling.css": "public/css/smartling.less",
+                    "public/css/hyde.css": "public/css/hyde.less"
                 }
-            },
+            }
 
 
         },
