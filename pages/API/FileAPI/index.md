@@ -11,13 +11,21 @@ Multiple READ operations can run simultaneously on a single file, but only one W
 
 Concurrent API requests are limited to 20 per file and 50 per project. Exceeding this limit will result in a MAX_OPERATIONS_LIMIT_EXCEEDED error.
 
-####Methods
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Methods</h3>
+  </div>
+  <div class="panel-body">
+    <ul class="text-list">
+      <li>upload (POST)</li>
+      <li >download (GET)</li>
+      <li >list (GET)</li>
+      <li >status (GET)</li>
+      <li >rename (POST)</li>
+      <li >delete (DELETE)</li>
+      <li >import (POST)</li>
+      <li >last_modified (GET)</li>
+    </ul>
+  </div>
+</div>
 
-* upload (POST)
-* download (GET)
-* list (GET)
-* status (GET)
-* rename (POST)
-* delete (DELETE)
-* import (POST)
-* last_modified (GET)

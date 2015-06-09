@@ -39,6 +39,9 @@ html {
     font-size: 16px;
   }
 }
+body {
+  color: #333;
+}
 /*
  * Sidebar
  *
@@ -78,50 +81,7 @@ html {
 }
 .sidebar {
   text-align: center;
-  color: rgba(255, 255, 255, 0.5);
-  background-color: #202020;
-}
-.sidebar ::-webkit-input-placeholder {
-  color: #2e70cd;
-}
-.sidebar :-moz-placeholder {
-  color: #2e70cd;
-}
-.sidebar ::-moz-placeholder {
-  color: #2e70cd;
-}
-.sidebar :-ms-input-placeholder {
-  color: #2e70cd;
-}
-input.search-field {
-  padding: 10px 20px;
-  border: none;
-  background: #648fcb;
-  font-size: 16px;
-  outline-width: 0;
-  outline: none;
-  border-radius: 4px;
-  margin-bottom: 15px;
-}
-input.search-field:focus {
-  background: #eee;
-}
-input.home-search-field {
-  padding: 10px 20px;
-  border: none;
-  background: #f9f9f9;
-  font-size: 20px;
-  outline-width: 0;
-  outline: none;
-  border-radius: 4px;
-  margin-bottom: 55px;
-  width: 50%;
-  color: #333;
-  border: 1px solid #eee;
-}
-input.home-search-field:focus {
-  background: #f9f9f9;
-  border: 1px solid #ddd;
+  background-color: #000;
 }
 @media (min-width: 48em) {
   .sidebar {
@@ -132,7 +92,6 @@ input.home-search-field:focus {
     text-align: left;
     position: fixed;
     z-index: 100;
-    padding: 0 2rem;
   }
 }
 /* Sidebar links */
@@ -231,83 +190,4 @@ a.sidebar-nav-item:focus {
     margin-left: 4rem;
     margin-right: 22rem;
   }
-}
-/*
- * Themes
- *
- * As of v1.1, Hyde includes optional themes to color the sidebar and links
- * within blog posts. To use, add the class of your choosing to the `body`.
- */
-/* Base16 (http://chriskempson.github.io/base16/#default) */
-/* Red */
-.theme-base-08 .sidebar {
-  background-color: #ac4142;
-}
-.theme-base-08 .content a,
-.theme-base-08 .related-posts li a:hover {
-  color: #ac4142;
-}
-/* Orange */
-.theme-base-09 .sidebar {
-  background-color: #d28445;
-}
-.theme-base-09 .content a,
-.theme-base-09 .related-posts li a:hover {
-  color: #d28445;
-}
-/* Yellow */
-.theme-base-0a .sidebar {
-  background-color: #f4bf75;
-}
-.theme-base-0a .content a,
-.theme-base-0a .related-posts li a:hover {
-  color: #f4bf75;
-}
-/* Green */
-.theme-base-0b .sidebar {
-  background-color: #90a959;
-}
-.theme-base-0b .content a,
-.theme-base-0b .related-posts li a:hover {
-  color: #90a959;
-}
-/* Cyan */
-.theme-base-0c .sidebar {
-  background-color: #75b5aa;
-}
-.theme-base-0c .content a,
-.theme-base-0c .related-posts li a:hover {
-  color: #75b5aa;
-}
-/* Blue */
-.theme-base-0d .sidebar {
-  background-color: #6a9fb5;
-}
-.theme-base-0d .content a,
-.theme-base-0d .related-posts li a:hover {
-  color: #6a9fb5;
-}
-/* Magenta */
-.theme-base-0e .sidebar {
-  background-color: #aa759f;
-}
-.theme-base-0e .content a,
-.theme-base-0e .related-posts li a:hover {
-  color: #aa759f;
-}
-/* Brown */
-.theme-base-0f .sidebar {
-  background-color: #8f5536;
-}
-.theme-base-0f .content a,
-.theme-base-0f .related-posts li a:hover {
-  color: #8f5536;
-}
-/* Smartling */
-.theme-base-smartling .sidebar {
-  background-color: #2e70cd;
-}
-.theme-base-smartling .content a,
-.theme-base-smartling .related-posts li a:hover {
-  color: #2e70cd;
 }

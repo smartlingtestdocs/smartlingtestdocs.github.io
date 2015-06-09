@@ -3,11 +3,21 @@ layout: default
 ---
 
 <div class="page">
-  <h1 class="page-title">{{ page.title }}</h1>
-{{ content }}
+    <h1 class="page-title">{{ page.title }}</h1>
 
-{% include FAPIMethodParameters.html %}
+    {{ content }}
 
-{% include FAPICodeExamples.html %}
-  
+    <div class="panel panel-default">
+        <div class="panel-heading">Parameters</div>
+        <div class="panel-body">
+            {% include FAPIMethodParameters.html %}
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">Examples</div>
+        <div class="panel-body">
+            {% include FAPICodeExamples.html %}
+        </div>
+    </div>
+
 </div>
