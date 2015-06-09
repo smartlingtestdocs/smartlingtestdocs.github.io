@@ -82,6 +82,7 @@ body {
 .sidebar {
   text-align: center;
   background-color: #000;
+  overflow: auto;
 }
 @media (min-width: 48em) {
   .sidebar {

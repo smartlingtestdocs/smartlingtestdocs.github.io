@@ -3,11 +3,11 @@
 <div class="main-nav">
 {% assign items = site.pages | sort:"weight"  %}
 <ul>
-        <li class="show-1"><a href="/"><i class="fa fa-home"></i> Home</a></li>
-        <li class="show-1 open"><a href="/pages/API"><i class="fa fa-cogs"></i> API</a>
+        <li><a href="/"><i class="fa fa-home"></i> Home</a></li>
+        <li class="{% if page.url contains "/pages/API" %}open{% endif %}"><a href="/pages/API"><i class="fa fa-cogs"></i> API</a>
 
             <ul class="secondary">
-                <li class="{% if page.url contains "/pages/API" %}show-2{% else %}hide-2{% endif %}">
+                <li class="">
                     <a href="/pages/API/FileAPI">File API</a>
                     <ul>
                     {% for item in items %}
@@ -20,7 +20,7 @@
             </ul>
         </li>
 
-        <li class="show-1"><a href="/pages/supported-file-types"><i class="fa fa-thumbs-up"></i> Supported File Types</a>
+        <li><a href="/pages/supported-file-types"><i class="fa fa-thumbs-up"></i> Supported File Types</a>
             <ul>
             {% for item in items %}
             {% if item.url contains "/pages/supported-file-types" and item.url != "/pages/supported-file-types/index.html"%}
