@@ -5,23 +5,26 @@ title: Supported File Types
 
 Smartling supports the following file formats:
 
-* Android xml  
-* iOS string files
-* iOS .stringsdict  
-* Gettext po/pot  
-* HTML  
-* [Java Property Files](http://smartlingtestdocs.github.io/java-properties-files/)  
-* YAML
-* XLIFF
-* JSON
-* XML
-* QT Linguest (TS files)  
-* MadCap Lingo ZIP Packages  
-* Office Open XML  
-* InDesign Markup Language  
-* Resx  
-* Plain Text  
-* CSV
+<ul class="textList supportedFileTypes">
+  <li>Android xml</li>
+  <li>iOS string files</li>
+  <li>iOS .stringsdict</li>
+  <li>Gettext po/pot</li>
+  <li>HTML</li>
+  <li><a href="http://smartlingtestdocs.github.io/java-properties-files/">Java Property Files</a></li>
+  <li>YAML</li>
+  <li>XLIFF</li>
+  <li>JSON</li>
+  <li>XML</li>
+  <li>QT Linguest (TS files)</li>
+  <li>MadCap Lingo ZIP Packages</li>
+  <li>Office Open XML</li>
+  <li>InDesign Markup Language</li>
+  <li>Resx</li>
+  <li>Plain Text</li>
+  <li>CSV</li>
+</ul>
+
 
 You can use the Smartling Files API to upload original source files.  If you have existing translations you can import them using the Smartling Dashboard or the Import API after you have captured the original file.  If you have existing translations only in the Translation Memory Exchange (TMX) format you can add them to your accounts translation memory using the Dashboard's Translation Memory Import tool.  If you have any questions about supported File Types or the Files API contact Smartling technical support at support@smartling.com.
 

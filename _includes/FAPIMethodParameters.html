@@ -4,7 +4,7 @@
     {% if FAPIMethod.Method == {{page.method}}" %}
 
         {% for Parameter in FAPIMethod.Parameters%}
-            <div class="{% if Parameter.Required == "required" %}required{% else %}optional{% endif %}">
+            <div class="parameter {% if Parameter.Required == "required" %}required{% else %}optional{% endif %}">
                 <h4>{{Parameter.Name}} ({{Parameter.Required}})</h4>
 
 

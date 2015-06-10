@@ -29,25 +29,6 @@
 html {
   font-family: "Proxima Nova", "Raleway", Helvetica, Arial, sans-serif;
 }
-@media (min-width: 48em) {
-  html {
-    font-size: 12px;
-  }
-}
-@media (min-width: 58em) {
-  html {
-    font-size: 16px;
-  }
-}
-body {
-  color: #333;
-}
-/*
- * Sidebar
- *
- * Flexible banner for housing site name, intro, and "footer" content. Starts
- * out above content in mobile and later moves to the side with wider viewports.
- */
 #nav {
   position: fixed;
   top: 0px;
@@ -79,28 +60,27 @@ body {
   display: block;
   margin-bottom: 15px;
 }
-@media (min-width: 48em) {
-  .sidebar {
-    top: 0;
-    left: 0;
-    bottom: 0;
-    width: 18rem;
-    text-align: left;
-    position: fixed;
-    z-index: 100;
-  }
+.sidebar {
+  width: 300px;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  text-align: left;
 }
-/* Sticky sidebar
- *
- * Add the `sidebar-sticky` class to the sidebar's container to affix it the
- * contents to the bottom of the sidebar in tablets and up.
- */
-@media (min-width: 48em) {
-  .sidebar-sticky {
-    position: absolute;
-    right: 1rem;
-    bottom: 1rem;
-    left: 1rem;
+.content {
+  position: relative;
+  margin-left: 285px;
+  padding: 50px 50px;
+}
+@media (max-width: 767px) {
+  .content {
+    margin-left: 0px;
+  }
+  .sidebar {
+    position: static;
+    text-align: center;
+    width: 100%;
   }
 }
 /* Container
@@ -108,29 +88,6 @@ body {
  * Align the contents of the site above the proper threshold with some margin-fu
  * with a 25%-wide `.sidebar`.
  */
-.content {
-  position: relative;
-  margin-left: 285px;
-  padding: 50px 50px;
-}
-.content h1 i.fa {
-  color: #f38034;
-}
-/*fdsa8?
-
-@media (min-width: 48em) {
-  .content {
-
-  }
-}
-
-@media (min-width: 64em) {
-  .content {
-
-  }
-}
-
-
 /*
  * Reverse layout
  *
