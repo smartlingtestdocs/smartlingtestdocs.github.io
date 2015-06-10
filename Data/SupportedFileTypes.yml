@@ -1,5 +1,7 @@
 
  - file_type: 'JSON'
+   ARF: Yes
+   BizDocs: No
    extension: '.json'
    smartling_identifier: 'json'
    resource_info: '<a href="http://json.org/">Official JSON Standards</a>'
@@ -10,6 +12,8 @@
    string_instructions: No
 
  - file_type: 'Android XML'
+   ARF: Yes
+   BizDocs: No
    extension: '.xml'
    smartling_identifier: 'android'
    download_sample: '<a href="">android.xml</a>'
@@ -21,6 +25,8 @@
    string_instructions: 
 
  - file_type: 'iOS String Files'
+   ARF: Yes
+   BizDocs: No
    extension: '.strings'
    smartling_identifier: 'ios'
    download_sample: '<a href="">ios.strings</a>'
@@ -32,6 +38,8 @@
    string_instructions: 
 
  - file_type: 'iOS Stringsdict'
+   ARF: Yes
+   BizDocs: No
    extension: '.stringsdict'
    smartling_identifier: 'stringsdict'
    download_sample: '<a href=""></a>'
@@ -43,6 +51,8 @@
    string_instructions: 
 
  - file_type: 'Gettext PO/POT'
+   ARF: Yes
+   BizDocs: No
    extension: '.pot / .po'
    smartling_identifier: 'gettext'
    download_sample: '<a href="http://www.gnu.org/software/gettext/">GNU Gettext Documentation</a>'
@@ -54,6 +64,8 @@
    string_instructions: 
 
  - file_type: 'HTML'
+   ARF: Yes
+   BizDocs: No
    extension: '.html'
    smartling_identifier: 'html'
    download_sample: '<a href=""></a>'
@@ -65,6 +77,8 @@
    string_instructions: 
 
  - file_type: 'Java Property Files'
+   ARF: Yes
+   BizDocs: No
    extension: '.properties'
    smartling_identifier: 'javaProperties'
    download_sample: '<a href="">java.properties</a>'
@@ -76,6 +90,8 @@
    string_instructions: 
 
  - file_type: 'YAML'
+   ARF: Yes
+   BizDocs: No
    extension: '.yml'
    smartling_identifier: 'yml'
    download_sample: '<a href="">yaml.yml</a>'
@@ -87,6 +103,8 @@
    string_instructions: 
 
  - file_type: 'XLIFF'
+   ARF: Yes
+   BizDocs: No
    extension: '.xml'
    smartling_identifier: 'xliff'
    download_sample: '<a href=""></a>'
@@ -98,6 +116,8 @@
    string_instructions: 
 
  - file_type: 'Custom XML'
+   ARF: Yes
+   BizDocs: No
    extension: '.xml'
    smartling_identifier: 'xml'
    download_sample: '<a href=""></a>'
@@ -108,11 +128,39 @@
    directive_style: 
    string_instructions: 
 
- - file_type: ''
+ - file_type: 'QT Linguist (TS files)'
+   ARF: Yes
+   BizDocs: No
+   extension: '.ts'
+   smartling_identifier: 'qt'
+   download_sample: '<a href=""></a>'
+   resource_info: '<a href="http://doc.qt.io/qt-4.8/linguist-manual.html">Qt Linguist Manual</a>'
+   default_placeholders: ''
+   keys_variants: 
+   keys_variants_info: ''
+   directive_style: 
+   string_instructions: 
+
+ - file_type: 'MadCap Lingo ZIP packages'
+   ARF: Yes
+   BizDocs: No
+   extension: '.zip'
+   smartling_identifier: 'madcap'
+   download_sample: '<a href=""></a>'
+   resource_info: '<a href=""></a>'
+   default_placeholders: ''
+   keys_variants: 
+   keys_variants_info: ''
+   directive_style: 
+   string_instructions: 
+
+ - file_type: 'Office Open XML'
+   ARF: No
+   BizDocs: Yes
    extension: ''
    smartling_identifier: ''
    download_sample: '<a href=""></a>'
-   resource_info: ''
+   resource_info: '<a href=""></a>'
    default_placeholders: ''
    keys_variants: 
    keys_variants_info: ''
@@ -120,10 +168,12 @@
    string_instructions: 
 
  - file_type: ''
+   ARF: Yes
+   BizDocs: No
    extension: ''
    smartling_identifier: ''
    download_sample: '<a href=""></a>'
-   resource_info: ''
+   resource_info: '<a href=""></a>'
    default_placeholders: ''
    keys_variants: 
    keys_variants_info: ''
@@ -131,10 +181,12 @@
    string_instructions: 
 
  - file_type: ''
+   ARF: Yes
+   BizDocs: No
    extension: ''
    smartling_identifier: ''
    download_sample: '<a href=""></a>'
-   resource_info: ''
+   resource_info: '<a href=""></a>'
    default_placeholders: ''
    keys_variants: 
    keys_variants_info: ''
@@ -142,10 +194,12 @@
    string_instructions: 
 
  - file_type: ''
+   ARF: Yes
+   BizDocs: No
    extension: ''
    smartling_identifier: ''
    download_sample: '<a href=""></a>'
-   resource_info: ''
+   resource_info: '<a href=""></a>'
    default_placeholders: ''
    keys_variants: 
    keys_variants_info: ''
@@ -153,39 +207,8 @@
    string_instructions: 
 
  - file_type: ''
-   extension: ''
-   smartling_identifier: ''
-   download_sample: '<a href=""></a>'
-   resource_info: ''
-   default_placeholders: ''
-   keys_variants: 
-   keys_variants_info: ''
-   directive_style: 
-   string_instructions: 
-
- - file_type: ''
-   extension: ''
-   smartling_identifier: ''
-   download_sample: '<a href=""></a>'
-   resource_info: ''
-   default_placeholders: ''
-   keys_variants: 
-   keys_variants_info: ''
-   directive_style: 
-   string_instructions: 
-
- - file_type: ''
-   extension: ''
-   smartling_identifier: ''
-   download_sample: '<a href=""></a>'
-   resource_info: ''
-   default_placeholders: ''
-   keys_variants: 
-   keys_variants_info: ''
-   directive_style: 
-   string_instructions: 
-
- - file_type: ''
+   ARF: Yes
+   BizDocs: No
    extension: ''
    smartling_identifier: ''
    download_sample: '<a href=""></a>'

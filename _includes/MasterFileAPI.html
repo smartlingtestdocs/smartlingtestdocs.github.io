@@ -1,0 +1,50 @@
+
+{% for FAPIMethod in site.data.FAPIMethods %} 
+    {% assign RubyGist = FAPIMethod.RubyGist %}
+    {% assign PHPGist = FAPIMethod.PHPGist %}
+    {% assign JavaGist = FAPIMethod.JavaGist %}
+    {% assign CsharpGist = FAPIMethod.CsharpGist %}
+    {% assign PythonGist = FAPIMethod.PythonGist %}
+
+    <h1 id="{{FAPIMethod.Method}}">{{FAPIMethod.Url}} ({{FAPIMethod.Type}})</h1>
+
+        {% for Parameter in FAPIMethod.Parameters%}
+            <table class = "{% if Parameter.Required == "required" %}required{% else %}optional{% endif %}">
+                <tr>
+                    <td>{{Parameter.Name}} ({{Parameter.Required}})</td>
+                </tr>
+                <tr>
+                    <td colspan="2">{{Parameter.Description}}</td>
+                {% for Value in Parameter.Values %}
+                <tr>
+                    <td>{{Value.Value}}</td><td>{{Value.Description}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        {% endfor %}
+
+<ul class="tabs">
+    <li><a href="#Ruby">Ruby</a></li>
+    <li><a href="#PHP">PHP</a></li>
+    <li><a href="#Java">Java</a></li>
+    <li><a href="#Csharp">C#</a></li>
+    <li><a href="#Python">Python</a></li>
+</ul>
+<div class="tabcontents">
+    <div id="Ruby">
+        <script src="https://gist.github.com/{{RubyGist}}.js"> </script>
+    </div>
+    <div id="PHP">
+        <script src="https://gist.github.com/{{PHPGist}}.js"> </script>
+    </div>
+    <div id="Java">
+        <script src="https://gist.github.com/{{JavaGist}}.js"> </script>
+    </div>
+    <div id="Csharp">
+        <script src="https://gist.github.com/{{CsharpGist}}.js"> </script>
+    </div>
+    <div id="Python">
+        <script src="https://gist.github.com/{{PythonGist}}.js"> </script>
+    </div>
+</div>
+{% endfor %}
