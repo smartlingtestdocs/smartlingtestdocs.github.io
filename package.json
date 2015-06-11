@@ -1,0 +1,23 @@
+{
+  "name": "docs",
+  "version": "0.0.0",
+  "description": "Welcome to the new Smartling Developer Documntation Prototype. This site is hosted by Github Pages and built on Hyde, a basic theme for the Jekyll static site generator.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/smartlingtestdocs/smartlingtestdocs.github.io.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/smartlingtestdocs/smartlingtestdocs.github.io/issues"
+  },
+  "homepage": "https://github.com/smartlingtestdocs/smartlingtestdocs.github.io",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-less": "^1.0.1"
+  }
+}
