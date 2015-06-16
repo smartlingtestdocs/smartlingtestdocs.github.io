@@ -1,0 +1,18 @@
+
+{
+    "smartling" : {
+        "translate_mode" : "custom",
+        "translate_paths": ["*/translation"],
+        "source_key_paths" :  ["{*}/translation"],
+        "placeholder_format_custom": ["\\{([^\\}]*)\\}"],
+        "variants_enabled" : "true"
+     },
+     "translationKey1": {
+        "attribute": "attribute will not be translated",
+        "translation": "JSON docs sample Hello,  {USER_NAME}."
+     },
+     "translationKey2": {
+        "attribute": "attribute will not be translated",
+        "translation": "JSON docs sample press Refresh button"
+     }
+}

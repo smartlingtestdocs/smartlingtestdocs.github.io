@@ -1,8 +1,5 @@
-{% assign SupportedFileTypes = site.data.SupportedFileTypes %}
-{% for SupportedFileType in SupportedFileTypes %} 
-    
-    <h2 id="{{SupportedFileType.smartling_identifier}}">{{SupportedFileType.file_type}}</h2>
 <div>
+    <h2 id="{{SupportedFileType.smartling_identifier}}">{{SupportedFileType.file_type}}</h2>
     <table>
         <tr>
             <td>Extension</td> <td>{{SupportedFileType.extension}}</td>
@@ -11,67 +8,72 @@
             <td>Smartling identifier</td> <td>{{SupportedFileType.smartling_identifier}}</td>
         </tr>
         <tr>
-            <td>Example File</td> <td><a href="{{site.baseurl}}/public/Example-Files/{{SupportedFileType.download_sample}}">{{SupportedFileType.download_sample}}</a></td>
+            <td>Example File</td> <td><a href="/public/Example-Files/{{SupportedFileType.download_sample}}">{{SupportedFileType.download_sample}}</a></td>
         </tr>
         <tr>
             <td>Resources</td> <td>{{SupportedFileType.resource_info}}</td>
         </tr>
     </table>
-</div>
 
-{% unless SupportedFileType.keys_variants_info == 'No' %}
-<h4>Key/Variant Metadata</h4>
-<p>{{SupportedFileType.keys_variants_info}}</p>
-{% endunless %}
+    {% if SupportedFileType.intro %}
+    <p>{{SupportedFileType.intro}}</p>
+    {% endif %}
 
-{% unless SupportedFileType.string_instructions == 'No' %}
-<h4>String Instructions</h4>
-<p>{{SupportedFileType.string_instructions}}</p>
-{% endunless %}
+    {% if SupportedFileType.keys_variants_info %}
+    <h4>Key/Variant Metadata</h4>
+    <p>{{SupportedFileType.keys_variants_info}}</p>
+    {% endif %}
 
-{% unless SupportedFileType.text == 'No' %}
-<h4>Other Information</h4>
-<p>{{SupportedFileType.text}}</p>
-{% endunless %}
+    {% if SupportedFileType.string_instructions %}
+    <h4>String Instructions</h4>
+    <p>{{SupportedFileType.string_instructions}}</p>
+    {% endif %}
 
-<div class="panel panel-default">
-    <div class="panel-heading">Directives</div>
-    <div class="panel-body">
-        <h4>Format</h4>
-            <pre>{{SupportedFileType.directive_format}}</pre>
-            <p>{{SupportedFileType.directive_instructions}}</p>
-    {% assign Directives = SupportedFileType.directives %}
-    {% assign FileDirectives = site.data.FileDirectives%}
-    {% for Directive in Directives %}
-        {% for FileDirective in FileDirectives %}
-            {% if FileDirective.Directive == Directive %}
-            <h4>{{FileDirective.Directive}}</h4>
-            <table>
-                <tr>
-                    <th>Values:</th><td>{{FileDirective.Values}}</td>
-                </tr>
-                <tr>
-                    <th>Description:</th><td>{{FileDirective.Description}}</td>
-            </table>
-            <table> 
-                <th>
-                    Examples:
-                </th>
-                {% for Example in FileDirective.Examples %}   
-                <tr>
-                    {% if SupportedFileType.smartling_identifier == json %}
-                    <td><code>{{Example.CodeJSON}}</code></td>
-                    {% else %}
-                    <td><code>{{Example.Code}}</code></td>
+    {% if SupportedFileType.other %}
+    <h4>Other Information</h4>
+    <p>{{SupportedFileType.other}}</p>
+    {% endif %}
+
+    <div class="panel panel-default">
+        <div class="panel-heading">Directives</div>
+        <div class="panel-body">
+            <h4>Format</h4>
+                <pre>{{SupportedFileType.directive_format}}</pre>
+                <p>{{SupportedFileType.directive_instructions}}</p>
+        {% assign Directives = SupportedFileType.directives %}
+        {% assign FileDirectives = site.data.FileDirectives%}
+        {% for Directive in Directives %}
+            {% for FileDirective in FileDirectives %}
+                {% if FileDirective.Directive == Directive %}
+                <h4 id="{{SupportedFileType.smartling_identifier}}_{{FileDirective.Directive}}">{{FileDirective.Directive}}</h4>
+                <table>
+                    <tr>
+                        <th>Values:</th><td>{{FileDirective.Values}}</td>
+                    </tr>
+                    <tr>
+                        <th>Description:</th><td>{{FileDirective.Description}}</td>
+                </table>
+                    {% if FileDirective.Examples %}
+                        <table> 
+                            <th>
+                                Examples:
+                            </th>
+                            {% for Example in FileDirective.Examples %}   
+                            <tr>
+                                {% if SupportedFileType.smartling_identifier == json %}
+                                <td><pre>{{Example.CodeJSON}}</pre></td>
+                                {% else %}
+                                <td><pre>{{SupportedFileType.directive_prefix}}{{Example.Code}}{{SupportedFileType.directive_suffix}}</pre></td>
+                                {% endif %}
+                            </tr>
+                            <tr>
+                                <td>{{Example.Description}}</td>
+                                {% endfor %}
+                        </table>
                     {% endif %}
-                </tr>
-                <tr>
-                    <td>{{Example.Description}}</td>
-            </table>
-                {% endfor %}
-            {% endif %}
+                {% endif %}
+            {% endfor %}
         {% endfor %}
-    {% endfor %}
+        </div>
+    </div>
 </div>
-</div>
-{% endfor %}

@@ -1,11 +1,11 @@
 ---
   - Method : UploadFile
     Type : GET
-    RubyGist: 
-    PHPGist: 
-    JavaGist:
-    CsharpGist:
-    PythonGist:
+    RubyGist: 4c127a346228bb1f5486
+    PHPGist:  ce8e0a459fe5b84246b1
+    JavaGist: c2fd4fcf80cbb732ad9e
+    CsharpGist: 65171fd5f647f772fb87
+    PythonGist: 65171fd5f647f772fb87
     Parameters:
         - Name: file
           Required: required
@@ -44,7 +44,7 @@
 
     Return:
       String: 
-      Json: 
+      Json: '{<br/>&nbsp;&nbsp;&nbsp;"overWritten": "[true|false]"<br/>&nbsp;&nbsp;&nbsp;"stringCount": "[number]",<br/>&nbsp;&nbsp;&nbsp;"wordCount": "[number]"<br/>}'
       Parameters:
 
         - Name: overWritten
@@ -63,7 +63,7 @@
     PHPGist:  ce8e0a459fe5b84246b1
     JavaGist: c2fd4fcf80cbb732ad9e
     CsharpGist: 65171fd5f647f772fb87
-    PythonGist:
+    PythonGist: 65171fd5f647f772fb87
     Parameters:
         - Name: FileURI
           Required: required
@@ -104,15 +104,17 @@
             - Value: False
               Default: FALSE
               Description: 'If there is no translation, Smartling returns an empty string.'
+    Return:
+        String: '<p>A translated file with the following response header:</p><p><strong>Content-Disposition: attachment; filename="fname.ext"</strong></p><p>The filename is based on the fileUri associated with the requested file. In most cases, the filename is exactly the fileUri provided. The only exception to this is with .pot gettext files. When a .pot file is specified as the fileUri, Smartling returns a .po file.</p>'
 
   - Method: List
     Url: file/list
     Type : GET
-    RubyGist: 
-    PHPGist: 
-    JavaGist:
-    CsharpGist:
-    PythonGist:
+    RubyGist: 4c127a346228bb1f5486
+    PHPGist:  ce8e0a459fe5b84246b1
+    JavaGist: c2fd4fcf80cbb732ad9e
+    CsharpGist: 65171fd5f647f772fb87
+    PythonGist: 65171fd5f647f772fb87
     Parameters:
         - Name: locale
           Required: optional
@@ -152,7 +154,7 @@
 
     Return:
         String: 
-        Json:
+        Json: '{<br/>&nbsp;&nbsp;&nbsp;&nbsp;"fileCount": "[number]",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"fileList" : [{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"fileUri": "[/myproject/i18n/ui.properties]"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"stringCount": "[number]",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"wordCount": "[number]",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"approvedStringCount": "[number]",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"completedStringCount": "[number]",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"lastUploaded": "[YYYY-MM-DDThh:mm:ss]",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"fileType": "[fileType]" },<br/>&nbsp;&nbsp;&nbsp;&nbsp;{ ... } ]<br/>}'
         Parameters:
 
           - Name: fileCount
@@ -182,11 +184,11 @@
   - Method: Status
     Url: file/status
     Type : GET
-    RubyGist: 
-    PHPGist: 
-    JavaGist:
-    CsharpGist:
-    PythonGist:
+    RubyGist: 4c127a346228bb1f5486
+    PHPGist:  ce8e0a459fe5b84246b1
+    JavaGist: c2fd4fcf80cbb732ad9e
+    CsharpGist: 65171fd5f647f772fb87
+    PythonGist: 65171fd5f647f772fb87
     Parameters:
         - Name: fileUri
           Required: required
@@ -198,7 +200,7 @@
 
     Return:
         String: 
-        Json:
+        Json: '{<br/>&nbsp;&nbsp;&nbsp;&nbsp;"fileUri": "[/myproject/i18n/admin_ui.properties]",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"stringCount": "[number]",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"wordCount": "[number]",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"approvedStringCount": "[number]",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"completedStringCount": "[number]",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"lastUploaded": "[YYYY-MM-DDThh:mm:ss]",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"fileType": "[fileType]"<br/>}'
         Parameters:
 
           - Name: fileUri
@@ -225,11 +227,11 @@
   - Method: Rename
     Url: file/rename
     Type : POST
-    RubyGist: 
-    PHPGist: 
-    JavaGist:
-    CsharpGist:
-    PythonGist:
+    RubyGist: 4c127a346228bb1f5486
+    PHPGist:  ce8e0a459fe5b84246b1
+    JavaGist: c2fd4fcf80cbb732ad9e
+    CsharpGist: 65171fd5f647f772fb87
+    PythonGist: 65171fd5f647f772fb87
     Parameters:
         - Name: fileUri
           Required: required
@@ -246,11 +248,11 @@
   - Method: Delete
     Url: file/delete
     Type : DELETE
-    RubyGist: 
-    PHPGist: 
-    JavaGist:
-    CsharpGist:
-    PythonGist:
+    RubyGist: 4c127a346228bb1f5486
+    PHPGist:  ce8e0a459fe5b84246b1
+    JavaGist: c2fd4fcf80cbb732ad9e
+    CsharpGist: 65171fd5f647f772fb87
+    PythonGist: 65171fd5f647f772fb87
     Parameters:
         - Name: fileUri
           Required: required
@@ -262,11 +264,11 @@
   - Method: LastModified
     Url: file/last_modified
     Type : GET
-    RubyGist: 
-    PHPGist: 
-    JavaGist:
-    CsharpGist:
-    PythonGist:
+    RubyGist: 4c127a346228bb1f5486
+    PHPGist:  ce8e0a459fe5b84246b1
+    JavaGist: c2fd4fcf80cbb732ad9e
+    CsharpGist: 65171fd5f647f772fb87
+    PythonGist: 65171fd5f647f772fb87
     Parameters:
         - Name: fileUri
           Required: required
@@ -275,4 +277,17 @@
         - Name: newfileUri
           Required: required
           Description: 'The new value for fileUri. We recommend that you use file path + file name, similar to how version control systems identify the file. Example: /myproject/i18n/ui.properties. This must be a fileUri that does not exist in the Smartling database.'
+    Return:
+        String: 
+        Json: '{<br/>&nbsp;&nbsp;&nbsp;&nbsp;"items" : [{<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"locale": "fr-FR",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"lastModified": "YYYY-MM-DDThh:mm:ss"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ ... }]<br/>}'
+        Parameters:
+
+          - Name: items
+            Description: Array of locale and lastModified dates.
+
+          - Name: locale
+            Description: Smartling locale identifier
+
+          - Name: lastModified
+            Description: The time and date the file was last modifed - YYYY-MM-DDThh:mm:ss.
 

@@ -1,0 +1,27 @@
+<link rel="stylesheet" href="{{site.baseurl}}public/css/FAPIMethods.css">
+
+{% for FAPIMethod in site.data.FAPIMethods %} 
+    {% if FAPIMethod.Method == {{page.method}}" %}
+        {% if FAPIMethod.Return.String %}
+        <p>{{FAPIMethod.Return.String}}</p>
+        {% endif %}
+        {% if FAPIMethod.Return.Json %}
+        <pre>{{FAPIMethod.Return.Json}}</pre>
+        {% endif %}
+            {% if FAPIMethod.Return.Parameters %}
+                {% for Parameter in FAPIMethod.Return.Parameters%}
+                    <div class="parameter {% if Parameter.Required == "required" %}required{% else %}optional{% endif %}">
+                        <h4>{{Parameter.Name}}</h4>
+                        <p>{{Parameter.Description}}</p>
+                        <table class="table">
+                        {% for Value in Parameter.Values %}
+                            <tr>
+                                <th>{{Value.Value}}</th> <td>{{Value.Description}}</td>
+                            </tr>
+                        {% endfor %}
+                        </table>
+                    </div>
+                {% endfor %}
+            {% endif %}
+    {% endif %}
+{% endfor %}
