@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <string name="app_name">My Application</string>
+	<string name="user_welcome">Welcome, %s</string>   
+	<string name="messages"> You have %1$d unread messages from total %2$d</string>   
+	<string name="messages"> © 2012 All Rights Reserved</string>   
+    <!--Menu items-->
+    <string name="menu_exit">Exit</string>
+    <string name="menu_location">Location</string>
+    <string name="menu_map_mode">Map mode</string>
+    <string name="menu_my_location">My location</string>
+    <string name="menu_set_location">Set location</string>
+    <string name="menu_refresh">Refresh</string>   
+
+</resources>

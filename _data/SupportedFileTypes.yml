@@ -7,12 +7,12 @@
    keys_variants: Yes
    keys_variants_info: 'By default, the full path of keys leading to a string are captured as Key and Variant metadata. Custom key paths can be set and variant behavior turned off with directives'
    directive_style: set_once
-   string_instructions: No
+   string_instructions: 'No'
 
  - file_type: 'Android XML'
    extension: '.xml'
    smartling_identifier: 'android'
-   download_sample: '<a href="">android.xml</a>'
+   download_sample: 'android.xml'
    resource_info: '<ul><li><a href="http://developer.android.com/guide/topics/resources/string-resource.html">Android String Resources</a></li><li><a href="http://developer.android.com/guide/topics/resources/localization.html">Android Localization</a></li></ul>'
    default_placeholders: '________'
    keys_variants: 
@@ -53,8 +53,8 @@
    download_sample: '<a href="http://www.gnu.org/software/gettext/">GNU Gettext Documentation</a>'
    resource_info: '<a href="http://www.gnu.org/software/gettext/">GNU Gettext Documentation</a>'
    default_placeholders: ''
-   keys_variants: Yes
-   keys_variants_info: '<p>Smartling also supports the msgctxt parameter that allows you to have Smartling capture a string as a variant.  When a gettext string includes msgctxt metadata it will be created as variant using the value of msgctxt.</p><p>For example:</p><pre>msgctxt "Home Page Menu Navigation"<br/>msgid "Home"<br/>msgstr ""<br/>msgctxt "Home Address Label"<br/>msgid "Home"<br/>msgstr ""</pre><p>Will result in two strings for translation. Both with the value "Home". The translators can choose to to make the translation the same or not.  The value of msgctxt displays to translators in the Translation Interface and the Smartling Dashboard.  See the <a href="http://support.smartling.com/entries/22279686-about-variants-translation-management-system">Knowledge Base</a> for more on translation variants.<p>'
+   keys_variants: 'Yes'
+   keys_variants_info: '<p>Smartling also supports the msgctxt parameter that allows you to have Smartling capture a string as a variant.  When a gettext string includes msgctxt metadata it will be created as variant using the value of msgctxt.</p><p>For example:</p><pre>msgctxt "Home Page Menu Navigation"<br/>msgid "Home"<br/>msgstr ""<br/>msgctxt "Home Address Label"<br/>msgid "Home"<br/>msgstr ""</pre><p>Will result in two strings for translation, both with the value "Home". The translators can choose to to make the translation the same or not.  The value of msgctxt displays to translators in the Translation Interface and the Smartling Dashboard.  See the <a href="http://support.smartling.com/entries/22279686-about-variants-translation-management-system">Knowledge Base</a> for more on translation variants.<p>'
    directive_style: set_throughout
    string_instructions: 
 
@@ -75,8 +75,8 @@
    download_sample: '<a href="">java.properties</a>'
    resource_info: '<a href="http://docs.oracle.com/javase/tutorial/i18n/index.html">Java Localization Documentation</a>'
    default_placeholders: ''
-   keys_variants: 
-   keys_variants_info: ''
+   keys_variants: 'Yes'
+   keys_variants_info: 'Keys are automatically captured as string metadata.'
    directive_style: 
    string_instructions: 
 
@@ -153,7 +153,6 @@
    download_sample: '<a href=""></a>'
    resource_info: '<a href="http://www.adobe.com/devnet/indesign/documentation.html#idml">InDesign Markup Language Resources</a>'
    default_placeholders: ''
-   keys_variants: No
    keys_variants_info: ''
    directive_style: 
    string_instructions: 

@@ -11,18 +11,29 @@
             <td>Smartling identifier</td> <td>{{SupportedFileType.smartling_identifier}}</td>
         </tr>
         <tr>
-            <td>Example File</td> <td>{{SupportedFileType.download_sample}}</td>
+            <td>Example File</td> <td><a href="{{site.baseurl}}/public/Example-Files/{{SupportedFileType.download_sample}}">{{SupportedFileType.download_sample}}</a></td>
         </tr>
         <tr>
             <td>Resources</td> <td>{{SupportedFileType.resource_info}}</td>
         </tr>
     </table>
 </div>
-<div>
 
+{% unless SupportedFileType.keys_variants_info == 'No' %}
+<h4>Key/Variant Metadata</h4>
+<p>{{SupportedFileType.keys_variants_info}}</p>
+{% endunless %}
 
+{% unless SupportedFileType.string_instructions == 'No' %}
+<h4>String Instructions</h4>
+<p>{{SupportedFileType.string_instructions}}</p>
+{% endunless %}
 
-</div>
+{% unless SupportedFileType.text == 'No' %}
+<h4>Other Information</h4>
+<p>{{SupportedFileType.text}}</p>
+{% endunless %}
+
 <div class="panel panel-default">
     <div class="panel-heading">Directives</div>
     <div class="panel-body">

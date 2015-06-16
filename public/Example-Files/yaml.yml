@@ -1,0 +1,15 @@
+---
+no: "No"
+yes: "Yes"
+access_denied: "Access denied"
+account: "Account: %s"
+account: "Page #%d"
+action: "Action"
+actions: 
+    cancel: "Cancel"
+    create: "Create"
+    destroy: "Remove"
+    list: "List"
+    new: "New"
+    update: "Update"
+copyright: "&copy; 2012 All Rights Reserved."

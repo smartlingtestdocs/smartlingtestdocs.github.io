@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE xliff PUBLIC "-//XLIFF//DTD XLIFF//EN" "http://www.oasis-open.org/committees/xliff/documents/xliff.dtd" >
+<xliff version="1.0">
+  <file original="global" source-language="en" datatype="plaintext">
+    <header />
+    <body>
+      <!-- Actions -->
+      <trans-unit>
+        <source>New</source>
+       </trans-unit>
+      <trans-unit>
+        <source>Edit</source>
+      </trans-unit>
+      <trans-unit>
+        <source>Delete</source>
+      </trans-unit>
+
+      <!-- List -->
+      <trans-unit>
+        <source>No result</source>
+      </trans-unit>
+
+	  <!-- Footer -->
+      <trans-unit>
+        <source>© 2012 All Rights Reserved.</source>
+      </trans-unit>
+	  
+    </body>
+  </file>
+</xliff>
