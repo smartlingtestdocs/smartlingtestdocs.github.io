@@ -129,7 +129,7 @@
    smartling_identifier: 'xml'
    download_sample: 'customxml.xml'
    resource_info: '<a href="http://www.w3.org/standards/xml/">XML Standards</a>'
-   text: 'Smartling '
+   intro: 'Smartling '
    keys_variants: 'Key and Variant metadata must be enabled and configured using the <a href="#xml_source_key_paths">source_key_paths</a> and <a href="#xml_variants_enabled">variants_enabled</a> directives.'
    directive_format: '&lt!-- smarling.[directive_name] = [value] --&gt'
    directive_prefix: '&lt!-- '
@@ -172,7 +172,7 @@
    keys_variants_info: ''
    directive_style: 
    string_instructions: 
-   text: 'Smartling natively supports the plural forms from QT Linguist files.'
+   other: 'Smartling natively supports the plural forms from QT Linguist files.'
    directives:
       - placeholder_format_custom
       - placeholder_format
@@ -241,7 +241,7 @@
    smartling_identifier: '.txt'
    download_sample: ''
    resource_info: '<a href=""></a>'
-   text: 'The plain text document format is a simple way to quickly translate text. Smartling considers each line of text in the document a single translation string.  Each string is considered unique by file - which means if two files have the exact same line of text - they will be captured as two separate strings. '
+   intro: 'The plain text document format is a simple way to quickly translate text. Smartling considers each line of text in the document a single translation string.  Each string is considered unique by file - which means if two files have the exact same line of text - they will be captured as two separate strings. '
    keys_variants: 
    directive_style: API_Only
    directive_format: 'smarling.[directive_name] = [value]'
