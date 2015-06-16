@@ -21,12 +21,12 @@
         </li>
 
         <li><a href="/pages/supported-file-types"><i class="fa fa-thumbs-up"></i> Supported File Types</a>
-            <ul>
-            {% for item in items %}
-            {% if item.url contains "/pages/supported-file-types" and item.url != "/pages/supported-file-types/index.html"%}
-            <li class="{% if page.url contains "/pages/supported-file-types" %}show-2{% else %}hide-2{% endif %}"><a href="{{item.url}}">{{item.title}}</a></li>
-            {% endif %}
-            {% endfor %}
+            <ul class="secondary">
+                <ul>
+                {% for SupportedFileType in site.data.SupportedFileTypes %}
+                <li class="{% if page.url contains "/pages/supported-file-types" %}show-3{% else %}hide-3{% endif %}">><a href="#{{SupportedFileType.smartling_identifier}}">{{SupportedFileType.file_type}}</a></li>
+                {% endfor %}
+                </ul>
             </ul>
         </li>
 

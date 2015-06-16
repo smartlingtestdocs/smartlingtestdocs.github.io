@@ -1,28 +1,14 @@
 ---
-layout: page
+layout: SupportedFilesTemplate
 title: Supported File Types
 ---
 
 Smartling supports the following file formats:
 
 <ul class="textList supportedFileTypes">
-  <li>Android xml</li>
-  <li>iOS string files</li>
-  <li>iOS .stringsdict</li>
-  <li>Gettext po/pot</li>
-  <li>HTML</li>
-  <li><a href="http://smartlingtestdocs.github.io/java-properties-files/">Java Property Files</a></li>
-  <li>YAML</li>
-  <li>XLIFF</li>
-  <li>JSON</li>
-  <li>XML</li>
-  <li>QT Linguest (TS files)</li>
-  <li>MadCap Lingo ZIP Packages</li>
-  <li>Office Open XML</li>
-  <li>InDesign Markup Language</li>
-  <li>Resx</li>
-  <li>Plain Text</li>
-  <li>CSV</li>
+  {% for SupportedFileType in site.data.SupportedFileTypes %}
+  <li><a href="#{{SupportedFileType.smartling_identifier}}">{{SupportedFileType.file_type}}</a></li>
+  {% endfor %}
 </ul>
 
 

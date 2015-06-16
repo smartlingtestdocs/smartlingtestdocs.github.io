@@ -1,0 +1,66 @@
+{% assign SupportedFileTypes = site.data.SupportedFileTypes %}
+{% for SupportedFileType in SupportedFileTypes %} 
+    
+    <h2 id="{{SupportedFileType.smartling_identifier}}">{{SupportedFileType.file_type}}</h2>
+<div>
+    <table>
+        <tr>
+            <td>Extension</td> <td>{{SupportedFileType.extension}}</td>
+        </tr>
+        <tr>
+            <td>Smartling identifier</td> <td>{{SupportedFileType.smartling_identifier}}</td>
+        </tr>
+        <tr>
+            <td>Example File</td> <td>{{SupportedFileType.download_sample}}</td>
+        </tr>
+        <tr>
+            <td>Resources</td> <td>{{SupportedFileType.resource_info}}</td>
+        </tr>
+    </table>
+</div>
+<div>
+
+
+
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading">Directives</div>
+    <div class="panel-body">
+        <h4>Format</h4>
+            <pre>{{SupportedFileType.directive_format}}</pre>
+            <p>{{SupportedFileType.directive_instructions}}</p>
+    {% assign Directives = SupportedFileType.directives %}
+    {% assign FileDirectives = site.data.FileDirectives%}
+    {% for Directive in Directives %}
+        {% for FileDirective in FileDirectives %}
+            {% if FileDirective.Directive == Directive %}
+            <h4>{{FileDirective.Directive}}</h4>
+            <table>
+                <tr>
+                    <th>Values:</th><td>{{FileDirective.Values}}</td>
+                </tr>
+                <tr>
+                    <th>Description:</th><td>{{FileDirective.Description}}</td>
+            </table>
+            <table> 
+                <th>
+                    Examples:
+                </th>
+                {% for Example in FileDirective.Examples %}   
+                <tr>
+                    {% if SupportedFileType.smartling_identifier == json %}
+                    <td><code>{{Example.CodeJSON}}</code></td>
+                    {% else %}
+                    <td><code>{{Example.Code}}</code></td>
+                    {% endif %}
+                </tr>
+                <tr>
+                    <td>{{Example.Description}}</td>
+            </table>
+                {% endfor %}
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
+</div>
+</div>
+{% endfor %}

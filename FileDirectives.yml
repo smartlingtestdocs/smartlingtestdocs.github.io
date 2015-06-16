@@ -1,0 +1,163 @@
+---
+ - 	Directive: 		'placeholder_format_custom'
+ 	Values:			'1. Custom regular expression (<a ref="http://www.pcre.org">pcre</a>)<br/>2. <strong>NONE</strong> - disable custom placeholders'
+ 	Description:	'Used to define a custom placeholder format for strings in the file'
+ 	Examples:
+ 		- Code:'smartling.placeholder_format_custom = \[.+?\]'
+ 		  CodeJSON:'"placeholder_format_custom" : ""'
+ 		  Description:'Any characters surrounded by square brackets "[]" will be treated as a placeholder'
+
+ -  Directive: 		'placeholder_format'
+ 	Values:			'<strong>NONE; C; IOS; PYTHON; JAVA; YAML; QT; RESX</strong>'
+ 	Description:	'Used to specify a standard placeholder format.'
+
+ -  Directive: 		'string format'
+ 	Values:			'<strong>MESSAGE_FORMAT</strong> (default) or <strong>NONE</strong>'
+ 	Description:	'String format is a parser directive for specialized file processing that enables string escaping and pre-processing rules as defined by various third party resource handlers. The default is <a href="http://docs.oracle.com/javase/6/docs/api/java/text/MessageFormat.html">MessageFormat</a>, a standard Java resource handler.'
+
+ -  Directive: 		'download_format'
+ 	Values:			'<strong>NONE</strong> (default) or <strong>ESCAPE_UNICODE</strong>'
+ 	Description:	'ESCAPE_UNICODE indicates that all non-Latin1 (not in range 0000 - 007F of unicode) symbols after this comment should be escaped by a \uXXXX escaping expression in the process of a file download.'
+
+ -  Directive: 		'string_format_paths'
+ 	Values:			'The grammar of the value '
+ 	Description:	'<p>Specifies the format of strings for the specified paths and can enable HTML inside another file format.</p><p>Currently supported formats are:</p><ul><li><strong>HTML</strong> - string value will be parsed as HTML</li><li><strong>@default</strong> - (note the leading at-sign) string value will be treated as simple text.</li></ul><p>Separate multiple formats by commas</p> <p>You may specify a single path for a format or a comma-separated list of paths enclosed in square brackets. The list may be empty.</p> <p>A path is a slash-separated string which uses Xpath-like syntax (but it''s not Xpath.). The nodes separator is always / (slash), regardless of file format.</p> <p>Wildcards are allowed in path definitions.</p> <ul><li>If no wildcards, then the path identifies a single node and all its children ("exact subpath").</li><li>If wildcards, then a path identifies a set of nodes and all their children ("path pattern"). Currently, only * (asterisk) wildcard is implemented, which means "one or more nodes with any names".</li><li>Exact subpaths have precedence over path patterns.</li></ul> <p>For example, in the following instruction:</p> <pre>smartling.string_format_paths = html: [*/text, */string], @default: /system/log/text</pre> <p>Smartling processes these paths as follows:</p> <ul> <li><code>/description/text</code> — Processed as HTML (matches <code>*/text</code> pattern)</li> <li><code>/description/text/general</code> — HTML (its parent, <code>/description/text</code>, matches <code>*/text</code> pattern)</li> <li><code>/description/general/text</code> — HTML (matches <code>*/text</code> pattern directly).</li> <li><code>/system/log/text</code> — TEXT (matches both <code>/system/log/text</code> exact path and <code>*/text</code> pattern; exact path wins)</li> <li><code>/system/log/text/details</code> — TEXT (its parent, <code>/system/log/text</code>, matches both exact path and pattern; exact path wins)</li> </ul>'
+ 	Examples:
+ 		- Code:'smartling.string_format_paths = html: *'
+ 		  CodeJSON:''
+ 		  Description:'Smartling parses values of all nodes as HTML.'
+
+ 		- Code:'smartling.string_format_paths = html: */text'
+ 		  CodeJSON:''
+ 		  Description:'Smartling enables HTML in <code>text</code> nodes (and their subnodes), regardless of their parents.'
+
+ 		- Code:'smartling.string_format_paths = html: [*/text, */string]'
+ 		  CodeJSON:''
+ 		  Description:'Smartling enables HTML in <code>text</code> and <code>string</code> nodes (and their subnodes), regardless of their parents'
+
+ 		- Code:'smartling.string_format_paths = html: */text, html: */string'
+ 		  CodeJSON:''
+ 		  Description:'Another way to enable HTML in <code>text</code> and <code>string</code> nodes (and subnodes).'
+
+ 		- Code:'smartling.string_format_paths = html: */text, @default: /system/log/text'
+ 		  CodeJSON:''
+ 		  Description:'Smartling enables HTML in <code>text</code> nodes (and subnodes), but disables HTML in <code>/system/log/text</code> (and subnodes)'
+
+ 		- Code:'smartling.string_format_paths = html: /product/description'
+ 		  CodeJSON:''
+ 		  Description:'Smartling enables HTML in /product/description and subnodes'
+
+ 		- Code:'smartling.string_format_paths = html: /product/descriptions/*'
+ 		  CodeJSON:''
+ 		  Description:'Smartling enables HTML in all subnodes of /product/descriptions, but not in this node itself.'
+
+ 		- Code:'smartling.string_format_paths = html: [*/translation, */text], @default: [/strings/12345/translation, /string/67890/text]'
+ 		  CodeJSON:''
+ 		  Description:'Another example of Smartling enabling HTML in all subnodes but not the not the two nodes.'
+
+ 		- Code:'smartling.string_format_paths ='
+ 		  CodeJSON:''
+ 		  Description:'Disables the effect of the previous string_format_paths instruction.'
+
+ -  Directive: 		'translate_paths'
+ 	Values:			'A comma-separated list of paths to be captured as strings for translation'
+ 	Description:	'When included in this list, all plain text within the specified tag will be considered a translatable string. Optionally, you can append a "." and a relevant attribute name to the path to translate tag attributes with the file. You can end the path with a trailing slash, "/" and it will treat all child nodes as translatable (content must still be text within a tag).'
+ 	Examples:
+ 		- Code:'smartling.translate_paths = data/localize/string, data/localize/root/'
+ 		  CodeJSON:'"translate_paths" : "data/localize/string, data/localize/root"'
+ 		  Description:'The paths data/localize/string and data/localize/root will be captured as translatable strings.
+
+ -  Directive: 		'sltrans'
+ 	Values:			'<strong>translate<strong>; <strong>notranslate</strong>'
+ 	Description:	'Use this directive to enable or disable processing of translation strings in the file. You must turn translation back on after the strings you want to exclude.'
+ 	Examples:
+ 		- Code:'<!-- smartling.sltrans = notranslate -->'
+ 		  CodeJSON:
+ 		  Description:'Strings below this directive will be captured as strings but excluded from translation'
+
+ 		- Code:'<!-- smartling.sltrans = translate -->'
+ 		  CodeJSON:
+ 		  Description:'Strings below this directive will be translated'
+
+ -  Directive: 		'source_key_paths'
+ 	Values:			'<p>A comma separated list of paths to use create "keys" for strings on translate_paths.</p> <p>The key will be a space separated string of all the keys leading to the source string. For example: "string", "group1 string".</p>'
+ 	Description:	'<p>Used to define the schema for capturing a key for each source string. Keys are required:</p><ul><li>If you want to import pre-existing translations from a file with the same structure</li><li>If you want to create variants of strings that would otherwise be duplicates (By default Smartling does not create duplicate strings.) <strong>Note:</strong> creating or updating variants for previously uploaded strings cause new strings to be created that will not have translations. The SmartMatch feature can be configured to automatically apply the existing translations, or translators can use the 100% match from the Translation to manually apply the translation.</li><p>Specify the full path to the value, then indicate which part of the path should be used as the key using {} notation. {*} will use any key present in that part of the path (or can be used when no translate_paths has been specified to simply capture the key for each string).</p>'
+ 	Examples:
+ 		- Code:'smartling.source_key_paths = {*}'
+ 		  CodeJSON:
+ 		  Description:'Smartling will capture the full path of keys leading to each translatable string as Key metadata'
+
+ 		- Code:'smartling.source_key_paths = data/item/{string_name}'
+ 		  CodeJSON:
+ 		  Description:'smartling will capture the content from string_name as the key'
+
+ 		- Code:'smartling.source_key_paths = data/item/{string.name}'
+ 		  CodeJSON:
+ 		  Description:''
+
+ -  Directive: 		'variants_enabled'
+ 	Values:			''
+ 	Description:	''
+
+ -  Directive: 		'translate_mode'
+ 	Values:			
+ 	Description:	''
+
+ -  Directive: 		'field_separator'
+ 	Values:			''
+ 	Description:	''
+
+ -  Directive: 		''
+ 	Values:			''
+ 	Description:	''
+
+ -  Directive: 		''
+ 	Values:			''
+ 	Description:	''
+
+ -  
+
+ -  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
