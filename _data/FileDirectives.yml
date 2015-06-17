@@ -8,7 +8,7 @@
           Description: 'Any characters surrounded by square brackets "[]" will be treated as a placeholder'
 
  -  Directive:      'placeholder_format'
-    Values:         '<strong>NONE; C; IOS; PYTHON; JAVA; YAML; QT; RESX</strong>'
+    Values:         '<code>NONE</code>; <code>C</code>; <code>IOS</code>; <code>PYTHON</code>; <code>JAVA</code>; <code>YAML</code>; <code>QT</code>; <code>RESX</code>'
     Description:    'Used to specify a standard placeholder format.'
 
  -  Directive:      'string format'
@@ -16,7 +16,7 @@
     Description:    'String format is a parser directive for specialized file processing that enables string escaping and pre-processing rules as defined by various third party resource handlers. The default is <a href="http://docs.oracle.com/javase/6/docs/api/java/text/MessageFormat.html">MessageFormat</a>, a standard Java resource handler.'
 
  -  Directive:      'download_format'
-    Values:         '<strong>NONE</strong> (default) or <strong>ESCAPE_UNICODE</strong>'
+    Values:         '<code>NONE</code> (default) or <code>ESCAPE_UNICODE</code>'
     Description:    'ESCAPE_UNICODE indicates that all non-Latin1 (not in range 0000 - 007F of unicode) symbols after this comment should be escaped by a \uXXXX escaping expression in the process of a file download.'
 
  -  Directive:      'string_format_paths'
@@ -64,7 +64,7 @@
     Description:    'When included in this list, all plain text within the specified tag will be considered a translatable string. Optionally, you can append a "." and a relevant attribute name to the path to translate tag attributes with the file. You can end the path with a trailing slash, "/" and it will treat all child nodes as translatable (content must still be text within a tag).'
 
  -  Directive:      'sltrans'
-    Values:         '<strong>translate<strong>; <strong>notranslate</strong>'
+    Values:         '<code>translate</code> OR <code>notranslate</code>'
     Description:    'Use this directive to enable or disable processing of translation strings in the file. You must turn translation back on after the strings you want to exclude.'
     Examples:
         - Code: '<!-- smartling.sltrans = notranslate -->'
@@ -99,13 +99,21 @@
     Values:         
     Description:    ''
 
- -  Directive:      'field_separator'
-    Values:         ''
-    Description:    ''
+ -  Directive:      'instruction_comments_enabled'
+    Values:         '<code>true</code> OR <code>false</code>'
+    Description:    'If this directive is set to <code>true</code>, any comment in the file is ingested as an instruction for the next string.'
+    Examples:
+        - Code: '&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;<br/>&lt;!-- smartling.instruction_comments_enabled = on --&gt;<br/>&lt;resources&gt;<br/>&lt;!-- Instruction for string1 --&gt;<br/>&nbsp;&lt;string name=&quot;string1&quot;&gt;string1&lt;/string&gt;'
+          Block: 'yes'
+          Description: 'Smartling will capture String1 with the instruction "Instruction for String1"'
 
- -  Directive:      ''
-    Values:         ''
-    Description:    ''
+ -  Directive:      'instruction_attributes'
+    Values:         'Name of an attribute of string or plurals nodes in your file'
+    Description:    'Sets attributes of content nodes to be captured as file instructions for strings.'
+    Examples:
+        - Code: '&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;<br/>&lt;!-- smartling.instruction_attributes = comment, note --&gt;<br/>&lt;resources&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&lt;string name=&quot;string1&quot; comment=&quot;comment for String01&quot;&gt;String01&lt;/string&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&lt;string name=&quot;string2&quot; comment=&quot;comment for String02&quot; note=&quot;note for String02&quot;&gt;String03&lt;/string&gt;'
+          Block: 'yes'
+          Description: 'string1 will be captured with the instruction "comment for String01". string2 will be captured with the concatenated instruction "comment for String02, note for String02"'
 
  -  Directive:      ''
     Values:         ''

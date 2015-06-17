@@ -8,11 +8,7 @@
             <td>Smartling identifier</td> <td>{{SupportedFileType.smartling_identifier}}</td>
         </tr>
         <tr>
-<<<<<<< Updated upstream
             <td>Example File</td> <td><a href="/public/Example-Files/{{SupportedFileType.download_sample}}">{{SupportedFileType.download_sample}}</a></td>
-=======
-            <td>Example File</td> <td><a href="{{ site.baseurl }}/public/Example-Files/{{SupportedFileType.download_sample}}">{{SupportedFileType.download_sample}}</a></td>
->>>>>>> Stashed changes
         </tr>
         <tr>
             <td>Resources</td> <td>{{SupportedFileType.resource_info}}</td>
@@ -23,9 +19,9 @@
     <p>{{SupportedFileType.intro}}</p>
     {% endif %}
 
-    {% if SupportedFileType.keys_variants_info %}
-    <h4>Key/Variant Metadata</h4>
-    <p>{{SupportedFileType.keys_variants_info}}</p>
+    {% if SupportedFileType.keys_variants %}
+    <h4>Keys/Variants</h4>
+    <p>{{SupportedFileType.keys_variants}}</p>
     {% endif %}
 
     {% if SupportedFileType.string_instructions %}
@@ -38,10 +34,11 @@
     <p>{{SupportedFileType.other}}</p>
     {% endif %}
 
+    {% if SupportedFileType.directives %}
     <div class="panel panel-default">
         <div class="panel-heading">Directives</div>
         <div class="panel-body">
-            <h4>Format</h4>
+            <h4>Directive Format</h4>
                 <pre>{{SupportedFileType.directive_format}}</pre>
                 <p>{{SupportedFileType.directive_instructions}}</p>
         {% assign Directives = SupportedFileType.directives %}
@@ -67,7 +64,7 @@
                                 {% if SupportedFileType.smartling_identifier == json %}
                                 <td><pre>{{Example.CodeJSON}}</pre></td>
                                 {% else %}
-                                <td><pre>{{SupportedFileType.directive_prefix}}{{Example.Code}}{{SupportedFileType.directive_suffix}}</pre></td>
+                                <td><pre>{% unless Example.Block == 'yes' %}{{SupportedFileType.directive_prefix}}{% endunless %}{{Example.Code}}{% unless Example.Block == 'yes' %}{{SupportedFileType.directive_suffix}}{% endunless %}</pre></td>
                                 {% endif %}
                             </tr>
                             <tr>
@@ -80,4 +77,5 @@
         {% endfor %}
         </div>
     </div>
+    {% endif %}
 </div>
