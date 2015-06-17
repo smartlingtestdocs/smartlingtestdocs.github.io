@@ -24,7 +24,7 @@
    smartling_identifier: 'ios'
    download_sample: 'ios.strings'
    resource_info: '<a href="https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/LoadingResources/Strings/Strings.html">String Resources</a>'
-   keys_variants: 'Every string is created with key/variant metadata based on the keys in the file. If the ‘keys’ are different for two strings with the same value, Smartling will create two strings using the key as context metadata.'
+   keys_variants: 'Every string is created with key/variant metadata based on the keys in the file. If the keys are different for two strings with the same value, Smartling will create two strings using the key as context metadata.'
    string_instructions: 'Smartling will automatically ingest and display file comments as instructions for translators. The comments must immediately precede the string. For example, for the following comment:<pre>/* Back button label */<br/>"Back" = "Back";</pre><p>the text "Back button label" will be captured as a file instruction</p>If the comment contains the following text:</p><pre>/* No comment provided by engineer. */</pre><p>or if a line separates the comment and string, such as:</p><pre>/* Back button label */<br/><br/>"Back" = "Back";</pre><p>Smartling will not create an instruction.</p>'
    directive_format: '/* smartling.[directive_name] = [value] */'
    directive_instructions: 'The directive must be a single comment on one line, and there should not be any inline trailing symbols after the directive.  Directives apply to all strings that follow them. Directives can be changed throughout the file'
@@ -65,10 +65,11 @@
    smartling_identifier: 'html'
    download_sample: ''
    resource_info: '<a href="http://www.w3.org/TR/html5/">HTML5 Standards</a>'
-   default_placeholders: ''
-   keys_variants: Yes
-   keys_variants_info: ''
-   directive_style: set_throughout 
+   intro: 'By default Smartling will create a single String for each block element in the HTML document.  Additionally the value of <code>alt</code> and <code>title</code> attributes are captured as a single string. Smartling does not captre the values of any other attributes. '
+   directive_format: '&lt!-- smarling.[directive_name] = [value] --&gt'
+   directive_instructions: ''
+   directive_prefix: '&lt!-- '
+   directive_suffix: ' --&gt' 
    directives:
       - placeholder_format_custom
       - force_inline_for_tags
@@ -79,11 +80,13 @@
    smartling_identifier: 'javaProperties'
    download_sample: 'java.properties'
    resource_info: '<a href="http://docs.oracle.com/javase/tutorial/i18n/index.html">Java Localization Documentation</a>'
-   default_placeholders: ''
-   keys_variants: 'Yes'
-   keys_variants_info: 'Keys are automatically captured as string metadata.'
-   directive_style: 
+   keys_variants: 'Every string is created with key/variant metadata based on the keys in the file. If the keys are different for two strings with the same value, Smartling will create two strings using the key as context metadata.'
    string_instructions: 
+   other: '<p>By default Smartling automatically captures properties that are formatted for both the MessageFormat.format and String.format methods.  By default all files are parsed as if <code>placeholder_format=JAVA</code> and <code>string_format=MESSAGE_FORMAT</code>, unless some other directive is given.</p><p><code>string_format=MESSAGE_FORMAT</code> uses placeholders in the syntax: <code>{*}</code> and the single quote (apostrophe) is an escape character, so to use the single quote character, it must be escaped as <code>''''</code>.  When MessageFormat parsing is on (default) in your source file single quotes must be escaped as two single quotes: <code>''''</code> otherwise it will not be captured.  If a translation has a single quote character, it will be escaped in the downloaded file as <code>''''</code>. Translators may use a single quote even when the original string has none. If MessageFormat is turned off then strings will not need single quotes escaping to capture them, and single quotes in translations will not be escaped.  You can turn MessageFormat off and on in a single file, using inline directives.</p><p><code>placeholder_format=JAVA</code> uses c-style placeholder syntax: <code>%d</code>, <code>%s</code>, <code>%4.2f</code>, etc. and because the <code>%</code> character is an escape character so displaying a single percent character literal requires that it be escaped as <code>%%</code> . When JAVA parsing is on (default) in your source file single percent characters must be escaped as two single percent characters: %% otherwise the % may trigger placeholder treatment and create an invalid placeholder in your string that causes incorrect capture and prevents proper translation.  When JAVA parsing is on Smartling will escape the % character in a translated string if the string has a JAVA formatted placeholder. Otherwise the % character in the translation are delivered unescaped.</p><p>If this default behavior is not desirable for your content you can turn off either of the formatting treatments for the entire file or just for the strings where you don''t want the behavior.  You can turn the behavior off and on throughout the file as needed.</p><p>You can also specify your own custom placeholder syntax that is in addition to the standard behavior from the above two directives.</p><p><strong>Note:</strong> When using <a href="later">file/get</a> to download properties files from Smartling, the parameter <code>includeOriginalStrings=false</code> ensures that if no translations are available, Smartling returns an empty string. If the parameter is set to true, Smartling returns the original string.</p>'
+   directive_format: '# smartling.[directive_name] = [value]'
+   directive_instructions: 'The directive must be a single comment on one line, and there should not be any inline trailing symbols after the directive.  Directives apply to all strings that follow them. Directives can be changed throughout the file'
+   directive_prefix: '# '
+   directive_suffix: ''
    directives:
       - placeholder_format_custom
       - placeholder_format
@@ -96,18 +99,19 @@
    smartling_identifier: 'yaml'
    download_sample: 'yaml.yml'
    resource_info: '<a href="http://guides.rubyonrails.org/i18n.html">Rails Internationalization</a>'
-   default_placeholders: ''
-   keys_variants: 
-   keys_variants_info: ''
-   directive_style: 
-   string_instructions: 
+   keys_variants: 'Every string is created with variant metadata. The variant metadata is the full path of keys leading to the translatable string.'
+   string_instructions:
+   other: 'Smartling supports plural translations when the original language strings use the <a href="http://guides.rubyonrails.org/i18n.html#pluralization">Ruby on Rails i18n API''s pluralization syntax</a>. To avoid mistakenly ingesting strings as plurals because they happen to use the key name "one,other" etc., use the plurals_detection directive to turn detection off and then back on again.'
+   directive_format: '# smartling.[directive_name] = [value]'
+   directive_instructions: 'The directive must be a single comment on one line, and there should not be any inline trailing symbols after the directive.  Directives apply to all strings that follow them. Directives can be changed throughout the file'
+   directive_prefix: '# '
+   directive_suffix: '' 
    directives:
       - placeholder_format_custom
       - placeholder_format
       - plurals_detection
       - download_format
       - string_format_paths
-      - 
 
  - file_type: 'XLIFF'
    template: 'standard'
@@ -115,10 +119,12 @@
    smartling_identifier: 'xliff'
    download_sample: 'xliff.xml'
    resource_info: '<ul><li><a href="http://en.wikipedia.org/wiki/XLIFF">Background on XLIFF</a></li><li><a href="http://docs.oasis-open.org/xliff/xliff-core/xliff-core.html">OASIS specification</a></li></ul>'
-   default_placeholders: ''
+   intro: 'Smartling supports .xlf, .xliff, and .xml files that use the XML Localization Interchange File Format (XLIFF)'
    keys_variants: 
-   keys_variants_info: ''
-   directive_style: 
+   directive_format: '&lt!-- smarling.[directive_name] = [value] --&gt'
+   directive_instructions: 'The directive must be a single comment on one line, and there should not be any inline trailing symbols after the directive.  Directives apply to all strings that follow them. Directives can be changed throughout the file'
+   directive_prefix: '&lt!-- '
+   directive_suffix: ' --&gt'
    string_instructions: 
    directives:
       - placeholder_format_custom
@@ -129,13 +135,14 @@
    smartling_identifier: 'xml'
    download_sample: 'customxml.xml'
    resource_info: '<a href="http://www.w3.org/standards/xml/">XML Standards</a>'
-   intro: 'Smartling '
+   intro: 'Smartling supports generic XML files by processing text within specified tags and attributes. You must specify the tags and attributes you want translated using the <a href="#xml_translate_paths">translate_paths</a> directive'
    keys_variants: 'Key and Variant metadata must be enabled and configured using the <a href="#xml_source_key_paths">source_key_paths</a> and <a href="#xml_variants_enabled">variants_enabled</a> directives.'
    directive_format: '&lt!-- smarling.[directive_name] = [value] --&gt'
+   directive_instructions: 'The directive must be a single comment on one line, and there should not be any inline trailing symbols after the directive.  Directives apply to all strings that follow them. Directives can be changed throughout the file'
    directive_prefix: '&lt!-- '
    directive_suffix: ' --&gt'
    string_instructions: 
-   other: 
+   other: '<p>Note: Some XML files closely resemble HTML files and are more effectively translated by parsing them as HTML files. Smartling allows you to specify HTML as the file type when uploading an XML file in the dashboard to cope with this type of XML files. If uploading via API, give "html" as the Smartling identifier for the file.</p><p><strong>Note:</strong> When using <a href="later">file/get</a> to download properties files from Smartling, the parameter <code>includeOriginalStrings=false</code> ensures that if no translations are available, Smartling returns an empty string. If the parameter is set to true, Smartling returns the original string.</p>'
    directives:
       - translate_paths
       - string_format_paths

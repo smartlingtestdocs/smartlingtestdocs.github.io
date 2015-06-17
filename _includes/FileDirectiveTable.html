@@ -1,0 +1,35 @@
+
+
+<table>
+	<tr>
+		<th>placeholder_format_custom</th>
+		<th>placeholder_format</th>
+		<th>string_format</th>
+		<th>force_inline_for_tags</th>
+		<th>download_format</th>
+		<th>plurals_detection</th>
+		<th>sting_format_paths</th>
+		<th>translate_paths</th>
+		<th>sltrans</th>
+		<th>source_key_paths</th>
+		<th>variants_enabled</th> 
+		<th>translate_mode</th>
+	</tr>
+{% for SupportedFileType in site.data.SupportedFileTypes %}
+	<tr>
+		<td>{% if SupportedFileType.directives contains "placeholder_format_custom" %}<a href="pages/supported-file-types/#{{SupportedFileType.smartling_identifier}}_{{placeholder_format_custom}}">Yes</a>{% endif %}</td>
+		<td>{% if SupportedFileType.directives contains "placeholder_format" %}<a href="pages/supported-file-types/#{{SupportedFileType.smartling_identifier}}_{{placeholder_format}}">Yes</a>{% endif %}</td>
+		<td>{% if SupportedFileType.directives contains "string_format" %}<a href="pages/supported-file-types/#{{SupportedFileType.smartling_identifier}}_{{string_format}}">Yes</a>{% endif %}</th> <td>
+		<td>{% if SupportedFileType.directives contains "force_inline_for_tags" %}<a href="pages/supported-file-types/#{{SupportedFileType.smartling_identifier}}_{{force_inline_for_tags}}">Yes</a>{% endif %}</td>
+		<td>{% if SupportedFileType.directives contains "download_format" %}<a href="pages/supported-file-types/#{{SupportedFileType.smartling_identifier}}_{{download_format}}">Yes</a>{% endif %}</td>
+		<td>{% if SupportedFileType.directives contains "plurals_detection" %}<a href="pages/supported-file-types/#{{SupportedFileType.smartling_identifier}}_{{plurals_detection}}">Yes</a>{% endif %}</td>
+		<td>{% if SupportedFileType.directives contains "sting_format_paths" %}<a href="pages/supported-file-types/#{{SupportedFileType.smartling_identifier}}_{{sting_format_paths}}">Yes</a>{% endif %}</td>
+		<td>{% if SupportedFileType.directives contains "translate_paths" %}<a href="pages/supported-file-types/#{{SupportedFileType.smartling_identifier}}_{{translate_paths}}">Yes</a>{% endif %}</td>
+		<td>{% if SupportedFileType.directives contains "sltrans" %}<a href="pages/supported-file-types/#{{SupportedFileType.smartling_identifier}}_{{sltrans}}">Yes</a>{% endif %}</td>
+		<td>{% if SupportedFileType.directives contains "source_key_paths" %}<a href="pages/supported-file-types/#{{SupportedFileType.smartling_identifier}}_{{source_key_paths}}">Yes</a>{% endif %}</td>
+		<td>{% if SupportedFileType.directives contains "variants_enabled" %}<a href="pages/supported-file-types/#{{SupportedFileType.smartling_identifier}}_{{variants_enabled}}">Yes</a>{% endif %}</td>
+		<td>{% if SupportedFileType.directives contains "translate_mode" %}<a href="pages/supported-file-types/#{{SupportedFileType.smartling_identifier}}_{{translate_mode}}">Yes</a>{% endif %}</td>
+	</tr>
+{% endfor %}
+</table>
+
