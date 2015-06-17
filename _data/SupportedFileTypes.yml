@@ -159,6 +159,9 @@
    download_sample: 'json.json'
    resource_info: '<a href="http://json.org/">Official JSON Standards</a>'
    keys_variants: 'By default, the full path of keys leading to a string are captured as Key and Variant metadata. Custom key paths can be set and variant behavior turned off with directives'
+   other: '<p><strong>Note:</strong> When using <a href="later">file/get</a> to download properties files from Smartling, the parameter <code>includeOriginalStrings=false</code> ensures that if no translations are available, Smartling returns an empty string. If the parameter is set to true, Smartling returns the original string.</p>'
+   directive_format: '{<br/>&nbsp;&nbsp;&nbsp;&nbsp;"smartling" : {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"directive_name" : "value",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"directive_name" : "value",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"..."<br/>&nbsp;&nbsp;&nbsp;&nbsp;},<br/>&nbsp;&nbsp;&nbsp;&nbsp;...<br/>}'
+   directive_instructions: 'JSON directives are set at the top of the file, in the "smartling" node. Directives apply to the whole file and cannot be changed.'
    directives:
       - translate_mode
       - translate_paths

@@ -61,7 +61,7 @@
                             </th>
                             {% for Example in FileDirective.Examples %}   
                             <tr>
-                                {% if SupportedFileType.smartling_identifier == json %}
+                                {% if SupportedFileType.smartling_identifier == 'json' %}
                                 <td><pre>{{Example.CodeJSON}}</pre></td>
                                 {% else %}
                                 <td><pre>{% unless Example.Block == 'yes' %}{{SupportedFileType.directive_prefix}}{% endunless %}{{Example.Code}}{% unless Example.Block == 'yes' %}{{SupportedFileType.directive_suffix}}{% endunless %}</pre></td>
