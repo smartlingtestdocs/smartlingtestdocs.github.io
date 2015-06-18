@@ -36,10 +36,15 @@
 
     {% if SupportedFileType.directives %}
     <div class="panel panel-default">
-        <div class="panel-heading">Directives</div>
-        <div class="panel-body">
+        <div class="panel-heading">
+
+            <a data-toggle="collapse" class="collapsed" data-target="#collapse-{{SupportedFileType.smartling_identifier}}"
+               href="#collapseOne">Directives</a>
+
+        </div>
+        <div class="panel-body collapse" id="collapse-{{SupportedFileType.smartling_identifier}}">
             <h4>Directive Format</h4>
-                <pre>{{SupportedFileType.directive_format}}</pre>
+                <pre><code>{{SupportedFileType.directive_format}}</code></pre>
                 <p>{{SupportedFileType.directive_instructions}}</p>
         {% assign Directives = SupportedFileType.directives %}
         {% assign FileDirectives = site.data.FileDirectives%}
@@ -47,31 +52,39 @@
             {% for FileDirective in FileDirectives %}
                 {% if FileDirective.Directive == Directive %}
                 <h4 id="{{SupportedFileType.smartling_identifier}}_{{FileDirective.Directive}}">{{FileDirective.Directive}}</h4>
-                <table class="table">
+                <table class="table verticalHeaders">
                     <tr>
                         <th>Values:</th><td>{{FileDirective.Values}}</td>
                     </tr>
                     <tr>
                         <th>Description:</th><td>{{FileDirective.Description}}</td>
-                </table>
+                    </tr>
+
                     {% if FileDirective.Examples %}
-                        <table class="table">
-                            <th>
-                                Examples:
-                            </th>
-                            {% for Example in FileDirective.Examples %}   
-                            <tr>
-                                {% if SupportedFileType.smartling_identifier == 'json' %}
-                                <td><pre>{{Example.CodeJSON}}</pre></td>
-                                {% else %}
-                                <td><pre>{% unless Example.Block == 'yes' %}{{SupportedFileType.directive_prefix}}{% endunless %}{{Example.Code}}{% unless Example.Block == 'yes' %}{{SupportedFileType.directive_suffix}}{% endunless %}</pre></td>
-                                {% endif %}
-                            </tr>
-                            <tr>
-                                <td>{{Example.Description}}</td>
+                    <tr>
+                        <th>Examples:</th>
+                        <td>
+                            <div class="example">
+
+                                {% for Example in FileDirective.Examples %}
+                                <div>
+                                    {% if SupportedFileType.smartling_identifier == 'json' %}
+                                    <pre><code>{{Example.CodeJSON}}</code></pre>
+                                    {% else %}
+                                    <pre><code>{% unless Example.Block == 'yes' %}{{SupportedFileType.directive_prefix}}{% endunless %}{{Example.Code}}{% unless Example.Block == 'yes' %}
+                                        {{SupportedFileType.directive_suffix}}{% endunless %}</code></pre>
+                                    {% endif %}
+                                </div>
+
+                                <p class="small">{{Example.Description}}</p>
                                 {% endfor %}
-                        </table>
+                            </div>
+                        </td>
+                    </tr>
                     {% endif %}
+
+                </table>
+
                 {% endif %}
             {% endfor %}
         {% endfor %}
