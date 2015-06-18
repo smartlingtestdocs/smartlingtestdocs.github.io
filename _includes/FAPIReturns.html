@@ -6,13 +6,15 @@
         <p>{{FAPIMethod.Return.String}}</p>
         {% endif %}
         {% if FAPIMethod.Return.Json %}
-        <pre>{{FAPIMethod.Return.Json}}</pre>
+        <pre><code>{{FAPIMethod.Return.Json}}</code></pre>
         {% endif %}
             {% if FAPIMethod.Return.Parameters %}
                 {% for Parameter in FAPIMethod.Return.Parameters%}
                     <div class="parameter {% if Parameter.Required == "required" %}required{% else %}optional{% endif %}">
                         <h4>{{Parameter.Name}}</h4>
                         <p>{{Parameter.Description}}</p>
+
+                        {% if Parameter.Values.size > 0 %}
                         <table class="table">
                         {% for Value in Parameter.Values %}
                             <tr>
@@ -20,6 +22,7 @@
                             </tr>
                         {% endfor %}
                         </table>
+                        {% endif %}
                     </div>
                 {% endfor %}
             {% endif %}
