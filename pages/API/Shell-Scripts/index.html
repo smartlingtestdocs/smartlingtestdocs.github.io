@@ -1,0 +1,119 @@
+---
+layout: page
+title:  Shell Scripts
+---
+
+<p>
+    <a href="https://docs.smartling.com/display/docs/API+Shell+Scripts#APIShellScripts-Introduction">Introduction</a>
+    <br/>
+    <a href="https://docs.smartling.com/display/docs/API+Shell+Scripts#APIShellScripts-Scripts">
+        Using scripts to download, upload or delete a file
+        <br/>
+    </a>
+    <a href="https://docs.smartling.com/display/docs/API+Shell+Scripts#APIShellScripts-Upload">Upload</a>
+    <a href="https://docs.smartling.com/display/docs/API+Shell+Scripts#APIShellScripts-Scripts">Scripts</a>
+    <br/>
+    <a href="https://docs.smartling.com/display/docs/API+Shell+Scripts#APIShellScripts-Download">Download</a>
+    <br/>
+    <a href="https://docs.smartling.com/display/docs/API+Shell+Scripts#APIShellScripts-Delete">Delete</a>
+    <br/>
+    <a href="https://docs.smartling.com/display/docs/API+Shell+Scripts#APIShellScripts-Glossary">Download Glossary</a>
+    <br/>
+    <a href="https://docs.smartling.com/display/docs/API+Shell+Scripts#APIShellScripts-Memory">Download Translation Memory</a>
+</p>
+<p>
+    As an easy way to access Smartling’s API functionality, Smartling offers a package of BASH scripts, which can be used to Upload, Download and Delete files
+in a Smartling project from the command line. The scripts are hosted in    <a href="https://github.com/Smartling/api-scripts" rel="nofollow">Smartling's GitHub repository</a>.
+</p>
+<p>
+    The package contains five executable scripts, used for accessing the API, and two resource scripts, which contain configurations used by the executable
+    scripts.
+</p>
+<p>
+    <strong>Executable Scripts:</strong>
+</p>
+<p>
+    <strong>upload.sh</strong>
+    - Uploads files to a smartling project.
+    <strong>
+        <br/>
+        download.sh
+    </strong>
+    - Downloads translated files from a Smartling project.
+    <br/>
+    <strong>delete.sh</strong>
+    - Deletes resource files from a Smartling project.
+    <br/>
+    <strong>download-glossary.sh</strong>
+    - Downloads a project’s glossary.
+    <br/>
+    <strong>download-tmx.sh</strong>
+    - Downloads a project’s translation memory.
+</p>
+<p>
+    <strong>Resource Scripts:</strong>
+</p>
+<p>
+    <strong>settings.sh</strong>
+    - Contains information needed to access Smartling’s API.
+    <br/>
+    <strong>common.sh</strong>
+    - Contains common code used by other scripts.
+    <br/>
+    <strong>globals.sh</strong>
+    - Contains common code used by other scripts.
+</p>
+<p>
+    Before using the bash scripts, modify settings.sh with the Project ID and API Key for the project you want to interact with. Project ID and API key are
+    available from the dashboard at <a href="https://dashboard.smartling.com/settings/api.htm" rel="nofollow">Project Settings &gt; API</a> .
+</p>
+
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+@media screen and (max-width: 767px) {.tg {width: auto !important;}.tg col {width: auto !important;}.tg-wrap {overflow-x: auto;-webkit-overflow-scrolling: touch;}}</style>
+<div class="tg-wrap"><table class="tg">
+  <tr>
+    <th class="tg-031e">Parameter</th>
+    <th class="tg-031e">Flag</th>
+    <th class="tg-031e">Required / Optional</th>
+    <th class="tg-031e">Description / Values</th>
+  </tr>
+  <tr>
+    <td class="tg-031e">File Type</td>
+    <td class="tg-031e">-t</td>
+    <td class="tg-031e">Required</td>
+    <td class="tg-031e"><p>Smartling’s unique identifier type of file you are uploading. Note that this may not be the same as the file extension. For example, an XLIFF file may have the extension ‘.xml’, but you must specify the file type ‘xliff’. See our Files Integration for the unique identifier for each file type.</p><p><strong>Accepted values:</strong> <code>android</code>, <code>ios</code>, <code>gettext</code>, <code>plaintext</code>, <code>csv</code>, <code>html</code>, <code>xml</code>, <code>json</code>, <code>javaProperties</code>, <code>yaml</code>, <code>qt</code>, <code>xliff</code>, <code>docx</code>, <code>pptx</code>, <code>xlsx</code>, <code>idml</code>, <code>resx</code></p> <p><strong>Example:</strong></p><pre>./upload.sh -t json strings.json</pre></td>
+  </tr>
+  <tr>
+    <td class="tg-031e">File URI scheme</td>
+    <td class="tg-031e">-u</td>
+    <td class="tg-031e">Optional</td>
+    <td class="tg-031e">Determines how Smartling will allocate a URI to the uploaded file. If unspecified, default is ‘fileName’Accepted values are:fileName - the URI will be the name of the filerelativePath - the URI will include relative folder information in addition to the file nameprefix - The URI will be the name of the file with a specified prefix. (see the Prefix parameter)</td>
+  </tr>
+  <tr>
+    <td class="tg-031e">Prefix</td>
+    <td class="tg-031e">-x</td>
+    <td class="tg-031e">Optional</td>
+    <td class="tg-031e">Adds a prefix to a file’s URI in Smartling. To use this function, you must also set the File URI scheme to ‘prefix’.Example:./upload.sh -t json -u prefix -x legal strings.jsonThis command will upload the file strings.json. In Smartling, the file will have the URI ‘/legal/strings.json’</td>
+  </tr>
+  <tr>
+    <td class="tg-031e">Callback</td>
+    <td class="tg-031e">-c</td>
+    <td class="tg-031e">Optional</td>
+    <td class="tg-031e">Sets a callback URL for a GET request to be sent when all strings in a file are published for a locale. The GET request will have the parameters 'fileUri' and 'locale'.Example:./upload.sh -t json -c http://requestb.in/xxmpg1xc strings.json</td>
+  </tr>
+  <tr>
+    <td class="tg-031e">Test mode</td>
+    <td class="tg-031e">-e</td>
+    <td class="tg-031e">Optional</td>
+    <td class="tg-031e">If this flag is set, the upload will run in test mode. The script will return a list of files that would have been uploaded, but will not actually upload any files.</td>
+  </tr>
+  <tr>
+    <td class="tg-031e"></td>
+    <td class="tg-031e"></td>
+    <td class="tg-031e"></td>
+    <td class="tg-031e"></td>
+  </tr>
+</table></div>
