@@ -1,18 +1,19 @@
 
 
-<div class="main-nav">
+
+<div class="main-nav" id="main-nav">
 {% assign items = site.pages | sort:"weight"  %}
-<ul>
+<ul class="nav" id="myScrollspy">
         <li><a href="/"><i class="fa fa-home"></i> Home</a></li>
-        <li class="{% if page.url contains "/pages/API" %}open{% endif %}"><a href="/pages/API"><i class="fa fa-cogs"></i> API</a>
+        <li class="{% if page.url contains "/pages/API" %}shown{% endif %}"><a href="/pages/API"><i class="fa fa-cogs"></i> API</a>
 
             <ul class="secondary">
                 <li class="">
-                    <a href="/pages/API/FileAPI">File API</a>
-                    <ul>
+                    <a href="/pages/API/FileAPI" class="title">File API</a>
+                    <ul class="nav">
                     {% for item in items %}
                     {% if item.url contains "/pages/API/FileAPI" and item.url != "/pages/API/FileAPI/index.html"%}
-                    <li class="{% if page.url contains "/pages/API/FileAPI" %}show-3{% else %}hide-3{% endif %}"><a href="{{item.url}}">{{item.title}}</a></li>
+                    <li class="leaf {% if page.url contains "/pages/API/FileAPI" %}show-3{% else %}hide-3{% endif %}"><a href="{{item.url}}">{{item.title}}</a></li>
                     {% endif %}
                     {% endfor %}
                     </ul>
@@ -20,14 +21,17 @@
             </ul>
         </li>
 
-        <li><a href="/pages/supported-file-types"><i class="fa fa-thumbs-up"></i> Supported File Types</a>
-            <ul class="secondary">
-                <ul>
+        <li class="{% if page.url contains "/pages/supported-file-types" %}shown{% endif %}">
+            <a href="#"><i class="fa fa-thumbs-up"></i> Supported File Types</a>
+
+            <ul class="nav nav-tabs nav-stacked secondary">
+
                 {% for SupportedFileType in site.data.SupportedFileTypes %}
-                <li class="{% if page.url contains "/pages/supported-file-types" %}show-3{% else %}hide-3{% endif %}">><a href="#{{SupportedFileType.smartling_identifier}}">{{SupportedFileType.file_type}}</a></li>
+                <li><a href="#{{SupportedFileType.smartling_identifier}}">{{SupportedFileType.file_type}}</a></li>
                 {% endfor %}
-                </ul>
+
             </ul>
+
         </li>
 
 </ul>

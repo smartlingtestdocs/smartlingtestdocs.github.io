@@ -1,6 +1,6 @@
-<div>
-    <h2 id="{{SupportedFileType.smartling_identifier}}">{{SupportedFileType.file_type}}</h2>
-    <table>
+<section id="{{SupportedFileType.smartling_identifier}}">
+    <h2>{{SupportedFileType.file_type}}</h2>
+    <table class="table">
         <tr>
             <td>Extension</td> <td>{{SupportedFileType.extension}}</td>
         </tr>
@@ -47,7 +47,7 @@
             {% for FileDirective in FileDirectives %}
                 {% if FileDirective.Directive == Directive %}
                 <h4 id="{{SupportedFileType.smartling_identifier}}_{{FileDirective.Directive}}">{{FileDirective.Directive}}</h4>
-                <table>
+                <table class="table">
                     <tr>
                         <th>Values:</th><td>{{FileDirective.Values}}</td>
                     </tr>
@@ -55,7 +55,7 @@
                         <th>Description:</th><td>{{FileDirective.Description}}</td>
                 </table>
                     {% if FileDirective.Examples %}
-                        <table> 
+                        <table class="table">
                             <th>
                                 Examples:
                             </th>
@@ -78,4 +78,4 @@
         </div>
     </div>
     {% endif %}
-</div>
+</section>

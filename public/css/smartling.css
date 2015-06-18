@@ -1,3 +1,6 @@
+body {
+  position: relative;
+}
 .code-sample .tab-pane {
   padding-top: 20px;
 }
@@ -11,21 +14,35 @@
 .main-nav ul i.fa {
   width: 1.5em;
 }
-.main-nav ul a {
+.main-nav ul a,
+.main-nav ul a:hover,
+.main-nav ul a:focus {
+  background: none;
+  border: none;
   color: #fff;
 }
 .main-nav ul li {
   margin: 0;
   padding: 0;
 }
-.main-nav ul li.open {
+.main-nav ul li.shown {
   background: #555;
 }
-.main-nav ul li.open > a {
-  background: #324053;
+.main-nav ul li.shown > a {
+  background-color: #324053;
 }
-.main-nav ul li.open ul {
+.main-nav ul li.shown ul {
   display: block;
+}
+.main-nav ul li .active {
+  border-right: 5px solid #ee7923;
+}
+.main-nav ul li .active a,
+.main-nav ul li .active a:hover,
+.main-nav ul li .active a:focus {
+  background: none;
+  border: none;
+  color: #ee7923;
 }
 .main-nav ul a {
   display: block;
@@ -35,7 +52,7 @@
   background: #364559;
   display: none;
 }
-.main-nav ul .secondary > li > a {
+.main-nav ul .secondary a.title {
   color: #999;
 }
 .main-nav ul ul li a {
@@ -84,10 +101,19 @@
   margin: 0 0 10px 0;
 }
 .page section {
-  margin-bottom: 40px;
+  padding-top: 100px;
+}
+.page section h2 {
+  border-left: 5px solid #ee7923;
+  padding-left: 10px;
+  margin-bottom: 20px;
 }
 .page .parameter h4 {
   color: #000099;
+}
+.page .table td ul {
+  list-style-position: inside;
+  padding: 0;
 }
 .supportedFileTypes td {
   padding: 8px 15px;

@@ -242,7 +242,7 @@
  - file_type: 'Plain Text'
    template: 'standard'
    extension: '.txt'
-   smartling_identifier: '.txt'
+   smartling_identifier: 'txt'
    download_sample: ''
    resource_info: '<a href=""></a>'
    intro: 'The plain text document format is a simple way to quickly translate text. Smartling considers each line of text in the document a single translation string.  Each string is considered unique by file - which means if two files have the exact same line of text - they will be captured as two separate strings. '
