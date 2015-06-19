@@ -1,0 +1,41 @@
+---
+layout: page
+title:  Ruby on Rails Localization
+---
+
+<p>
+Smartling’s translation interface supports plurals according to the    <a href="http://cldr.unicode.org/index/cldr-spec/plural-rules" rel="nofollow">CLDR pluralization rules</a>, which define which plural forms are used in
+    each locale.
+</p>
+<p>
+    Out of the box, Ruby on Rails applications support only the standard English plural forms of One and Other. Translating a YAML file into languages with
+    different plural rules, such as Japanese (‘Other’ only) or Czech (One/Few/Many/Other) may cause errors in your Rails application.
+</p>
+<p>
+    To properly localize into multiple languages supporting different plural forms, you must setup your application to use the I18n pluralization backend and
+    define pluralization rules in your application for each locale.
+</p>
+<p>
+    <strong>To require pluralization backend:</strong>
+</p>
+<p>
+    <strong>(1)</strong>
+    Create config/initializers/pluralization.rb in your application:
+<pre>I18n::Backend::Simple.send<br/>:include<br/>, I18n::Backend::Pluralization)</pre>
+
+    <strong>(2)</strong>
+    Create a rule in plurals.rb for each locale in your application. For example, this rule creates four plural forms for Russian: One, Few, Many and Other.
+</p>
+<div>
+        <strong>plurals.rb</strong>
+  <pre>
+{
+  :ru => { :i18n => { :plural => { :keys => [:one, :few, :many, :other], :rule => lambda { |n| n % 10 == 1 &amp;&amp; n % 100 != 11 ? :one : [2, 3, 4].include?(n % 10) &amp;&amp; ![12, 13, 14].include?(n % 100) ? :few : n % 10 == 0 || [5, 6, 7, 8, 9].include?(n % 10) || [11, 12, 13, 14].include?(n % 100) ? :many : :other } } } }
+}</pre>
+<p>
+Pluralization rules for most locales are    <a href="https://github.com/svenfuchs/i18n/blob/master/test/test_data/locales/plurals.rb" rel="nofollow">publicly available on Github</a>.
+</p>
+<p>
+    <strong>Note:</strong>
+    You may need to edit the locale labels to match the labels used in your application.
+</p>

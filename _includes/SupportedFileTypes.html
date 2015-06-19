@@ -71,8 +71,7 @@
                                     {% if SupportedFileType.smartling_identifier == 'json' %}
                                     <pre><code>{{Example.CodeJSON}}</code></pre>
                                     {% else %}
-                                    <pre><code>{% unless Example.Block == 'yes' %}{{SupportedFileType.directive_prefix}}{% endunless %}{{Example.Code}}{% unless Example.Block == 'yes' %}
-                                        {{SupportedFileType.directive_suffix}}{% endunless %}</code></pre>
+                                    <pre><code>{% unless Example.Block == 'yes' %}{{SupportedFileType.directive_prefix}}{% endunless %}{{Example.Code}}{% unless Example.Block == 'yes' %}{{SupportedFileType.directive_suffix}}{% endunless %}</code></pre>
                                     {% endif %}
                                 </div>
 

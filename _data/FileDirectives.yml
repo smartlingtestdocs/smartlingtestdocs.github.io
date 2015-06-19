@@ -58,16 +58,25 @@
   - Directive:      'translate_paths'
     Values:         'A comma-separated list of paths to be captured as strings for translation'
     Description:    'When included in this list, all plain text within the specified tag will be considered a translatable string. Optionally, you can append a "." and a relevant attribute name to the path to translate tag attributes with the file. You can end the path with a trailing slash, "/" and it will treat all child nodes as translatable (content must still be text within a tag).'
+    Examples:
+        - Code: ''
+          Description: ''
+
+        - CodeJSON: ''
+          Description: ''
+
+        - CodeXML: 'smartling.translate_paths = data/localize/string, data/localize.title, data/localize/root/'
+          Description: 'Smartling will translate content in the data/localize/string & data/localize/root nodes. The <code>title</code> attribute of the data/localize node will also be translated.'
 
   - Directive:      'sltrans'
     Values:         '<code>translate</code> OR <code>notranslate</code>'
     Description:    'Use this directive to enable or disable processing of translation strings in the file. You must turn translation back on after the strings you want to exclude.'
     Examples:
-        - Code: '<!-- smartling.sltrans = notranslate -->'
+        - Code: 'smartling.sltrans = notranslate'
           CodeJSON:
           Description: 'Strings below this directive will be captured as strings but excluded from translation'
 
-        - Code: '<!-- smartling.sltrans = translate -->'
+        - Code: 'smartling.sltrans = translate'
           CodeJSON:
           Description: 'Strings below this directive will be translated'
 
@@ -88,7 +97,7 @@
           Description: ''
 
   - Directive:      'variants_enabled'
-    Values:         ''
+    Values:         '<code>true|TRUE|on|ON</code> OR <code>false|FALSE|off|OFF</code>'
     Description:    ''
 
   - Directive:      'translate_mode'
@@ -117,11 +126,20 @@
     Examples:
         - Code: 'smartling.download_format = ESCAPE_UNICODE'
           Description: '<code>Hello ?</code> will be escaped as <code>Hello \u1D25</code> on download.'
- -  Directive:      ''
-    Values:         ''
-    Description:    ''
 
- -  
+  - Directive:      'force_inline_for_tags'
+    Values:         'comma-separated html tag list'
+    Description:    'This parameter forces the html parser to treat the listed tags as inline. The difference between block and inline tags is that block tags are used to split html into strings, whereas inline tags are included in strings.'
+    Examples:
+        - Code: 'smartling.force_inline_for_tags = external_link,reference'
+          Description: 'Any <code>&lt;external_link&gt;</code> or <code>&lt;reference&gt;</code> tags will be parsed as inline tags. Smartling will not create separate strings for content in these tags.'
+
+  - Directive:      'plurals_detection'
+    Values:         '<code>on</code> OR <code>off</code>'
+    Description:    '<p>Enables or disables plurals detection.</p> <p><strong>Note:</strong> if using plural detection for a YAML file as part of a Ruby on Rails project, ensure your project is set up with correct <a href="later">pluralization rules.</a>'
+    Examples:
+        - Code: 'smartling.force_inline_for_tags = external_link,reference'
+          Description: 'Any <code>&lt;external_link&gt;</code> or <code>&lt;reference&gt;</code> tags will be parsed as inline tags. Smartling will not create separate strings for content in these tags.' 
 
  -  
 
