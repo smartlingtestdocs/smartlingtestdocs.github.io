@@ -1,0 +1,53 @@
+---
+layout: page
+title:  API Sandbox
+---
+<p>
+    The Smartling Sandbox API allows you to test API connection and parameters. The Sandbox API is available to registered API users but does not save or
+    return data based on your actual account or project, and the Smartling Dashboard will not reflect data submitted to the sandbox.
+</p>
+<ul>
+    <li>
+        File uploads will cache files without affecting production files and will not extract content for translation.
+    </li>
+    <li>
+        File downloads will always return the referenced files translated completely in "Reversi" (characters of each word returned in reverse order).
+    </li>
+    <li>
+        File statistics services will return mock statistics and metrics for files you've previously uploaded into the sandbox.
+    </li>
+    <li>
+        Even if you specify a callback on the file upload, it will not occur when using the Sandbox API
+    </li>
+</ul>
+<p>
+    <strong>The purpose of the Sandbox API is to test API calls</strong>, so Smartling does not process data from the file. Uploaded files will not appear in the dashboard with their associated strings.
+</p>
+<p>
+    The Sandbox API is accessible at <a href="https://sandbox-api.smartling.com/v1" rel="nofollow">https://sandbox-api.smartling.com/v1</a> and all service
+    calls have no affect on production data.
+</p>
+<p>
+    All URLs within the Sandbox API have the following base:
+</p>
+<p><pre>https://sandbox-api.smartling.com/v1</pre></p>
+<p>
+    <strong>To get started with the Sandbox API:</strong>
+</p>
+<ol>
+    <li>
+        Setup an account with Smartling, from: <a href="http://www.smartling.com/signup" rel="nofollow">http://www.smartling.com/signup</a>
+    </li>
+    <li>
+Obtain an API key within your Smartling dashboard:        <a href="https://dashboard.smartling.com/settings/api" rel="nofollow">https://dashboard.smartling.com/settings/api</a>
+    </li>
+    <li>
+        Review the Smartling Translation API documentation at: <a href="https://docs.smartling.com/" rel="nofollow">https://docs.smartling.com</a>
+    </li>
+    <li>
+        Use the Sandbox API URL to execute API requests: https://sandbox-api.smartling.com/v1
+    </li>
+</ol>
+<p>
+    Sandbox data may be cleared from time to time, so don't leave anything in the sandbox that you aren't willing to lose.
+</p>

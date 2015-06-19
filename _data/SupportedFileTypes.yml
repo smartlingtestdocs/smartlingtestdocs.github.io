@@ -6,7 +6,7 @@
    download_sample: 'android.xml'
    resource_info: '<ul><li><a href="http://developer.android.com/guide/topics/resources/string-resource.html">Android String Resources</a></li><li><a href="http://developer.android.com/guide/topics/resources/localization.html">Android Localization</a></li></ul>'
    keys_variants: 'Every string is created with key/variant metadata, which is the value of the string.name attribute.  If the value of two strings is the same, but the string.name attribute is different, Smartling creates two strings.'
-   string_instructions: 'String instructions can be set using the <a href="android_instruction_comments_enabled">instruction_comments_enabled</a> and <a href="android_instruction_attributes">instruction_attributes</a> directives'
+   string_instructions: 'String instructions can be set using the <a href="#android_instruction_comments_enabled">instruction_comments_enabled</a> and <a href="#android_instruction_attributes">instruction_attributes</a> directives'
    other: '<p>To exclude a string from translation use the translatable="FALSE" attribute and value in the string tag:</p><pre><code>&lt;string name=&quot;string_11&quot; translatable=&quot;FALSE&quot;&gt;This android string has been marked not to be translated with translable attribute.&lt;/string&gt;</code></pre>'
    directive_format: '&lt!-- smarling.[directive_name] = [value] --&gt'
    directive_instructions: 'The directive must be a single comment on one line, and there should not be any inline trailing symbols after the directive.  Directives apply to all strings that follow them. Directives can be changed throughout the file'

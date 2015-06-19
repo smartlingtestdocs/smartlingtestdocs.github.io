@@ -46,7 +46,7 @@
 
     Return:
       String: 
-      Json: '{<br/>&nbsp;&nbsp;&nbsp;"overWritten": "[true|false]"<br/>&nbsp;&nbsp;&nbsp;"stringCount": "[number]",<br/>&nbsp;&nbsp;&nbsp;"wordCount": "[number]"<br/>}'
+      Json: '{<br/>&nbsp;&nbsp;&nbsp;"overWritten": "[true|false]",<br/>&nbsp;&nbsp;&nbsp;"stringCount": "[number]",<br/>&nbsp;&nbsp;&nbsp;"wordCount": "[number]"<br/>}'
       Parameters:
 
         - Name: overWritten

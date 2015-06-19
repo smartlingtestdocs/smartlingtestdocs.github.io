@@ -6,7 +6,6 @@
 <ul class="nav" id="myScrollspy">
         <li><a href="/"><i class="fa fa-home"></i> Home</a></li>
         <li class="{% if page.url contains "/pages/API" %}shown{% endif %}"><a href="/pages/API"><i class="fa fa-cogs"></i> API</a>
-
             <ul class="secondary">
                 <li class="">
                     <a href="/pages/API/FileAPI" class="title">File API</a>
@@ -29,10 +28,11 @@
                 {% for SupportedFileType in site.data.SupportedFileTypes %}
                 <li><a href="#{{SupportedFileType.smartling_identifier}}">{{SupportedFileType.file_type}}</a></li>
                 {% endfor %}
-
             </ul>
-
         </li>
+        <li class="{% if page.url contains "/pages/API" %}shown{% endif %}"><a href="/pages/SDKs"><i class="fa fa-cogs"></i> SDKs</a></li>
+        <li class="{% if page.url contains "/pages/API" %}shown{% endif %}"><a href="/pages/Sandbox"><i class="fa fa-cogs"></i> API Sandbox</a></li>
+        <li class="{% if page.url contains "/pages/API" %}shown{% endif %}"><a href="/pages/Shell-Scripts"><i class="fa fa-cogs"></i> Command Line Scripts</a></li>
 
 </ul>
 </div>
