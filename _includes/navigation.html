@@ -30,6 +30,7 @@
                 {% endfor %}
             </ul>
         </li>
+        <li class="{% if page.url contains "/pages/API" %}shown{% endif %}"><a href="/pages/API/Response-Format"><i class="fa fa-cogs"></i> Response Format</a></li>
         <li class="{% if page.url contains "/pages/API" %}shown{% endif %}"><a href="/pages/SDKs"><i class="fa fa-cogs"></i> SDKs</a></li>
         <li class="{% if page.url contains "/pages/API" %}shown{% endif %}"><a href="/pages/Sandbox"><i class="fa fa-cogs"></i> API Sandbox</a></li>
         <li class="{% if page.url contains "/pages/API" %}shown{% endif %}"><a href="/pages/Shell-Scripts"><i class="fa fa-cogs"></i> Command Line Scripts</a></li>
