@@ -1,0 +1,232 @@
+---
+layout: page
+title:  Repository Connector - Install and Configure the Repository Connector
+---
+
+<p>
+    There are three basic steps to set up the Repository Connector:
+</p>
+<p>
+    1)
+    <a
+        href="https://docs.smartling.com/display/docs/Repository+Connector+-+Install+and+Configure+the+Connector#RepositoryConnector-InstallandConfiguretheConnector-Install"
+    >
+        Install the connector on any server with Java 7 or higher installed.
+    </a>
+    <br/>
+    2)
+    <a
+        href="https://docs.smartling.com/display/docs/Repository+Connector+-+Install+and+Configure+the+Connector#RepositoryConnector-InstallandConfiguretheConnector-Modify"
+    >
+        Modify the service configuration file to indicate the repositories you want to integrate with.
+    </a>
+    <br/>
+    3)
+    <a
+        href="https://docs.smartling.com/display/docs/Repository+Connector+-+Install+and+Configure+the+Connector#RepositoryConnector-InstallandConfiguretheConnector-Start"
+    >
+        Start the Repository Connector application and monitor it.
+    </a>
+</p>
+<p>
+    <strong>Install the connector</strong>
+</p>
+<p>
+Download the    <a href="https://smartling-connector-public.s3.amazonaws.com/repo_connector/repo-connector-1.2.1-bin.zip" rel="nofollow">Repository Connector package</a>
+    and unpack it into the desired folder. The application should be hosted on a server that is continuously available and publicly addressable, with Java
+    version 7 or higher.
+</p>
+<p>
+    <strong>Modify service Configuration File</strong>
+</p>
+<p>
+    By default, the <strong>repo-connector.conf</strong> file is located in [repository connector directory]/cfg and defines the necessary parameters for the
+    Repository Connector to access your repositories and listen for callbacks. At a minimum, you must define a URL, access credentials and a related Smartling
+    Project for each of your repositories, and settings for the http listener. Edits to <strong>repo-connector.conf</strong> must be valid JSON. For additional
+    configuration see the
+    <a
+        href="https://docs.smartling.com/display/docs/Repository+Connector+-+FAQs+and+Advanced+Configuration#RepositoryConnector-FAQsandAdvancedConfiguration-CompleteConfig"
+        rel="nofollow"
+    >
+        Advanced Configuration instructions
+    </a>
+    .
+</p>
+<p>
+    Try editing this annotated example file to build your configuration.
+</p>
+<p>
+    <a href="https://docs.smartling.com/download/attachments/8126564/repo-connector.conf?version=2&amp;modificationDate=1429217078000">repo-connector.conf</a>
+</p>
+<p>
+    <strong>Example:</strong>
+</p>
+<pre>
+{
+ "repositories": [
+   {
+     "url": "https://github.com/user1/repository1.git",
+     "alias": "github_test1",
+      "userPassword": {
+        "user": "user",
+        "password": "password"
+      },
+      "smartlingProject": {
+        "projectId": "projectId",
+        "apiKey": "apiKey"
+      },
+      "resourcesConfig": "smartling-config.json",
+      "pollingSchedule": "0 */5 * * * ?"
+   },
+   {
+     "url": "https://github.com/user2/repository2.git",
+     "alias": "github_test2",
+     "userPassword": {
+       "user": "user",
+       "password": "password"
+       }
+     }
+   ],
+ "http": {
+   "host": "0.0.0.0",
+   "port": "5555",
+   "protocol": "http",
+   "callbackUrl": "http://callback.mydomain.com",
+  "manager": {
+    "managePort" : "7777"
+  },
+  "logs_directory": "",
+  "metrics_directory": "",
+  "clone_directory": "",
+  "queue_directory": "",
+  "db_directory": ""
+}
+</pre>
+<p>
+    <strong>Required Parameters:</strong>
+</p>
+<ul>
+    <li>
+        <strong>repositories</strong>
+        - Defines an array of source repositories. A repository cannot have more than one authentication attribute and a public repository may have neither.
+        Without authentication information, the connector will be able to get files from the repository but not push translated files from Smartling.
+        Repositories have the following attributes:
+    </li>
+    <ul>
+        <li>
+            <strong>url</strong>
+            - the URL for the repository. Must be unique in the array
+        </li>
+        <li>
+            <strong>alias</strong>
+- alias for the repository. The alias is used in creating the            <a href="https://docs.smartling.com/display/docs/Files+API#FilesAPI-/file/upload(POST)" rel="nofollow">fileURI</a> that is registered with
+            Smartling for uploaded files. A unique alias value is recommended but not required. The complete uri will be "alias/branch/file”.
+        </li>
+        <li>
+            <strong>userPassword</strong>
+            (optional) - defines user/password authentication type.
+        </li>
+        <ul>
+            <li>
+                user - user name
+            </li>
+            <li>
+                password - user password
+            </li>
+        </ul>
+        <li>
+            smartlingProject - defines your Smartling project credentials. You can these in the Smartling Dashboard at <strong>Project Settings&gt;API</strong>
+            .
+            <ul>
+                <li>
+                    projectId - unique id for your project.
+                </li>
+                <li>
+                    apiKey - your secret key for Smartling's API.
+                </li>
+            </ul>
+        </li>
+        <li>
+            resourcesConfig - the path to the repository configuration file. Default is 'smartling-config.json'
+        </li>
+        <li>
+            pollingSchdule - Cron expression defining how often the Repository Connector polls your repository for updates.
+        </li>
+        <li>
+            Other authentication options are defined in
+            <a
+                href="https://docs.smartling.com/display/docs/Repository+Connector+-+FAQs+and+Advanced+Configuration#RepositoryConnector-FAQsandAdvancedConfiguration-CompleteConfig"
+                rel="nofollow"
+            >
+                Advanced Configuration
+            </a>
+            instructions.
+        </li>
+    </ul>
+    <li>
+        <strong>http</strong>
+        - Defines settings for the http listener
+    </li>
+    <ul>
+        <li>
+            <strong>host</strong>
+            - the host name, set by default to "0.0.0.0". If your server is running apache or nginx, configure a proxy for your chosen port value. If running
+            on a local machine via a proxy, you may need to set this value to "localhost".
+        </li>
+        <li>
+            <strong>port</strong>
+            - the local port for the http listener. Any free port can be assigned
+        </li>
+        <li>
+            <strong>protocol</strong>
+            - possible values <strong>http</strong> or <strong>https. </strong>If the protocol is https, ssl protocols must also be defined. See the
+            <a
+                href="https://docs.smartling.com/display/docs/Repository+Connector+-+FAQs+and+Advanced+Configuration#RepositoryConnector-FAQsandAdvancedConfiguration-CompleteConfig"
+                rel="nofollow"
+            >
+                Advanced Configuration
+            </a>
+            instructions.
+        </li>
+        <li>
+            <strong>callbackURL</strong>
+            - reference to Repository Connector application from internet. The url is used to define oAuth github authentication callback and Smartling
+            callback URLs
+        </li>
+        <li>
+            <strong>logs/metrics/clone/queue/db_directory</strong>
+            - Allows you to set custom log and data paths for the connector. These attributes must be included in repo-connector.conf but can be left blank.
+            See
+            <a
+                href="https://docs.smartling.com/display/docs/Repository+Connector+-+FAQs+and+Advanced+Configuration#RepositoryConnector-FAQsandAdvancedConfiguration-CompleteConfig"
+                rel="nofollow"
+            >
+                Advanced Configuration
+            </a>
+            for more info.
+        </li>
+    </ul>
+</ul>
+<p>
+    <strong>Start the Repository Connector Application</strong>
+</p>
+<p>
+    To start the Repository Connector, execute:
+</p>
+<pre>java -jar repo-connector-1.2.1.jar -start</pre>
+<p>
+    To stop the Repository Connector, execute:
+</p>
+<pre>java -jar repo-connector-1.2.1.jar -stop</pre>
+<p>
+    If you have saved your configuration files in a folder other than the default (/cfg) add the parameter -configuration &lt;folder_name&gt; to the command.
+</p>
+<p>
+    To run as a daemon, execute:
+</p>
+<pre>java -jar repo-connector-1.2.1.jar -start&amp;</pre>
+<p>
+Once the Repository Connector is running, you will still need to    <a href="https://docs.smartling.com/display/docs/Repository+Connector+-+Configure+your+Code+Repository" rel="nofollow">configure your repository</a> before
+    you can push files to Smartling.
+</p>
+ 

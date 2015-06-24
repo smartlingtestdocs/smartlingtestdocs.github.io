@@ -1,0 +1,40 @@
+---
+layout: page
+title:  Repository Connector
+---
+
+<p>
+    When working with localized content in an agile, continuous deployment environment, it is critical to optimize for translation speed. The Repository
+    Connector is designed to shorten the time it takes to translate new content by automatically pushing changes to resource files in a repository to the
+    Smartling dashboard and pushing new translations back to the repository.
+</p>
+<p>
+    The Repository Connector acts a broker between the source repository and the Smartling project. Changes to resource files in the repository are
+    automatically pushed to the Smartling project. The Connector will register a callback for each file so that it can be notified when the file is completely
+    translated, then it will immediately download the translated file and can optionally push the translated files back to the repository.
+</p>
+<p>
+    The Repository Connector is a java application that must run continuously on a publicly addressable server.
+</p>
+<p>
+Translation progress can be monitored in the Smartling Dashboard or scripted with    <a href="https://docs.smartling.com/display/docs/Files+API" rel="nofollow">Smartling API</a>.
+</p>
+<p>
+    <strong>
+        <a href="https://docs.smartling.com/display/docs/Repository+Connector+-+Install+and+Configure+the+Connector" rel="nofollow">
+            Install and Configure the Repository Connector
+        </a>
+        <br/>
+    </strong>
+    <strong>
+        <a href="https://docs.smartling.com/display/docs/Repository+Connector+-+Configure+your+Code+Repository" rel="nofollow">
+            Configure your Code Repository to work with the Connector
+        </a>
+        <br/>
+    </strong>
+    <strong>
+        <a href="https://docs.smartling.com/display/docs/Repository+Connector+-+FAQs+and+Advanced+Configuration" rel="nofollow">
+            FAQs and Advanced Configuration
+        </a>
+    </strong>
+</p>

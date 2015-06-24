@@ -6,6 +6,15 @@
 <ul class="nav" id="myScrollspy">
         <li><a href="/"><i class="fa fa-home"></i> Home</a></li>
         <li class="{% if page.url contains "/pages/API" %}shown{% endif %}"><a href="/pages/API"><i class="fa fa-cogs"></i> API</a>
+             <ul class="secondary">
+                <li class="">
+                    <a href="/pages/API/Getting-Started" class="title">Getting Started</a>
+                    <ul class="nav">
+                    <li class="leaf {% if page.url contains "/pages/API/Getting-Started" %}show-3{% else %}hide-3{% endif %}"><a href="/pages/API/Getting-Started/Response-Format">Response Format</a></li>
+                    <li class="leaf {% if page.url contains "/pages/API/Getting-Started" %}show-3{% else %}hide-3{% endif %}"><a href="/pages/API/Getting-Started/Sandbox">API Sandbox</a></li>
+                    </ul>
+                </li>
+            </ul>           
             <ul class="secondary">
                 <li class="">
                     <a href="/pages/API/FileAPI" class="title">File API</a>
@@ -17,6 +26,31 @@
                     {% endfor %}
                     </ul>
                 </li>
+            </ul>
+            <ul class="secondary">
+                <li class="">
+                    <a href="/pages/API/Glossary-Export" class="title">Glossary Export</a>
+                </li>
+            <ul class="secondary">
+                <li class="">
+                    <a href="/pages/API/HTML-Context" class="title">HTML Context</a>
+                </li>
+            </ul>
+             <ul class="secondary">
+                <li class="">
+                    <a href="/pages/API/Download-Translations" class="title">Download Translations</a>
+                </li>
+            </ul>
+             <ul class="secondary">
+                <li class="">
+                    <a href="/pages/API/Projects" class="title">Projects</a>
+                </li>
+            </ul>
+             <ul class="secondary">
+                <li class="">
+                    <a href="/pages/API/Reset-Cache" class="title">Reset Cache (beta)</a>
+                </li>
+            </ul>
             </ul>
         </li>
 
@@ -30,10 +64,25 @@
                 {% endfor %}
             </ul>
         </li>
-        <li class="{% if page.url contains "/pages/API" %}shown{% endif %}"><a href="/pages/API/Response-Format"><i class="fa fa-cogs"></i> Response Format</a></li>
-        <li class="{% if page.url contains "/pages/API" %}shown{% endif %}"><a href="/pages/SDKs"><i class="fa fa-cogs"></i> SDKs</a></li>
-        <li class="{% if page.url contains "/pages/API" %}shown{% endif %}"><a href="/pages/Sandbox"><i class="fa fa-cogs"></i> API Sandbox</a></li>
-        <li class="{% if page.url contains "/pages/API" %}shown{% endif %}"><a href="/pages/Shell-Scripts"><i class="fa fa-cogs"></i> Command Line Scripts</a></li>
+        <li class="{% if page.url contains "/pages/API" %}shown{% endif %}"><a href="/pages/SDKs"><i class="fa fa-briefcase"></i> SDKs</a></li>
+        <li class="{% if page.url contains "/pages/Repository-Connector" %}shown{% endif %}"><a href="/pages/Repository-Connector/"><i class="fa fa-cloud-download"></i>Repository Connector</a>
+             <ul class="secondary">
+                <li class="">
+                    <a href="/pages/Repository-Connector/Install-and-Setup/" class="title">Installation and Setup</a>
+                </li>
+            </ul>
+            <ul class="secondary">
+                <li class="">
+                    <a href="/pages/Repository-Connector/Repository-Configuration/" class="title">Repository Configuration</a>
+                </li>
+            </ul>
+            <ul class="secondary">
+                <li class="">
+                    <a href="/pages/Repository-Connector/FAQ-and-Advanced/" class="title">FAQ and Advanced</a>
+                </li>
+            </ul>
+        </li>
+        <li class="{% if page.url contains "/pages/API" %}shown{% endif %}"><a href="/pages/Shell-Scripts/"><i class="fa fa-desktop"></i> Command Line Scripts</a></li>
 
 </ul>
 </div>
