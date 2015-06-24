@@ -6,7 +6,12 @@ layout: default
     <h1 class="page-title">{{ page.title }}</h1>
 
     {{ content }}
-
+    {% for FAPIMethod in site.data.FAPIMethods %}
+        {% if FAPIMethod.Method == page.method %}
+            {{FAPIMethod.Intro}}
+        {% endif %}
+    {% endfor %}
+    <br/>
     <div class="panel panel-default">
         <div class="panel-heading">Parameters</div>
         <div class="panel-body">

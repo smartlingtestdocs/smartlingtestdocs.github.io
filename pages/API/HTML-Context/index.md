@@ -1,7 +1,6 @@
 ---
 layout: FAPIMethods
-title:  Glossary Export API
-method: GlossaryExportAPI
+title:  HTML Context API
+method: HTMLContext
 ---
 
-{% include FileDirectiveTable.html %}
