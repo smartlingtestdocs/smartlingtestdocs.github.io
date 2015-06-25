@@ -6,19 +6,23 @@
              <ul class="secondary">
                 <li class="">
                     <a href="/pages/API/Getting-Started" class="title">Getting Started</a>
-                    <ul class="nav">
-                    <li class="leaf {% if page.url contains "/pages/API/Getting-Started" %}show-3{% else %}hide-3{% endif %}"><a href="/pages/API/Getting-Started/Response-Format">Response Format</a></li>
-                    <li class="leaf {% if page.url contains "/pages/API/Getting-Started" %}show-3{% else %}hide-3{% endif %}"><a href="/pages/API/Getting-Started/Sandbox">API Sandbox</a></li>
+                    <ul class="nav tertiary">
+                    <li class="leaf {% if page.url contains "/pages/API/Getting-Started" %}shown{% endif %}"><a href="/pages/API/Getting-Started/Response-Format">Response Format</a></li>
+                    <li class="leaf {% if page.url contains "/pages/API/Getting-Started" %}shown{% endif %}"><a href="/pages/API/Getting-Started/Sandbox">API Sandbox</a></li>
                     </ul>
                 </li>
             </ul>           
             <ul class="secondary">
                 <li class="">
                     <a href="/pages/API/FileAPI" class="title">File API</a>
-                    <ul class="nav">
-                         {% for FAPIMethod in site.data.FAPIMethods %}
-                            <li><a href="/pages/API/FileAPI/#{{FAPIMethod.Method}}">{{FAPIMethod.Method}} ({{FAPIMethod.Type}})</a></li>
-                        {% endfor %}
+
+                    <ul class="{% if page.url contains "/pages/API/FileAPI" %}shown{% endif %} tertiary">
+                    {% for item in items %}
+                    {% if item.url contains "/pages/API/FileAPI" and item.url != "/pages/API/FileAPI/index.html"%}
+                    <li class="leaf"><a href="{{item.url}}">{{item.title}}</a></li>
+                    {% endif %}
+                    {% endfor %}
+
                     </ul>
                 </li>
             </ul>
@@ -64,8 +68,8 @@
                 {% endfor %}
             </ul>
         </li>
-        <li class="{% if page.url contains "/pages/API" %}shown{% endif %}"><a href="/pages/SDKs"><i class="fa fa-briefcase"></i> SDKs</a></li>
-        <li class="{% if page.url contains "/pages/Repository-Connector" %}shown{% endif %}"><a href="/pages/Repository-Connector/"><i class="fa fa-cloud-download"></i>Repository Connector</a>
+        <li class="{% if page.url contains "/pages/SDKs/" %}shown{% endif %}"><a href="/pages/SDKs"><i class="fa fa-briefcase"></i> SDKs</a></li>
+        <li class="{% if page.url contains "/pages/Repository-Connector" %}shown{% endif %}"><a href="/pages/Repository-Connector/"><i class="fa fa-cloud-download"></i> Repository Connector</a>
              <ul class="secondary">
                 <li class="">
                     <a href="/pages/Repository-Connector/Install-and-Setup/" class="title">Installation and Setup</a>
@@ -82,8 +86,8 @@
                 </li>
             </ul>
         </li>
-        <li class="{% if page.url contains "/pages/API" %}shown{% endif %}"><a href="/pages/Shell-Scripts/"><i class="fa fa-desktop"></i> Command Line Scripts</a></li>
-        <li class="{% if page.url contains "/pages/Misc" %}shown{% endif %}"><a href="/pages/Misc/"><i class="fa fa-plus-circle"></i>Misc</a>
+        <li class="{% if page.url contains "/pages/Shell-Scripts/" %}shown{% endif %}"><a href="/pages/Shell-Scripts/"><i class="fa fa-desktop"></i> Command Line Scripts</a></li>
+        <li class="{% if page.url contains "/pages/Misc" %}shown{% endif %}"><a href="/pages/Misc/"><i class="fa fa-plus-circle"></i> Misc</a>
              <ul class="secondary">
                 <li class="">
                     <a href="/pages/Misc/Language-Identifiers/" class="title">Language Identifiers</a>

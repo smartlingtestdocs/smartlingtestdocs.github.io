@@ -47,31 +47,23 @@ html {
 .buckets li {
   display: inline-block;
   background: #f9f9f9;
-  border: #ccc;
   padding: 15px;
-  border-radius: 5px;
-  border: 1px solid #eee;
   text-align: center;
-  width: 30%;
-  margin: 0px 10px 15px 0;
-  font-weight: 100;
+  width: calc(32.3% - 15px);
+  margin: 15px 0px 0px 15px;
+  cursor: pointer;
+}
+.buckets li a {
+  text-decoration: none;
+  color: #333;
 }
 .buckets li i.fa {
   display: block;
   margin-bottom: 15px;
 }
-.sidebar {
-  width: 300px;
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  text-align: left;
-}
 .content {
   position: relative;
-  margin-left: 285px;
-  padding: 50px 50px;
+  margin-left: 300px;
 }
 @media (max-width: 767px) {
   .content {
