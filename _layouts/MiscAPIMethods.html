@@ -3,14 +3,12 @@ layout: default
 ---
 
 <div class="page">
-    <h1 class="page-title">{{ page.title }}</h1>
-
-    {{ content }}
-    {% for FAPIMethod in site.data.FAPIMethods %}
+    
+    {% assign FAPIMethods = site.data.MiscAPIMethods %}
+    {% for FAPIMethod in FAPIMethods %}
         {% if FAPIMethod.Method == page.method %}
-            {{FAPIMethod.Intro}}
-        {% endif %}
-    {% endfor %}
+          <h2 id="{{FAPIMethod.Method}}">{{FAPIMethod.Method}} ({{FAPIMethod.Url}})</h2>
+           <p>{{FAPIMethod.Intro}}</p>
     <br/>
     <div class="panel panel-default">
         <div class="panel-heading">Parameters</div>
@@ -30,5 +28,7 @@ layout: default
             {% include FAPICodeExamples.html %}
         </div>
     </div>
+        {% endif %} 
+    {% endfor %}
 
 </div>

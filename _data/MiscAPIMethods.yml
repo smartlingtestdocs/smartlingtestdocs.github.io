@@ -1,0 +1,66 @@
+  - Method: LastModified
+    Url: file/last_modified
+    Type : GET
+    CurlGist: 
+    RubyGist: 4c127a346228bb1f5486
+    PHPGist:  ce8e0a459fe5b84246b1
+    JavaGist: c2fd4fcf80cbb732ad9e
+    CsharpGist: 65171fd5f647f772fb87
+    PythonGist: 65171fd5f647f772fb87
+    Parameters:
+        - Name: fileUri
+          Required: required
+          Description: 'Current value that uniquely identifies the file.'
+
+        - Name: newfileUri
+          Required: required
+          Description: 'The new value for fileUri. We recommend that you use file path + file name, similar to how version control systems identify the file. Example: /myproject/i18n/ui.properties. This must be a fileUri that does not exist in the Smartling database.'
+    Return:
+        String: 
+        Json: '{<br/>&nbsp;&nbsp;&nbsp;&nbsp;"items" : [{<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"locale": "fr-FR",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"lastModified": "YYYY-MM-DDThh:mm:ss"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ ... }]<br/>}'
+        Parameters:
+
+          - Name: items
+            Description: Array of locale and lastModified dates.
+
+          - Name: locale
+            Description: Smartling locale identifier
+
+          - Name: lastModified
+            Description: 'The time and date the file was last modifed - YYYY-MM-DDThh:mm:ss.'
+
+  - Method: 'GlossaryExportAPI'
+    Url: 'glossary/download'
+    Type : 'GET'
+    CurlGist: ba693af0413fe03cf6aa
+    Intro: '<p>The glossary export API allows you to export your Smartling glossary to a file.</p><p>All URLs have the following base: https://api.smartling.com/v1, and all of the following calls require both the apiKey and projectId parameter which can be found in the <a href="https://dashboard.smartling.com/settings/api">Dashboard</a>.</p><p><strong>Note:</strong>Smartling''s CSV file format is very close to Google''s <a href="https://support.google.com/translate/toolkit/answer/147854?hl=en">custom glossary format</a> and contains the following columns:</p><pre><code>term, part_of_speech, description, do_not_translate</code></pre><p>plus two columsn for each locale - the first for the translation and the second for comments:</p><pre><code>ru-RU, ru-RU-comment</code></pre>'
+    Parameters:
+        - Name: exportType
+          Required: optional
+          Description: 'The export file type: <strong>CSV</strong> (default) OR <strong>TBX</strong>'
+
+        - Name: locales
+          Required: optional
+          Description: '<p>The smartling identifier for each glossary locale (eg. es-ES).</p><p>This parameter can be set multiple times to download multiple locales. For example:</p><pre><code>locales={desired-locale1}&locales={desired-locale2}</code></pre><p>If the locales parameter is not set, Smartling exports translations for all locales assigned to a project.</p><p>A complete list of locale identifiers for your project can be found in the dashboard at <a href="https://dashboard.smartling.com/settings/api">SETTINGS > API</a></p>'
+
+    Return:
+      String: '<p>A glossary file with the following response header:</p><p>Content-Disposition: attachment; filename="glossaryname.ext"</p><p>Character encoding is UTF-8</p>'
+
+  - Method: 'HTMLContext'
+    Url: 'glossary/download'
+    Type : 'GET'
+    CurlGist: ba693af0413fe03cf6aa
+    Intro: '<p>The glossary export API allows you to export your Smartling glossary to a file.</p><p>All URLs have the following base: https://api.smartling.com/v1, and all of the following calls require both the apiKey and projectId parameter which can be found in the <a href="https://dashboard.smartling.com/settings/api">Dashboard</a>.</p><p><strong>Note:</strong>Smartling''s CSV file format is very close to Google''s <a href="https://support.google.com/translate/toolkit/answer/147854?hl=en">custom glossary format</a> and contains the following columns:</p><pre><code>term, part_of_speech, description, do_not_translate</code></pre><p>plus two columsn for each locale - the first for the translation and the second for comments:</p><pre><code>ru-RU, ru-RU-comment</code></pre>'
+    Parameters:
+        - Name: exportType
+          Required: optional
+          Description: 'The export file type: <strong>CSV</strong> (default) OR <strong>TBX</strong>'
+
+        - Name: locales
+          Required: optional
+          Description: '<p>The smartling identifier for each glossary locale (eg. es-ES).</p><p>This parameter can be set multiple times to download multiple locales. For example:</p><pre><code>locales={desired-locale1}&locales={desired-locale2}</code></pre><p>If the locales parameter is not set, Smartling exports translations for all locales assigned to a project.</p><p>A complete list of locale identifiers for your project can be found in the dashboard at <a href="https://dashboard.smartling.com/settings/api">SETTINGS > API</a></p>'
+
+    Return:
+      String: '<p>A glossary file with the following response header:</p><p>Content-Disposition: attachment; filename="glossaryname.ext"</p><p>Character encoding is UTF-8</p>'
+
+

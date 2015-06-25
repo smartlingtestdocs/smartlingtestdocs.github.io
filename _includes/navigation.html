@@ -1,8 +1,5 @@
 
-
-
 <div class="main-nav" id="main-nav">
-{% assign items = site.pages | sort:"weight"  %}
 <ul class="nav" id="myScrollspy">
         <li><a href="/"><i class="fa fa-home"></i> Home</a></li>
         <li class="{% if page.url contains "/pages/API" %}shown{% endif %}"><a href="/pages/API"><i class="fa fa-cogs"></i> API</a>
@@ -19,11 +16,9 @@
                 <li class="">
                     <a href="/pages/API/FileAPI" class="title">File API</a>
                     <ul class="nav">
-                    {% for item in items %}
-                    {% if item.url contains "/pages/API/FileAPI" and item.url != "/pages/API/FileAPI/index.html"%}
-                    <li class="leaf {% if page.url contains "/pages/API/FileAPI" %}show-3{% else %}hide-3{% endif %}"><a href="{{item.url}}">{{item.title}}</a></li>
-                    {% endif %}
-                    {% endfor %}
+                         {% for FAPIMethod in site.data.FAPIMethods %}
+                            <li><a href="/pages/API/FileAPI/#{{FAPIMethod.Method}}">{{FAPIMethod.Method}} ({{FAPIMethod.Type}})</a></li>
+                        {% endfor %}
                     </ul>
                 </li>
             </ul>

@@ -1,7 +1,6 @@
 <link rel="stylesheet" href="{{site.baseurl}}public/css/FAPIMethods.css">
 
-{% for FAPIMethod in site.data.FAPIMethods %} 
-    {% if FAPIMethod.Method == {{page.method}}" %}
+
         {% if FAPIMethod.Return.String %}
         <p>{{FAPIMethod.Return.String}}</p>
         {% endif %}
@@ -26,5 +25,3 @@
                     </div>
                 {% endfor %}
             {% endif %}
-    {% endif %}
-{% endfor %}

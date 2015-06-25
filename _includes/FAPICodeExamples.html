@@ -1,16 +1,11 @@
 <link rel="stylesheet" href="{{site.baseurl}}public/css/FAPICodeExamples.css">
 
-{% for FAPIMethod in site.data.FAPIMethods %}
-{% if FAPIMethod.Method == page.method %}
 {% assign CurlGist = FAPIMethod.CurlGist %}
 {% assign RubyGist = FAPIMethod.RubyGist %}
 {% assign PHPGist = FAPIMethod.PHPGist %}
 {% assign JavaGist = FAPIMethod.JavaGist %}
 {% assign CsharpGist = FAPIMethod.CsharpGist %}
 {% assign PythonGist = FAPIMethod.PythonGist %}
-{% endif %}
-{% endfor %}
-
 
 <div class="tabpanel code-sample">
 

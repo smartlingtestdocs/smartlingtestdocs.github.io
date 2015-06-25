@@ -1,5 +1,5 @@
 ---
-layout: FAPIMethods
+layout: MiscAPIMethods
 title:  Upload Files
 method: UploadFile
 ---
