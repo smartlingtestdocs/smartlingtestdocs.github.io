@@ -189,8 +189,8 @@
 
  - file_type: 'MadCap Lingo ZIP packages'
    template: 'standard'
-   extension: ''
-   smartling_identifier: ''
+   extension: '.zip'
+   smartling_identifier: 'madcap'
    download_sample: 'madcap.zip'
    resource_info: '<a href="http://www.madcapsoftware.com/products/lingo/">Madcap Lingo software</a>'
    keys_variants: 
