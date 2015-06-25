@@ -3,4 +3,109 @@ layout: page
 title:  Getting Started
 ---
 
-
+<p>
+    The Smartling Translation API provides file translation management for tasks that you can also accomplish using the Smartling dashboard. By helping to
+    connect your application directly to Smartling's platform, the API makes it easier for you to access translations for a large number of files within a
+    complex deployment environment. The Smartling Translation API is not a real-time translation service (like Google Translate) and given that humans need to
+    complete the translations, there will be a delay as translators complete the work.
+</p>
+<p>
+    <strong>To get started with the Smartling Translation API:</strong>
+</p>
+<ol>
+    <li>
+        Setup an account with Smartling, from: <a href="http://www.smartling.com/free-trial" rel="nofollow">http://www.smartling.com/free-trial</a>
+    </li>
+    <li>
+        Obtain an API key within your Smartling dashboard:
+        <a href="https://dashboard.smartling.com/settings/api" rel="nofollow">
+            https://dashboard.smartling.com/settings/api
+            <br/>
+            <img src="settings_api.jpg"/>
+            <br/>
+        </a>
+    </li>
+    <li>
+        Use the Smartling <a href="/pages/SDKs/" rel="nofollow">SDKs</a> to integrate translation of your resource files into
+your development process by uploading modified resource files and downloading the latest during a release. Alternatively, you can use        <a href="pages/Repository-Connector/" rel="nofollow">Smartling's Repository Connector</a> to integrate directly with
+        your Github or Beanstalk repository, or use our <a href="pages/Shell-Scripts" rel="nofollow">Bash scripts</a> to
+        call the API directly from the terminal.
+        <br/>
+        At Smartling, on every commit we upload our Java properties files to the Smartling API and the translation workflow. During a release, our continuous
+        deployment script retrieves and includes the translated files in the deployment artifact.
+    </li>
+    <li>
+        Update your application code to recognize language-specific properties files, and add a language selector to your site.
+    </li>
+</ol>
+<h4 id="GettingStarted-BestPracticesforWorkingwiththeSmartlingTranslationAPI">
+    Best Practices for Working with the Smartling Translation API
+</h4>
+<p>
+    Here are some examples of how to work with the Smartling API to upload and download files in the Smartling Translation Management System (TMS).
+</p>
+<p>
+    <strong>Uploading localization files to the Smartling TMS</strong>
+</p>
+<p>
+    Example 1
+</p>
+<ul>
+    <li>
+        Every time you check-in a localization file to your code repository, trigger a script to upload the file to the Smartling TMS via the API.
+        <br/>
+        This approach makes the strings immediately available for translation. (You also have the option to manually approve this content for translation.)
+        Even if the source content changes, Smartling immediately collects those changes, and the Smartling Translation Memory ensures that the new content
+        leverages existing translations.
+    </li>
+</ul>
+<p>
+    Example 2
+</p>
+<ul>
+    <li>
+        Write a script that you can run when deploying content to a staging server or through another dedicated build process that finds every localization
+        file in your code repository and uploads them to the Smartling TMS via the API.
+        <br/>
+        This approach avoids translating non-final content but may slow the translation process as the content needs to be final before starting translations.
+    </li>
+</ul>
+<p>
+    <strong>Downloading Localization Files from the TMS</strong>
+</p>
+<p>
+    Example 1
+</p>
+<ul>
+    <li>
+        Use the Smartling API <a href="pages/API/Upload-File/">callbackUrl</a> parameter to
+        have Smartling automatically notify you when all text strings in a localization file are 100% translated and published. You can also automate the
+        downloading of the completed file for testing, deployment or other actions.
+        <br/>
+        This approach makes translations available immediately upon completion.
+    </li>
+</ul>
+<p>
+    Example 2
+</p>
+<ul>
+    <li>
+        Run a script that calls the <a href="pages/API/List/" rel="nofollow">file/list</a> API and
+        returns the set of files (and their completeness) for a project. The script then reviews each file in the returned list and each locale in the project
+        to download all files to your code repository.
+        <br/>
+        This approach makes completed translations available according to a scheduled or manual trigger and provides more control in the process for projects
+        that involve significant web site changes or critical content.
+    </li>
+</ul>
+<p>
+    Example 3
+</p>
+<ul>
+    <li>
+        Write a script to download the latest translations with each deployment of your code regardless of the state of the translations.
+        <br/>
+        This approach works well if you use continuous deployment and can live with original content appearing on your translated sites until translations are
+        complete and deployed.
+    </li>
+</ul>
