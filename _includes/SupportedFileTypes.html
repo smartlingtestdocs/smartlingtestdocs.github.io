@@ -1,4 +1,5 @@
-<section id="{{SupportedFileType.smartling_identifier}}">
+<section>
+    <a class="anchor" id="{{SupportedFileType.smartling_identifier}}"></a>
     <h2>{{SupportedFileType.file_type}}</h2>
     <table class="table">
         <tr>
@@ -31,9 +32,9 @@
     <p>{{SupportedFileType.string_instructions}}</p>
     {% endif %}
 
-    {% if SupportedFileType.declare_paths %}
-    <h4>Declaring Paths</h4>
-    <p>{{SupportedFileType.declare_paths}}</p>
+    {% if SupportedFileType.specify_paths %}
+    <h4>Specifying Paths</h4>
+    <p>{{SupportedFileType.specify_paths}}</p>
     {% endif %} 
 
     {% if SupportedFileType.other %}
@@ -93,10 +94,12 @@
                                         </div>
                                         <p class="small">{{Example.Description}}</p>
                                     {% else %}
+                                        {% unless FileDirective.Paths ==  'yes'%}
                                         <div>
                                             <pre><code>{% unless Example.Block == 'yes' %}{{SupportedFileType.directive_prefix}}{% endunless %}{{Example.Code}}{% unless Example.Block == 'yes' %}{{SupportedFileType.directive_suffix}}{% endunless %}</code></pre>
                                         </div>
                                         <p class="small">{{Example.Description}}</p>
+                                        {% endunless %}
                                     {% endif %}         
                                 {% endfor %}
 
@@ -108,12 +111,31 @@
                                         </div>
                                         <p class="small">{{Example.Description}}</p>
                                     {% else %}
+                                        {% unless FileDirective.Paths ==  'yes'%}
                                         <div>
                                             <pre><code>{% unless Example.Block == 'yes' %}{{SupportedFileType.directive_prefix}}{% endunless %}{{Example.Code}}{% unless Example.Block == 'yes' %}{{SupportedFileType.directive_suffix}}{% endunless %}</code></pre>
                                         </div>
                                         <p class="small">{{Example.Description}}</p>
+                                        {% endunless %}
                                     {% endif %}         
                                 {% endfor %}
+
+                            {% when 'yaml' %}
+                                {% for Example in FileDirective.Examples %}
+                                    {% if Example.CodeYAML %}
+                                        <div>
+                                            <pre><code>{% unless Example.Block == 'yes' %}{{SupportedFileType.directive_prefix}}{% endunless %}{{Example.CodeYAML}}{% unless Example.Block == 'yes' %}{{SupportedFileType.directive_suffix}}{% endunless %}</code></pre>
+                                        </div>
+                                        <p class="small">{{Example.Description}}</p>
+                                    {% else %}
+                                        {% unless FileDirective.Paths ==  'yes'%}
+                                        <div>
+                                            <pre><code>{% unless Example.Block == 'yes' %}{{SupportedFileType.directive_prefix}}{% endunless %}{{Example.Code}}{% unless Example.Block == 'yes' %}{{SupportedFileType.directive_suffix}}{% endunless %}</code></pre>
+                                        </div>
+                                        <p class="small">{{Example.Description}}</p>
+                                        {% endunless %}
+                                    {% endif %}         
+                                {% endfor %}                            
                                
                             {% else %}                       
                                 {% for Example in FileDirective.Examples %}

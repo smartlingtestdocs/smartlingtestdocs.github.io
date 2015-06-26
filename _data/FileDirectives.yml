@@ -23,43 +23,47 @@
           Description: 'Turns off <code>MESSAGE_FORMAT</code> string handling below the directive'
 
   - Directive:      'string_format_paths'
+    Paths: 'yes'
     Values:         'The value of this directive is expressed as <code>[format]:[paths]</code>'
-    Description:    '<p>Specifies the format of strings for the specified paths and can enable HTML inside another file format.</p><p>Currently supported formats are:</p><ul><li><code>HTML</code> - string value will be parsed as HTML</li><li><code>@default</code> - (note the leading at-sign) string value will be treated as simple text.</li></ul><p>Separate multiple formats by commas</p> <p>You may specify a single path for a format or a comma-separated list of paths enclosed in square brackets. The list may be empty.</p> <p>A path is a slash-separated string which uses Xpath-like syntax (but it''s not Xpath.). The nodes separator is always / (slash), regardless of file format.</p> <p>Wildcards are allowed in path definitions.</p> <ul><li>If no wildcards, then the path identifies a single node and all its children ("exact subpath").</li><li>If wildcards, then a path identifies a set of nodes and all their children ("path pattern"). Currently, only * (asterisk) wildcard is implemented, which means "one or more nodes with any names".</li><li>Exact subpaths have precedence over path patterns.</li></ul> <p>For example, in the following instruction:</p> <pre>smartling.string_format_paths = html: [*/text, */string], @default: /system/log/text</pre> <p>Smartling processes these paths as follows:</p> <ul> <li><code>/description/text</code> — Processed as HTML (matches <code>*/text</code> pattern)</li> <li><code>/description/text/general</code> — HTML (its parent, <code>/description/text</code>, matches <code>*/text</code> pattern)</li> <li><code>/description/general/text</code> — HTML (matches <code>*/text</code> pattern directly).</li> <li><code>/system/log/text</code> — TEXT (matches both <code>/system/log/text</code> exact path and <code>*/text</code> pattern; exact path wins)</li> <li><code>/system/log/text/details</code> — TEXT (its parent, <code>/system/log/text</code>, matches both exact path and pattern; exact path wins)</li> </ul>'
+    Description:    '<p>Specifies the format of strings for the specified paths and can enable HTML inside another file format.</p><p>Currently supported formats are:</p><ul><li><code>HTML</code> - string value will be parsed as HTML</li><li><code>@default</code> - (note the leading at-sign) string value will be treated as simple text.</li></ul><p>Separate multiple formats by commas</p> <p>You may specify a single path for a format or a comma-separated list of paths enclosed in square brackets. The list may be empty.</p>'
+
+# This is a path-specifying directive, so no generic code blocks. Specify CodeYAML, CodeJSON, CodeXML, CodeCSV.
+
     Examples:
-        - Code: 'smartling.string_format_paths = html: *'
+        - CodeYAML: 'smartling.string_format_paths = html: *'
           CodeJSON: '"string_format_paths" : "html: *"'
+          CodeXML: 'smartling.string_format_paths = html: *'
           Description: 'Smartling parses values of all nodes as HTML.'
 
-        - Code: 'smartling.string_format_paths = html: */text'
-          CodeJSON: ''
+        - CodeCSV: 'smartling.string_format_paths=html:*'
+          Description: 'Smartling parses values of all columns as HTML.'
+
+        - CodeYAML: 'smartling.string_format_paths = html: */text'
+          CodeJSON: '"string_format_paths" : "html: */text"'
+          CodeXML: 'smartling.string_format_paths = html: */text'
           Description: 'Smartling enables HTML in <code>text</code> nodes (and their subnodes), regardless of their parents.'
 
-        - Code: 'smartling.string_format_paths = html: [*/text, */string]'
-          CodeJSON: ''
+        - CodeYAML: 'smartling.string_format_paths = html: [*/text, */string]'
+          CodeJSON: '"string_format_paths" : "html: [*/text, *string]"'
+          CodeXML: 'smartling.string_format_paths = html: [*/text, */string]'
           Description: 'Smartling enables HTML in <code>text</code> and <code>string</code> nodes (and their subnodes), regardless of their parents'
 
-        - Code: 'smartling.string_format_paths = html: */text, html: */string'
-          CodeJSON: ''
-          Description: 'Another way to enable HTML in <code>text</code> and <code>string</code> nodes (and subnodes).'
-
-        - Code: 'smartling.string_format_paths = html: */text, @default: /system/log/text'
-          CodeJSON: ''
-          Description: 'Smartling enables HTML in <code>text</code> nodes (and subnodes), but disables HTML in <code>/system/log/text</code> (and subnodes)'
-
-        - Code: 'smartling.string_format_paths = html: /product/description'
-          CodeJSON: ''
+        - CodeYAML: 'smartling.string_format_paths = html: /product/description'
+          CodeJSON: '"string_format_paths" : "html: /product/description"'
+          CodeXML: 'smartling.string_format_paths = html: /product/description'
           Description: 'Smartling enables HTML in /product/description and subnodes'
 
-        - Code: 'smartling.string_format_paths = html: /product/descriptions/*'
-          CodeJSON: ''
+        - CodeYAML: 'smartling.string_format_paths = html: */text, @default: /system/log/text'
+          CodeJSON: '"string_format_paths" : "html: */text, @default: /system/log/text"'
+          CodeXML: 'smartling.string_format_paths = html: */text, @default: /system/log/text'
+          Description: 'Smartling enables HTML in <code>text</code> nodes (and subnodes), but disables HTML in <code>/system/log/text</code> (and subnodes), as the exact match overrides the pattern match.'
+
+        - CodeXML: 'smartling.string_format_paths = html: /product/description/*'
           Description: 'Smartling enables HTML in all subnodes of /product/descriptions, but not in this node itself.'
 
-        - Code: 'smartling.string_format_paths = html: [*/translation, */text], @default: [/strings/12345/translation, /string/67890/text]'
-          CodeJSON: ''
-          Description: 'Another example of Smartling enabling HTML in all subnodes but not the not the two nodes.'
-
-        - Code: 'smartling.string_format_paths ='
-          CodeJSON: ''
+        - CodeYAML: 'smartling.string_format_paths ='
+          CodeJSON: '"string_format_paths" : ""'
+          CodeXML: 'smartling.string_format_paths ='
           Description: 'Disables the effect of the previous string_format_paths instruction.'
 
   - Directive:      'translate_paths'

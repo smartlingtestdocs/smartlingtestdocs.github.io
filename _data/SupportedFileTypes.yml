@@ -171,7 +171,7 @@
       - variants_enabled
       - string_format_paths
 
- - file_type: 'QT Linguists'
+ - file_type: 'QT Linguist'
    template: 'standard'
    extension: '.ts'
    smartling_identifier: 'qt'
