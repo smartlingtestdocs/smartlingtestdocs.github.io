@@ -29,6 +29,11 @@
     <p>{{SupportedFileType.string_instructions}}</p>
     {% endif %}
 
+    {% if SupportedFileType.declare_paths %}
+    <h4>Declaring Paths</h4>
+    <p>{{SupportedFileType.declare_paths}}</p>
+    {% endif %} 
+
     {% if SupportedFileType.other %}
     <h4>Other Information</h4>
     <p>{{SupportedFileType.other}}</p>
