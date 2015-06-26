@@ -63,18 +63,18 @@
           Description: 'Smartling will tranlate content in any path ending in <code>translation</code>, such as <code>string/translation</code>, <code>nav/translation</code>, etc.'
 
         - CodeXML: 'smartling.translate_paths = data/localize/string, data/localize.title, data/localize/root/'
+          Code: 'testcode'
           Description: 'Smartling will translate content in the data/localize/string & data/localize/root nodes. The <code>title</code> attribute of the data/localize node will also be translated.'
+
 
   - Directive:      'sltrans'
     Values:         '<code>translate</code> OR <code>notranslate</code>'
     Description:    'Use this directive to enable or disable processing of translation strings in the file. You must turn translation back on after the strings you want to exclude.'
     Examples:
         - Code: 'smartling.sltrans = notranslate'
-          CodeJSON:
           Description: 'Strings below this directive will be captured as strings but excluded from translation'
 
         - Code: 'smartling.sltrans = translate'
-          CodeJSON:
           Description: 'Strings below this directive will be translated'
 
   - Directive:      'source_key_paths'
@@ -82,7 +82,6 @@
     Description:    '<p>Used to define the schema for capturing a key for each source string. Keys are required:</p><ul><li>If you want to import pre-existing translations from a file with the same structure</li><li>If you want to create variants of strings that would otherwise be duplicates (By default Smartling does not create duplicate strings.) <strong>Note:</strong> creating or updating variants for previously uploaded strings cause new strings to be created that will not have translations. The SmartMatch feature can be configured to automatically apply the existing translations, or translators can use the 100% match from the Translation to manually apply the translation.</li><p>Specify the full path to the value, then indicate which part of the path should be used as the key using {} notation. {*} will use any key present in that part of the path (or can be used when no translate_paths has been specified to simply capture the key for each string).</p>'
     Examples:
         - Code: 'smartling.source_key_paths = {*}'
-          CodeJSON:
           Description: 'Smartling will capture the full path of keys leading to each translatable string as Key metadata'
 
         - Code: 'smartling.source_key_paths = data/item/{string_name}'
