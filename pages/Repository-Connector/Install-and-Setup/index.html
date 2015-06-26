@@ -7,38 +7,40 @@ title:  Repository Connector - Install and Configure the Repository Connector
     There are three basic steps to set up the Repository Connector:
 </p>
 <p>
-    1)
-    <a
-        href="https://docs.smartling.com/display/docs/Repository+Connector+-+Install+and+Configure+the+Connector#RepositoryConnector-InstallandConfiguretheConnector-Install"
-    >
+
+    <ol class="text-list">
+
+    <li>
+    <a href="https://docs.smartling.com/display/docs/Repository+Connector+-+Install+and+Configure+the+Connector#RepositoryConnector-InstallandConfiguretheConnector-Install">
         Install the connector on any server with Java 7 or higher installed.
     </a>
-    <br/>
-    2)
-    <a
-        href="https://docs.smartling.com/display/docs/Repository+Connector+-+Install+and+Configure+the+Connector#RepositoryConnector-InstallandConfiguretheConnector-Modify"
-    >
+    </li>
+
+    <li>
+    <a href="https://docs.smartling.com/display/docs/Repository+Connector+-+Install+and+Configure+the+Connector#RepositoryConnector-InstallandConfiguretheConnector-Modify">
         Modify the service configuration file to indicate the repositories you want to integrate with.
     </a>
-    <br/>
-    3)
-    <a
-        href="https://docs.smartling.com/display/docs/Repository+Connector+-+Install+and+Configure+the+Connector#RepositoryConnector-InstallandConfiguretheConnector-Start"
-    >
+    </li>
+
+    <li>
+    <a href="https://docs.smartling.com/display/docs/Repository+Connector+-+Install+and+Configure+the+Connector#RepositoryConnector-InstallandConfiguretheConnector-Start">
         Start the Repository Connector application and monitor it.
     </a>
+    </li>
+    </ol>
+
 </p>
+
+<h4>Install the connector</h4>
+
 <p>
-    <strong>Install the connector</strong>
-</p>
-<p>
-Download the    <a href="https://smartling-connector-public.s3.amazonaws.com/repo_connector/repo-connector-1.2.1-bin.zip" rel="nofollow">Repository Connector package</a>
+Download the <a href="https://smartling-connector-public.s3.amazonaws.com/repo_connector/repo-connector-1.2.1-bin.zip" rel="nofollow">Repository Connector package</a>
     and unpack it into the desired folder. The application should be hosted on a server that is continuously available and publicly addressable, with Java
     version 7 or higher.
 </p>
-<p>
-    <strong>Modify service Configuration File</strong>
-</p>
+
+<h4>Modify service Configuration File</h4>
+
 <p>
     By default, the <strong>repo-connector.conf</strong> file is located in [repository connector directory]/cfg and defines the necessary parameters for the
     Repository Connector to access your repositories and listen for callbacks. At a minimum, you must define a URL, access credentials and a related Smartling
@@ -58,9 +60,8 @@ Download the    <a href="https://smartling-connector-public.s3.amazonaws.com/rep
 <p>
     <a href="https://docs.smartling.com/download/attachments/8126564/repo-connector.conf?version=2&amp;modificationDate=1429217078000">repo-connector.conf</a>
 </p>
-<p>
-    <strong>Example:</strong>
-</p>
+<h5>Example:</h5>
+
 <pre><code>{
  "repositories": [
    {
@@ -206,9 +207,9 @@ Download the    <a href="https://smartling-connector-public.s3.amazonaws.com/rep
         </li>
     </ul>
 </ul>
-<p>
-    <strong>Start the Repository Connector Application</strong>
-</p>
+
+<h4>Start the Repository Connector Application</h4>
+
 <p>
     To start the Repository Connector, execute:
 </p>
