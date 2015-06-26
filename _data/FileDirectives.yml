@@ -113,8 +113,7 @@
     Description:    '<p>When enabled, Smartling will make strings unique using variant metadata. Must be used in conjunction with the code>source_key_paths</code> directive, which provides the information needed to generate variant metadata.</p><p><strong>Note:</strong> if you have previously uploaded a file with variants turned off, and reupload the file with variants on, Smartling will capture all content as new strings. You can configure <a href="http://support.smartling.com/hc/en-us/articles/201848233">Smartmatch</a> to automatically match the existing translations.'
     Examples:
         - CodeXML: 'smartling.variants_enabled = TRUE'
-
-        - CodeJSON: '"variants_enabled" : "TRUE"'
+          CodeJSON: '"variants_enabled" : "TRUE"'
 
   - Directive:      'instruction_comments_enabled'
     Values:         '<code>true</code> OR <code>false</code>'
