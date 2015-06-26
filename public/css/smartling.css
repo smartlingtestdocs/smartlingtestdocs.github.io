@@ -4,8 +4,28 @@ body {
 .code-sample .tab-pane {
   padding-top: 20px;
 }
+.buckets {
+  padding: 0;
+}
+.buckets li {
+  display: inline-block;
+  background: #f9f9f9;
+  padding: 15px;
+  text-align: center;
+  width: calc(32.3% - 15px);
+  margin: 15px 0px 0px 15px;
+  cursor: pointer;
+}
+.buckets li a {
+  text-decoration: none;
+  color: #333;
+}
+.buckets li i.fa {
+  display: block;
+  margin-bottom: 15px;
+}
 .homeBanner {
-  background: darkblue;
+  background: #657D89;
   padding: 15px;
   position: fixed;
   z-index: 100;
@@ -23,6 +43,25 @@ body {
   position: absolute;
   right: 20px;
   top: 26px;
+}
+.intro {
+  margin-top: 74px;
+  padding: 30px;
+  text-align: center;
+  color: #fff;
+  text-shadow: 1px 1px 2px #969696;
+  position: relative;
+}
+.intro::after {
+  content: "";
+  background-image: url(http://images.wisegeek.com/metal-gears.jpg);
+  opacity: 0.75;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
 }
 /*   */
 .main-nav {
