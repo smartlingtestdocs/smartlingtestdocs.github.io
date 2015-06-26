@@ -126,7 +126,7 @@ body {
   color: #ddd;
   text-align: center;
   width: 100%;
-  font-size: .8rem;
+  font-size: 10px;
 }
 pre {
   border: none;
@@ -141,8 +141,10 @@ pre {
 .page p {
   margin-bottom: 30px;
 }
-.page ul.text-list li,
-.page ol.text-list li {
+.page .text-list {
+  margin-bottom: 30px;
+}
+.page .text-list li {
   padding-left: 15px;
   margin: 0 0 10px 0;
 }
