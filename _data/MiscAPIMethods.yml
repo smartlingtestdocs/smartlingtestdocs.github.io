@@ -1,33 +1,4 @@
-  - Method: LastModified
-    Url: file/last_modified
-    Type : GET
-    CurlGist: 
-    RubyGist: 4c127a346228bb1f5486
-    PHPGist:  ce8e0a459fe5b84246b1
-    JavaGist: c2fd4fcf80cbb732ad9e
-    CsharpGist: 65171fd5f647f772fb87
-    PythonGist: 65171fd5f647f772fb87
-    Parameters:
-        - Name: fileUri
-          Required: required
-          Description: 'Current value that uniquely identifies the file.'
 
-        - Name: newfileUri
-          Required: required
-          Description: 'The new value for fileUri. We recommend that you use file path + file name, similar to how version control systems identify the file. Example: /myproject/i18n/ui.properties. This must be a fileUri that does not exist in the Smartling database.'
-    Return:
-        String: 
-        Json: '{<br/>&nbsp;&nbsp;&nbsp;&nbsp;"items" : [{<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"locale": "fr-FR",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"lastModified": "YYYY-MM-DDThh:mm:ss"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ ... }]<br/>}'
-        Parameters:
-
-          - Name: items
-            Description: Array of locale and lastModified dates.
-
-          - Name: locale
-            Description: Smartling locale identifier
-
-          - Name: lastModified
-            Description: 'The time and date the file was last modifed - YYYY-MM-DDThh:mm:ss.'
 
   - Method: 'GlossaryExportAPI'
     Url: 'glossary/download'
@@ -46,21 +17,193 @@
     Return:
       String: '<p>A glossary file with the following response header:</p><p>Content-Disposition: attachment; filename="glossaryname.ext"</p><p>Character encoding is UTF-8</p>'
 
-  - Method: 'HTMLContext'
-    Url: 'glossary/download'
-    Type : 'GET'
-    CurlGist: ba693af0413fe03cf6aa
-    Intro: '<p>The glossary export API allows you to export your Smartling glossary to a file.</p><p>All URLs have the following base: https://api.smartling.com/v1, and all of the following calls require both the apiKey and projectId parameter which can be found in the <a href="https://dashboard.smartling.com/settings/api">Dashboard</a>.</p><p><strong>Note:</strong>Smartling''s CSV file format is very close to Google''s <a href="https://support.google.com/translate/toolkit/answer/147854?hl=en">custom glossary format</a> and contains the following columns:</p><pre><code>term, part_of_speech, description, do_not_translate</code></pre><p>plus two columsn for each locale - the first for the translation and the second for comments:</p><pre><code>ru-RU, ru-RU-comment</code></pre>'
+  - Method: 'HTMLContextUpload'
+    Url: '/context/html?action=upload'
+    Type : 'POST'
+    CurlGist: a455f14866c262c22d23
+    Intro: '<p>Uploads an HTML payload to be analyzed for use as context for strings in the same project.</p>'
     Parameters:
-        - Name: exportType
-          Required: optional
-          Description: 'The export file type: <strong>CSV</strong> (default) OR <strong>TBX</strong>'
+        - Name: action
+          Required: required
+          Description: 'The only allowed value is <code>upload</code>'
 
-        - Name: locales
+        - Name: html
+          Required: required
+          Description: '<p>The HTML formatted content that includes strings you want to contextualize. The HTML can be a fragment, inlined HTML, or the HTML as it appears on your site. If there are any external resources referenced, Smartling inlines them.</p>'
+
+        - Name: url
+          Required: required
+          Description: '<p>The URL that Smartling displays in the dashboard if any content is matched. This URL may already exist in your Smartling project. If providing context for content for a website, using the corresponding site URL is recommended. If you reuse a URL, strings will be grouped by individual contexts, that is you can send separate HTML payloads and re-use the same URL, Smartling will create multiple context groups for that single URL.</p>'
+    Return: 
+        Json: '{<br/>"requestID" : "[number]"<br/>}'
+        Parameters:
+
+          - Name: requestID
+            Description: 'The unique request ID created for each request. Use this ID with the <code>getStats</code> service to obtain statistics on the request. You must save this ID if you want to call </code>getStats</code>, there is no service to list all your uploads.'
+
+  - Method: 'HTMLContextStats'
+    Url: '/context/html?action=getStats'
+    Type : 'GET'
+    CurlGist: 6775d0b9ccf9d6f96b5d
+    Intro: '<p>Provides status and statistics on a specific request.</p>'
+    Parameters:
+        - Name: action
+          Required: required
+          Description: 'The only allowed value is <code>getStats</code>'
+
+        - Name: requestID
+          Required: required
+          Description: '<p>The request ID number returned from a successful upload.</p>'
+
+    Return: 
+        Json: '{<br/>"status" : "[PROCESSED]",<br/>"checkedStringsCount" : "[number]",<br/>"matchedStringsCount" : "[number]",<br/>"updatedStringsCount" : "[number]"<br/>}'
+        Parameters:
+
+          - Name: status
+            Description: '<p>Status of the contextualization request. Possible values returned include: <code>NOT_FOUND</code>, <code>INITIATED</code>, <code>PROCESSING</code>, <code>PROCESSED</code>, <code>FAILED</code>'
+
+          - Name: checkedStringsCount
+            Description: 'The number of strings that were checked during the analysis.'
+
+          - Name: matchedStringsCount
+            Description: 'The number of strings that were matched.'
+
+          - Name: updatedStringsCount 
+            Description: '<p>The number of strings where Smartling updated context resulting from a match.</p><p>This is not always equal to the matchedStringsCount. If a string already has context then it will not be updated unless the override class has been set (see Special HTML classes below). Also, if the same string is found multiple times then only the first occurrence of the string is updated for context.'
+
+  - Method: 'DownloadTranslations'
+    Url: '/translations/download'
+    Type : 'GET'
+    CurlGist: 3b75b135e85ce25811c9
+    Intro: '<p>The Smartling Translations API allows you to download all your Smartling Translations in UTF-8 encoded <a href="http://en.wikipedia.org/wiki/Translation_Memory_eXchange" rel="nofollow">TMX</a> format (<a href="/public/Example-Files/translationmemory.tmx">sample file</a>). This is especially useful for content ingested via the <a href="http://support.smartling.com/entries/20832101-what-is-the-smartling-translation-delivery-network" rel="nofollow"> Smartling Translation Delivery Network </a> (TDN) as this allows you to export your translation memory in a standard format. You can download published translations only, or all approved translations.</p><p> URLs have the following base: <a href="https://api.smartling.com/v1" rel="nofollow">https://api.smartling.com/v1</a></p><p> It is important to check the HTTP response status code. If Smartling finds and returns the file normally, you will receive a 200 SUCCESS response. If you receive any other <a href="https://docs.smartling.com/pages/Getting-Started/Response-Format/">response status code</a> than 200, the requested file will not be part of the response.</p>'
+    Parameters:
+        - Name: projectId
+          Required: required
+          Description: '<p>A unique project identifier found on your Smartling dashboard at: <a href="https://dashboard.smartling.com/settings/api">https://dashboard.smartling.com/settings/api</a></p>'
+
+        - Name: apiKey
+          Required: required
+          Description: '<p>A unique API key found on your Smartling dashboard at: <a href="https://dashboard.smartling.com/settings/api">https://dashboard.smartling.com/settings/api</a></p>'
+
+        - Name: locale
+          Required: required
+          Description: '<p>A locale identifier specified in project setup. If no locale is specified, Smartling returns the original content. You can find the list of locales for your project on the Smartling dashboard at: <a href="https://dashboard.smartling.com/settings/api">https://dashboard.smartling.com/settings/api</a></p>'
+
+        - Name: format
+          Required: required
+          Description: '<p>The format for the desired download. Currently only the value TMX is allowed.</p>'
+
+        - Name: dataSet
           Required: optional
-          Description: '<p>The smartling identifier for each glossary locale (eg. es-ES).</p><p>This parameter can be set multiple times to download multiple locales. For example:</p><pre><code>locales={desired-locale1}&locales={desired-locale2}</code></pre><p>If the locales parameter is not set, Smartling exports translations for all locales assigned to a project.</p><p>A complete list of locale identifiers for your project can be found in the dashboard at <a href="https://dashboard.smartling.com/settings/api">SETTINGS > API</a></p>'
+          Description: '<p>Allowed values:</p><ul><li><code>full</code> (default) indicates that Smartling returns all approved content for the locale, translated or not translated. If the content is not translated, the translation value of the downloaded file is blank.</li><li><code>published</code> indicates that Smartling only returns published content in the downloaded file. </li></ul>'
 
     Return:
-      String: '<p>A glossary file with the following response header:</p><p>Content-Disposition: attachment; filename="glossaryname.ext"</p><p>Character encoding is UTF-8</p>'
+      String: '<p>A translated file with the following response header:<br/><pre>Content-Disposition: attachment; filename="[locale]-[dataSet].tmx"</pre><br/>where <code>locale</code> and <code>dataSet</code> are your specified parameters.</p>'
+
+  - Method: 'ProjectsAPI'
+    Url: '/project/locale/list'
+    Type : 'GET'
+    CurlGist: 
+    Intro: '<p>The Projects API allows you to access data such as language and locale codes that you can use in your own user profiles or dashboards.</p><p>All URLs have the following base: https://api.smartling.com/v1, and all of the following calls require both the apiKey and projectId parameter which you can find within your Smartling project''s dashboard: https://dashboard.smartling.com/settings/api</p>'
+    Parameters:
+        - Name: 
+          Required: none
+          Description: 'No parameters required, but the request must be a signed API request'
+
+    Return:
+        Json: '{<br/>&nbsp;&nbsp;"locales": [<br/>&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"name": "Spanish",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"locale": "es",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"translated": "Español"<br/>&nbsp;&nbsp;&nbsp;&nbsp;},<br/>&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"name": "French",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"locale": "fr-FR",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"translated": "Français"<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;]<br/>}'
+
+        Parameters:
+
+          - Name: locale
+            Description: 'locale identifier'
+
+          - Name: name
+            Description: 'Source locale name'
+
+          - Name: translated
+            Description: 'Localized locale name'
+
+  - Method: 'ResetCache'
+    Url: '/gdn/static_cache/reset'
+    Type : 'GET'
+    CurlGist: bec23c7e90e2ff6af2e6
+    Intro: '<p> If you have <a href="http://support.smartling.com/hc/en-us/articles/202216203" rel="nofollow">Static Cache</a> enabled for your GDN site, you can use Smartling''s API to trigger a refresh. As with all API requests, it requires an API Key and Project ID, available in the dashboard at <a href="https://dashboard.smartling.com/settings/api.htm" rel="nofollow">Project Settings&gt;API</a>.</p>'
+    Parameters:
+        - Name: locale
+          Required: required
+          Description: '<p>The locale code to reset cache for. For example: <code>es-ES</code></p><p>You will find valid locales in your Smartling project''s dashboard: https://dashboard.smartling.com/settings/api</p>'
+
+        - Name: localizedDomain
+          Required: required
+          Description: '<p>The localized domain to reset the cache for. You can find this on the static cache page in the dashboard: https://dashboard.smartling.com/gdn/configuration.htm#static-cache</p>'
+
+        - Name: urlPattern
+          Required: required
+          Description: '<p> Glob-style pattern, used to reset cache for a particular URL or group of URLs. Use "\" to escape special characters. See examples for wildcard rules.</p><p> <strong>Examples:</strong></p><p> <code>*</code> - matches all URLs in the domain</p><p> <code>/articles/*</code> - Matches all URLs under [domain]/articles</p><p> <code>/h?llo</code> - matches "/hello", "/hallo", "/hxllo", etc.</p><p> <code>/h[ae]llo</code> - matches "/hallo" and "/hello" but not "/hxllo"</p>'
+
+    Return: 
+        Json: '{<br/>"status" : "SUCCESS",<br/>"removedUrlsCount" : "[number]"<br/>}'
+        Parameters:
+
+          - Name: status
+            Description: '<p>Operation <code>SUCCESS</code> or <code>FAIL</code>'
+
+          - Name: removedUrlsCount
+            Description: 'Number of resources removed from the cache after reset'
+
+
+  - Method: 'TranslationImport'
+    Url: '/file/import'
+    Type : 'POST'
+    CurlGist: 674d547ee317cc453f01
+    Intro: 
+    Parameters:
+        - Name: fileUri
+          Required: required
+          Description: '<p>The Smartling URI for file that contains the original language strings already uploaded to Smartling.</p>'
+
+        - Name: fileType
+          Required: required
+          Description: '<p>The type of file used for imports. Valid values are: <code>ios</code>, <code>android</code>, <code>gettext</code>, <code>javaProperties</code>, <code>xml</code>, <code>json</code>, <code>yaml</code>, and <code>csv</code>.</p><p>To allow translation imports, XML and JSON files must be uploaded with source_key_paths defined.</p>See details on valid directives for each type supported for importing in <a href="/pages/supported-file-types/">Supported File Types.</a></p>'
+
+        - Name: locale
+          Required: required
+          Description: '<p>The Smartling locale identifier for the language Smartling is importing (see https://dashboard.smartling.com/settings/api for valid locales)</p>'
+
+        - Name: file
+          Required: required
+          Description: 'The file on your local machine that contains the translated content'
+
+        - Name: overwrite
+          Required: optional
+          Description: 'Boolean indicating whether or not to overwrite existing translations.'
+
+        - Name: translationState
+          Required: required
+          Description: '<p>Value indicating the workflow state to import the translations into. Content will be imported into the language''s default workflow.</p><ul><li><code>PUBLISHED</code> - The translated content is published.</li><li><code>POST_TRANSLATION</code> - The translated content is imported into the first step after translation - if there are none, it will be published.</li></ul>'
+
+    Return: 
+        Json: '{"response":{"data":{"wordCount":174,"stringCount":11,"translationImportErrors":[{"stringHashcode":"e0c8e180e33546fb41df2db297e7ee23","contentFileId":18936,"messages":["Mismatched placeholders for original string and translated one"],"importKey":"ios string11"}]},"code":"SUCCESS","messages":[]}}'
+        Parameters:
+
+          - Name: data.wordCount
+            Description: 'Words imported.'
+
+          - Name: data.stringCount
+            Description: 'Strings imported.'
+
+          - Name: translationImportErrors.stringHashcode
+            Description: 'The hashcode of a string affected by the error'
+
+          - Name: translationImportErrors.contentFileID
+            Description: 'The ID of the file affected by an error'
+
+          - Name: translationImportErrors.messages
+            Description: 'Information about an import error'
+
+          - Name: translationImportErrors.importKey
+            Description: 'Key for an imported string affected by the error'
+
 
 

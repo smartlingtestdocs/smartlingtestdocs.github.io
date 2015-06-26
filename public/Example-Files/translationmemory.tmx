@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tmx version="1.4">
+  <header creationtool="Smartling" creationtoolversion="1.0" srclang="en" datatype="xml" segtype="phrase"></header>
+  <body>
+    <tu tuid="16B9C879F4ED019CF47902282C71BC2E">
+      <tuv xml:lang="en"><seg><![CDATA[Download]]></seg></tuv>
+      <tuv xml:lang="cn"><seg><![CDATA[下载]]></seg></tuv>
+    </tu>
+    <tu tuid="1B4BB05F2E93DD93CF09964C41493576">
+      <tuv xml:lang="en"><seg><![CDATA[<b>Email Address</b>]]></seg></tuv>
+      <tuv xml:lang="cn"><seg><![CDATA[<b>电子邮件</b>]]></seg></tuv>
+    </tu>
+  </body>
+</tmx>

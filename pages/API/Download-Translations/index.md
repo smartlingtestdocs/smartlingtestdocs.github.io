@@ -1,7 +1,6 @@
 ---
 layout: MiscAPIMethods
-title:  Glossary Export API
-method: GlossaryExportAPI
+title:  Download Translations
+method: DownloadTranslations
 ---
 
-{% include FileDirectiveTable.html %}
