@@ -141,7 +141,8 @@ pre {
 .page p {
   margin-bottom: 30px;
 }
-.page ul.text-list li {
+.page ul.text-list li,
+.page ol.text-list li {
   padding-left: 15px;
   margin: 0 0 10px 0;
 }
@@ -158,8 +159,15 @@ pre {
   top: -110px;
   display: block;
 }
+.page .contentImage {
+  margin: 20px;
+  border: 1px solid #eee;
+}
 .page h4 {
   color: #000099;
+}
+.page h5 {
+  font-weight: bold;
 }
 .page .table td ul {
   list-style-position: inside;
