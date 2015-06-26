@@ -134,30 +134,83 @@
         - Code: 'smartling.force_inline_for_tags = external_link,reference'
           Description: 'Any <code>&lt;external_link&gt;</code> or <code>&lt;reference&gt;</code> tags will be parsed as inline tags. Smartling will not create separate strings for content in these tags.' 
 
- -  
+  - Directive:      'field_separator'
+    Values:         'String of characters (default is <code>,</code>'
+    Description:    'Defines the sequence of characters that separate values in a record line.'
+    Examples:
+        - CodeCSV: 'smartling.field_separator=,'
+          Description: 'Fields are separated with a <code>,</code> character'
+
+  - Directive:      'string_encloser'
+    Values:         'String of characters (default is <code>"</code>)'
+    Description:    'Defines the sequence of characters that may enclose values. To use the character sequence inside values you should escape it with repeating twice (default is "").'
+    Examples:
+        - CodeCSV: 'smartling.field_separator="'
+          Description: 'Fields are separated with a <code>"</code> character'
+
+  - Directive:      'paths'
+    Values:         '<p>Values of all columns to be ingested as strings.</p><p>For import, all values will be imported for the selected locale.</p>'
+    Description:    '<p>Defines the column numbers with values to be ingested as translatable strings.</p><p>For multilingual translations import it defines association column number with target import locale.</p><p>Format:</p><p>For uploading original file:</p></p>Comma-separated list of column numbers.<br/><code>col#1,col#2</code></p><p>For multi-language imports:</p><p>Comma-separated list of column/locale pairs:<br/><code>col#1/[LocaleID],col#2/[LocaleID]</code></p>'
+    Examples:
+        - CodeCSV: 'smartling.paths=col#2,col#3'
+          Description: 'Specifies that columns 2 and 3 of the uploaded CSV file should be ingested as translatable strings.'
+
+        - CodeCSV: 'smartling.paths=col#2/es-ES,col#3/fr-FR'
+          Description: 'When importing translations, specifies that column 2 contains Spanish-SPAIN translations and column 3 contains French-FRANCE translations.'
+
+  - Directive:      'translation_language_path'
+    Values:         'Column Number - eg <code>Col#4</code>'
+    Description:    '<p>Used for "download multiple languages by row" option. Defines a column to record the language for each row. Output will display a language code for each column, eg. "de", "en", "es", etc.</p><p>This column should exist in the original file as an empty column.</p><p><strong>Note:</strong> if using this directive, you should also use smartling.paths to exclude the language path column from translation. See example below.</p>'
+    Examples:
+        - CodeCSV: 'smartling.translation_language_path = col#4'
+          Description: 'When the translated file is downloaded, column 4 will record the language for each row.'
+
+  - Directive:      'output_original_row'
+    Values:         '<code>true | TRUE</code> or <code>false | FALSE</code>(default)'
+    Description:    'Defines if the original source strings should be included when downloading multiple languages.'
+    Examples:
+        - CodeCSV: 'smartling.output_original_row=TRUE'
 
 
+  - Directive:      'strip_instructions_on_download'
+    Values:         '<code>true | TRUE</code> or <code>false | FALSE</code>(default)'
+    Description:    'Defines whether all Smartling directives in the source file should be removed from translated files when downloaded.'
+    Examples:
+        - CodeCSV: 'smartling.strip_instructions_on_download=TRUE'
 
+  - Directive:      'first_row_header'
+    Values:         '<code>true | TRUE</code> or <code>false | FALSE</code>(default)'
+    Description:    'If <code>TRUE</code>, the first non-empty string in a CSV file will be treated as a header and excluded from translation.'
+    Examples:
+        - CodeCSV: 'smartling.first_row_header=TRUE'
 
+  - Directive:      'string_instructions_paths'
+    Values:         'Comma-separated lise of columns.'
+    Description:    '<p>Specifies which columns contain string instructions. This directive must be used together with <code>smartling.paths</code> to specify translatable strings.</p><p>Each string instruction is applied to the next translatable string, so you must place your instruction column to the left of the translatable string. You may have more than one instruction column per translatable string.</p>'
+    Examples:
+        - CodeCSV: '# smartling.paths=4<br/># smartling.source_key_paths=1<br/># smartling.string_instructions_paths=2,3<br/># smartling.first_row_header=true'
+          Block: 'yes'
+          Description: 'Smartling will capture the content in the files as follows. Column 1 will be captured as key metadata, Columns 2 and 3 will be string instructions. Column 4 contains the translatable strings'
 
+  - Directive:      'locales_map'
+    Values:         'Alternative labels for smartling locales in JSON format'
+    Description:    '<p>Defines how languages are labeled in downloaded CSV files. Default label is the Smartling locale code, such as "fr-FR", but you may wish to choose a different label, such as "French" in order to make the file easier to read or to match the labels used in your application.</p>'
+    Examples:
+        - CodeCSV: 'smartling.locales_map={“es-ES”:”Spanish”,”de-DE”:”German”}'
+          Description: 'Downloaded translations will be labeled as "Spanish" for es-ES and "German" for de-DE.'
 
+  - Directive:      'output_not_translated_row'
+    Values:         '<code>true | TRUE</code>(default) or <code>false | FALSE</code>'
+    Description:    '<p>Determines if rows with no translations for a given locale are included in output files.</p><p>If <code>output_not_translated_row=TRUE</code> (default), a row with no translations will still be included in the output file, even if there are no translations for that locale.</p><p> If set to <code>FALSE</code>, rows with no translations will be excluded from the output file.'
+    Examples:
+        - CodeCSV: 'smartling.output_not_translated_row=FALSE'
+          Description: 'If this file has four rows, and only rows 1-3 have translations for French, the downloaded file for fr-FR will exclude row 4.'
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  - Directive:      'add_utf8_bom'
+    Values:         '<code>true | TRUE</code> or <code>false | FALSE</code>(default)'
+    Description:    '<p>Determines whether to force addition of a UTF-8 Byte Order Mark (BOM) to the output file when downloading translations.</p><p>If set to <code>FALSE</code> (default), output files will only include a BOM if the original file did.</p><p>If set to <code>TRUE</code>, a UTF-8 BOM will be added to the output file, even if none existed in the original file.</p><p><strong>Note:</strong> This applies to UTF-8 only. For UTF-16, BOM is always used.</p>'
+    Examples:
+        - CodeCSV: 'smartling.add_utf8_bom=TRUE'
 
 
 

@@ -243,11 +243,12 @@
    default_placeholders: ''
    keys_variants: 
    keys_variants_info: ''
-   directive_style: set_once
-   directive_format: '# smarling.[directive_name] = [value]'
-   directive_instructions: 'Directives are specified using comments. Each directive must be a single comment on one line, and there should not be any inline trailing symbols after the directive. The directives must be defined at the top of the file, ahead of the csv content.'
    string_instructions: 'Set using string_instructions_paths directive.'
    other: '<p>You may define values with and without quotations. For example:</p> <pre><code>value1, "Value 2"</code></pre> <p>If you want to use the symbol " inside quoted value you escape it with double quotes like:</p> <pre><code>"value""178"</code></pre> <p>which corresponds to the string: <strong?value"178</strong></p><p>Smartling offers several options for downloading CSV files. <a href="later">More info</a></p>'
+   directive_format: '# smarling.[directive_name] = [value]'
+   directive_prefix: '# '
+   directive_suffix: ''
+   directive_instructions: 'Directives are specified using comments. Each directive must be a single comment on one line, and there should not be any inline trailing symbols after the directive. The directives must be defined at the top of the file, ahead of the csv content.'
    directives:
       - field_separator
       - string_encloser
@@ -261,6 +262,8 @@
       - strip_instructions_on_download
       - first_row_header
       - string_instructions_paths
-      - locales map
+      - locales_map
+      - add_utf8_bom
+      - output_not_translated_row
 
 
