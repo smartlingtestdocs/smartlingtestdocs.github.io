@@ -1,6 +1,8 @@
 @titleBlue: #000099;
 @smartlingOrange: #EE7923;
 
+@veryDarkBlue: #000566;
+
 body {
     position:relative;
 }
@@ -15,7 +17,6 @@ body {
 
     li {
         display:inline-block;
-        background:#f9f9f9;
         padding:15px;
         text-align:center;
         width:~"calc(32.3% - 15px)";
@@ -41,44 +42,61 @@ body {
 }
 
 .homeBanner {
-    background:#657D89;
-    padding:15px;
-
+    background:#fff;
     position:fixed;
     z-index:100;
     top:0;
     left:0;
     width:100%;
+    border-bottom:1px dashed #eee;
 
-    img {
-        float:left;
-        width:250px;
-        position:relative;
-        left:10px;
+
+    .logo {
+        width:300px;
+        display:inline-block;
+        text-align:center;
+        padding:15px;
+        img {
+
+            width:150px;
+
+        }
     }
 
+
     .searchBox {
-        position:absolute;
-        right:20px;
-        top:26px;
+       display:inline-block;
+        margin-left:37px;
+        color:#fff;
+        input {
+            width:400px;
+            border: 1px solid #eee !important;
+        }
+
     }
 
 }
 
+.st-default-autocomplete {
+    top:0px !important;
+}
+
 .intro {
-    margin-top:74px;
+    margin-top:63px;
     padding:30px;
     text-align:center;
     color:#fff;
-
+    background:url(/img/gears.png) no-repeat;
     text-shadow: 1px 1px 2px rgba(150, 150, 150, 1);
     position:relative;
 }
 
+/*
 .intro::after {
     content: "";
-    background-image:url(http://images.wisegeek.com/metal-gears.jpg);
-    opacity: 0.75;
+
+    background-color:@smartlingOrange;
+    opacity: 0.5;
     top: 0;
     left: 0;
     bottom: 0;
@@ -86,6 +104,8 @@ body {
     position: absolute;
     z-index: -1;
 }
+*/
+
 
 
 
@@ -205,7 +225,7 @@ body {
     bottom:0;
     left:0;
     text-align:left;
-    padding-top:85px;
+    padding-top:71px;
 
     .sidebar-top {
 
@@ -334,21 +354,29 @@ pre {
     }
 }
 
-.api-list div {
-    position:relative;
-
-    padding: 15px 0 15px 50px;
+.api-list
+    {
 
     h5 {
-       color:@titleBlue;
+        font-weight:normal;
     }
 
-    span {
-        position:absolute;
-        left:0px;
-        font-size:50px;
-        color:#eee;
-        top:3px;
+    div {
+        position: relative;
+
+        padding: 15px 0 15px 50px;
+
+        h5 {
+            color: @titleBlue;
+        }
+
+        span {
+            position: absolute;
+            left: 0px;
+            font-size: 50px;
+            color: #eee;
+            top: 3px;
+        }
     }
 
 }

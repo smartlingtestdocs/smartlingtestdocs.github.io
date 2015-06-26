@@ -9,7 +9,6 @@ body {
 }
 .buckets li {
   display: inline-block;
-  background: #f9f9f9;
   padding: 15px;
   text-align: center;
   width: calc(32.3% - 15px);
@@ -25,44 +24,58 @@ body {
   margin-bottom: 15px;
 }
 .homeBanner {
-  background: #657D89;
-  padding: 15px;
+  background: #fff;
   position: fixed;
   z-index: 100;
   top: 0;
   left: 0;
   width: 100%;
+  border-bottom: 1px dashed #eee;
 }
-.homeBanner img {
-  float: left;
-  width: 250px;
-  position: relative;
-  left: 10px;
+.homeBanner .logo {
+  width: 300px;
+  display: inline-block;
+  text-align: center;
+  padding: 15px;
+}
+.homeBanner .logo img {
+  width: 150px;
 }
 .homeBanner .searchBox {
-  position: absolute;
-  right: 20px;
-  top: 26px;
+  display: inline-block;
+  margin-left: 37px;
+  color: #fff;
+}
+.homeBanner .searchBox input {
+  width: 400px;
+  border: 1px solid #eee !important;
+}
+.st-default-autocomplete {
+  top: 0px !important;
 }
 .intro {
-  margin-top: 74px;
+  margin-top: 63px;
   padding: 30px;
   text-align: center;
   color: #fff;
+  background: url(/img/gears.png) no-repeat;
   text-shadow: 1px 1px 2px #969696;
   position: relative;
 }
+/*
 .intro::after {
-  content: "";
-  background-image: url(http://images.wisegeek.com/metal-gears.jpg);
-  opacity: 0.75;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  position: absolute;
-  z-index: -1;
+    content: "";
+
+    background-color:@smartlingOrange;
+    opacity: 0.5;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;
 }
+*/
 /*   */
 .main-nav {
   padding-bottom: 100px;
@@ -141,7 +154,7 @@ body {
   bottom: 0;
   left: 0;
   text-align: left;
-  padding-top: 85px;
+  padding-top: 71px;
 }
 .sidebar .sidebar-top img.logo {
   width: 150px;
@@ -228,6 +241,9 @@ pre {
 .supportedFileTypes td {
   padding: 8px 15px;
   border: 1px solid #eee;
+}
+.api-list h5 {
+  font-weight: normal;
 }
 .api-list div {
   position: relative;
