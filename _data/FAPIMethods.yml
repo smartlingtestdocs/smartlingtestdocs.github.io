@@ -2,12 +2,12 @@
   - Method : UploadFile
     Url: /file/upload
     Type : POST
-    CurlGist: 
-    RubyGist: 4c127a346228bb1f5486
-    PHPGist:  ce8e0a459fe5b84246b1
-    JavaGist: c2fd4fcf80cbb732ad9e
-    CsharpGist: 65171fd5f647f772fb87
-    PythonGist: 65171fd5f647f772fb87
+    CurlGist: 544f2205cc2e01784b74
+    RubyGist: 24cf07a8ee9895311f31
+    PHPGist:  
+    JavaGist: 
+    CsharpGist: 
+    PythonGist: 
     Parameters:
         - Name: file
           Required: required
@@ -62,12 +62,12 @@
   - Method : DownloadFiles
     Url: /file/get
     Type : GET
-    CurlGist: 
-    RubyGist: 4c127a346228bb1f5486
-    PHPGist:  ce8e0a459fe5b84246b1
-    JavaGist: c2fd4fcf80cbb732ad9e
-    CsharpGist: 65171fd5f647f772fb87
-    PythonGist: 65171fd5f647f772fb87
+    CurlGist: 841003d3fec06c30e9af
+    RubyGist: fad88c5f9bfebed5c275
+    PHPGist:  
+    JavaGist: 
+    CsharpGist: 
+    PythonGist: 
     Parameters:
         - Name: FileURI
           Required: required
@@ -114,12 +114,12 @@
   - Method: List
     Url: /file/list
     Type : GET
-    CurlGist: 
-    RubyGist: 4c127a346228bb1f5486
-    PHPGist:  ce8e0a459fe5b84246b1
-    JavaGist: c2fd4fcf80cbb732ad9e
-    CsharpGist: 65171fd5f647f772fb87
-    PythonGist: 65171fd5f647f772fb87
+    CurlGist: c56b65d0e517a584aa1c
+    RubyGist: c137c6127e4acf7495a9
+    PHPGist:  
+    JavaGist: 
+    CsharpGist: 
+    PythonGist: 
     Parameters:
         - Name: locale
           Required: optional
@@ -189,12 +189,12 @@
   - Method: Status
     Url: /file/status
     Type : GET
-    CurlGist: 
-    RubyGist: 4c127a346228bb1f5486
-    PHPGist:  ce8e0a459fe5b84246b1
-    JavaGist: c2fd4fcf80cbb732ad9e
-    CsharpGist: 65171fd5f647f772fb87
-    PythonGist: 65171fd5f647f772fb87
+    CurlGist: 66243591ce9d0597afc6
+    RubyGist: 1382ad68957bcb286efd
+    PHPGist:  
+    JavaGist: 
+    CsharpGist: 
+    PythonGist: 
     Parameters:
         - Name: fileUri
           Required: required
@@ -233,12 +233,12 @@
   - Method: Rename
     Url: /file/rename
     Type : POST
-    CurlGist: 
-    RubyGist: 4c127a346228bb1f5486
-    PHPGist:  ce8e0a459fe5b84246b1
-    JavaGist: c2fd4fcf80cbb732ad9e
-    CsharpGist: 65171fd5f647f772fb87
-    PythonGist: 65171fd5f647f772fb87
+    CurlGist: 9ab484ace2fde35fa028
+    RubyGist: 14047205d76d3b5092c3
+    PHPGist:  
+    JavaGist: 
+    CsharpGist: 
+    PythonGist: 
     Parameters:
         - Name: fileUri
           Required: required
@@ -255,12 +255,12 @@
   - Method: Delete
     Url: /file/delete
     Type : DELETE
-    CurlGist: 
-    RubyGist: 4c127a346228bb1f5486
-    PHPGist:  ce8e0a459fe5b84246b1
-    JavaGist: c2fd4fcf80cbb732ad9e
-    CsharpGist: 65171fd5f647f772fb87
-    PythonGist: 65171fd5f647f772fb87
+    CurlGist: 8c293ba56605a38f0345
+    RubyGist: 
+    PHPGist:  
+    JavaGist: 
+    CsharpGist: 
+    PythonGist:
     Parameters:
         - Name: fileUri
           Required: required
@@ -272,12 +272,12 @@
   - Method: LastModified
     Url: file/last_modified
     Type : GET
-    CurlGist: 
-    RubyGist: 4c127a346228bb1f5486
-    PHPGist:  ce8e0a459fe5b84246b1
-    JavaGist: c2fd4fcf80cbb732ad9e
-    CsharpGist: 65171fd5f647f772fb87
-    PythonGist: 65171fd5f647f772fb87
+    CurlGist: 73b2dffebc0dec2c51b8
+    RubyGist: 
+    PHPGist:  
+    JavaGist: 
+    CsharpGist: 
+    PythonGist: 
     Parameters:
         - Name: fileUri
           Required: required
