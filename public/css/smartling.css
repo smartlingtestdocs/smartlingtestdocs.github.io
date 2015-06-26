@@ -33,6 +33,7 @@ body {
   margin: 0;
   padding: 0;
   background: #333;
+  border: none;
 }
 .main-nav ul i.fa {
   width: 26px;
@@ -151,6 +152,11 @@ pre {
   border-left: 5px solid #ee7923;
   padding-left: 10px;
   margin-bottom: 20px;
+}
+.page section a.anchor {
+  position: relative;
+  top: -110px;
+  display: block;
 }
 .page h4 {
   color: #000099;

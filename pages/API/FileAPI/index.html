@@ -26,7 +26,9 @@ title: File API
 </div>
 
     {% for FAPIMethod in site.data.FAPIMethods %}
-          <h2 id="{{FAPIMethod.Method}}">{{FAPIMethod.Method}} ({{FAPIMethod.Url}})</h2>
+    <section>
+          <a class="anchor" id="{{FAPIMethod.Method}}"></a>
+          <h2>{{FAPIMethod.Method}} ({{FAPIMethod.Url}})</h2>
            <p>{{FAPIMethod.Intro}}</p>
     <div class="panel panel-default">
         <div class="panel-heading">Parameters</div>
@@ -47,5 +49,6 @@ title: File API
         </div>
         <br/>
     </div>
+    </section>
     {% endfor %}
 
