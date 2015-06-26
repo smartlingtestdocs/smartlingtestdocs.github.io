@@ -1,7 +1,6 @@
 ---
 layout: MiscAPIMethods
-title:  Glossary Export API
-method: GlossaryExportAPI
+title:  Projects
+method: ProjectsAPI
 ---
 
-{% include FileDirectiveTable.html %}

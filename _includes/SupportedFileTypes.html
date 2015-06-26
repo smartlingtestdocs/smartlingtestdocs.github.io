@@ -7,9 +7,11 @@
         <tr>
             <td>Smartling identifier</td> <td>{{SupportedFileType.smartling_identifier}}</td>
         </tr>
+        {% if SupportedFileType.download_sample %}
         <tr>
             <td>Example File</td> <td><a href="/public/Example-Files/{{SupportedFileType.download_sample}}">{{SupportedFileType.download_sample}}</a></td>
         </tr>
+        {% endif %}
         <tr>
             <td>Resources</td> <td>{{SupportedFileType.resource_info}}</td>
         </tr>
@@ -28,6 +30,11 @@
     <h4>String Instructions</h4>
     <p>{{SupportedFileType.string_instructions}}</p>
     {% endif %}
+
+    {% if SupportedFileType.declare_paths %}
+    <h4>Declaring Paths</h4>
+    <p>{{SupportedFileType.declare_paths}}</p>
+    {% endif %} 
 
     {% if SupportedFileType.other %}
     <h4>Other Information</h4>
@@ -66,17 +73,20 @@
                         <td>
                             <div class="example">
 
+                            {% assign handle = SupportedFileType.smartling_identifier %}
+                            {% case handle %}    
+                            {% when'json' %}
                                 {% for Example in FileDirective.Examples %}
-                                {% if SupportedFileType.smartling_identifier == 'json' %}
                                     {% if Example.CodeJSON %}
                                         <div>
                                             <pre><code>{{Example.CodeJSON}}</code></pre>
-                                            <pre><code>{% unless Example.Block == 'yes' %}{{SupportedFileType.directive_prefix}}{% endunless %}{{Example.Code}}{% unless Example.Block == 'yes' %}{{SupportedFileType.directive_suffix}}{% endunless %}</code></pre>
                                         </div>
                                         <p class="small">{{Example.Description}}</p>
                                     {% endif %}
-                                {% endif %}
-                                {% if SupportedFileType.smartling_identifier == 'xml' %}
+                                {% endfor %}
+                            
+                            {% when 'xml' %}
+                                {% for Example in FileDirective.Examples %}
                                     {% if Example.CodeXML %}
                                         <div>
                                             <pre><code>{% unless Example.Block == 'yes' %}{{SupportedFileType.directive_prefix}}{% endunless %}{{Example.CodeXML}}{% unless Example.Block == 'yes' %}{{SupportedFileType.directive_suffix}}{% endunless %}</code></pre>
@@ -87,15 +97,35 @@
                                             <pre><code>{% unless Example.Block == 'yes' %}{{SupportedFileType.directive_prefix}}{% endunless %}{{Example.Code}}{% unless Example.Block == 'yes' %}{{SupportedFileType.directive_suffix}}{% endunless %}</code></pre>
                                         </div>
                                         <p class="small">{{Example.Description}}</p>
-                                    {% endif %}
-                                {% endif %}
-                                {% if SupportedFileType.smartling_identifier != 'json' or 'xml' %}
+                                    {% endif %}         
+                                {% endfor %}
+
+                            {% when 'csv' %}
+                                {% for Example in FileDirective.Examples %}
+                                    {% if Example.CodeCSV %}
+                                        <div>
+                                            <pre><code>{% unless Example.Block == 'yes' %}{{SupportedFileType.directive_prefix}}{% endunless %}{{Example.CodeCSV}}{% unless Example.Block == 'yes' %}{{SupportedFileType.directive_suffix}}{% endunless %}</code></pre>
+                                        </div>
+                                        <p class="small">{{Example.Description}}</p>
+                                    {% else %}
                                         <div>
                                             <pre><code>{% unless Example.Block == 'yes' %}{{SupportedFileType.directive_prefix}}{% endunless %}{{Example.Code}}{% unless Example.Block == 'yes' %}{{SupportedFileType.directive_suffix}}{% endunless %}</code></pre>
                                         </div>
                                         <p class="small">{{Example.Description}}</p>
-                                {% endif %}
+                                    {% endif %}         
                                 {% endfor %}
+                               
+                            {% else %}                       
+                                {% for Example in FileDirective.Examples %}
+                                    {% if Example.Code %}
+                                        <div>
+                                            <pre><code>{% unless Example.Block == 'yes' %}{{SupportedFileType.directive_prefix}}{% endunless %}{{Example.Code}}{% unless Example.Block == 'yes' %}{{SupportedFileType.directive_suffix}}{% endunless %}</code></pre>
+                                        </div>
+                                        <p class="small">{{Example.Description}}</p>
+                                    {% endif %}
+                                {% endfor %}
+                            {% endcase %}
+
                             </div>
                         </td>
                     </tr>

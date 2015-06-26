@@ -1,7 +1,6 @@
 ---
-layout: FAPIMethods
-title:  Glossary Export API
-method: GlossaryExportAPI
+layout: MiscAPIMethods
+title:  Download Translations
+method: DownloadTranslations
 ---
 
-{% include FileDirectiveTable.html %}

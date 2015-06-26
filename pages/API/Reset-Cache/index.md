@@ -1,7 +1,5 @@
 ---
 layout: MiscAPIMethods
-title:  Glossary Export API
-method: GlossaryExportAPI
+title:  Reset Cache
+method: ResetCache
 ---
-
-{% include FileDirectiveTable.html %}

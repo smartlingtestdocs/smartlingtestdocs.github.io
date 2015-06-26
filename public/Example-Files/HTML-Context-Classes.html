@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+<head>
+<meta charset=”UTF-8”>
+<title>Example HTML document</title>
+</head>
+<body>
+    <div class=”sl-notranslate”>
+        some text which is not going to be matched
+        <div class=”sl-translate sl-override-context”>
+            this text will be matched and, in case of match, context will be updated
+            <div>
+        same for this text
+           </div>
+       </div>
+       this text is non-matchable
+    </div>
+     this text will be matched by default, but the context will only be updated on first occurrence
+</body>
+</html>

@@ -4,23 +4,30 @@
     Description:    'Used to define a custom placeholder format for strings in the file'
     Examples:
         - Code: 'smartling.placeholder_format_custom = \[.+?\]'
-          CodeJSON: ''
+          CodeJSON: '"placeholder_format_custom" : "\[.+?\]"'
           Description: 'Any characters surrounded by square brackets "[]" will be treated as a placeholder'
 
   - Directive:      'placeholder_format'
     Values:         '<code>NONE</code>; <code>C</code>; <code>IOS</code>; <code>PYTHON</code>; <code>JAVA</code>; <code>YAML</code>; <code>QT</code>; <code>RESX</code>'
     Description:    'Used to specify a standard placeholder format.'
+    Examples:
+        - Code: 'smartling.placeholder_format = IOS'
+          CodeJSON: '"placeholder_format" : "IOS"'
+          Description: 'Specifies iOS-style placeholders for the file.'
 
   - Directive:      'string format'
     Values:         '<strong>MESSAGE_FORMAT</strong> (default) or <strong>NONE</strong>'
     Description:    'String format is a parser directive for specialized file processing that enables string escaping and pre-processing rules as defined by various third party resource handlers. The default is <a href="http://docs.oracle.com/javase/6/docs/api/java/text/MessageFormat.html">MessageFormat</a>, a standard Java resource handler.'
+    Examples:
+        - Code: 'smartling.string_format = NONE'
+          Description: 'Turns off <code>MESSAGE_FORMAT</code> string handling below the directive'
 
   - Directive:      'string_format_paths'
-    Values:         'The grammar of the value'
+    Values:         'The value of this directive is expressed as <code>[format]:[paths]</code>'
     Description:    '<p>Specifies the format of strings for the specified paths and can enable HTML inside another file format.</p><p>Currently supported formats are:</p><ul><li><strong>HTML</strong> - string value will be parsed as HTML</li><li><strong>@default</strong> - (note the leading at-sign) string value will be treated as simple text.</li></ul><p>Separate multiple formats by commas</p> <p>You may specify a single path for a format or a comma-separated list of paths enclosed in square brackets. The list may be empty.</p> <p>A path is a slash-separated string which uses Xpath-like syntax (but it''s not Xpath.). The nodes separator is always / (slash), regardless of file format.</p> <p>Wildcards are allowed in path definitions.</p> <ul><li>If no wildcards, then the path identifies a single node and all its children ("exact subpath").</li><li>If wildcards, then a path identifies a set of nodes and all their children ("path pattern"). Currently, only * (asterisk) wildcard is implemented, which means "one or more nodes with any names".</li><li>Exact subpaths have precedence over path patterns.</li></ul> <p>For example, in the following instruction:</p> <pre>smartling.string_format_paths = html: [*/text, */string], @default: /system/log/text</pre> <p>Smartling processes these paths as follows:</p> <ul> <li><code>/description/text</code> — Processed as HTML (matches <code>*/text</code> pattern)</li> <li><code>/description/text/general</code> — HTML (its parent, <code>/description/text</code>, matches <code>*/text</code> pattern)</li> <li><code>/description/general/text</code> — HTML (matches <code>*/text</code> pattern directly).</li> <li><code>/system/log/text</code> — TEXT (matches both <code>/system/log/text</code> exact path and <code>*/text</code> pattern; exact path wins)</li> <li><code>/system/log/text/details</code> — TEXT (its parent, <code>/system/log/text</code>, matches both exact path and pattern; exact path wins)</li> </ul>'
     Examples:
         - Code: 'smartling.string_format_paths = html: *'
-          CodeJSON: ''
+          CodeJSON: '"string_format_paths" : "html: *"'
           Description: 'Smartling parses values of all nodes as HTML.'
 
         - Code: 'smartling.string_format_paths = html: */text'
@@ -60,21 +67,22 @@
     Description:    'When included in this list, all plain text within the specified tag will be considered a translatable string. Optionally, you can append a "." and a relevant attribute name to the path to translate tag attributes with the file. You can end the path with a trailing slash, "/" and it will treat all child nodes as translatable (content must still be text within a tag).'
     Examples:
         - CodeJSON: '"translate_paths": ["*/translation"]'
+          Code: 'smartling.translate_paths = */translation'
           Description: 'Smartling will tranlate content in any path ending in <code>translation</code>, such as <code>string/translation</code>, <code>nav/translation</code>, etc.'
 
         - CodeXML: 'smartling.translate_paths = data/localize/string, data/localize.title, data/localize/root/'
+          Code: 'testcode'
           Description: 'Smartling will translate content in the data/localize/string & data/localize/root nodes. The <code>title</code> attribute of the data/localize node will also be translated.'
+
 
   - Directive:      'sltrans'
     Values:         '<code>translate</code> OR <code>notranslate</code>'
     Description:    'Use this directive to enable or disable processing of translation strings in the file. You must turn translation back on after the strings you want to exclude.'
     Examples:
         - Code: 'smartling.sltrans = notranslate'
-          CodeJSON:
           Description: 'Strings below this directive will be captured as strings but excluded from translation'
 
         - Code: 'smartling.sltrans = translate'
-          CodeJSON:
           Description: 'Strings below this directive will be translated'
 
   - Directive:      'source_key_paths'
@@ -82,7 +90,6 @@
     Description:    '<p>Used to define the schema for capturing a key for each source string. Keys are required:</p><ul><li>If you want to import pre-existing translations from a file with the same structure</li><li>If you want to create variants of strings that would otherwise be duplicates (By default Smartling does not create duplicate strings.) <strong>Note:</strong> creating or updating variants for previously uploaded strings cause new strings to be created that will not have translations. The SmartMatch feature can be configured to automatically apply the existing translations, or translators can use the 100% match from the Translation to manually apply the translation.</li><p>Specify the full path to the value, then indicate which part of the path should be used as the key using {} notation. {*} will use any key present in that part of the path (or can be used when no translate_paths has been specified to simply capture the key for each string).</p>'
     Examples:
         - Code: 'smartling.source_key_paths = {*}'
-          CodeJSON:
           Description: 'Smartling will capture the full path of keys leading to each translatable string as Key metadata'
 
         - Code: 'smartling.source_key_paths = data/item/{string_name}'
@@ -95,7 +102,11 @@
 
   - Directive:      'variants_enabled'
     Values:         '<code>true|TRUE|on|ON</code> OR <code>false|FALSE|off|OFF</code>'
-    Description:    ''
+    Description:    '<p>When enabled, Smartling will make strings unique using variant metadata. Must be used in conjunction with the code>source_key_paths</code> directive, which provides the information needed to generate variant metadata.</p><p><strong>Note:</strong> if you have previously uploaded a file with variants turned off, and reupload the file with variants on, Smartling will capture all content as new strings. You can configure <a href="http://support.smartling.com/hc/en-us/articles/201848233">Smartmatch</a> to automatically match the existing translations.'
+    Examples:
+        - CodeXML: 'smartling.variants_enabled = TRUE'
+
+        - CodeJSON: '"variants_enabled" : "TRUE"'
 
   - Directive:      'instruction_comments_enabled'
     Values:         '<code>true</code> OR <code>false</code>'
@@ -118,7 +129,7 @@
     Description:    '<code>ESCAPE_UNICODE</code> indicates that all non-Latin1 (not in range 0000 - 007F of unicode) symbols after this comment should be escaped by a <code>\uXXXX</code> escaping expression in the process of a file download.'
     Examples:
         - Code: 'smartling.download_format = ESCAPE_UNICODE'
-          Description: '<code>Hello ?</code> will be escaped as <code>Hello \u1D25</code> on download.'
+          Description: '<code>Hello?</code> will be escaped as <code>Hello\u1D25</code> on download.'
 
   - Directive:      'force_inline_for_tags'
     Values:         'comma-separated html tag list'
@@ -129,35 +140,88 @@
 
   - Directive:      'plurals_detection'
     Values:         '<code>on</code> OR <code>off</code>'
-    Description:    '<p>Enables or disables plurals detection.</p> <p><strong>Note:</strong> if using plural detection for a YAML file as part of a Ruby on Rails project, ensure your project is set up with correct <a href="later">pluralization rules.</a>'
+    Description:    '<p>Enables or disables plurals detection.</p> <p><strong>Note:</strong> if using plural detection for a YAML file as part of a Ruby on Rails project, ensure your project is set up with correct <a href="/pages/Misc/Ruby-Localization/">pluralization rules.</a>'
     Examples:
-        - Code: 'smartling.force_inline_for_tags = external_link,reference'
-          Description: 'Any <code>&lt;external_link&gt;</code> or <code>&lt;reference&gt;</code> tags will be parsed as inline tags. Smartling will not create separate strings for content in these tags.' 
+        - Code: 'smartling.plurals_detection = on'
+          Description: 'Smartling will detect plurals in strings below this directive.' 
 
- -  
+  - Directive:      'field_separator'
+    Values:         'String of characters (default is <code>,</code>'
+    Description:    'Defines the sequence of characters that separate values in a record line.'
+    Examples:
+        - CodeCSV: 'smartling.field_separator=,'
+          Description: 'Fields are separated with a <code>,</code> character'
+
+  - Directive:      'string_encloser'
+    Values:         'String of characters (default is <code>"</code>)'
+    Description:    'Defines the sequence of characters that may enclose values. To use the character sequence inside values you should escape it with repeating twice (default is "").'
+    Examples:
+        - CodeCSV: 'smartling.field_separator="'
+          Description: 'Fields are separated with a <code>"</code> character'
+
+  - Directive:      'paths'
+    Values:         '<p>Values of all columns to be ingested as strings.</p><p>For import, all values will be imported for the selected locale.</p>'
+    Description:    '<p>Defines the column numbers with values to be ingested as translatable strings.</p><p>For multilingual translations import it defines association column number with target import locale.</p><p>Format:</p><p>For uploading original file:</p></p>Comma-separated list of column numbers.<br/><code>col#1,col#2</code></p><p>For multi-language imports:</p><p>Comma-separated list of column/locale pairs:<br/><code>col#1/[LocaleID],col#2/[LocaleID]</code></p>'
+    Examples:
+        - CodeCSV: 'smartling.paths=col#2,col#3'
+          Description: 'Specifies that columns 2 and 3 of the uploaded CSV file should be ingested as translatable strings.'
+
+        - CodeCSV: 'smartling.paths=col#2/es-ES,col#3/fr-FR'
+          Description: 'When importing translations, specifies that column 2 contains Spanish-SPAIN translations and column 3 contains French-FRANCE translations.'
+
+  - Directive:      'translation_language_path'
+    Values:         'Column Number - eg <code>Col#4</code>'
+    Description:    '<p>Used for "download multiple languages by row" option. Defines a column to record the language for each row. Output will display a language code for each column, eg. "de", "en", "es", etc.</p><p>This column should exist in the original file as an empty column.</p><p><strong>Note:</strong> if using this directive, you should also use smartling.paths to exclude the language path column from translation. See example below.</p>'
+    Examples:
+        - CodeCSV: 'smartling.translation_language_path = col#4'
+          Description: 'When the translated file is downloaded, column 4 will record the language for each row.'
+
+  - Directive:      'output_original_row'
+    Values:         '<code>true | TRUE</code> or <code>false | FALSE</code>(default)'
+    Description:    'Defines if the original source strings should be included when downloading multiple languages.'
+    Examples:
+        - CodeCSV: 'smartling.output_original_row=TRUE'
 
 
+  - Directive:      'strip_instructions_on_download'
+    Values:         '<code>true | TRUE</code> or <code>false | FALSE</code>(default)'
+    Description:    'Defines whether all Smartling directives in the source file should be removed from translated files when downloaded.'
+    Examples:
+        - CodeCSV: 'smartling.strip_instructions_on_download=TRUE'
 
+  - Directive:      'first_row_header'
+    Values:         '<code>true | TRUE</code> or <code>false | FALSE</code>(default)'
+    Description:    'If <code>TRUE</code>, the first non-empty string in a CSV file will be treated as a header and excluded from translation.'
+    Examples:
+        - CodeCSV: 'smartling.first_row_header=TRUE'
 
+  - Directive:      'string_instructions_paths'
+    Values:         'Comma-separated lise of columns.'
+    Description:    '<p>Specifies which columns contain string instructions. This directive must be used together with <code>smartling.paths</code> to specify translatable strings.</p><p>Each string instruction is applied to the next translatable string, so you must place your instruction column to the left of the translatable string. You may have more than one instruction column per translatable string.</p>'
+    Examples:
+        - CodeCSV: '# smartling.paths=4<br/># smartling.source_key_paths=1<br/># smartling.string_instructions_paths=2,3<br/># smartling.first_row_header=true'
+          Block: 'yes'
+          Description: 'Smartling will capture the content in the files as follows. Column 1 will be captured as key metadata, Columns 2 and 3 will be string instructions. Column 4 contains the translatable strings'
 
+  - Directive:      'locales_map'
+    Values:         'Alternative labels for smartling locales in JSON format'
+    Description:    '<p>Defines how languages are labeled in downloaded CSV files. Default label is the Smartling locale code, such as "fr-FR", but you may wish to choose a different label, such as "French" in order to make the file easier to read or to match the labels used in your application.</p>'
+    Examples:
+        - CodeCSV: 'smartling.locales_map={“es-ES”:”Spanish”,”de-DE”:”German”}'
+          Description: 'Downloaded translations will be labeled as "Spanish" for es-ES and "German" for de-DE.'
 
+  - Directive:      'output_not_translated_row'
+    Values:         '<code>true | TRUE</code>(default) or <code>false | FALSE</code>'
+    Description:    '<p>Determines if rows with no translations for a given locale are included in output files.</p><p>If <code>output_not_translated_row=TRUE</code> (default), a row with no translations will still be included in the output file, even if there are no translations for that locale.</p><p> If set to <code>FALSE</code>, rows with no translations will be excluded from the output file.'
+    Examples:
+        - CodeCSV: 'smartling.output_not_translated_row=FALSE'
+          Description: 'If this file has four rows, and only rows 1-3 have translations for French, the downloaded file for fr-FR will exclude row 4.'
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  - Directive:      'add_utf8_bom'
+    Values:         '<code>true | TRUE</code> or <code>false | FALSE</code>(default)'
+    Description:    '<p>Determines whether to force addition of a UTF-8 Byte Order Mark (BOM) to the output file when downloading translations.</p><p>If set to <code>FALSE</code> (default), output files will only include a BOM if the original file did.</p><p>If set to <code>TRUE</code>, a UTF-8 BOM will be added to the output file, even if none existed in the original file.</p><p><strong>Note:</strong> This applies to UTF-8 only. For UTF-16, BOM is always used.</p>'
+    Examples:
+        - CodeCSV: 'smartling.add_utf8_bom=TRUE'
 
 
 

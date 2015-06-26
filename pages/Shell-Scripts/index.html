@@ -4,30 +4,22 @@ title:  Shell Scripts
 ---
 
 <ul class="text-list">
-    <li>
-        <a href="https://docs.smartling.com/display/docs/API+Shell+Scripts#APIShellScripts-Introduction">Introduction</a>
-    </li>
 
-    <li><a href="https://docs.smartling.com/display/docs/API+Shell+Scripts#APIShellScripts-Scripts">
-        Using scripts to download, upload or delete a file
+    <li><a href="#Upload">Upload</a></li>
 
-    </a></li>
-    <li><a href="https://docs.smartling.com/display/docs/API+Shell+Scripts#APIShellScripts-Upload">Upload</a></li>
-    <li><a href="https://docs.smartling.com/display/docs/API+Shell+Scripts#APIShellScripts-Scripts">Scripts</a></li>
+    <li><a href="#Download">Download</a></li>
 
-    <li><a href="https://docs.smartling.com/display/docs/API+Shell+Scripts#APIShellScripts-Download">Download</a></li>
+    <li><a href="#Delete">Delete</a></li>
 
-    <li><a href="https://docs.smartling.com/display/docs/API+Shell+Scripts#APIShellScripts-Delete">Delete</a></li>
-
-    <li><a href="https://docs.smartling.com/display/docs/API+Shell+Scripts#APIShellScripts-Glossary">Download
+    <li><a href="#Glossary">Download
         Glossary</a></li>
 
-    <li><a href="https://docs.smartling.com/display/docs/API+Shell+Scripts#APIShellScripts-Memory">Download Translation
+    <li><a href="#Memory">Download Translation
         Memory</a></li>
 
 
 </ul>
-<p>
+<p id="Introduction">
     As an easy way to access Smartling’s API functionality, Smartling offers a package of BASH scripts, which can be
     used to Upload, Download and
     Delete files in a Smartling project from the command line. The scripts are hosted in <a
@@ -78,7 +70,7 @@ title:  Shell Scripts
     are available from the dashboard at <a href="https://dashboard.smartling.com/settings/api.htm" rel="nofollow">Project
     Settings &gt; API</a> .
 </p>
-<h2 id="APIShellScripts-ScriptsTouseAPIscriptstoupload,downloadordeleteafile:">
+<h2 id="Use">
     <strong>To use API scripts to upload, download or delete a file:</strong>
 </h2>
 <p>
@@ -117,7 +109,7 @@ title:  Shell Scripts
 <code>./download.sh -t pending -l "fr-FR de-DE" translations</code>
 
 <section>
-    <a class="anchor" id="APIShellScripts-UploadUpload"></a>
+    <a class="anchor" id="Upload"></a>
 
     <h2>
         Upload
@@ -128,7 +120,7 @@ title:  Shell Scripts
         optional. You can specify multiple
         files to upload, separated by a space, but all files must be of the same type. You may also use wildcards. For
         more information on parameters, see
-        the <a href="https://docs.smartling.com/display/docs/Files+API#FilesAPI-/file/get(GET)" rel="nofollow">API
+        the <a href="/pages/API/FileAPI/#UploadFile" rel="nofollow">API
         documentation.</a>
     </p>
 
@@ -225,7 +217,7 @@ title:  Shell Scripts
 </section>
 
 <section>
-    <a id="APIShellScripts-DownloadDownload" class="anchor"></a>
+    <a id="Download" class="anchor"></a>
 
     <h2>
         <strong>Download</strong>
@@ -236,7 +228,7 @@ title:  Shell Scripts
         the specified directory. If you download
         translations, then additional locale subfolders will be created. You must specify a Download Type. All other
         parameters are optional. For more information
-        on parameters, see the <a href="https://docs.smartling.com/display/docs/Files+API#FilesAPI-/file/get(GET)"
+        on parameters, see the <a href="/pages/API/FileAPI/#DownloadFiles"
                                   rel="nofollow">API documentation.</a>
     </p>
 
@@ -333,7 +325,7 @@ title:  Shell Scripts
 </section>
 
 <section>
-    <a class="anchor" id="APIShellScripts-DeleteDelete"></a>
+    <a class="anchor" id="Delete"></a>
 
     <h2>
         Delete
@@ -341,7 +333,7 @@ title:  Shell Scripts
 
     <p>
         This script deletes resource files from a Smartling project. For more information on parameters, see the <a
-            href="https://docs.smartling.com/display/docs/Files+API#FilesAPI-/file/get(GET)" rel="nofollow">API
+            href="/pages/API/FileAPI/#Delete" rel="nofollow">API
         documentation.</a>When you run a delete script, you
         will see a list of files to be deleted and prompted to enter ‘YES’ to continue with the deletion.
     </p>
@@ -373,4 +365,115 @@ title:  Shell Scripts
             </td>
         </tr>
     </table>
+</section>
+<section>
+    <a id="Glossary" class="anchor"></a>
+<h2>
+    To download glossary:
+</h2>
+<p>
+    <strong>Note:</strong>
+This process assumes you have already edited your settings.sh file to specify your API Key and Project UID.
+</p>
+<p>
+    <strong>1)</strong>
+    From the command line, use the ‘cd’ command to navigate to the directory where you have saved your scripts.
+</p>
+<p>
+    <strong>2)</strong>
+    Use this command template to download your glossary:
+</p>
+<pre>./download-glossary.sh [options] [directory]</pre>
+<p>
+    <strong>Directory:</strong>
+    Specify a directory path to save the glossary files.
+</p>
+<p>
+    <strong>Options:</strong>
+</p>
+<table class="table">
+  <tr>
+    <th class="tg-031e">Parameter</th>
+    <th class="tg-031e">flag</th>
+    <th class="tg-031e">Required/Optional</th>
+    <th class="tg-031e">Values/Description</th>
+  </tr>
+  <tr>
+    <td class="tg-031e">Download Type</td>
+    <td class="tg-031e">-t</td>
+    <td class="tg-031e">Optional</td>
+    <td class="tg-031e"><p>Type of file to download. Specify ‘CSV’ or ‘TBX’. Default value is ‘CSV’</p><p><strong>Example:</strong></p><pre><code>./download-glossary.sh -t TBX glossary/</code></pre></td>
+  </tr>
+  <tr>
+    <td class="tg-031e">Locale</td>
+    <td class="tg-031e">-l</td>
+    <td class="tg-031e">Optional</td>
+    <td class="tg-031e">List of locales to include in the download. For example “es-ES ja-JP” downloads Spanish (Spain) and Japanese (Japan). By default, all available locales are downloaded. Note that you can only specify localesthat are in use for the project.</td>
+  </tr>
+</table>
+<p>
+    <strong>Example:</strong>
+</p>
+
+<pre><code>./download-glossary.sh -t CSV -l “fr-FR” glossary/project/</code></pre>
+
+<p>
+    Download glossary in CSV format for French (France) to the directory ‘glossary/project’.
+</p>
+</section>
+<section>
+    <a id="Memory" class="anchor"></a>
+<h2>
+    To download translation memory:
+</h2>
+<p>
+    <strong>Note:</strong>
+This process assumes you have already edited your settings.sh file to specify your API Key and Project UID.
+</p>
+<p>
+    <strong>1)</strong>
+    From the command line, use the ‘cd’ command to navigate to the directory where you have saved your scripts.
+</p>
+<p>
+    <strong>2)</strong>
+    Use this command template to download your translation memory:
+</p>
+<pre>./download-tmx.sh [options] [directory]</pre>
+<p>
+    <strong>Directory:</strong>
+    Specify a directory path to save the translation memory files.
+</p>
+<p>
+    <strong>Options:</strong>
+</p>
+<table class="table">
+  <tr>
+    <th class="tg-031e">Parameter</th>
+    <th class="tg-031e">Flag</th>
+    <th class="tg-031e">Required/Optional</th>
+    <th class="tg-031e">Values/Description</th>
+  </tr>
+  <tr>
+    <td class="tg-031e">Download Type</td>
+    <td class="tg-031e">-t</td>
+    <td class="tg-031e">Optional</td>
+    <td class="tg-031e"><p>Type of file to download:</p><p><code>full</code>(default) downloads all translations.</p><p><code>published</code> downloads only published translations</p><p><strong>Example:</strong></p><pre><code>./download-tmx.sh -t published translation_memory/</code></pre></td>
+  </tr>
+  <tr>
+    <td class="tg-031e">Locale</td>
+    <td class="tg-031e">-l</td>
+    <td class="tg-031e">Optional</td>
+    <td class="tg-031e">List of locales to include in the download. For example “es-ES ja-JP” downloads Spanish (Spain) and Japanese (Japan). By default, all available locales are downloaded. Note that you can only specify localesthat are in use for the project.</td>
+  </tr>
+</table>
+<p>
+    <strong>Example:</strong>
+</p>
+
+<pre><code>./download-tmx.sh -t full -l “fr-FR” translation_memory</code></pre>
+
+<p>
+    Download Translation Memory in full for French (France) to the directory ‘translation_memory’
+</p>
+<br/>
 </section>
