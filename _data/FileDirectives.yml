@@ -56,14 +56,11 @@
           Description: 'Disables the effect of the previous string_format_paths instruction.'
 
   - Directive:      'translate_paths'
-    Values:         'A comma-separated list of paths to be captured as strings for translation'
+    Values:         'A comma-separated list of paths to be captured as strings for translation. <code>*</code> wildcards are permitted.'
     Description:    'When included in this list, all plain text within the specified tag will be considered a translatable string. Optionally, you can append a "." and a relevant attribute name to the path to translate tag attributes with the file. You can end the path with a trailing slash, "/" and it will treat all child nodes as translatable (content must still be text within a tag).'
     Examples:
-        - Code: ''
-          Description: ''
-
-        - CodeJSON: ''
-          Description: ''
+        - CodeJSON: '"translate_paths": ["*/translation"]'
+          Description: 'Smartling will tranlate content in any path ending in <code>translation</code>, such as <code>string/translation</code>, <code>nav/translation</code>, etc.'
 
         - CodeXML: 'smartling.translate_paths = data/localize/string, data/localize.title, data/localize/root/'
           Description: 'Smartling will translate content in the data/localize/string & data/localize/root nodes. The <code>title</code> attribute of the data/localize node will also be translated.'
@@ -89,19 +86,15 @@
           Description: 'Smartling will capture the full path of keys leading to each translatable string as Key metadata'
 
         - Code: 'smartling.source_key_paths = data/item/{string_name}'
-          CodeJSON:
-          Description: 'smartling will capture the content from string_name as the key'
+          CodeXML: 'smartling.source_key_paths = data/item/{string_name}'
+          CodeJSON: '"source_key_paths" : "data/item/{string_name}"'
+          Description: 'smartling will capture the content from <code>string_name</code> as the key'
 
-        - Code: 'smartling.source_key_paths = data/item/{string.name}'
-          CodeJSON:
-          Description: ''
+        - CodeXML: 'smartling.source_key_paths = data/item/{string.name}'
+          Description: 'Smartling will capture the <code>name</code> atribute of the <code>data/item/string</code> node as the key.'
 
   - Directive:      'variants_enabled'
     Values:         '<code>true|TRUE|on|ON</code> OR <code>false|FALSE|off|OFF</code>'
-    Description:    ''
-
-  - Directive:      'translate_mode'
-    Values:         
     Description:    ''
 
   - Directive:      'instruction_comments_enabled'
