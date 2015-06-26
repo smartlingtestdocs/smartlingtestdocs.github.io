@@ -67,7 +67,8 @@
           Description: 'Disables the effect of the previous string_format_paths instruction.'
 
   - Directive:      'translate_paths'
-    Values:         'A comma-separated list of paths to be captured as strings for translation. <code>*</code> wildcards are permitted.'
+    Paths: 'yes'
+    Values:         'A comma-separated list of paths to be captured as strings for translation.'
     Description:    'When included in this list, all plain text within the specified tag will be considered a translatable string. Optionally, you can append a "." and a relevant attribute name to the path to translate tag attributes with the file. You can end the path with a trailing slash, "/" and it will treat all child nodes as translatable (content must still be text within a tag).'
     Examples:
         - CodeJSON: '"translate_paths": ["*/translation"]'
@@ -90,10 +91,13 @@
           Description: 'Strings below this directive will be translated'
 
   - Directive:      'source_key_paths'
+    Paths: 'yes'
     Values:         '<p>A comma separated list of paths to use create "keys" for strings on translate_paths.</p> <p>The key will be a space separated string of all the keys leading to the source string. For example: "string", "group1 string".</p>'
     Description:    '<p>Used to define the schema for capturing a key for each source string. Keys are required:</p><ul><li>If you want to import pre-existing translations from a file with the same structure</li><li>If you want to create variants of strings that would otherwise be duplicates (By default Smartling does not create duplicate strings.) <strong>Note:</strong> creating or updating variants for previously uploaded strings cause new strings to be created that will not have translations. The SmartMatch feature can be configured to automatically apply the existing translations, or translators can use the 100% match from the Translation to manually apply the translation.</li><p>Specify the full path to the value, then indicate which part of the path should be used as the key using {} notation. {*} will use any key present in that part of the path (or can be used when no translate_paths has been specified to simply capture the key for each string).</p>'
     Examples:
-        - Code: 'smartling.source_key_paths = {*}'
+        - CodeYaml: 'smartling.source_key_paths = {*}'
+          CodeXML: 'smartling.source_key_paths = {*}'
+          CodeJSON: '"source_key_paths" : "data/item/{string_name}"'
           Description: 'Smartling will capture the full path of keys leading to each translatable string as Key metadata'
 
         - Code: 'smartling.source_key_paths = data/item/{string_name}'
