@@ -1,6 +1,6 @@
 
 <div class="main-nav" id="main-nav">
-<ul class="nav" id="myScrollspy">
+<ul class="nav myScrollspy">
         <li><a href="/"><i class="fa fa-home"></i> Home</a></li>
         <li class="{% if page.url contains "/pages/API" %}shown{% endif %}"><a href="/pages/API"><i class="fa fa-cogs"></i> API</a>
              <ul class="secondary">
@@ -12,15 +12,14 @@
                     </ul>
                 </li>
             </ul>           
-            <ul class="secondary">
+            <ul class="secondary" >
                 <li class="">
                     <a href="/pages/API/FileAPI" class="title">File API</a>
 
-                    <ul class="{% if page.url contains "/pages/API/FileAPI" %}shown{% endif %} tertiary">
-                    {% for item in items %}
-                    {% if item.url contains "/pages/API/FileAPI" and item.url != "/pages/API/FileAPI/index.html"%}
-                    <li class="leaf"><a href="{{item.url}}">{{item.title}}</a></li>
-                    {% endif %}
+                    <ul class="nav nav-tabs nav-stacked {% if page.url contains "/pages/API/FileAPI" %}shown{% endif %} tertiary">
+
+                    {% for FAPIMethod in site.data.FAPIMethods %}
+                        <li><a href="/pages/API/FileAPI/#{{FAPIMethod.Method}}">{{FAPIMethod.Method}} ({{FAPIMethod.Type}})</a></li>
                     {% endfor %}
 
                     </ul>

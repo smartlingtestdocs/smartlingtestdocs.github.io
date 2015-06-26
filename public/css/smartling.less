@@ -11,13 +11,26 @@ body {
 }
 
 .homeBanner {
-    background:honeydew;
+    background:darkblue;
     padding:15px;
-    text-align:center;
 
-    h1 {
-        margin:0;
-        padding:0;
+    position:fixed;
+    z-index:100;
+    top:0;
+    left:0;
+    width:100%;
+
+    img {
+        float:left;
+        width:250px;
+        position:relative;
+        left:10px;
+    }
+
+    .searchBox {
+        position:absolute;
+        right:20px;
+        top:26px;
     }
 
 }
@@ -136,6 +149,7 @@ body {
     bottom:0;
     left:0;
     text-align:left;
+    padding-top:85px;
 
     .sidebar-top {
 
@@ -180,6 +194,8 @@ pre {
 
 .page {
 
+    margin:120px 20px 20px 40px;
+
     p {
         margin-bottom:30px;
     }
@@ -194,7 +210,7 @@ pre {
     color:#51585E;
 
     section {
-        padding-top:60px;
+        padding-top:30px;
 
         h2 {
             border-left:5px solid @smartlingOrange;
