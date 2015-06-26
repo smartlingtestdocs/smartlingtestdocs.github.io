@@ -66,8 +66,9 @@
                         <td>
                             <div class="example">
 
-                                
-                                {% if SupportedFileType.smartling_identifier == 'json' %}
+                            {% assign handle = SupportedFileType.smartling_identifier %}
+                            {% case handle %}    
+                            {% when'json' %}
                                 {% for Example in FileDirective.Examples %}
                                     {% if Example.CodeJSON %}
                                         <div>
@@ -76,24 +77,23 @@
                                         <p class="small">{{Example.Description}}</p>
                                     {% endif %}
                                 {% endfor %}
-                                {% endif %}
-                                {% if SupportedFileType.smartling_identifier == 'xml' %}
+                            
+                            {% when 'xml' %}
                                 {% for Example in FileDirective.Examples %}
                                     {% if Example.CodeXML %}
                                         <div>
                                             <pre><code>{% unless Example.Block == 'yes' %}{{SupportedFileType.directive_prefix}}{% endunless %}{{Example.CodeXML}}{% unless Example.Block == 'yes' %}{{SupportedFileType.directive_suffix}}{% endunless %}</code></pre>
                                         </div>
                                         <p class="small">{{Example.Description}}</p>
-                                    {% endif %}
-                                    {% unless Example.CodeXML %}
+                                    {% else %}
                                         <div>
                                             <pre><code>{% unless Example.Block == 'yes' %}{{SupportedFileType.directive_prefix}}{% endunless %}{{Example.Code}}{% unless Example.Block == 'yes' %}{{SupportedFileType.directive_suffix}}{% endunless %}</code></pre>
                                         </div>
                                         <p class="small">{{Example.Description}}</p>
-                                    {% endunless %}
+                                    {% endif %}         
                                 {% endfor %}
-                                {% endif %}
-                                {% if SupportedFileType.smartling_identifier != 'json' or 'xml' %}
+                               
+                            {% else %}                       
                                 {% for Example in FileDirective.Examples %}
                                     {% if Example.Code %}
                                         <div>
@@ -102,7 +102,7 @@
                                         <p class="small">{{Example.Description}}</p>
                                     {% endif %}
                                 {% endfor %}
-                                {% endif %}
+                            {% endcase %}
 
                             </div>
                         </td>
