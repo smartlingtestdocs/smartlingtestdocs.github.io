@@ -7,9 +7,11 @@
         <tr>
             <td>Smartling identifier</td> <td>{{SupportedFileType.smartling_identifier}}</td>
         </tr>
+        {% if SupportedFileType.download_sample %}
         <tr>
             <td>Example File</td> <td><a href="/public/Example-Files/{{SupportedFileType.download_sample}}">{{SupportedFileType.download_sample}}</a></td>
         </tr>
+        {% endif %}
         <tr>
             <td>Resources</td> <td>{{SupportedFileType.resource_info}}</td>
         </tr>
@@ -88,6 +90,21 @@
                                     {% if Example.CodeXML %}
                                         <div>
                                             <pre><code>{% unless Example.Block == 'yes' %}{{SupportedFileType.directive_prefix}}{% endunless %}{{Example.CodeXML}}{% unless Example.Block == 'yes' %}{{SupportedFileType.directive_suffix}}{% endunless %}</code></pre>
+                                        </div>
+                                        <p class="small">{{Example.Description}}</p>
+                                    {% else %}
+                                        <div>
+                                            <pre><code>{% unless Example.Block == 'yes' %}{{SupportedFileType.directive_prefix}}{% endunless %}{{Example.Code}}{% unless Example.Block == 'yes' %}{{SupportedFileType.directive_suffix}}{% endunless %}</code></pre>
+                                        </div>
+                                        <p class="small">{{Example.Description}}</p>
+                                    {% endif %}         
+                                {% endfor %}
+
+                            {% when 'csv' %}
+                                {% for Example in FileDirective.Examples %}
+                                    {% if Example.CodeCSV %}
+                                        <div>
+                                            <pre><code>{% unless Example.Block == 'yes' %}{{SupportedFileType.directive_prefix}}{% endunless %}{{Example.CodeCSV}}{% unless Example.Block == 'yes' %}{{SupportedFileType.directive_suffix}}{% endunless %}</code></pre>
                                         </div>
                                         <p class="small">{{Example.Description}}</p>
                                     {% else %}

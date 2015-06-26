@@ -5,9 +5,9 @@
    smartling_identifier: 'android'
    download_sample: 'android.xml'
    resource_info: '<ul><li><a href="http://developer.android.com/guide/topics/resources/string-resource.html">Android String Resources</a></li><li><a href="http://developer.android.com/guide/topics/resources/localization.html">Android Localization</a></li></ul>'
-   keys_variants: 'Every string is created with key/variant metadata, which is the value of the string.name attribute.  If the value of two strings is the same, but the string.name attribute is different, Smartling creates two strings.'
-   string_instructions: 'String instructions can be set using the <a href="#android_instruction_comments_enabled">instruction_comments_enabled</a> and <a href="#android_instruction_attributes">instruction_attributes</a> directives'
-   other: '<p>To exclude a string from translation use the translatable="FALSE" attribute and value in the string tag:</p><pre><code>&lt;string name=&quot;string_11&quot; translatable=&quot;FALSE&quot;&gt;This android string has been marked not to be translated with translable attribute.&lt;/string&gt;</code></pre>'
+   keys_variants: 'Every string is created with key/variant metadata, which is the value of the <code>string.name</code> attribute.  If the value of two strings is the same, but the <code>string.name</code> attribute is different, Smartling creates two strings.'
+   string_instructions: 'String instructions can be set using the instruction_comments_enabled and instruction_attributes directives'
+   other: '<p>To exclude a string from translation use the <code>translatable="FALSE"</code> attribute and value in the string tag:</p><pre><code>&lt;string name=&quot;string_11&quot; translatable=&quot;FALSE&quot;&gt;This android string has been marked not to be translated with translable attribute.&lt;/string&gt;</code></pre>'
    directive_format: '&lt!-- smarling.[directive_name] = [value] --&gt'
    directive_instructions: 'The directive must be a single comment on one line, and there should not be any inline trailing symbols after the directive.  Directives apply to all strings that follow them. Directives can be changed throughout the file'
    directive_prefix: '&lt!-- '
@@ -42,7 +42,6 @@
    resource_info: '<ul><li><a href="https://developer.apple.com/library/ios/documentation/MacOSX/Conceptual/BPInternational/StringsdictFileFormat/StringsdictFileFormat.html">Stringsdict File Format</a></li><li><a href="https://developer.apple.com/library/ios/documentation/MacOSX/Conceptual/BPInternational/LocalizingYourApp/LocalizingYourApp.html">Localizing your App</a></li></ul>'
    intro: '<p>Smartling supports iOS .stringsdict format for plural sensitive content localization.<p>Note that Xcode’s XLIFF localization feature does not include plural strings. If your XLIFF-localized application includes plural strings, you will need to separately upload the .stringsdict file along with your XLIFF file.</p><p>This XML file format is used to capture the plural sensitive strings that will be localized.</p><p>Currently Smartling does not support gender-sensitive strings.</p><p>Smartling does not expect English source files with “zero” form source strings. Smartling complies strictly with CLDR which defines English as having two forms; “one” (singular) and “other” (plural). If you upload a source file with Zero form strings, the zero plural form will not be shown in the Smartling dashboard.</p><p>Complex plural strings (a.k.a. multiplurals) are supported, but Smartling advises against creating such strings which are difficult to translate correctly from a linguistic perspective.  If a multiplural string is in your .stringsdict Smartling will capture two separate strings, but they will not be associated with each other. We advise you to add instructions and visual context hints to help the translators understand how the multiplural string is actually used in your application.</p><p>No file API directives are supported.</p>'
 
-
  - file_type: 'Gettext PO/POT'
    template: 'standard'
    extension: '.pot / .po'
@@ -50,7 +49,8 @@
    download_sample: 'gettext.pot'
    resource_info: '<a href="http://www.gnu.org/software/gettext/">GNU Gettext Documentation</a>'
    keys_variants: '<p>Smartling also supports the msgctxt parameter that allows you to have Smartling capture a string as a variant.  When a gettext string includes msgctxt metadata it will be created as variant using the value of msgctxt.</p><p>For example:</p><pre><code>msgctxt "Home Page Menu Navigation"<br/>msgid "Home"<br/>msgstr ""<br/>msgctxt "Home Address Label"<br/>msgid "Home"<br/>msgstr ""</code></pre><p>Will result in two strings for translation, both with the value "Home". The translators can choose to to make the translation the same or not.  The value of msgctxt displays to translators in the Translation Interface and the Smartling Dashboard.  See the <a href="http://support.smartling.com/entries/22279686-about-variants-translation-management-system">Knowledge Base</a> for more on translation variants.<p>'
-   string_instructions: 
+   string_instructions: '<p>Smartling includes comments in gettext files as instructions for translators. Comments follow the gettext standard:</p><pre><code>#. This is an instruction that is included in the file above a string.<br/>#. This is also an instruction that will be presented to translators.<br/>#: arch/linux/directory_reader.py:101<br/>msgid "Original source string."<br/>msgstr ""</code></pre>'
+   other: '<p><strong>HTML</strong></p><p>Smartling automatically formats Gettext strings with HTML.  No integration is required.  HTML parsing can be turned on in order to create smaller source strings. Adding the <code>smartling.string_format</code> directive with value <code>html</code> turns on HTML parsing.  If this directive is present in the file Smartling explicitly parses all subsequent strings as HTML.  With HTML parsing on, strings will be created based on HTML block elements.  Strings that have no HTML are captured as normal. This directive is completely optional.</p><p><strong>Plurals</strong></p><p>If you include a plural-forms header in a original uploaded file, Smartling will return the locale specific plural-forms header in the translated file.<p>For example if an English source file contains the following header:</p><pre>"Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"</pre><p>A Russian translation file will contain:</p><pre>"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"</pre><p><strong>Note:</strong> Smartling supports the CLDR standards for plurals. For some languages, Gettext plural support differs from the CLDR standards. For example, CLDR allows four plural forms for Polish: one; few; many and other, while Gettext only supports one; few; and many. Smartling will allow translations for all four CLDR plural forms, but when downloading translated Gettext files, only those supported by Gettext will be included.</p>'
    directive_format: '# smartling.[directive_name] = [value]'
    directive_instructions: 'The directive must be a single comment on one line, and there should not be any inline trailing symbols after the directive.  Directives apply to all strings that follow them. Directives can be changed throughout the file'
    directive_prefix: '# '
@@ -63,7 +63,6 @@
    template: 'standard'
    extension: '.html'
    smartling_identifier: 'html'
-   download_sample: ''
    resource_info: '<a href="http://www.w3.org/TR/html5/">HTML5 Standards</a>'
    intro: 'By default Smartling will create a single String for each block element in the HTML document.  Additionally the value of <code>alt</code> and <code>title</code> attributes are captured as a single string. Smartling does not captre the values of any other attributes. '
    directive_format: '&lt!-- smarling.[directive_name] = [value] --&gt'
@@ -115,7 +114,7 @@
 
  - file_type: 'XLIFF'
    template: 'standard'
-   extension: '.xml'
+   extension: '.xml, .xlf, .xliff'
    smartling_identifier: 'xliff'
    download_sample: 'xliff.xml'
    resource_info: '<ul><li><a href="http://en.wikipedia.org/wiki/XLIFF">Background on XLIFF</a></li><li><a href="http://docs.oasis-open.org/xliff/xliff-core/xliff-core.html">OASIS specification</a></li></ul>'
@@ -173,9 +172,8 @@
 
  - file_type: 'QT Linguists'
    template: 'standard'
-   extension: '.tx'
+   extension: '.ts'
    smartling_identifier: 'qt'
-   download_sample: ''
    resource_info: '<a href="http://doc.qt.digia.com/4.5/linguist-ts-file-format.html">QT Linguist Docs</a>'
    default_placeholders: ''
    keys_variants: 
@@ -183,9 +181,6 @@
    directive_style: 
    string_instructions: 
    other: 'Smartling natively supports the plural forms from QT Linguist files.'
-   directives:
-      - placeholder_format_custom
-      - placeholder_format
 
  - file_type: 'MadCap Lingo ZIP packages'
    template: 'standard'
@@ -193,29 +188,21 @@
    smartling_identifier: 'madcap'
    download_sample: 'madcap.zip'
    resource_info: '<a href="http://www.madcapsoftware.com/products/lingo/">Madcap Lingo software</a>'
-   keys_variants: 
-   keys_variants_info: ''
-   directive_style: 
-   string_instructions: 
+   intro: '<p>A MadCap package is a ZIP-archive with one or more XLIFF files, optionally organized in directories.</p><p>All notes on <a href="#xliff">XLIFF processing</a> also apply to MadCap packages.</p><p><strong>Note:</strong> A MadCap archive is treated as a single file. Translated strings in the archive will be associated with the .zip file, not the individual XLIFF files.</p><p>Non-XLIFF files in the archive are excluded from processing.</p><p>Directory structure and non-XLIFF files are preserved when downloading the translated archive.</p>'
 
 
  - file_type: 'Office Open XML'
    template: 'standard'
    extension: '.docx, .xlsx, .pptx'
    smartling_identifier: 'docx'
-   download_sample: ''
    resource_info: '<a href="http://msdn.microsoft.com/en-ca/office/bb265236.aspx">Open XML for Developers</a>'
-   keys_variants: 
-   keys_variants_info: ''
-   directive_style: 
-   string_instructions: 
+   intro: '<p>Smartling supports Microsoft Office Open XML format files (file extensions .docx .xlsx .pptx) on Microsoft 2007 and higher.</p><p>You can upload these documents to a “Business Document” project type.</p>'
 
 
  - file_type: 'InDesign Markup Language'
    template: 'standard'
    extension: '.idml'
    smartling_identifier: 'idml'
-   download_sample: ''
    resource_info: '<a href="http://www.adobe.com/devnet/indesign/documentation.html#idml">InDesign Markup Language Resources</a>'
    keys_variants_info: ''
    directive_style: 
@@ -226,15 +213,12 @@
    template: 'standard'
    extension: '.resx and .resw'
    smartling_identifier: 'resx'
-   download_sample: ''
    resource_info: '<a href="http://msdn.microsoft.com/en-us/library/ekyft91f%28v=vs.90%29.aspx">Microsoft Resx Resources</a>'
-   default_placeholders: '<strong>{0}</strong>, <strong>{1}</strong>, etc'
-   keys_variants: 
-   keys_variants_info: ''
-   directive_style: set_throughout
-   directive_format: '<!-- smarling.[directive_name] = [value] -->'
+   string_instructions: '<p>Smartling automatically captures RESX comments and makes them translator instructions.</p><pre><code>&lt;data name=&quot;resx_string6&quot; xml:space=&quot;preserve&quot;&gt;<br/>&nbsp;&nbsp;&nbsp;&lt;value&gt;resx string6 has a comment.&lt;/value&gt;<br/>&nbsp;&nbsp;&nbsp;&lt;comment&gt;comment for manual resx string6 will appear as a Smartling translator instruction&lt;/comment&gt;<br/>&lt;/data&gt;</code></pre>'
+   directive_format: '&lt!-- smarling.[directive_name] = [value] --&gt'
    directive_instructions: 'The inline directive must be a single directive on one line within its own comment block, and there should not be any inline trailing symbols after the directive.'
-   string_instructions: 'Smartling automatically captures RESX comments and makes them translator instructions.'
+   directive_prefix: '&lt!-- '
+   directive_suffix: ' --&gt'
    directives:
       - placeholder_format_custom
 
@@ -243,14 +227,10 @@
    template: 'standard'
    extension: '.txt'
    smartling_identifier: 'txt'
-   download_sample: ''
    resource_info: '<a href=""></a>'
    intro: 'The plain text document format is a simple way to quickly translate text. Smartling considers each line of text in the document a single translation string.  Each string is considered unique by file - which means if two files have the exact same line of text - they will be captured as two separate strings. '
-   keys_variants: 
-   directive_style: API_Only
    directive_format: 'smarling.[directive_name] = [value]'
    directive_instructions: 'Unlike other file types, plain text does not support inline file directives as comments, in order to use a directive you must specify each directive using the <a href="later">file upload API</a>'
-   string_instructions: 'Not supported'
    directives:
       - placeholder_format_custom
       - placeholder_format
@@ -259,7 +239,6 @@
    template: 'standard'
    extension: '.csv'
    smartling_identifier: 'csv'
-   download_sample: ''
    resource_info: '<a href="http://www.ietf.org/rfc/rfc4180.txt">Comma-Separated Values (CSV) files  RFC</a>'
    default_placeholders: ''
    keys_variants: 
@@ -267,7 +246,7 @@
    directive_style: set_once
    directive_format: '# smarling.[directive_name] = [value]'
    directive_instructions: 'Directives are specified using comments. Each directive must be a single comment on one line, and there should not be any inline trailing symbols after the directive. The directives must be defined at the top of the file, ahead of the csv content.'
-   string_instructions: 'Set using <a href="later">string_instructions_paths</a> directive.'
+   string_instructions: 'Set using string_instructions_paths directive.'
    other: '<p>You may define values with and without quotations. For example:</p> <pre><code>value1, "Value 2"</code></pre> <p>If you want to use the symbol " inside quoted value you escape it with double quotes like:</p> <pre><code>"value""178"</code></pre> <p>which corresponds to the string: <strong?value"178</strong></p><p>Smartling offers several options for downloading CSV files. <a href="later">More info</a></p>'
    directives:
       - field_separator
