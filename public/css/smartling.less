@@ -138,6 +138,7 @@ body {
             margin: 0;
             padding: 0;
 
+
             &.shown {
                 background: #555;
 
@@ -161,12 +162,14 @@ body {
             }
 
             .active {
-                border-right: 5px solid @smartlingOrange;
 
-                a, a:hover, a:focus {
+                > a, > a:hover, > a:focus {
+                    width:100%;
                     background: none;
                     border: none;
                     color: @smartlingOrange;
+                    border-right: 5px solid @smartlingOrange;
+                    border-radius:0 !important;
                 }
 
             }

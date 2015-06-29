@@ -7,10 +7,10 @@ layout: default
     {% assign FAPIMethods = site.data.MiscAPIMethods %}
     {% for FAPIMethod in FAPIMethods %}
         {% if FAPIMethod.Method == page.method %}
-    <section>
-           <a class="anchor" id="{{FAPIMethod.Method}}"></a>
-           <h2>{{FAPIMethod.Method}} ({{FAPIMethod.Url}})</h2>
-           <p>{{FAPIMethod.Intro}}</p>
+
+
+    <h1>{{FAPIMethod.Method}} ({{FAPIMethod.Url}})</h1>
+    <p>{{FAPIMethod.Intro}}</p>
     <br/>
     <div class="panel panel-default">
         <div class="panel-heading">Parameters</div>
@@ -30,7 +30,7 @@ layout: default
             {% include FAPICodeExamples.html %}
         </div>
     </div>
-    </section>
+
         {% endif %} 
     {% endfor %}
 

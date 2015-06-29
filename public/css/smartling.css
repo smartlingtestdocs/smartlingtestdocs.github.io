@@ -114,15 +114,15 @@ body {
 .main-nav ul li ul {
   font-size: 14px;
 }
-.main-nav ul li .active {
-  border-right: 5px solid #ee7923;
-}
-.main-nav ul li .active a,
-.main-nav ul li .active a:hover,
-.main-nav ul li .active a:focus {
+.main-nav ul li .active > a,
+.main-nav ul li .active > a:hover,
+.main-nav ul li .active > a:focus {
+  width: 100%;
   background: none;
   border: none;
   color: #ee7923;
+  border-right: 5px solid #ee7923;
+  border-radius: 0 !important;
 }
 .main-nav ul a {
   display: block;

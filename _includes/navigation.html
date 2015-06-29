@@ -19,14 +19,14 @@
                     <ul class="nav nav-tabs nav-stacked {% if page.url contains "/pages/API/FileAPI" %}shown{% endif %} tertiary">
 
                     {% for FAPIMethod in site.data.FAPIMethods %}
-                        <li><a href="/pages/API/FileAPI/#{{FAPIMethod.Method}}">{{FAPIMethod.Method}} ({{FAPIMethod.Type}})</a></li>
+                        <li><a href="#{{FAPIMethod.Method}}">{{FAPIMethod.Method}} ({{FAPIMethod.Type}})</a></li>
                     {% endfor %}
 
                     </ul>
                 </li>
             </ul>
             <ul class="secondary">
-                <li class="">
+                <li class="{% if page.url contains "/pages/API/Glossary-Export" %}active{% endif %}">
                     <a href="/pages/API/Glossary-Export" class="title">Glossary Export</a>
                 </li>
             </ul>
