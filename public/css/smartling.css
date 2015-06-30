@@ -44,10 +44,11 @@ body {
 .homeBanner .searchBox {
   display: inline-block;
   margin-left: 37px;
+  width: 20%;
   color: #fff;
 }
 .homeBanner .searchBox input {
-  width: 400px;
+  width: 100%;
   border: 1px solid #eee !important;
 }
 .st-default-autocomplete {
@@ -120,7 +121,7 @@ body {
   width: 100%;
   background: none;
   border: none;
-  color: #ee7923;
+  color: #ee7923 !important;
   border-right: 5px solid #ee7923;
   border-radius: 0 !important;
 }
