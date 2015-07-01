@@ -1,7 +1,11 @@
 
+(function($){
+
 $(document).ready(function(){
 
-     handleHighlighting();
+    handleHighlighting();
+
+    setFirstGistSamplesToActive();
 
 });
 
@@ -14,6 +18,14 @@ var handleHighlighting = function(){
         path = path.replace(/\/$/,"");
     }
 
-    $('.nav a[href="'+ path +'"]').parent().addClass("active");
+    $('.main-nav .nav a[href="'+ path +'"]').parent().addClass("active");
 
 };
+
+var setFirstGistSamplesToActive = function(){
+
+    $(".code-sample ul").find("li:eq(0) a").click();
+
+};
+
+})(jQuery);
