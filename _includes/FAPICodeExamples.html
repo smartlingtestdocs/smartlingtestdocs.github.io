@@ -11,42 +11,42 @@
 
     <ul class="nav nav-tabs" role="tablist">
         {% if CurlGist %}
-        <li role="presentation" class="active"><a href="#Curl" data-toggle="tab">Curl</a></li>
+        <li role="presentation" class="active"><a href="#{{FAPIMethod.Method}}Curl" data-toggle="tab">Curl</a></li>
         {% endif %}
         {% if RubyGist %}
-        <li role="presentation" class="active"><a href="#Ruby" data-toggle="tab">Ruby</a></li>
+        <li role="presentation" class="active"><a href="#{{FAPIMethod.Method}}Ruby" data-toggle="tab">Ruby</a></li>
         {% endif %}
         {% if PHPGist %}
-        <li role="presentation"><a href="#PHP" data-toggle="tab">PHP</a></li>
+        <li role="presentation"><a href="#{{FAPIMethod.Method}}PHP" data-toggle="tab">PHP</a></li>
         {% endif %}
         {% if JavaGist %}
-        <li role="presentation"><a href="#Java" data-toggle="tab">Java</a></li>
+        <li role="presentation"><a href="#{{FAPIMethod.Method}}Java" data-toggle="tab">Java</a></li>
         {% endif %}
         {% if CsharpGist %}
-        <li role="presentation"><a href="#Csharp" data-toggle="tab">C#</a></li>
+        <li role="presentation"><a href="#{{FAPIMethod.Method}}Csharp" data-toggle="tab">C#</a></li>
         {% endif %}
         {% if PythonGist %}
-        <li role="presentation"><a href="#Python" data-toggle="tab">Python</a></li>
+        <li role="presentation"><a href="#{{FAPIMethod.Method}}Python" data-toggle="tab">Python</a></li>
         {% endif %}
     </ul>
 
     <div class="tab-content">
-        <div role="tabpanel" class="tab-pane active" id="Curl">
+        <div role="tabpanel" class="tab-pane active" id="{{FAPIMethod.Method}}Curl">
             <script src="https://gist.github.com/{{CurlGist}}.js"></script>
         </div>
-        <div role="tabpanel" class="tab-pane active" id="Ruby">
+        <div role="tabpanel" class="tab-pane active" id="{{FAPIMethod.Method}}Ruby">
             <script src="https://gist.github.com/{{RubyGist}}.js"></script>
         </div>
-        <div role="tabpanel" class="tab-pane" id="PHP">
+        <div role="tabpanel" class="tab-pane" id="{{FAPIMethod.Method}}PHP">
             <script src="https://gist.github.com/{{PHPGist}}.js"></script>
         </div>
-        <div role="tabpanel" class="tab-pane" id="Java">
+        <div role="tabpanel" class="tab-pane" id="{{FAPIMethod.Method}}Java">
             <script src="https://gist.github.com/{{JavaGist}}.js"></script>
         </div>
-        <div role="tabpanel" class="tab-pane" id="Csharp">
+        <div role="tabpanel" class="tab-pane" id="{{FAPIMethod.Method}}Csharp">
             <script src="https://gist.github.com/{{CsharpGist}}.js"></script>
         </div>
-        <div role="tabpanel" class="tab-pane" id="Python">
+        <div role="tabpanel" class="tab-pane" id="{{FAPIMethod.Method}}Python">
             <script src="https://gist.github.com/{{PythonGist}}.js"></script>
         </div>
     </div>
