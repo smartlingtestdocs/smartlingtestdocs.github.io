@@ -19,14 +19,14 @@
                     <ul class="nav nav-tabs nav-stacked {% if page.url contains "/pages/API/FileAPI" %}shown{% endif %} tertiary">
 
                     {% for FAPIMethod in site.data.FAPIMethods %}
-                        <li><a href="/pages/API/FileAPI/#{{FAPIMethod.Method}}">{{FAPIMethod.Method}} ({{FAPIMethod.Type}})</a></li>
+                        <li><a href="#{{FAPIMethod.Method}}">{{FAPIMethod.Method}} ({{FAPIMethod.Type}})</a></li>
                     {% endfor %}
 
                     </ul>
                 </li>
             </ul>
             <ul class="secondary">
-                <li class="">
+                <li>
                     <a href="/pages/API/Glossary-Export" class="title">Glossary Export</a>
                 </li>
             </ul>
@@ -71,30 +71,30 @@
         <li class="{% if page.url contains "/pages/Repository-Connector" %}shown{% endif %}"><a href="/pages/Repository-Connector/"><i class="fa fa-cloud-download"></i> Repository Connector</a>
              <ul class="secondary">
                 <li class="">
-                    <a href="/pages/Repository-Connector/Install-and-Setup/" class="title">Installation and Setup</a>
+                    <a href="/pages/Repository-Connector/Install-and-Setup" class="title">Installation and Setup</a>
                 </li>
             </ul>
             <ul class="secondary">
                 <li class="">
-                    <a href="/pages/Repository-Connector/Repository-Configuration/" class="title">Repository Configuration</a>
+                    <a href="/pages/Repository-Connector/Repository-Configuration" class="title">Repository Configuration</a>
                 </li>
             </ul>
             <ul class="secondary">
                 <li class="">
-                    <a href="/pages/Repository-Connector/FAQ-and-Advanced/" class="title">FAQ and Advanced</a>
+                    <a href="/pages/Repository-Connector/FAQ-and-Advanced" class="title">FAQ and Advanced</a>
                 </li>
             </ul>
         </li>
-        <li class="{% if page.url contains "/pages/Shell-Scripts/" %}shown{% endif %}"><a href="/pages/Shell-Scripts/"><i class="fa fa-desktop"></i> Command Line Scripts</a></li>
-        <li class="{% if page.url contains "/pages/Misc" %}shown{% endif %}"><a href="/pages/Misc/"><i class="fa fa-plus-circle"></i> Misc</a>
+        <li class="{% if page.url contains "/pages/Shell-Scripts/" %}shown{% endif %}"><a href="/pages/Shell-Scripts"><i class="fa fa-desktop"></i> Command Line Scripts</a></li>
+        <li class="{% if page.url contains "/pages/Misc" %}shown{% endif %}"><a href="/pages/Misc"><i class="fa fa-plus-circle"></i> Misc</a>
              <ul class="secondary">
                 <li class="">
-                    <a href="/pages/Misc/Language-Identifiers/" class="title">Language Identifiers</a>
+                    <a href="/pages/Misc/Language-Identifiers" class="title">Language Identifiers</a>
                 </li>
             </ul>
             <ul class="secondary">
                 <li class="">
-                    <a href="/pages/Misc/Ruby-Localization/" class="title">Ruby Localization</a>
+                    <a href="/pages/Misc/Ruby-Localization" class="title">Ruby Localization</a>
                 </li>
             </ul>
         </li>

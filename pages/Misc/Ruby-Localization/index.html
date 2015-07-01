@@ -18,20 +18,25 @@ Smartling’s translation interface supports plurals according to the    <a href
 <p>
     <strong>To require pluralization backend:</strong>
 </p>
-<p>
-    <strong>(1)</strong>
-    Create config/initializers/pluralization.rb in your application:
-<pre>I18n::Backend::Simple.send<br/>:include<br/>, I18n::Backend::Pluralization)</pre>
+<ol>
+    <li>
 
-    <strong>(2)</strong>
+    Create config/initializers/pluralization.rb in your application:
+<pre><code class="nohighlight">I18n::Backend::Simple.send<br/>:include<br/>, I18n::Backend::Pluralization)</code></pre>
+    </li>
+    <li>
     Create a rule in plurals.rb for each locale in your application. For example, this rule creates four plural forms for Russian: One, Few, Many and Other.
-</p>
-<div>
+
         <strong>plurals.rb</strong>
-  <pre>
-{
-  :ru => { :i18n => { :plural => { :keys => [:one, :few, :many, :other], :rule => lambda { |n| n % 10 == 1 &amp;&amp; n % 100 != 11 ? :one : [2, 3, 4].include?(n % 10) &amp;&amp; ![12, 13, 14].include?(n % 100) ? :few : n % 10 == 0 || [5, 6, 7, 8, 9].include?(n % 10) || [11, 12, 13, 14].include?(n % 100) ? :many : :other } } } }
-}</pre>
+<pre><code class="nohighlight">{
+    :ru => { :i18n => { :plural => { :keys => [:one, :few, :many, :other], :rule => lambda { |n| n % 10 == 1 &amp;&amp; n % 100 != 11 ? :one : [2, 3, 4].include?(n % 10) &amp;&amp; ![12, 13, 14].include?(n % 100) ? :few : n % 10 == 0 || [5, 6, 7, 8, 9].include?(n % 10) || [11, 12, 13, 14].include?(n % 100) ? :many : :other } } } }
+    }</code></pre>
+
+    </li>
+
+ </ol>
+<div>
+
 <p>
 Pluralization rules for most locales are    <a href="https://github.com/svenfuchs/i18n/blob/master/test/test_data/locales/plurals.rb" rel="nofollow">publicly available on Github</a>.
 </p>
