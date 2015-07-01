@@ -236,6 +236,7 @@
   - Method: Rename
     Url: /file/rename
     Type : POST
+    Intro: 'Renames an uploaded file by changing the fileUri. After renaming the file, the file will only be identified by the new fileUri you provide.'
     CurlGist: 9ab484ace2fde35fa028
     RubyGist: 14047205d76d3b5092c3
     PHPGist:  
@@ -258,6 +259,7 @@
   - Method: Delete
     Url: /file/delete
     Type : DELETE
+    Intro: '<p>Removes the file from Smartling. The file will no longer be available for download. Any complete translations for the file remain available for use within the system.</p><p>Smartling deletes files asynchronously and it typically takes a few minutes to complete. While deleting a file, you can not upload a file with the same fileUri.</p>'
     CurlGist: 8c293ba56605a38f0345
     RubyGist: 
     PHPGist:  
@@ -275,6 +277,7 @@
   - Method: LastModified
     Url: file/last_modified
     Type : GET
+    Intro: '<p>Returns information about when a file was last modified for a particular locale, and allows you to filter by lastModified date and/or locale so that you can download only those files changed since their last download.</p><p><strong>Note:</strong></p><ul><li>Just because a file is modified, the downloaded file won''t necessarily be different than the one you previously downloaded because the changes may not impact the translations for the particular retrieval type of the file.</li><li>When you add a new file, the lastModified date will originally be the creation date of the file. When you add a new locale, the lastModified date will originally be the date the site locale was added.</li></ul>'
     CurlGist: 73b2dffebc0dec2c51b8
     RubyGist: 
     PHPGist:  
