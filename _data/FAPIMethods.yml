@@ -1,5 +1,6 @@
 ---
   - Method : UploadFile
+    Name: 'Upload File'
     Url: /file/upload
     Type : POST
     Intro: 'Uploads original source content to Smartling (50MB limit for .ppt, .pptx; 25MB limit for .idml; 20MB limit for .doc, .docx; and 10MB limit for all others).'
@@ -61,6 +62,7 @@
 
 
   - Method : DownloadFiles
+    Name: 'Download Files'
     Url: /file/get
     Type : GET
     Intro: '<p>Downloads the requested file from Smartling.</p><p>It is important to check the HTTP response status code. If Smartling finds and returns the file normally, you will receive a 200 SUCCESS response. If you receive any other response status code than 200, the requested file will not be part of the response.</p><p>When you upload a UTF-16 character encoded file, then /file/get requests for that file will have a character encoding of UTF-16. All other uploaded files will return with a character encoding of UTF-8.</p><p>You can always use the content-type header in the response of a file/get request can always to determine the character encoding.</p>'
@@ -114,6 +116,7 @@
         String: '<p>A translated file with the following response header:</p><p><strong>Content-Disposition: attachment; filename="fname.ext"</strong></p><p>The filename is based on the fileUri associated with the requested file. In most cases, the filename is exactly the fileUri provided. The only exception to this is with .pot gettext files. When a .pot file is specified as the fileUri, Smartling returns a .po file.</p>'
 
   - Method: List
+    Name: 'List'
     Url: /file/list
     Type : GET
     Intro: 'Lists recently uploaded files. Returns a maximum of 500 files.'
@@ -190,6 +193,7 @@
             Description: 'The type of file: android, ios, gettext, javaProperties, xliff, yaml, etc'
 
   - Method: Status
+    Name: 'Status'
     Url: /file/status
     Type : GET
     CurlGist: 66243591ce9d0597afc6
@@ -234,6 +238,7 @@
             Description: 'The type of file: android, ios, gettext, javaProperties, xliff, yaml, etc'
 
   - Method: Rename
+    Name: 'Rename'
     Url: /file/rename
     Type : POST
     Intro: 'Renames an uploaded file by changing the fileUri. After renaming the file, the file will only be identified by the new fileUri you provide.'
@@ -257,6 +262,7 @@
 
 
   - Method: Delete
+    Name: 'Delete'
     Url: /file/delete
     Type : DELETE
     Intro: '<p>Removes the file from Smartling. The file will no longer be available for download. Any complete translations for the file remain available for use within the system.</p><p>Smartling deletes files asynchronously and it typically takes a few minutes to complete. While deleting a file, you can not upload a file with the same fileUri.</p>'
@@ -275,6 +281,7 @@
         String: 'Smartling returns a standard response format. The response will contain a SUCCESS response code indicating the file is successfully deleted. The response includes no data.'
 
   - Method: LastModified
+    Name: 'Last Modified'
     Url: file/last_modified
     Type : GET
     Intro: '<p>Returns information about when a file was last modified for a particular locale, and allows you to filter by lastModified date and/or locale so that you can download only those files changed since their last download.</p><p><strong>Note:</strong></p><ul><li>Just because a file is modified, the downloaded file won''t necessarily be different than the one you previously downloaded because the changes may not impact the translations for the particular retrieval type of the file.</li><li>When you add a new file, the lastModified date will originally be the creation date of the file. When you add a new locale, the lastModified date will originally be the date the site locale was added.</li></ul>'
