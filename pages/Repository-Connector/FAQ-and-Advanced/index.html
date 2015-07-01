@@ -19,31 +19,15 @@ title:  Repository Connector - FAQs and Advanced
             Can I alter the configuration files while the Repository Connector is running?
         </a>
     </li>
-    <li>
-        <a href="#CantConnect">
-            I can’t establish a connection with the Repository Connector
-        </a>
-    </li>
-    <li>
-        <a href="#CompleteConfig">
-            Complete Configuration Parameters for the Repository Connector
-        </a>
-    </li>
-    <li>
-        <a href="#Webhook">
-            Can I pass Smartling Credentials with a Webhook?
-        </a>
-    </li>
 </ul>
 
 <section>
-<h2 id="AddLocales">
-    <a href="AddLocales" class="anchor"></a>
+    <a class="anchor" id="AddLocales"></a>
+<h4>
     What happens if I add locales to my project?
-</h2>
+</h4>
 <p>
-    If you add locales to your project you will need to update your translation configuration file and add the new locales to the array. When the configuration
-    file is uploaded, the Repository Connector will automatically update files in the Smartling dashboard based on your new settings.<strong> </strong>
+    If you add locales to your project you will need to update your translation configuration file and add the new locales to the array. When the configuration file is uploaded, the Repository Connector will automatically update files in the Smartling dashboard based on your new settings. 
 </p>
 
 </section>
@@ -51,343 +35,23 @@ title:  Repository Connector - FAQs and Advanced
 
 <section>
     <a class="anchor" id="Reupload"></a>
-    <h2>
+    <h4>
     Why are my translated files being re-uploaded to the Dashboard as original files?
-</h2>
+</h4>
 <p>
-    The Repository Connector cannot automatically distinguish between an original file and a translated file in the repository. The Connector uploads files
-    based on the value of resourceSets.pathRegex in your translation configuration file. If your regular expression makes use of wildcards or your translated
-    files are downloaded to the same folder as your original files, it may be that both original and translated files will match the regular expression. To
-    avoid this problem, alter the structure of your repository or tighten your regular expression.
+    The Repository Connector cannot automatically distinguish between an original file and a translated file in the repository. The Connector uploads files based on the value of <code>resourceSets.pathRegex</code> in your translation configuration file. If your regular expression makes use of wildcards or your translated files are downloaded to the same folder as your original files, it may be that both original and translated files will match the regular expression. To avoid this problem, alter the structure of your repository or tighten your regular expression.
 </p>
 
 </section>
 
 <section>
     <a class="anchor" id="AlterConf"></a>
-<h2 >
+<h4 >
 Can I alter the configuration files while the Repository Connector is running?
-</h2>
+</h4>
 <p>
-    You can alter the translation configuration file while the connector is running. Any new commit to this file will trigger an automatic update to the
-    Smartling dashboard. You can also change the parameters of your webhook while the connector is running. However, changes to the repo-connector.conf file
-    require a restart to come into effect.
+   You can alter the translation configuration file while the connector is running. If it is hosted in your code repository, any new commit to this file will trigger an automatic update to the Smartling dashboard. However, changes to the <code>repo-connector.conf</code> file require a restart to come into effect.d
 </p>
       </section>
 
-    <section>
-        <a class="anchor" id="CantConnect"></a>
-<h2 id="CantConnect">
-    I can’t establish a connection with the Repository Connector.
-</h2>
-<p>
-    Possible remedies include:
-</p>
-<ul class="text-list">
-    <li>
-        If your server is running nginx or apache, configure a proxy for the <strong>http.port</strong> value and set <strong>host</strong> to ‘localhost’.
-    </li>
-    <li>
-        If the http listener is running on a non-standard port, the port may need to be referenced in your URLs.
-    </li>
-    <li>
-        If running behind a firewall, you may need to open a port for the Repository Connector.
-    </li>
-    <li>
-        Try changing the <strong>http.host</strong> value in repo-connector.conf from ‘localhost’ to ‘0.0.0.0’
-    </li>
-</ul>
-    </section>
-
-<section>
-    <a class="anchor" id="CompleteConfig"></a>
-<h2 id="CompleteConfig">
-    Complete Configuration Parameters for the Repository Connector
-</h2>
-<p>
-Basic setup for the Repository Connector is available in the    <a href="/pages/Repository-Connector/Install-and-Setup/" rel="nofollow">Installation instructions</a>.
-</p>
-<p>
-    The Repository Connector can be further customized by editing the repo-connector.conf file.
-</p>
-<p>
-    See below for a complete example of the repo-connector.conf file and a full list of parameters.
-</p>
-<pre><code>{<br/>  "repositories": [<br/>    {<br/>      "url": "https://github.com/user1/repository1.git",<br/>      "alias": "github_test1"<br/>    },<br/>    {<br/>      "url": "https://github.com/user2/repository2.git",<br/>      "alias": "github_test2",<br/>      "userPassword": {<br/>        "user": "user",<br/>        "password": "password"<br/>      }<br/>    },<br/>    {<br/>      "url": "https://github.com/user3/repository3",<br/>      "alias": "github_test3",<br/>      "personalToken": {<br/>        "personalToken": "d059759a2215621719eea7c897d41c4a7e3cc218"<br/>      }<br/>    },<br/>    {<br/>      "url": "https://github.com/user4/repository4",<br/>      "alias": "github_test4",<br/>      "sshKey": {<br/>        "privateKeyPath": "C:/tmp/keys/test_rsa",<br/>        "passphrase": "password"<br/>      }<br/>    },<br/>    {<br/>      "url": "https://github.com/user5/repository5",<br/>      "alias": "github_test5",<br/>      "oauthToken": {<br/>        "ClientID": "81ae67dee9f74f12b83e",<br/>        "ClientSecret": "3eb4a2555de2f68a2f37a1a15b32b0d889b7bf64"<br/>      }<br/>    },<br/>    {<br/>      "url": "https://user6.git.beanstalkapp.com/repository6.git",<br/>      "alias": "beanstalkapp_test6",<br/>      "userPassword": {<br/>        "user": "user",<br/>        "password": "password"<br/>      }<br/>    },<br/>    {<br/>      "url": "https://user7.git.beanstalkapp.com/repository7.git",<br/>      "alias": "beanstalkapp_test7",<br/>      "sshKey": {<br/>        "privateKeyPath": "C:/tmp/keys/test_rsa",<br/>        "passphrase": "password"<br/>      }<br/>    }<br/>  ],<br/>  "http": {<br/>    "host": "localhost",<br/>    "port": "5555",<br/>    "protocol": "http",<br/>    "callbackUrl": "http://callback.mydomain.com"<br/>  },<br/>  "queue": {<br/>    "consumers.max": "4"<br/>  },<br/>  "manager": {<br/>    "manageHost": "localhost",<br/>    "managePort": "7777",<br/>    "metricPeriod": "30"<br/>  },<br/>  "scheduler": {<br/>    "checkTranslation": {<br/>      "cron": "0 0 */4 * * ?"<br/>    }<br/>  },<br/>  "logs_directory": "",<br/>  "metrics_directory": "",<br/>  "clone_directory": "",<br/>  "queue_directory": "",<br/>  "db_directory": ""<br/>}</code></pre>
-<p>
-    <strong>Parameters:</strong>
-</p>
-<ul class="text-list">
-    <li>
-        <strong>repositories</strong>
-        - Defines an array of source repositories. A repository cannot have more than one authentication attribute and a public repository may have neither.
-        Without authentication information, the connector will be able to get files from the repository but not push translated files from Smartling.
-        Repositories have the following attributes:
-    </li>
-    <ul>
-        <li>
-            <strong>url</strong>
-            - the URL for the repository. Must be unique in the array
-        </li>
-        <li>
-            <strong>alias</strong>
-- alias for the repository. The alias is used in creating the            <a href="https://docs.smartling.com/display/docs/Files+API#FilesAPI-/file/upload(POST)" rel="nofollow">fileURI</a> that is registered with
-            Smartling for uploaded files. A unique alias value is recommended but not required. The complete uri will be "alias/branch/file”.
-        </li>
-        <li>
-            <strong>userPassword</strong>
-            (optional) - defines user/password authentication type.
-        </li>
-        <ul>
-            <li>
-                user - user name
-            </li>
-            <li>
-                password - user password
-            </li>
-        </ul>
-    </ul>
-</ul>
-<ul>
-    <ul>
-        <li>
-            <strong>personalToken</strong>
-(optional) - defines personal token authentication type for GitHub. Generate your personal token on the            <a href="https://github.com/settings/applications" rel="nofollow">Personal Settings -&gt; Application</a> GitHub page and copy it to personalToken
-            attribute of this object
-        </li>
-        <ul>
-            <li>
-                personalToken - personal token value
-            </li>
-        </ul>
-        <li>
-            <strong>sshKey</strong>
-            (optional) - defines ssh authentication type for github (or beanstalk). SSH key must be generated and public key uploaded to github (or beanstalk).
-            Following parameters must be provided
-        </li>
-        <ul>
-            <li>
-                privateKeyPath - path to generated private key. Full path must be defined
-            </li>
-            <li>
-                passphrase - password for private key
-            </li>
-        </ul>
-        <li>
-            <strong>oauthToken</strong>
-(optional) - defines github oAuth authentication type.            <strong><em>This method requires web browser running in repo-connector session on the broker host</em></strong>. Attributes for this type can be
-            generated on github Personal Settings -&gt; Applications on Developer Applications sections, correct callback host to Repository Connector
-            application must be provided to github.
-        </li>
-        <ul>
-            <li>
-                ClientID - client id token
-            </li>
-            <li>
-                ClientSecret - client secret token
-            </li>
-        </ul>
-    </ul>
-    <li>
-        <strong>http</strong>
-        - Defines settings for the http listener
-    </li>
-    <ul>
-        <li>
-            <strong>host</strong>
-            - the host name, set by default to "0.0.0.0". If your server is running apache or nginx, configure a proxy for your chosen port value. If running
-            on a local machine via a proxy, you may need to set this value to "localhost".
-        </li>
-        <li>
-            <strong>port</strong>
-            - the local port for the http listener. Any free port can be assigned
-        </li>
-        <li>
-            <strong>protocol</strong>
-            - possible values <strong>http</strong> or <strong>https</strong>
-        </li>
-        <li>
-            <strong>callbackURL</strong>
-            - reference to Repository Connector application from internet. The url is used to define oAuth github authentication callback and smartling
-            callback URLs
-        </li>
-        <li>
-            <strong>ssl</strong>
-            (optional for https protocol only) - ssl settings for https protocol.
-        </li>
-        <ul>
-            <li>
-                <strong>protocol</strong>
-                - ssl protocol
-            </li>
-            <li>
-                <strong>keystoreFile</strong>
-                - path to ssh private key, related path from configuration folder
-            </li>
-            <li>
-                <strong>keystoreType</strong>
-                - private key type
-            </li>
-            <li>
-                <strong>keystorePass</strong>
-                - password for keystore
-            </li>
-            <li>
-                <strong>keyPass </strong>
-                - key password
-            </li>
-        </ul>
-    </ul>
-    <li>
-        <strong>queue</strong>
-        - settings for queue. All requests are put to queue and processed after the receiving, except for that queue guaranties that a repository be accessible
-        by one handler only in the same time
-    </li>
-    <ul>
-        <li>
-            <strong>messages</strong>
-            - queue messages settings
-        </li>
-        <ul>
-            <li>
-                <strong>persistent</strong>
-                - defines whether must messages be persistent or not
-            </li>
-            <li>
-                <strong>quietPeriod</strong>
-                - time delay in ms. between putting message to queue and it processing
-            </li>
-        </ul>
-        <li>
-            <strong>consumers</strong>
-            - settings for messages consumers
-        </li>
-        <ul>
-            <li>
-                <strong>max</strong>
-                - maximum consumers threads. Because of synchronization, maximum concurrent events cannot be greater than all branches in all the repositories
-                count.
-            </li>
-        </ul>
-    </ul>
-    <li>
-        <strong>manager</strong>
-        - settings for controller component
-    </li>
-    <ul>
-        <li>
-            <strong>manageHost</strong>
-            - host where the Repository Connector application socket connection is open. This socket receives shutdown notifications and perform the broker
-            stopping
-        </li>
-        <li>
-            <strong>managePort</strong>
-            - port for Repository Connector application socket
-        </li>
-        <li>
-            <strong>metricPeriod</strong>
-            - period in seconds between metrics gathering
-        </li>
-    </ul>
-    <li>
-        <strong>scheduler</strong>
-        - Defines how often the Repository Connector checks for new translations in the Smartling Dashboard.
-    </li>
-    <ul>
-        <li>
-            <strong>checkTranslation.cron</strong>
-            - translation check interval in cron format
-        </li>
-    </ul>
-    <li>
-        <strong>logs_directory</strong>
-        - folder where broker logs are stored. If the value isn't defined or empty &lt;config_folder&gt;/logs is used
-    </li>
-    <li>
-        <strong>metrics_directory</strong>
-        - folder where collected metrics are stored. Metrics are stored in scv files. If empty &lt;config_folder&gt;/metrics is used
-    </li>
-    <li>
-        <strong>clone_directory</strong>
-        - folder where repositories are cloned. If empty &lt;config_folder&gt;/git-data is used
-    </li>
-    <li>
-        <strong>queue_directory</strong>
-        - folder where persistent queue data is stored. If empty &lt;config_folder&gt;/activemq-data is used
-    </li>
-    <li>
-        <strong>db_directory </strong>
-        - folder where persistent hsqldb data is stored. If empty &lt;config_folder&gt;/db-data is used
-    </li>
-</ul>
-    </section>
-
-    <section>
-<h4>
-    <a class="anchor" id="Webhook"></a>
-  Can I pass Smartling Credentials with a Webhook?
-</h4>
-<p>
-    It is possible, instead of supplying your Smartling credentials in repo-connector.conf, to pass your credentials to Smartling in a Webhook. Note that if
-    you choose this option, you will need to run the Repository Connector on a publicly addressable server. For easier troubleshooting, we recommend defining
-    all credentials in repo-connector.conf.
-</p>
-
-    <p>
-        <strong>To configure a Github webhook:</strong>
-    </p>
-    <ol>
-        <li>
-From your repository, go to <strong>Settings&gt;Webhooks and Services</strong>, click <strong>Add service</strong>and from the dropdown menu, select        <strong>Smartling</strong>.
-        </li>
-        <li>
-
-        Complete the details and click <strong>Add Service</strong>:
-        </li>
-    </ol>
-    <ul>
-        <ul>
-            <li>
-                <strong>Service URL</strong>
-                - The URL of the Repository Connector host. Eg, <a href="http://connector.domain.com/" rel="nofollow">http://connector.domain.com</a>. This
-                will be the same as the callback URL you defined in the repo-connector.conf file
-            </li>
-            <li>
-                <strong>Project </strong>
-                - Your Smartling Project ID (can be found in the Dashboard at Project Settings&gt;API).
-            </li>
-            <li>
-                <strong>API Key</strong>
-                - Your Smartling API Key (can be found in the Dashboard at Project Settings&gt;API).
-            </li>
-            <li>
-                <strong>Smartling Config</strong>
-                - The path to your translation configuration file. If you used the standard name in the root directory of your repository, this will be
-                ‘smartling-config.json’
-            </li>
-            <li>
-                <strong>Master only</strong>
-                - If checked, only changes in the ‘Master’ branch will be pushed to Smartling. Left unchecked by default.
-            </li>
-            <li>
-                Active - Box must be checked.<strong> </strong>
-            </li>
-        </ul>
-    </ul>
-    <p>
-        <strong>To configure a Beanstalk webhook:</strong>
-    </p>
-
-        <ol>
-<li>
-From your repository, navigate to <strong>Settings&gt;Integration Items</strong>. Select the<strong>Webhooks Classic</strong> element and click        <strong>Add Webhook.</strong>
-
-
-</li>
-<li>
-Enter the host url for the Repository Connector host. This will be the same as the callback URL you defined in the repo-connector.conf file. eg<a href="http://connector.domain.com/" rel="nofollow">http://connector.domain.com</a>. Define the project ID, API Key (available from the dashboard at        <strong>Project Settings&gt;API</strong>) and Resource file.
-</li>
-
-</ol>
-
-    </section>
+    

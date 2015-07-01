@@ -8,131 +8,131 @@ title:  Repository Connector - Setup your Code Repository
     configuration file in your repository.
 </p>
 <p>
-    This step must be completed before you will be able to push files from your repository to Smartling and to push
-    translations back to your repository.
+    This step must be completed before you will be able to push files from your repository to Smartling and to push translations back to your repository.
 </p>
 <p>
     <strong>Create translation configuration file</strong>
 </p>
 <p>
-    Create a JSON file and push it somewhere in your repository. Default filename is smartling-config.json. This file
-    defines resource file that should be
-    uploaded and how to save translated files that are downloaded from Smartling. The file must be valid JSON.
+    Create a JSON file and commit it to the path defined in the <code>repo-connector.conf</code> file. Default filename is <code>smartling-config.json</code>. This file defines resource file that should be uploaded and how to save  translated files that are downloaded from Smartling.  The file must be valid JSON.
 </p>
 <p>
-    You can use this annotated example file as a basis for your smartling-config.json file.
+    The Repository Connector Package contains an annotated example file called <code>smartling-config-example.json</code>. You can use this file to build your config but make sure you rename the file to remove the <code>-example</code>.
 </p>
-<p>
-    <a href="">
-        smartling-config.json
-    </a>
-</p>
-<p>
-    <strong>Example:</strong>
-</p>
+
 
 <p>
     <strong>Parameters:</strong>
 </p>
 <ul class="text-list">
-    <li>
-        <strong>locales</strong>
-        - Locales has two functions. If automatically authorizing content that is uploaded to Smartling (default
-        behavior), it determines which locales content
-        will be authorized for. It also serves as a mapping of locale codes from the Smartling API codes to the codes
-        that should be used in the repository. <strong>Smartling locale code must be unique per configuration file. The
-        file must list at least one locale. </strong>Note that if you add extra
-        languages to your project, you will need to update this file for the new languages to be handled by the
-        Repository Connector.
+    <li dir="ltr">
+        <p dir="ltr">
+            <code>locales</code> - Locales has two functions. If automatically authorizing content that is uploaded to Smartling (default behavior), it determines which
+            locales content will be authorized for. It also serves as a mapping of locale codes from the Smartling API codes to the codes that are used in the
+            repository. Smartling locale code must be unique per configuration file. The file must list at least one locale. Note that if you add extra
+            languages to your project, you will need to update this file for the new languages to be handled by the Repository Connector.
+        </p>
     </li>
     <ul>
-        <li>
-            <strong>smartling</strong>
-            - Smartling locale code. Codes for locales in your project can be copied from <strong>Project Settings&gt;API</strong>
-            in the <a href="https://dashboard.smartling.com/settings/api.htm" rel="nofollow">dashboard</a>.
+        <li dir="ltr">
+            <p dir="ltr">
+<code>smartling</code> - Smartling locale code. Codes for locales in your project can be copied from Project Settings&gt;API in the                <a href="https://dashboard.smartling.com/settings/api.htm">dashboard</a>.
+            </p>
         </li>
-        <li>
-            <strong>application</strong>
-            - locale code that will be used when pushing translated files back to the repository. This can be any format
+        <li dir="ltr">
+            <p dir="ltr">
+                <code>application</code> - locale code that will be used when pushing translated files back to the repository. This can be any format
+            </p>
         </li>
     </ul>
-    <li>
-        <strong>resourceSets</strong>
-        - defines an array of resource sets. Each set identifies a group of repository files that will be uploaded to
-        Smartling with the same settings.
+    <li dir="ltr">
+        <p dir="ltr">
+            <code>resourceSets</code> - defines an array of resource sets. Each set identifies a group of repository files that will be uploaded to Smartling with the same
+            settings.
+        </p>
     </li>
     <ul>
-        <li>
-            <strong>pathRegex</strong>
-            - Java 7 Regular expression defining which repository files to upload to Smartling. All files matching the
-            expression will be uploaded.
+        <li dir="ltr">
+            <p dir="ltr">
+<code>type</code> - The Smartling API “fileType”. Possible values: "javaProperties", "ios", "android", "gettext", and so on. See Smartling’s                <a href="/pages/supported-file-types/">Supported File Types</a> documentation for the full list.
+            </p>
         </li>
-        <li>
-            <strong>type</strong>
-            - The Smartling API “fileType”. Possible values: "javaProperties", "ios", "android", "gettext", and so on.
-            See Smartling’s <a href="/pages/supported-file-types/" rel="nofollow">Supported File Types</a> documentation
-            for the full list.
+        <li dir="ltr">
+            <p dir="ltr">
+                <code>pathRegex</code> - Java 7 Regular expression defining which repository files to upload to Smartling. All files matching the expression will be
+                uploaded.
+            </p>
         </li>
-        <li>
-            <strong>authorizeContent </strong>
-            (optional) - defines whether uploaded content will automatically be authorized for translation. Possible
-            values: ‘true’ (default), ‘false’.
+        <li dir="ltr">
+            <p dir="ltr">
+                <code>authorizeContent</code> (optional) - defines whether uploaded content will automatically be authorized for translation. Possible values: ‘true’
+                (default), ‘false’.
+            </p>
         </li>
-        <li>
-            <strong>translationPathExpression</strong>
-            (optional) - Java 7 regular expression used to create a file path and name for translated files. If this
-            value is not defined, translated files in
-            the Smartling dashboard will not be pushed to the repository. Predefined variables for the expression are:
+        <li dir="ltr">
+            <p dir="ltr">
+                <code>translationPathExpression</code> (optional) - Java 7 regular expression used to create a file path and name for translated files. If this value is not
+                defined, translated files in the Smartling dashboard will not be pushed to the repository. Predefined variables for the expression are:
+            </p>
         </li>
         <ul>
-            <li>
-                <strong>locale</strong>
-                - project locale code value (as defined at locales.application)
+            <li dir="ltr">
+                <p dir="ltr">
+                    <code>locale</code> - project locale code value (as defined at locales.application)
+                </p>
             </li>
-            <li>
-                <strong>originalFile</strong>
+            <li dir="ltr">
+                <p dir="ltr">
+                    <code>originalFile</code>
+                </p>
             </li>
             <ul>
-                <li>
-                    <strong>fullName</strong>
-                    - full path and name of original file
+                <li dir="ltr">
+                    <p dir="ltr">
+                        <code>fullName</code> - full path and name of original file
+                    </p>
                 </li>
-                <li>
-                    <strong>path</strong>
-                    - original file path only
+                <li dir="ltr">
+                    <p dir="ltr">
+                        <code>path</code> - original file path only
+                    </p>
                 </li>
-                <li>
-                    <strong>name</strong>
-                    - original file name with extension
+                <li dir="ltr">
+                    <p dir="ltr">
+                        <code>name</code> - original file name with extension
+                    </p>
                 </li>
-                <li>
-                    <strong>baseName</strong>
-                    - original file name without extension
+                <li dir="ltr">
+                    <p dir="ltr">
+                        <code>baseName</code> - original file name without extension
+                    </p>
                 </li>
-                <li>
-                    <strong>extension</strong>
-                    - original file extension
+                <li dir="ltr">
+                    <p dir="ltr">
+                        <code>extension</code> - original file extension
+                    </p>
                 </li>
             </ul>
-            <li>
-                Groups defined in your pathRegex expression can also be used as variables.
+            <li dir="ltr">
+                <p dir="ltr">
+                    Groups defined in your pathRegex expression can also be used as variables.
+                </p>
             </li>
         </ul>
-        <li>
-            <strong>translationCommitMessage</strong>
-            (optional) - Java 7 regular expression defining a translation commit message. If not defined, a default
-            value "Translation $originalFile.fullName
-            to $locale" will be used. Predefined variables are the same as those for
-            <strong>translationPathExpression</strong>, plus <strong>translatedFile,</strong> which contains the
-            translated file path and name, with the same attributes as the <strong>originalFile</strong>.
+        <li dir="ltr">
+            <p dir="ltr">
+                <code>translationCommitMessage</code> (optional) - Java 7 regular expression defining a translation commit message. If not defined, a default value
+                "Translation $originalFile.fullName to $locale" will be used. Predefined variables are the same as those for translationPathExpression, plus
+                translatedFile, which contains the translated file path and name, with the same attributes as the originalFile.
+            </p>
         </li>
-        <li>
-            <strong>smartlingDirectives</strong>
-            - array of strings which have the format &lt;directive name&gt;=&lt;value&gt;. File directives can be used
-            to alter the way Smartling handles your
-            files. See our <a href="/pages/supported-file-types/" rel="nofollow">Supported File Types</a> documentation
-            for
-            information on which directives are available for each file type.
+        <li dir="ltr">
+            <p dir="ltr">
+                <code>smartlingDirectives</code> - array of strings which have the format <code>&lt;directive name&gt;=&lt;value&gt;</code>. File directives can be used to alter the way Smartling
+    handles your files. See our <a href="https://docs.smartling.com/display/docs/Supported+File+Types">Supported File Types</a> documentation for information on which directives are available for each file type.
+            </p>
         </li>
     </ul>
 </ul>
+
+    
