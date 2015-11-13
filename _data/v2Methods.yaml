@@ -1,0 +1,620 @@
+---
+  - Method: Authenticate
+    Name: 'Authenticate'
+    Url: '/auth-api/v2/authenticate'
+    Link: '/pages/API/v2/Authentication/Authenticate/'
+    Type : POST
+    Intro: ''
+    CurlGist: 7ade6ca1e334e8cc51ce
+    RubyGist: 
+    PHPGist:  
+    JavaGist: 
+    CsharpGist: 
+    PythonGist: 
+    Parameters:
+        - Name: userIdentifier
+          Required: required
+          Description: 'Identifies the API User'
+
+        - Name: userSecret
+          Required: required
+          Description: 'Authenticates the API User'
+
+    Return:
+        String: 
+        Json: '200&nbsp;OK<br/>{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&quot;response&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;code&quot;:&nbsp;&quot;SUCCESS&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;data&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;accessToken&quot;:&nbsp;&quot;{access token};,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;expiresIn&quot;:&nbsp;1458,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;refreshExpiresIn&quot;:&nbsp;1455,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;refreshToken&quot;:&nbsp;&quot;{refresh token}&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;tokenType&quot;:&nbsp;&quot;Bearer&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;sessionState&quot;:&nbsp;&quot;&quot;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>}'
+        Parameters:
+
+          - Name: accessToken
+            Description: 'Token to authenticate all other API requests.'
+
+          - Name: expiresIn
+            Description: 'Number of seconds until access token expires'
+
+          - Name: refreshToken
+            Description: 'Token for a Refresh Authentication request'
+
+          - Name: refreshExpiresIn
+            Description: Number of seconds until refresh token expires.
+
+          - Name: tokenType
+            Description: 'Type of access token being returned. Currently, this will always be <code>Bearer</code>'
+
+          - Name: sessionState
+            Description: ''
+
+  - Method: RefreshAuthentication
+    Name: 'Refresh Authentication'
+    Url: '/auth-api/v2/authenticate/refresh'
+    Link: '/pages/API/v2/Authentication/Refresh-Authentication/'
+    Type : POST
+    Intro: ''
+    CurlGist: 6dd0ebe17c19927b5d80
+    RubyGist: 
+    PHPGist:  
+    JavaGist: 
+    CsharpGist: 
+    PythonGist: 
+    Parameters:
+        - Name: refreshToken
+          Required: required
+          Description: 'Identifies the API User'
+
+    Return:
+        String: 
+        Json: '200&nbsp;OK<br/>{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&quot;response&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;code&quot;:&nbsp;&quot;SUCCESS&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;data&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;accessToken&quot;:&nbsp;&quot;{access token};,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;expiresIn&quot;:&nbsp;1458,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;refreshExpiresIn&quot;:&nbsp;1455,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;refreshToken&quot;:&nbsp;&quot;{refresh token}&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;tokenType&quot;:&nbsp;&quot;Bearer&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;sessionState&quot;:&nbsp;&quot;&quot;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>}'
+        Parameters:
+
+          - Name: accessToken
+            Description: 'Token to authenticate all other API requests.'
+
+          - Name: expiresIn
+            Description: 'Number of seconds until access token expires'
+
+          - Name: refreshToken
+            Description: 'Token for a Refresh Authentication request'
+
+          - Name: refreshExpiresIn
+            Description: Number of seconds until refresh token expires.
+
+          - Name: tokenType
+            Description: 'Type of access token being returned. Currently, this will always be <code>Bearer</code>'
+
+          - Name: sessionState
+            Description: ''
+
+
+
+
+
+
+
+  - Method: ListProjects
+    Name: 'List Projects'
+    Url: '/accounts-api/v2/accounts/{accountUid}/projects'
+    Link: '/pages/API/v2/Projects/List-Projects'
+    Type : GET
+    Intro: ''
+    CurlGist: 
+    RubyGist: 
+    PHPGist:  
+    JavaGist: 
+    CsharpGist: 
+    PythonGist: 
+    Parameters:
+        - Name: 'projectNameFilter'
+          Required: 
+          Type: 'string'
+          Description: 'Returns only projects matching the filter (case insensitive)'
+
+        - Name: 'includeArchived'
+          Required: 
+          Type: 'boolean'
+          Description: 'Sets whether to include archived projects in the list. Defaults to <code>false</code>'
+
+        - Name: 'Limit and Offset'
+          Required: 
+          Type: 'Integer'
+          Description: 'See <a href="/pages/API/v2/General-Information/Limit-and-Offset/">Limit and Offset</a>'
+
+    Return:
+        String: 
+        Json: ''
+        Parameters:
+
+          - Name: ''
+            Description: ''
+
+  - Method: ProjectDetails
+    Name: 'Project Details'
+    Url: '/accounts-api/v2/projects/{projectId}'
+    Link: '/pages/API/v2/Projects/Project-Details/'
+    Type : GET
+    Intro: ''
+    CurlGist: 
+    RubyGist: 
+    PHPGist:  
+    JavaGist: 
+    CsharpGist: 
+    PythonGist: 
+
+    Return:
+        String: 
+        Json: ''
+        Parameters:
+
+          - Name: ''
+            Description: ''
+
+
+  - Method: CloneProject
+    Name: Clone Project
+    Url: '/accounts-api/v2/projects/{projectId/clone'
+    Link: '/pages/API/v2/Projects/Clone-Project/'
+    Type : POST
+    Intro: ''
+    CurlGist: 
+    RubyGist: 
+    PHPGist:  
+    JavaGist: 
+    CsharpGist: 
+    PythonGist: 
+    Parameters:
+        - Name: 'projectName'
+          Required: 'YES'
+          Type: 'string'
+          Description: 'Name for the new project'
+
+        - Name: 'categoryValueUid'
+          Required: 
+          Type: ''
+          Description: ''
+
+        - Name: 'targetLocales'
+          Required: 
+          Type: ''
+          Description: ''
+
+
+
+    Return:
+        String: 
+        Json: ''
+        Parameters:
+
+          - Name: ''
+            Description: ''
+
+
+  - Method: AddLocale
+    Name: Add Locale
+    Url: '/projects-api/v2/projects/{projectId}/targetLocales'
+    Link: '/pages/API/v2/Projects/Add-Locale'
+    Type : POST
+    Intro: ''
+    CurlGist: 
+    RubyGist: 
+    PHPGist:  
+    JavaGist: 
+    CsharpGist: 
+    PythonGist: 
+    Parameters:
+        - Name: 'localeId'
+          Required: YES
+          Type: 'string'
+          Description: '<a href="/pages/API/v2/General-Information/Locale-ID/">Smartling ID</a> for the locale to be added to the project.'
+
+        - Name: 'defaultWorkflowUid'
+          Required: 
+          Type: 'string'
+          Description: 'UID of the desired default workflow for the locale to be added.'
+
+
+    Return:
+        String: 
+        Json: ''
+        Parameters:
+
+          - Name: ''
+            Description: ''
+
+
+  - Method: ArchiveProject
+    Name: Archive Project
+    Url: '/projects-api/v2/projects/{projectId}/archive'
+    Link: '/pages/API/v2/Projects/Archive-Project'
+    Type : POST
+    Intro: ''
+    CurlGist: 
+    RubyGist: 
+    PHPGist:  
+    JavaGist: 
+    CsharpGist: 
+    PythonGist: 
+
+    Return:
+        String: 'Standard <a href="/pages/API/v2/Projects/Project-Details/">project details</a> response for the unarchived project'
+
+
+  - Method: UnarchiveProject
+    Name: Unarchive Project
+    Url: '/projects-api/v2/projects/{projectId}/unarchive'
+    Link: '/pages/API/v2/Projects/Unarchive-Project/'
+    Type : POST
+    Intro: ''
+    CurlGist: 
+    RubyGist: 
+    PHPGist:  
+    JavaGist: 
+    CsharpGist: 
+    PythonGist: 
+
+    Return:
+        String: 'Standard <a href="/pages/API/v2/Projects/Project-Details/">project details</a> response for the unarchived project'
+
+
+# Content
+
+
+  - Method: AuthorizeContent
+    Name: Authorize Content
+    Url: '/projects-api/v2/projects/{projectId}/authorize'
+    Link: '/pages/API/v2/Content/Authorize-Content/'
+    Type : GET
+    Intro: ''
+    CurlGist: 
+    RubyGist: 
+    PHPGist:  
+    JavaGist: 
+    CsharpGist: 
+    PythonGist: 
+    Parameters:
+        - Name: ''
+          Required: ''
+          Type: ''
+          Description: ''
+
+    Return:
+        String: 
+        Json: ''
+        Parameters:
+
+          - Name: ''
+            Description: ''
+
+
+  - Method: AuthorizeContent
+    Name: Authorize Content
+    Url: '/projects-api/v2/projects/{projectId}/authorize'
+    Link: '/pages/API/v2/Content/Authorize-Content/'
+    Type : GET
+    Intro: ''
+    CurlGist: 
+    RubyGist: 
+    PHPGist:  
+    JavaGist: 
+    CsharpGist: 
+    PythonGist: 
+    Parameters:
+        - Name: ''
+          Required: ''
+          Type: ''
+          Description: ''
+
+    Return:
+        String: 
+        Json: ''
+        Parameters:
+
+          - Name: ''
+            Description: ''
+
+
+  - Method: AuthorizeContent
+    Name: Authorize Content
+    Url: '/projects-api/v2/projects/{projectId}/authorize'
+    Link: '/pages/API/v2/Content/Authorize-Content/'
+    Type : GET
+    Intro: ''
+    CurlGist: 
+    RubyGist: 
+    PHPGist:  
+    JavaGist: 
+    CsharpGist: 
+    PythonGist: 
+    Parameters:
+        - Name: ''
+          Required: ''
+          Type: ''
+          Description: ''
+
+    Return:
+        String: 
+        Json: ''
+        Parameters:
+
+          - Name: ''
+            Description: ''
+
+
+### Files API
+
+  - Method : UploadFile
+    Name: 'Upload File'
+    Url: '/files-api/v2/projects/{projectId}/file'
+    Link: "/pages/API/v2/FileAPI/Upload-File/"
+    Type : POST
+    Intro: 'Uploads original source content to Smartling (50MB limit for .ppt, .pptx; 25MB limit for .idml; 20MB limit for .doc, .docx; and 10MB limit for all others).'
+    CurlGist: 428369801cd80a75aca3
+    RubyGist: 
+    PHPGist:  
+    JavaGist: 
+    CsharpGist: 
+    PythonGist: 
+    Parameters:
+        - Name: file
+          Required: required
+          Description: 'The file contents to upload. This should be submitted via a multipart/form-data POST request.'
+
+        - Name: fileUri
+          Required: required
+          Description: 'Value that uniquely identifies the uploaded file. This ID can be used to request the file back. We recommend you use file path + file name, similar to how version control systems identify the file. Example: /myproject/i18n/ui.properties.'
+
+        - Name: approved
+          Required: optional
+          Description: 'Determines whether content in the file is authorized (available for translation) upon submitting the file via the Smartling Dashboard. An error message will return if there are insufficient translation funds and approved is set to true.If string has been completely excluded for translation from all languages, or excluded from translation for a specific language, approved will NOT authorize it.'
+          Values:
+            - Value: TRUE
+              Description: 'Content will be available for translation on upload'
+
+            - Value: FALSE
+              Default: 'YES'
+              Description: 'Content will be added to the "Awaiting Authorization" queue on upload'
+
+        - Name: localesToApprove
+          Required: optional
+          Description: 'This value, if set, authorizes strings for translation into specific locales. Use the project/locale/list call to get the list of locales for the project or see them in the dashboard on the API settings page. Use multiple localesToApprove parameter pairs to authorize more than one locale. You can add languages by uploading the file again and indicating the language to authorize with localesToApprove or all languages with approved, or in the dashboard using the "Show Partially Authorized" filter option from the Awaiting Authorization list. If string has been completely excluded for translation from all languages, or excluded from translation for a specific language, localesToApprove will NOT authorize it. <strong>Note:</strong> Do not set the <code>approved</code> parameter to TRUE if you want to specify individual locales to approve. Submitting an upload with both of these parameters set will result in a validation error.'
+
+        - Name: fileType
+          Required: required
+          Description: 'Unique identifier for the file type. Permitted values: android, ios, gettext, html, javaProperties, yaml, xliff, xml, json, docx, pptx, xlsx, idml, qt, resx, plaintext, cvs, stringsdict.'
+
+        - Name: smartling.namespace
+          Required: optional
+          Description: 'For accounts created after July 31st 2015 only. Define a custom <a href="http://support.smartling.com/hc/en-us/articles/207178807">namespace</a> for the file. <strong>Note:</strong> while this parameter shares the format of other file directives, it will not work as an inline directive and must be specified in the API call.'
+
+        - Name: 'smartling.[command]'
+          Required: optional
+          Description: 'Provides custom parser configuration for supported file types. See Supported File Types for more details.'
+
+        - Name: callbackUrl
+          Required: optional
+          Description: 'A GET request that creates a callback to a URL when a file is 100% published for a locale. The callback gives the fileUri and locale with the format <code>http[/s]://your.url?locale=xx-XX&fileUri=your.file</code>. If you upload the file again, without a callbackUrl, it will remove any previous callbackUrl for that file. The RequestBin (http://requestb.in) service is a convenient way to test callback. RequestBin generates a short-lived disposable URL that displays all posted requests.'
+
+    Return:
+      String: 
+      Json: '200&nbsp;OK<br/>{<br/>&nbsp;&nbsp;&quot;response&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;code&quot;:&nbsp;&quot;SUCCESS&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;messages&quot;:&nbsp;[],<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;data&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&quot;overWritten&quot;:&nbsp;&quot;[true|false]&quot;,<br/>&nbsp;&nbsp;&nbsp;&quot;stringCount&quot;:&nbsp;&quot;[number]&quot;,<br/>&nbsp;&nbsp;&nbsp;&quot;wordCount&quot;:&nbsp;&quot;[number]&quot;<br/>}<br/>&nbsp;&nbsp;&nbsp;}<br/>}'
+      Parameters:
+
+        - Name: overWritten
+          Description: Indicates whether the uploaded file has overwritten an existing file; either <strong>true</strong> or <strong>false</strong>.
+
+        - Name: stringCount
+          Description: The number of strings in the uploaded file.
+
+        - Name: wordCount
+          Description: The number of words in the uploaded file.
+
+
+  - Method : DownloadFile
+    Name: 'Download File'
+    Url: '/files-api/v2/projects/{projectId}/locales/{localeId}/file'
+    Link: "/pages/API/v2/FileAPI/Download-File/"
+    Type : GET
+    Intro: '<p>Downloads the requested file from Smartling.</p><p>To download the original file, delete <code>/locales/{localeId}</code> from the URL.<p>It is important to check the HTTP response status code. If Smartling finds and returns the file normally, you will receive a 200 SUCCESS response. If you receive any other response status code than 200, the requested file will not be part of the response.</p><p>When you upload a UTF-16 character encoded file, then /file/get requests for that file will have a character encoding of UTF-16. All other uploaded files will return with a character encoding of UTF-8.</p><p>You can always use the content-type header in the response of a file/get request can always to determine the character encoding.</p>'
+    CurlGist: 94aba0d87463af617ecf
+    RubyGist: 
+    PHPGist:  
+    JavaGist: 
+    CsharpGist: 
+    PythonGist: 
+    Parameters:
+        - Name: FileURI
+          Required: required
+          Description: 'Value that uniquely identifies the downloaded file.'
+
+        - Name: retrievalType
+          Required: optional
+          Description: 'Determines the desired format for the download. Applies to translated files only.'
+          Values:
+            - Value: pending
+              Default: FALSE
+              Description: 'Smartling returns any translations (including non-published translations).'
+
+            - Value: published
+              Default: TRUE
+              Description: 'Smartling returns only published/pre-published translations.'
+
+            - Value: pseudo
+              Default: FALSE
+              Description: 'Smartling returns a modified version of the original text with certain characters transformed and the text expanded. For example, the uploaded string "This is a sample string", will return as "T~hís ~ís á s~ámpl~é str~íñg". Pseudo translations enable you to test how a longer string integrates into your application.'
+
+            - Value: contextMatchingInstrumented
+              Default: FALSE
+              Description: 'Smartling returns a modified version of the original file with strings wrapped in a specific set of Unicode symbols that can later be recognized and matched by the Chrome Context Capture Extension.'
+
+        - Name: includeOriginalStrings
+          Required: optional
+          Description: 'Specifies whether Smartling will return the original string or an empty string where no translation is availabe. This parameter is supported for gettext, java properties, custom XML, and JSON files only.'
+          Values:
+            - Value: True
+              Default: TRUE
+              Description: 'If there is no translation, Smartling returns the original string.'
+
+            - Value: False
+              Default: FALSE
+              Description: 'If there is no translation, Smartling returns an empty string.'
+    Return:
+        String: '<p>200&nbsp;OK<br/>HEADER:<br/>Content-Disposition:&nbsp;attachment;&nbsp;filename=&quot;fname.ext&quot;<br/>file&nbsp;contents</p><p>The filename is based on the fileUri associated with the requested file. In most cases, the filename is exactly the fileUri provided. The only exception to this is with .pot gettext files. When a .pot file is specified as the fileUri, Smartling returns a .po file.</p>'
+
+  - Method: List
+    Name: 'List'
+    Url: '/files-api/v2/projects/{projectId}/files/list'
+    Link: "/pages/API/FileAPI/List/"
+    Type : GET
+    Intro: 'Lists recently uploaded files. Returns a maximum of 500 files.'
+    CurlGist: 5fbfdef8d712021cd39c
+    RubyGist: 
+    PHPGist:  
+    JavaGist: 
+    CsharpGist: 
+    PythonGist: 
+    Parameters:
+        - Name: locale
+          Required: optional
+          Description: 'If not specified, the Smartling Files API will return a listing of the original files matching the specified criteria. When the locale is not specified, completedStringCount will be "0".'
+
+        - Name: uriMask
+          Required: optional
+          Description: 'Returns only files with a URI containing a given string. Case is ignored and <code>%</code> is a wildcard. For example, the value <code>.js%n</code> will match <code>strings.json</code> and <code>STRINGS.JSON</code> but not <code>json.strings</code>'
+
+        - Name: fileTypes
+          Required: optional
+          Description: 'Identifiers: android, ios, gettext, html, javaProperties, yaml, xliff, xml, json, docx, pptx, xlsx, idml, qt, resx, plaintext, cvs. File types are combined using the logical "OR".'
+
+        - Name: lastUploadedAfter
+          Required: optional
+          Description: 'Return all files uploaded after the specified date. See Date Format for more details.'
+
+        - Name: lastUploadedBefore
+          Required: optional
+          Description: 'Return all files uploaded before the specified date. See  Date Format for more details.'
+
+        - Name: offset
+          Required: optional
+          Description: 'For result set returns, the offset is a number indicating the distance from the beginning of the list; for example, for a result set of "50" files, you can set the offset at 10 to return files 10 - 50.'
+
+        - Name: limit
+          Required: optional
+          Description: 'For result set returns, limits the number of files returned; for example, for a result set of 50 files, a limit of "10" would return files 0 - 10.'
+
+        - Name: conditions
+          Required: optional
+          Description: 'An array of the following conditions: haveAtLeastOneUnapproved, haveAtLeastOneApproved, haveAtLeastOneTranslated, haveAllTranslated, haveAllApproved, haveAllUnapproved. Conditions are combined using the logical "OR".'
+
+        - Name: orderBy
+          Required: optional
+          Description: 'Sets the name of the parameter to order results by: fileUri, stringCount, wordCount, approvedStringCount, completedStringCount, lastUploaded and fileType. You can specify ascending or descending with each parameter by adding "_asc" or "_desc"; for example, "fileUri_desc". If you do not specify ascending or descending, the default is ascending.'
+
+    Return:
+        String: 
+        Json: '{<br/>&nbsp;&nbsp;&quot;response&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;code&quot;:&nbsp;&quot;SUCCESS&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;messages&quot;:&nbsp;[],<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;data&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&quot;totalCount&quot;:&nbsp;&quot;[number]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&quot;items&quot;&nbsp;:&nbsp;[{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;fileUri&quot;:&nbsp;&quot;[/myproject/i18n/ui.properties]&quot;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;lastUploaded&quot;:&nbsp;&quot;[YYYY-MM-DDThh:mm:ssZ]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;fileType&quot;:&nbsp;&quot;[fileType]&quot;&nbsp;},<br/>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;...&nbsp;}&nbsp;]<br/>}<br/>&nbsp;&nbsp;&nbsp;}<br/>}'
+
+        Parameters:
+
+          - Name: totalCount
+            Description: The number of files that match your specified criteria.
+
+          - Name: fileUri
+            Description: A unique identifier for the uploaded file.
+
+          - Name: lastUploaded
+            Description: 'The time and date of the last upload: YYYY-MM-DDThh:mm:ss'
+
+          - Name: fileType
+            Description: 'The type of file: android, ios, gettext, javaProperties, xliff, yaml, etc'
+
+  - Method: Status
+    Name: 'Status'
+    Url: '/files-api/v2/projects/{projectId}/locales/{localeId}/file/status'
+    Link: "/pages/API/v2/FileAPI/Status/"
+    Type : GET
+    Intro: 'Returns information on a specific file'
+    CurlGist: 
+    RubyGist: 
+    PHPGist:  
+    JavaGist: 
+    CsharpGist: 
+    PythonGist: 
+    Parameters:
+        - Name: fileUri
+          Required: required
+          Description: 'Value that uniquely identifies the file.'
+
+    Return:
+        String: 
+        Json: '200&nbsp;OK<br/>{<br/>&nbsp;&nbsp;&quot;response&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;code&quot;:&nbsp;&quot;SUCCESS&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;messages&quot;:&nbsp;[],<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;data&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&quot;fileUri&quot;:&nbsp;&quot;[/myproject/i18n/admin_ui.properties]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&quot;stringCount&quot;:&nbsp;&quot;[number]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&quot;wordCount&quot;:&nbsp;&quot;[number]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&quot;approvedStringCount&quot;:&nbsp;&quot;[number]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&quot;completedStringCount&quot;:&nbsp;&quot;[number]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&quot;lastUploaded&quot;:&nbsp;&quot;[YYYY-MM-DDThh:mm:ssZ]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&quot;fileType&quot;:&nbsp;&quot;[fileType]&quot;<br/>}<br/>&nbsp;&nbsp;&nbsp;}<br/>}<br/>'
+        Parameters:
+
+          - Name: fileUri
+            Description: 'A unique identifier for the uploaded file.'
+
+          - Name: stringCount
+            Description: 'The number of strings in the uploaded file, minus any excluded content.'
+
+          - Name: wordCount
+            Description: 'The number of words in the uploaded file, minus any excluded content.'
+
+          - Name: approvedStringCount
+            Description: The number of strings in the uploaded file that are approved (available for translation).
+
+          - Name: completedStringCount
+            Description: The number of published strings in the uploaded file.
+
+          - Name: lastUploaded
+            Description: 'The time and date of the last upload: YYYY-MM-DDThh:mm:ss'
+
+          - Name: fileType
+            Description: 'The type of file: android, ios, gettext, javaProperties, xliff, yaml, etc'
+
+  - Method: Rename
+    Name: 'Rename'
+    Url: '/files-api/v2/projects/{projectId}/file/rename'
+    Link: "/pages/API/v2/FileAPI/Rename/"
+    Type : POST
+    Intro: 'Renames an uploaded file by changing the fileUri. After renaming the file, the file will only be identified by the new fileUri you provide.'
+    CurlGist: 
+    RubyGist: 
+    PHPGist:  
+    JavaGist: 
+    CsharpGist: 
+    PythonGist: 
+    Parameters:
+        - Name: fileUri
+          Required: required
+          Description: 'Current value that uniquely identifies the file.'
+
+        - Name: newFileUri
+          Required: required
+          Description: 'The new value for fileUri. We recommend that you use file path + file name, similar to how version control systems identify the file. Example: /myproject/i18n/ui.properties. This must be a fileUri that does not exist in the Smartling database.'
+
+    Return:
+        String: 'Smartling returns a standard response format. The response will contain a SUCCESS response code indicating the file is successfully deleted. The response includes no data.'
+
+
+  - Method: Delete
+    Name: 'Delete'
+    Url: '/files-api/v2/projects/{projectId}/file/delete'
+    Link: "/pages/API/v2/FileAPI/Delete/"
+    Type : POST
+    Intro: '<p>Removes the file from Smartling. The file will no longer be available for download. Any complete translations for the file remain available for use within the system.</p><p>Smartling deletes files asynchronously and it typically takes a few minutes to complete. While deleting a file, you can not upload a file with the same fileUri.</p>'
+    CurlGist: 8c293ba56605a38f0345
+    RubyGist: 
+    PHPGist:  
+    JavaGist: 
+    CsharpGist: 
+    PythonGist:
+    Parameters:
+        - Name: fileUri
+          Required: required
+          Description: 'Value that uniquely identifies the file.'
+
+    Return:
+        String: 'Smartling returns a standard response format. The response will contain a SUCCESS response code indicating the file is successfully deleted. The response includes no data.'
+
+
+
+
+
+---
+

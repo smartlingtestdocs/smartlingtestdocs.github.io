@@ -1,4 +1,4 @@
-<section>
+
     <a class="anchor" id="{{SupportedFileType.smartling_identifier}}"></a>
     <h2>{{SupportedFileType.file_type}}</h2>
     <table class="table">
@@ -46,11 +46,10 @@
     <div class="panel panel-default">
         <div class="panel-heading">
 
-            <a data-toggle="collapse" class="collapsed" data-target="#collapse-{{SupportedFileType.smartling_identifier}}"
-               href="#collapseOne">Directives</a>
+            <span>Directives</span>
 
         </div>
-        <div class="panel-body collapse" id="collapse-{{SupportedFileType.smartling_identifier}}">
+        <div class="panel-body collapse in" id="collapse-{{SupportedFileType.smartling_identifier}}" aria-expanded="true">
             <h4>Directive Format</h4>
                 <pre><code>{{SupportedFileType.directive_format}}</code></pre>
                 <p>{{SupportedFileType.directive_instructions}}</p>
@@ -161,4 +160,3 @@
         </div>
     </div>
     {% endif %}
-</section>

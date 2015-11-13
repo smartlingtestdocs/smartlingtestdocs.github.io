@@ -2,8 +2,9 @@
   - Method : UploadFile
     Name: 'Upload File'
     Url: /file/upload
+    Link: "/pages/API/FileAPI/Upload-File/"
     Type : POST
-    Intro: 'Uploads original source content to Smartling (50MB limit for .ppt, .pptx; 25MB limit for .idml; 20MB limit for .doc, .docx; and 10MB limit for all others).'
+    Intro: '<p>Uploads original source content to Smartling (50MB limit for .ppt, .pptx; 25MB limit for .idml; 20MB limit for .doc, .docx; and 10MB limit for all others).</p><h4>''Resource Locked'' errors</h4><p>Uploading files can take some time, especially if the file is very large, or if it contains a high number of strings. Attempting another API request related to the file, such as a <a href="/pages/API/FileAPI/Download-File/">Download</a> or <a href="/pages/API/FileAPI/Status/">Status</a> request, before upload is complete will return a <code>423 - Resource Locked</code> <a href="/pages/API/Getting-Started/Response-Format/">error</a> in order to prevent incorrect information being returned due to an incomplete upload. Smartling manages incoming requests intelligently to minimize the time that a file will be locked. However, if you work with large files, we recommend building wait/retry mechanisms into any processes that request recently uploaded files.'
     CurlGist: 544f2205cc2e01784b74
     RubyGist: 24cf07a8ee9895311f31
     PHPGist:  
@@ -27,24 +28,28 @@
               Description: 'Content will be available for translation on upload'
 
             - Value: FALSE
-              Default: YES
+              Default: 'YES'
               Description: 'Content will be added to the "Awaiting Authorization" queue on upload'
 
         - Name: localesToApprove
           Required: optional
-          Description: 'This value, if set, authorizes strings for translation into specific locales. Use the project/locale/list call to get the list of locales for the project or see them in the dashboard on the API settings page. Use multiple localesToApprove parameter pairs to authorize more than one locale. You can add languages by uploading the file again and indicating the language to authorize with localesToApprove or all languages with approved, or in the dashboard using the "Show Partially Authorized" filter option from the Awaiting Authorization list. If string has been completely excluded for translation from all languages, or excluded from translation for a specific language, localesToApprove will NOT authorize it.'
+          Description: 'This value, if set, authorizes strings for translation into specific locales. Use the project/locale/list call to get the list of locales for the project or see them in the dashboard on the API settings page. Use multiple localesToApprove parameter pairs to authorize more than one locale. You can add languages by uploading the file again and indicating the language to authorize with localesToApprove or all languages with approved, or in the dashboard using the "Show Partially Authorized" filter option from the Awaiting Authorization list. If string has been completely excluded for translation from all languages, or excluded from translation for a specific language, localesToApprove will NOT authorize it. <strong>Note:</strong> Do not set the <code>approved</code> parameter to TRUE if you want to specify individual locales to approve. Submitting an upload with both of these parameters set will result in a validation error.'
 
         - Name: fileType
           Required: required
           Description: 'Unique identifier for the file type. Permitted values: android, ios, gettext, html, javaProperties, yaml, xliff, xml, json, docx, pptx, xlsx, idml, qt, resx, plaintext, cvs, stringsdict.'
+          
+        - Name: smartling.namespace
+          Required: optional
+          Description: 'For accounts created after July 31st 2015 only. Define a custom <a href="http://support.smartling.com/hc/en-us/articles/207178807">namespace</a> for the file. <strong>Note:</strong> while this parameter shares the format of other file directives, it will not work as an inline directive and must be specified in the API call.'
 
         - Name: 'smartling.[command]'
-          Required: required
+          Required: optional
           Description: 'Provides custom parser configuration for supported file types. See Supported File Types for more details.'
 
         - Name: callbackUrl
-          Required: required
-          Description: 'A GET request that creates a callback to a URL when a file is 100% published for a locale. The callback gives the fileUri and locale. If you upload the file again, without a callbackUrl, it will remove any previous callbackUrl for that file. The RequestBin (http://requestb.in) service is a convenient way to test callback. RequestBin generates a short-lived disposable URL that displays all posted requests.'
+          Required: optional
+          Description: 'A GET request that creates a callback to a URL when a file is 100% published for a locale. The callback gives the fileUri and locale with the format <code>http[/s]://your.url?locale=xx-XX&fileUri=your.file</code>. If you upload the file again, without a callbackUrl, it will remove any previous callbackUrl for that file. The RequestBin (http://requestb.in) service is a convenient way to test callback. RequestBin generates a short-lived disposable URL that displays all posted requests.'
 
     Return:
       String: 
@@ -64,6 +69,7 @@
   - Method : DownloadFiles
     Name: 'Download Files'
     Url: /file/get
+    Link: "/pages/API/FileAPI/Download-File/"
     Type : GET
     Intro: '<p>Downloads the requested file from Smartling.</p><p>It is important to check the HTTP response status code. If Smartling finds and returns the file normally, you will receive a 200 SUCCESS response. If you receive any other response status code than 200, the requested file will not be part of the response.</p><p>When you upload a UTF-16 character encoded file, then /file/get requests for that file will have a character encoding of UTF-16. All other uploaded files will return with a character encoding of UTF-8.</p><p>You can always use the content-type header in the response of a file/get request can always to determine the character encoding.</p>'
     CurlGist: 841003d3fec06c30e9af
@@ -73,7 +79,7 @@
     CsharpGist: 
     PythonGist: 
     Parameters:
-        - Name: FileURI
+        - Name: fileUri
           Required: required
           Description: 'Value that uniquely identifies the downloaded file.'
 
@@ -103,21 +109,21 @@
 
         - Name: includeOriginalStrings
           Required: optional
-          Description: 'Specifies whether Smartling will return the original string or an empty string where no translation is availabe. This parameter is supported for gettext, java properties, custom XML, and JSON files only.'
+          Description: 'Specifies whether Smartling will return the original string or an empty string where no translation is available. This parameter is supported for gettext, java properties, custom XML, Android XML, and JSON files only.'
           Values:
             - Value: True
-              Default: TRUE
+              Default: YES
               Description: 'If there is no translation, Smartling returns the original string.'
 
             - Value: False
-              Default: FALSE
-              Description: 'If there is no translation, Smartling returns an empty string.'
+              Description: 'For Android XML files, Smartling completely removes untranslated elements from the file. For all other compatible file types, Smartling returns an empty string if there is no translation.'
     Return:
         String: '<p>A translated file with the following response header:</p><p><strong>Content-Disposition: attachment; filename="fname.ext"</strong></p><p>The filename is based on the fileUri associated with the requested file. In most cases, the filename is exactly the fileUri provided. The only exception to this is with .pot gettext files. When a .pot file is specified as the fileUri, Smartling returns a .po file.</p>'
 
   - Method: List
     Name: 'List'
     Url: /file/list
+    Link: "/pages/API/FileAPI/List/"
     Type : GET
     Intro: 'Lists recently uploaded files. Returns a maximum of 500 files.'
     CurlGist: c56b65d0e517a584aa1c
@@ -133,7 +139,7 @@
 
         - Name: uriMask
           Required: optional
-          Description: 'Filters for URI, for example: ".strings"'
+          Description: 'Returns only files with a URI containing a given string. Case is ignored and <code>%</code> is a wildcard. For example, the value <code>.js%n</code> will match <code>strings.json</code> and <code>STRINGS.JSON</code> but not <code>json.strings</code>'
 
         - Name: fileTypes
           Required: optional
@@ -184,7 +190,7 @@
             Description: The number of strings in the uploaded file that are approved (available for translation).
 
           - Name: completedStringCount
-            Description: The number of strings in the uploaded file that are approved and translated.
+            Description: The number of published strings in the uploaded file.
 
           - Name: lastUploaded
             Description: 'The time and date of the last upload: YYYY-MM-DDThh:mm:ss'
@@ -195,6 +201,7 @@
   - Method: Status
     Name: 'Status'
     Url: /file/status
+    Link: "/pages/API/FileAPI/Status/"
     Type : GET
     CurlGist: 66243591ce9d0597afc6
     RubyGist: 1382ad68957bcb286efd
@@ -220,26 +227,27 @@
             Description: A unique identifier for the uploaded file.
 
           - Name: stringCount
-            Description: The number of strings in the uploaded file.
+            Description: The number of strings in the uploaded file, minus any excluded content.
 
           - Name: wordCount
-            Description: The number of words in the uploaded file.
+            Description: The number of words in the uploaded file, minus any excluded content.
 
           - Name: approvedStringCount
             Description: The number of strings in the uploaded file that are approved (available for translation).
 
           - Name: completedStringCount
-            Description: The number of strings in the uploaded file that are approved and translated.
+            Description: The number of published strings in the uploaded file.
 
           - Name: lastUploaded
             Description: 'The time and date of the last upload: YYYY-MM-DDThh:mm:ss'
 
           - Name: fileType
             Description: 'The type of file: android, ios, gettext, javaProperties, xliff, yaml, etc'
-
+            
   - Method: Rename
     Name: 'Rename'
     Url: /file/rename
+    Link: "/pages/API/FileAPI/Rename/"
     Type : POST
     Intro: 'Renames an uploaded file by changing the fileUri. After renaming the file, the file will only be identified by the new fileUri you provide.'
     CurlGist: 9ab484ace2fde35fa028
@@ -253,7 +261,7 @@
           Required: required
           Description: 'Current value that uniquely identifies the file.'
 
-        - Name: newfileUri
+        - Name: newFileUri
           Required: required
           Description: 'The new value for fileUri. We recommend that you use file path + file name, similar to how version control systems identify the file. Example: /myproject/i18n/ui.properties. This must be a fileUri that does not exist in the Smartling database.'
 
@@ -264,6 +272,7 @@
   - Method: Delete
     Name: 'Delete'
     Url: /file/delete
+    Link: "/pages/API/FileAPI/Delete/"
     Type : DELETE
     Intro: '<p>Removes the file from Smartling. The file will no longer be available for download. Any complete translations for the file remain available for use within the system.</p><p>Smartling deletes files asynchronously and it typically takes a few minutes to complete. While deleting a file, you can not upload a file with the same fileUri.</p>'
     CurlGist: 8c293ba56605a38f0345
@@ -283,8 +292,9 @@
   - Method: LastModified
     Name: 'Last Modified'
     Url: file/last_modified
+    Link: "/pages/API/FileAPI/Last-Modified/"
     Type : GET
-    Intro: '<p>Returns information about when a file was last modified for a particular locale, and allows you to filter by lastModified date and/or locale so that you can download only those files changed since their last download.</p><p><strong>Note:</strong></p><ul><li>Just because a file is modified, the downloaded file won''t necessarily be different than the one you previously downloaded because the changes may not impact the translations for the particular retrieval type of the file.</li><li>When you add a new file, the lastModified date will originally be the creation date of the file. When you add a new locale, the lastModified date will originally be the date the site locale was added.</li></ul>'
+    Intro: '<p>Returns information about when a file was last modified for a particular locale, and allows you to filter by lastModified date and/or locale so that you can download only those files changed since their last download.</p><p><strong>Note:</strong></p><ul><li>The <code>lastModified</code> parameter can be updated for several reasons and may not reflect a new published translation. This means that you may not see changes in a downloaded file, even if the lastModified date is later than your most recent download. The <a href="http://docs.smartling.com/pages/API/FileAPI/#DownloadFiles">retrievalType</a> you have chosen will also affect whether a change will affect downloaded files. For example, if a new translation is saved, but not published, <code>lastModified</code> will be updated, but the downloaded file will only change if you have set your <code>retrievalType</code> to <code>pending</code>, not <code>published</code>.</li><li>When you add a new file, the lastModified date will originally be the creation date of the file. When you add a new locale, the lastModified date will originally be the date the site locale was added.</li></ul>'
     CurlGist: 73b2dffebc0dec2c51b8
     RubyGist: 
     PHPGist:  
@@ -294,11 +304,16 @@
     Parameters:
         - Name: fileUri
           Required: required
-          Description: 'Current value that uniquely identifies the file.'
+          Description: 'Value that uniquely identifies the file.'
 
-        - Name: newfileUri
-          Required: required
-          Description: 'The new value for fileUri. We recommend that you use file path + file name, similar to how version control systems identify the file. Example: /myproject/i18n/ui.properties. This must be a fileUri that does not exist in the Smartling database.'
+        - Name: lastModifiedAfter
+          Required: optional
+          Description: 'Limits the return to only those file and locale combinations that have a <code>lastModified</code> date after the parameter <code>lastModifiedAfter</code>. The items array will be empty if the file has not been modified in any of the locales since the lastModifiedAfter date specified. The date should be formatted according to <a href="/pages/API/">Date Format</a>.'
+          
+        - Name: locale
+          Required: optional
+          Description: 'Filters the response to only the specified locale. You can find the list of locale codes for your project in the <a href="https://dashboard.smartling.com/settings/api">Smartling Dashboard</a>.'          
+          
     Return:
         String: 
         Json: '{<br/>&nbsp;&nbsp;&nbsp;&nbsp;"items" : [{<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"locale": "fr-FR",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"lastModified": "YYYY-MM-DDThh:mm:ss"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ ... }]<br/>}'

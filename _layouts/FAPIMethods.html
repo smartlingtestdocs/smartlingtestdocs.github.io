@@ -1,0 +1,35 @@
+---
+layout: default
+---
+
+<div class="page">
+{% for FAPIMethod in site.data.FAPIMethods %}
+    {% if FAPIMethod.Method == page.method %}
+
+    
+          <a class="anchor" id="{{FAPIMethod.Method}}"></a>
+          <h2>{{FAPIMethod.Name}} ({{FAPIMethod.Url}})</h2>
+           <p>{{FAPIMethod.Intro}}</p>
+    <div class="panel panel-default">
+        <div class="panel-heading">Parameters</div>
+        <div class="panel-body">
+            {% include FAPIMethodParameters.html %}
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">Returns</div>
+        <div class="panel-body">
+            {% include FAPIReturns.html %}
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">Examples</div>
+        <div class="panel-body">
+            {% include FAPICodeExamples.html %}
+        </div>
+        <br/>
+    </div>
+
+    {% endif %}
+{% endfor %}
+</div>

@@ -1,6 +1,6 @@
 ---
 layout: page
-title:  Repository Connector - Install and Configure the Repository Connector
+title:  Repository Connector - Install and Configure
 ---
 
 <p>
@@ -36,7 +36,7 @@ title:  Repository Connector - Install and Configure the Repository Connector
 <h4>Install the connector</h4>
 
 <p>
-Download the <a href="https://smartling-connector-public.s3.amazonaws.com/repo_connector/repo-connector-1.3.0-bin.zip" rel="nofollow">Repository Connector package</a>
+Download the <a href="https://smartling-connector-public.s3.amazonaws.com/repo_connector/repo-connector-1.4.0-bin.zip" rel="nofollow">Repository Connector package</a>
     and unpack it into the desired folder. The application should be hosted on a server that is continuously available and publicly addressable, with Java
     version 7 or higher.
 </p>
@@ -98,7 +98,7 @@ Download the <a href="https://smartling-connector-public.s3.amazonaws.com/repo_c
         </ul>
         <li dir="ltr">
             <p dir="ltr">
-                <code>smartlingProject</code> - defines your Smartling project credentials. You can these in the Smartling Dashboard at Project Settings&gt;API.
+                <code>smartlingProject</code> - defines your Smartling project credentials. You can find these in the Smartling Dashboard at Project Settings&gt;API.
             </p>
         </li>
         <ul>
@@ -127,7 +127,7 @@ Download the <a href="https://smartling-connector-public.s3.amazonaws.com/repo_c
         </li>
         <li dir="ltr">
             <p dir="ltr">
-                <code>branches</code> - An array of branch names to be checked for resources. If this is undefined, all branch names will be checked.
+                <code>branches</code> - Regular expression for branch names to be checked for resources. If this is undefined, all branch names will be checked.
             </p>
         </li>
         <li dir="ltr">
@@ -162,18 +162,18 @@ Download the <a href="https://smartling-connector-public.s3.amazonaws.com/repo_c
 <p>
     To start the Repository Connector, execute:
 </p>
-<pre>java -jar repo-connector-1.3.0.jar -start</pre>
+<pre>java -jar repo-connector-1.3.3.jar -start</pre>
 <p>
     To stop the Repository Connector, execute:
 </p>
-<pre>java -jar repo-connector-1.3.0.jar -stop</pre>
+<pre>java -jar repo-connector-1.3.3.jar -stop</pre>
 <p>
     If you have saved your configuration files in a folder other than the default (/cfg) add the parameter -configuration &lt;folder_name&gt; to the command.
 </p>
 <p>
     To run as a daemon, execute:
 </p>
-<pre>java -jar repo-connector-1.3.0.jar -start&amp;</pre>
+<pre>java -jar repo-connector-1.3.3.jar -start&amp;</pre>
 <p>
 Once the Repository Connector is running, you will still need to    <a href="/pages/Repository-Connector/Repository-Configuration" rel="nofollow">configure your repository</a> before
     you can push files to Smartling.

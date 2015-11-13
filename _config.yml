@@ -2,14 +2,15 @@
 markdown:         kramdown
 highlighter:      pygments
 
-
+gems:
+  - jekyll-redirect-from
 
 # Setup
 title:            'Smartling'
 tagline:          'Developer Documentation'
 description:      'Developer documentation for the Smartling platform.'
 url:              http://hyde.getpoole.com
-baseurl:          '/'
+baseurl:          '/v2APIBetaDocs/'
 
 author:
   name:           'Smartling'

@@ -1,7 +1,14 @@
 <link rel="stylesheet" href="{{site.baseurl}}public/css/FAPIMethods.css">
 
 
-
+             <div class="parameter {% if Parameter.Required == "required" %}required{% else %}optional{% endif %}">
+                <h4>apiKey (required)</h4>
+                <p>The API Key for your account. Available in the Smartling dashboard at <a href="https://dashboard.smartling.com/settings/api">Project Settings>API</a>.</p>
+            </div>
+            <div class="parameter {% if Parameter.Required == "required" %}required{% else %}optional{% endif %}">
+                <h4>projectId (required)</h4>
+                <p>The unique ID for your project. Available in the Smartling dashboard at <a href="https://dashboard.smartling.com/settings/api">Project Settings>API</a>.</p>
+            </div>
         {% for Parameter in FAPIMethod.Parameters%}
             <div class="parameter {% if Parameter.Required == "required" %}required{% else %}optional{% endif %}">
                 <h4>{{Parameter.Name}} ({{Parameter.Required}})</h4>
@@ -13,7 +20,7 @@
                 <table class="table">
                 {% for Value in Parameter.Values %}
                     <tr>
-                        <th>{{Value.Value}}</th> <td>{{Value.Description}}</td>
+                        <th>{{Value.Value}} {% if Value.Default == 'YES' %}(default){% endif %}</th> <td>{{Value.Description}}</td>
                     </tr>
                 {% endfor %}
                 </table>

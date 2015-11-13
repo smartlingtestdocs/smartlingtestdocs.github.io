@@ -1,11 +1,13 @@
 ---
   - Directive:      'placeholder_format_custom'
-    Values:         '1. Custom regular expression (<a ref="http://www.pcre.org">pcre</a>)<br/>2. <strong>NONE</strong> - disable custom placeholders'
+    Values:         '1. Custom regular expression (<a href="http://www.pcre.org">pcre</a>)<br/>2. <strong>NONE</strong> - disable custom placeholders'
     Description:    'Used to define a custom placeholder format for strings in the file'
     Examples:
         - Code: 'smartling.placeholder_format_custom = \[.+?\]'
-          CodeJSON: '"placeholder_format_custom" : "\[.+?\]"'
           Description: 'Any characters surrounded by square brackets "[]" will be treated as a placeholder'
+        
+        - CodeJSON: '"placeholder_format_custom" : ["\\[.+?\\]"]'
+          Description: 'Any characters surrounded by square brackets will be treated as a placeholder.'
 
   - Directive:      'placeholder_format'
     Values:         '<code>NONE</code>; <code>C</code>; <code>IOS</code>; <code>PYTHON</code>; <code>JAVA</code>; <code>YAML</code>; <code>QT</code>; <code>RESX</code>'
@@ -15,7 +17,7 @@
           CodeJSON: '"placeholder_format" : "IOS"'
           Description: 'Specifies iOS-style placeholders for the file.'
 
-  - Directive:      'string format'
+  - Directive:      'string_format'
     Values:         '<strong>MESSAGE_FORMAT</strong> (default) or <strong>NONE</strong>'
     Description:    'String format is a parser directive for specialized file processing that enables string escaping and pre-processing rules as defined by various third party resource handlers. The default is <a href="http://docs.oracle.com/javase/6/docs/api/java/text/MessageFormat.html">MessageFormat</a>, a standard Java resource handler.'
     Examples:
@@ -32,7 +34,6 @@
     Examples:
         - CodeYAML: 'smartling.string_format_paths = html: *'
           CodeJSON: '"string_format_paths" : "html: *"'
-          CodeXML: 'smartling.string_format_paths = html: *'
           Description: 'Smartling parses values of all nodes as HTML.'
 
         - CodeCSV: 'smartling.string_format_paths=html:*'
@@ -40,29 +41,27 @@
 
         - CodeYAML: 'smartling.string_format_paths = html: */text'
           CodeJSON: '"string_format_paths" : "html: */text"'
-          CodeXML: 'smartling.string_format_paths = html: */text'
           Description: 'Smartling enables HTML in <code>text</code> nodes (and their subnodes), regardless of their parents.'
 
         - CodeYAML: 'smartling.string_format_paths = html: [*/text, */string]'
           CodeJSON: '"string_format_paths" : "html: [*/text, *string]"'
-          CodeXML: 'smartling.string_format_paths = html: [*/text, */string]'
           Description: 'Smartling enables HTML in <code>text</code> and <code>string</code> nodes (and their subnodes), regardless of their parents'
 
         - CodeYAML: 'smartling.string_format_paths = html: /product/description'
           CodeJSON: '"string_format_paths" : "html: /product/description"'
-          CodeXML: 'smartling.string_format_paths = html: /product/description'
           Description: 'Smartling enables HTML in /product/description and subnodes'
 
         - CodeYAML: 'smartling.string_format_paths = html: */text, @default: /system/log/text'
           CodeJSON: '"string_format_paths" : "html: */text, @default: /system/log/text"'
-          CodeXML: 'smartling.string_format_paths = html: */text, @default: /system/log/text'
           Description: 'Smartling enables HTML in <code>text</code> nodes (and subnodes), but disables HTML in <code>/system/log/text</code> (and subnodes), as the exact match overrides the pattern match.'
 
-        - CodeXML: 'smartling.string_format_paths = html: /product/description/*'
-          Description: 'Smartling enables HTML in all subnodes of /product/descriptions, but not in this node itself.'
+        - CodeXML: 'smartling.string_format_paths = html: /product/description'
+          Description: 'Smartling enables HTML in /product/descriptions only.'
+
+        - CodeXML: 'smartling.string_format_paths = html: /product/description/'
+          Description: 'Smartling enables HTML in /product/descriptions and all its child nodes.'
 
         - CodeYAML: 'smartling.string_format_paths ='
-          CodeJSON: '"string_format_paths" : ""'
           CodeXML: 'smartling.string_format_paths ='
           Description: 'Disables the effect of the previous string_format_paths instruction.'
 
@@ -93,20 +92,24 @@
   - Directive:      'source_key_paths'
     Paths: 'yes'
     Values:         '<p>A comma separated list of paths to use create "keys" for strings on translate_paths.</p> <p>The key will be a space separated string of all the keys leading to the source string. For example: "string", "group1 string".</p>'
-    Description:    '<p>Used to define the schema for capturing a key for each source string. Keys are required:</p><ul><li>If you want to import pre-existing translations from a file with the same structure</li><li>If you want to create variants of strings that would otherwise be duplicates (By default Smartling does not create duplicate strings.) <strong>Note:</strong> creating or updating variants for previously uploaded strings cause new strings to be created that will not have translations. The SmartMatch feature can be configured to automatically apply the existing translations, or translators can use the 100% match from the Translation to manually apply the translation.</li><p>Specify the full path to the value, then indicate which part of the path should be used as the key using {} notation. {*} will use any key present in that part of the path (or can be used when no translate_paths has been specified to simply capture the key for each string).</p>'
+    Description:    '<p>Used to define the schema for capturing a key for each source string. Keys are required:</p><ul><li>If you want to import pre-existing translations from a file with the same structure</li><li>If you want to create variants of strings that would otherwise be duplicates (By default Smartling does not create duplicate strings.)</p> <p><strong>Note:</strong> creating or updating variants for previously uploaded strings cause new strings to be created that will not have translations. The SmartMatch feature can be configured to automatically apply the existing translations, or translators can use the 100% match from the Translation to manually apply the translation.</li><p>Specify the full path to the value, then indicate which part of the path should be used as the key using {} notation.</p>'
     Examples:
         - CodeYaml: 'smartling.source_key_paths = {*}'
-          CodeXML: 'smartling.source_key_paths = {*}'
-          CodeJSON: '"source_key_paths" : "data/item/{string_name}"'
+          CodeJSON: '"source_key_paths" : "{*}"'
           Description: 'Smartling will capture the full path of keys leading to each translatable string as Key metadata'
 
         - Code: 'smartling.source_key_paths = data/item/{string_name}'
-          CodeXML: 'smartling.source_key_paths = data/item/{string_name}'
-          CodeJSON: '"source_key_paths" : "data/item/{string_name}"'
-          Description: 'smartling will capture the content from <code>string_name</code> as the key'
+          CodeJSON: '"source_key_paths" : "data/item/{string_name/*}"'
+          Description: 'smartling will capture <code>string_name [any subsequent keys]</code> as the key'
 
         - CodeXML: 'smartling.source_key_paths = data/item/{string.name}'
           Description: 'Smartling will capture the <code>name</code> atribute of the <code>data/item/string</code> node as the key.'
+
+        - CodeXML: 'smartling.source_key_paths = data/item/{string_name}'
+          Description: 'Smartling will capture the content of the <code>string_name</code> node as the key.'
+
+        - CodeCSV: 'smartling.source_key_paths = 1'
+          Description: 'Smartling will capture data from column 1 as keys. Each key will be applied to the next translatable string after it, so keys need to be placed to the left of translatable strings in each row for this directive to work.'
 
   - Directive:      'variants_enabled'
     Values:         '<code>true|TRUE|on|ON</code> OR <code>false|FALSE|off|OFF</code>'
@@ -168,19 +171,19 @@
 
   - Directive:      'paths'
     Values:         '<p>Values of all columns to be ingested as strings.</p><p>For import, all values will be imported for the selected locale.</p>'
-    Description:    '<p>Defines the column numbers with values to be ingested as translatable strings.</p><p>For multilingual translations import it defines association column number with target import locale.</p><p>Format:</p><p>For uploading original file:</p></p>Comma-separated list of column numbers.<br/><code>col#1,col#2</code></p><p>For multi-language imports:</p><p>Comma-separated list of column/locale pairs:<br/><code>col#1/[LocaleID],col#2/[LocaleID]</code></p>'
+    Description:    '<p>Defines the column numbers with values to be ingested as translatable strings.</p><p>For multilingual translations import it defines association column number with target import locale.</p><p>Format:</p><p>For uploading original file:</p></p>Comma-separated list of column numbers.<br/><code>1,2</code></p><p>For multi-language imports:</p><p>Comma-separated list of column/locale pairs:<br/><code>1/[LocaleID],2/[LocaleID]</code></p>'
     Examples:
-        - CodeCSV: 'smartling.paths=col#2,col#3'
+        - CodeCSV: 'smartling.paths=2,3'
           Description: 'Specifies that columns 2 and 3 of the uploaded CSV file should be ingested as translatable strings.'
 
-        - CodeCSV: 'smartling.paths=col#2/es-ES,col#3/fr-FR'
+        - CodeCSV: 'smartling.paths=2/es-ES,3/fr-FR'
           Description: 'When importing translations, specifies that column 2 contains Spanish-SPAIN translations and column 3 contains French-FRANCE translations.'
 
   - Directive:      'translation_language_path'
-    Values:         'Column Number - eg <code>Col#4</code>'
+    Values:         'Column Number - eg <code>4</code>'
     Description:    '<p>Used for "download multiple languages by row" option. Defines a column to record the language for each row. Output will display a language code for each column, eg. "de", "en", "es", etc.</p><p>This column should exist in the original file as an empty column.</p><p><strong>Note:</strong> if using this directive, you should also use smartling.paths to exclude the language path column from translation. See example below.</p>'
     Examples:
-        - CodeCSV: 'smartling.translation_language_path = col#4'
+        - CodeCSV: 'smartling.translation_language_path = 4'
           Description: 'When the translated file is downloaded, column 4 will record the language for each row.'
 
   - Directive:      'output_original_row'
@@ -230,8 +233,18 @@
     Examples:
         - CodeCSV: 'smartling.add_utf8_bom=TRUE'
 
+  - Directive:      'translate_mode'
+    Values:         '<code>ALL</code> or <code>CUSTOM</code>'
+    Description:    '<p>If set to <code>ALL</code>, all values will be translated. If set to <code>CUSTOM</code>, only the paths specified using the <code>translate_paths</code> directive will be translated</p>'
+    Examples:
+        - CodeJSON: '"translate_mode" : "CUSTOM"'
 
-
+  - Directive:      'xliff_tags_to_placeholder'
+    Values:         'Comma-separated list of custom XLIFF tags'
+    Description:    'Content inside the listed custom tags will be captured as a placeholder.'
+    Examples:
+        - Code: 'smartling.xliff_tags_to_placeholder = g, mrk'
+          Description: 'Content inside <code>g</code> and <code>mrk</code> tags will be captured as placeholders.'
 
 
 

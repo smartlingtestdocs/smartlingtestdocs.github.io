@@ -1,0 +1,53 @@
+---
+layout: page
+title:  CSV File Download Options
+---
+
+<p>
+    CSV Files support three options for downloading translations
+</p>
+<p>
+    <strong>1) Download a single translated file for a single language.</strong>
+</p>
+<p>
+    Available in dashboard or via API as with other file types.
+</p>
+<p>
+    <strong>2) Download translations for multiple languages in a single file by row</strong>
+</p>
+<ul>
+    <li>
+        Accessible via API by specifying a comma-separated list of locales for the <code>locale</code> parameter, or by specifying 'all'. Row-based output
+        is the default for multiple language download.
+    </li>
+    <li>
+        Outputs translations for multiple languages by creating an extra row for each locale.
+    </li>
+    <li>
+        For this option, it is recommended that you use the <code>translation_language_path</code> directive to specify an empty column to label the
+        language of each row and the <code>output_original_row directive</code> to specify whether you wish the source language to be included in the
+        download. See example.
+    </li>
+</ul>
+
+<script src="https://gist.github.com/Smartling-Code-Examples/8269c56373ffcb093ab4.js"></script>
+
+<p>
+    <strong> 3) Download translations for multiple locales in a single file by column.</strong>
+</p>
+<ul>
+    <li>
+        <p>
+By default, multi-language downloads are organized by row, but you can also choose to organize languages by column instead by using the            <strong>translations_in_columns</strong> directive in the original file.
+        </p>
+        
+        <pre># smartling.translations_in_columns=true</code>
+</li>
+<li>
+<p>This will cause downloaded files to create an additional column for each translated language immediately to the right of each translatable column.
+        Translation columns are ordered alphabetically by locale code. The original string is always included in this download type.</p>
+    </li>
+</ul>
+<script src="https://gist.github.com/Smartling-Code-Examples/3cb0bef64fc5b7f6e11c.js"></script>
+
+<p><strong>Note:</strong> By default, Smartling labels languages for both row-based and column-based downloads using the locale code (e.g. en-EN, es-US, etc). You can choose alternative labels using the <code>locales_map</code> directive.</p>

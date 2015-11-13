@@ -1,0 +1,35 @@
+---
+layout: default
+---
+
+<div class="page">
+{% for Method in site.data.v2Methods %}
+    {% if Method.Method == page.method %}
+    <a class="anchor" id="{{Method.Method}}"></a>
+    <h2>{{Method.Name}}</h2>
+    <h3>{{Method.Type}} - {{Method.Url}}</h3>
+    <p> </p>
+    <p>{{Method.Intro}}</p>
+    <div class="panel panel-default">
+        <div class="panel-heading">Parameters</div>
+        <div class="panel-body">
+            {% include v2MethodParameters.html %}
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">Returns</div>
+        <div class="panel-body">
+            {% include v2Returns.html %}
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">Examples</div>
+        <div class="panel-body">
+            {% include v2CodeExamples.html %}
+        </div>
+        <br/>
+    </div>
+
+    {% endif %}
+{% endfor %}
+</div>

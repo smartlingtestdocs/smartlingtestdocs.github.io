@@ -5,6 +5,9 @@
 
   <!-- Enable responsiveness on mobile devices-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  
+  <!-- Swiftype search - prioritize results from docs.smartling.com -->
+  <meta class="swiftype" name="site-priority" data-type="integer" content="3" />
 
   <title>
     {% if page.title == "Home" %}
@@ -15,8 +18,8 @@
   </title>
 
   <!-- CSS -->
-  <link rel="stylesheet" href="{{ site.baseurl }}public/css/bootstrap.css">
   <link rel="stylesheet" href="{{ site.baseurl }}public/css/smartling.css">
+  <link rel="stylesheet" href="{{ site.baseurl }}public/css/bootstrap.css">
   <link rel="stylesheet" href="{{ site.baseurl }}public/css/syntax.css">
   <link rel="stylesheet" href="{{ site.baseurl }}public/css/hyde.css">
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
@@ -32,8 +35,8 @@
   <link rel="stylesheet" href="{{ site.baseurl }}public/css/tabcontent.css">
 
 
-  <script src="//use.typekit.net/lmm1zfj.js"></script>
-  <script>try{Typekit.load();}catch(e){}</script>
+  <script src="//use.typekit.net/vdp7rip.js"></script>
+  <script>try{Typekit.load({ async: true });}catch(e){}</script>
   <script src="{{ site.baseurl }}bower_components/jquery/dist/jquery.min.js"></script>
   <script src="{{ site.baseurl }}bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
@@ -44,6 +47,11 @@
 
  
  <script type="text/javascript">
+ 
+ var swiftypeConfig = {
+  disableAutocomplete: true
+};
+ 
   (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
   (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
   e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
@@ -51,6 +59,16 @@
 
   _st('install','-Jdu3gPTxrQQQwbtYpzJ','2.0.0');
 </script>
+
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-5SGPK3"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5SGPK3');</script>
+<!-- End Google Tag Manager -->
 
 
 

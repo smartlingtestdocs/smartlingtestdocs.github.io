@@ -1,0 +1,207 @@
+locale_id,locale,language_identifier,country_identifier
+af-ZA,Afrikaans,af,ZA
+sq-AL,Albanian,sq,AL
+am-ET,Amharic (Ethiopia),am,ET
+ar-BH,Arabic (Bahrain),ar,BH
+ar-EG,Arabic (Egypt),ar,EG
+ar,Arabic (International),ar,
+ar-JO,Arabic (Jordan),ar,JO
+ar-KW,Arabic (Kuwait),ar,KW
+ar-MA,Arabic (Morocco),ar,MA
+ar-OM,Arabic (Oman),ar,OM
+ar-QA,Arabic (Qatar),ar,QA
+ar-SA,Arabic (Saudi Arabia),ar,SA
+ar-AE,Arabic (United Arab Emirates),ar,AE
+hy-AM,Armenian (Armenia),hy,AM
+az-AZ,Azerbaijani (Azerbaijan),az,AZ
+eu-ES,Basque (Spain),eu,ES
+be-BY,Belarusian,be,BY
+bn-BD,Bengali (Bangladesh),bn,BD
+bn-IN,Bengali (India),bn,IN
+bs-BA,Bosnian,bs,BA
+bg-BG,Bulgarian,bg,BG
+my,Burmese,my,
+ca-ES,Catalan,ca,ES
+km-KH,Central Khmer (Cambodia),km,KH
+zh-HK,Chinese (Hong Kong),zh,HK
+zh-CN,Chinese (Simplified),zh,CN
+zh-SG,Chinese (Singapore),zh,SG
+zh-TW,Chinese (Traditional),zh,TW
+zh-MY,Chinese Simplified (Malaysia),zh,MY
+hr-HR,Croatian,hr,HR
+cs-CZ,Czech,cs,CZ
+da-DK,Danish,da,DK
+dv,Divehi; Dhivehi; Maldivian,dv,
+nl-BE,Dutch (Belgium),nl,BE
+nl,Dutch (International),nl,
+nl-NL,Dutch (Netherlands),nl,NL
+en,English,en,
+en-AQ,English (Antarctica),en,AQ
+en-AU,English (Australia),en,AU
+en-AT,English (Austria),en,AT
+en-BH,English (Bahrain),en,BH
+en-BE,English (Belgium),en,BE
+en-BG,English (Bulgaria),en,BG
+en-KH,English (Cambodia),en,KH
+en-CA,English (Canada),en,CA
+en-CN,English (China - CN),en,CN
+en-HK,English (China - HK),en,HK
+en-CY,English (Cyprus),en,CY
+en-CZ,English (Czech Republic),en,CZ
+en-DK,English (Denmark),en,DK
+en-EG,English (Egypt),en,EG
+en-EE,English (Estonia),en,EE
+en-FI,English (Finland),en,FI
+en-FR,English (France),en,FR
+en-DE,English (Germany),en,DE
+en-GR,English (Greece),en,GR
+en-HU,English (Hungary),en,HU
+en-IS,English (Iceland),en,IS
+en-IN,English (India),en,IN
+en-ID,English (Indonesia),en,ID
+en-IE,English (Ireland),en,IE
+en-IL,English (Israel),en,IL
+en-IT,English (Italy),en,IT
+en-JP,English (Japanese),en,JP
+en-JO,English (Jordan),en,JO
+en-KW,English (Kuwait),en,KW
+en-LA,English (Laos),en,LA
+en-LV,English (Latvia),en,LV
+en-LB,English (Lebanon),en,LB
+en-LT,English (Lithuania),en,LT
+en-LU,English (Luxembourg),en,LU
+en-MY,English (Malaysia),en,MY
+en-MT,English (Malta),en,MT
+en-MA,English (Morocco),en,MA
+en-NL,English (Netherlands),en,NL
+en-NZ,English (New Zealand),en,NZ
+en-NG,English (Nigeria),en,NG
+en-NO,English (Norway),en,NO
+en-OM,English (Oman),en,OM
+en-PK,English (Pakistan),en,PK
+en-PH,English (Philippines),en,PH
+en-PT,English (Portugal),en,PT
+en-QA,English (Qatar),en,QA
+en-RO,English (Romania),en,RO
+en-SA,English (Saudi Arabia),en,SA
+en-SG,English (Singapore),en,SG
+en-SK,English (Slovakia),en,SK
+en-SL,English (Slovenia),en,SL
+en-ZA,English (South Africa),en,ZA
+en-LK,English (Sri Lanka),en,LK
+en-SE,English (Sweden),en,SE
+en-CH,English (Switzerland),en,CH
+en-TW,English (Taiwan),en,TW
+en-TH,English (Thailand),en,TH
+en-AE,English (United Arab Emirates),en,AE
+en-GB,English (United Kingdom),en,GB
+en-US,English (United States),en,US
+en-UY,English (Uruguay),en,UY
+en-VN,English (Vietnam),en,VN
+eo,Esperanto,eo,
+et-EE,Estonian,et,EE
+fo-FO,Faroese (Faroe Islands),fo,FO
+fi-FI,Finnish,fi,FI
+fr-BE,French (Belgium),fr,BE
+fr-CA,French (Canada),fr,CA
+fr-FR,French (France),fr,FR
+fr,French (International),fr,
+fr-LU,French (Luxembourg),fr,LU
+fr-MC,French (Monaco),fr,MC
+fr-MA,French (Morocco),fr,MA
+fr-CH,French (Switzerland),fr,CH
+gl-ES,Galician (Spain),gl,ES
+ka-GE,Georgian (Georgia),ka,GE
+de-AT,German (Austria),de,AT
+de-BE,German (Belgium),de,BE
+de-DE,German (Germany),de,DE
+de,German (International),de,
+de-LI,German (Liechtenstein),de,LI
+de-LU,German (Luxembourg),de,LU
+de-CH,German (Switzerland),de,CH
+el-GR,Greek,el,GR
+el-CY,Greek (Cyprus),el,CY
+el,Greek (International),el,
+gu-IN,Gujarati (India),gu,IN
+ht-HT,Haitian (Creole),ht,HT
+he-IL,Hebrew,he,IL
+hi-IN,Hindi,hi,IN
+hu-HU,Hungarian,hu,HU
+is-IS,Icelandic,is,IS
+id-ID,Indonesian,id,ID
+ga-IE,Irish,ga,IE
+it,Italian (International),it,
+it-IT,Italian (Italy),it,IT
+it-CH,Italian (Switzerland),it,CH
+ja-JP,Japanese,ja,JP
+ja,Japanese (International),ja,
+jv,Javanese,jv,
+kn-IN,Kannada (India),kn,IN
+kk-KZ,Kazakh (Kazakhstan),kk,KZ
+ko-KR,Korean,ko,KR
+ko,Korean (International),ko,
+ku-TR,Kurdish (Turkey),ku,TR
+lv-LV,Latvian,lv,LV
+lt-LT,Lithuanian,lt,LT
+mk-MK,Macedonian,mk,MK
+ms,Malay (International),ms,
+ms-MY,Malay (Malaysia),ms,MY
+my-SG,Malay (Singapore),my,SG
+ml-IN,Malayalam (India),ml,IN
+mt-MT,Maltese (Malta),mt,MT
+mi-NZ,Maori (New Zealand),mi,NZ
+mr-IN,Marathi (India),mr,IN
+xc-MN,Mongolian (Cyrillic),xc,MN
+no-NO,Norwegian,no,NO
+nb-NO,Norwegian (Bokmål),nb,NO
+nn-NO,Norwegian (Nynorsk),nn,NO
+pa-PK,Panjabi; Punjabi (Pakistan),pa,PK
+fa-IR,Persian (Iran),fa,IR
+pl,Polish (International),pl,
+pl-PL,Polish (Poland),pl,PL
+pt-BR,Portuguese (Brazil),pt,BR
+pt,Portuguese (International),pt,
+pt-PT,Portuguese (Portugal),pt,PT
+pa-IN,Punjabi (India),pa,IN
+ro-RO,Romanian,ro,RO
+ro-MD,Romanian (Moldova),ro,MD
+ru-RU,Russian,ru,RU
+ru,Russian (International),ru,
+sr-RS,Serbian,sr,RS
+sn,Shona,sn,
+si-LK,Sinhala; Sinhalese (Sri Lanka),si,LK
+sk-SK,Slovak,sk,SK
+sl-SI,Slovenian,sl,SI
+es-AD,Spanish (Andorra),es,AD
+es-AR,Spanish (Argentina),es,AR
+es-CL,Spanish (Chile),es,CL
+es-CO,Spanish (Colombia),es,CO
+es-CR,Spanish (Costa Rica),es,CR
+es-EC,Spanish (Ecuador),es,EC
+es-SV,Spanish (El Salvador),es,SV
+es-GT,Spanish (Guatemala),es,GT
+es,Spanish (International),es,
+es-LA,Spanish (Latin America),es,LA
+es-MX,Spanish (Mexico),es,MX
+es-PA,Spanish (Panama),es,PA
+es-PE,Spanish (Peru),es,PE
+es-ES,Spanish (Spain),es,ES
+es-US,Spanish (United States),es,US
+es-UY,Spanish (Uruguay),es,UY
+es-VE,Spanish (Venezuela),es,VE
+sw,Swahili,sw,
+sv-SE,Swedish,sv,SE
+sv-FI,Swedish (Finland),sv,FI
+tl-PH,Tagalog (Philippines),tl,PH
+ta-IN,Tamil (India),ta,IN
+te-IN,Telugu (India),te,IN
+th,Thai (International),th,
+th-TH,Thai (Thailand),th,TH
+tr,Turkish (International),tr,
+tr-TR,Turkish (Turkey),tr,TR
+uk-UA,Ukrainian,uk,UA
+ur,Urdu,ur,
+uz-UZ,Uzbek (Uzbekistan),uz,UZ
+vi-VN,Vietnamese,vi,VN
+cy-GB,Welsh,cy,GB
+zu-ZA,Zulu (South Africa),zu,ZA

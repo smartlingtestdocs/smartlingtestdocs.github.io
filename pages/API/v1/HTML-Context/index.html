@@ -1,0 +1,115 @@
+---
+layout: page
+title:  HTML Context API
+method: HTMLContext
+redirect_from: "/display/docs/HTML+Context+API/"
+---
+<p>
+    The HTML context API allows you to submit HTML for the purpose of providing context for your source content that will be shown in the Smartling Translation
+    Interface. Smartling analyzes the HTML content you upload for context and matches strings in a Smartling project. When Smartling finds a match, the HTML
+    you provided becomes the visual context that users see in the Smartling Translation Interface. Smartling will not create any new content from the HTML
+    uploaded to the context matching service, and every unique string in Smartling can have only one context.
+    <br/>
+</p>
+<p>
+    Smartling persistently stores the HTML you provide to this service. In order for context to look correct when it is used in the Smartling Translation
+    Interface, the service attempts to “inline” static resources (CSS, JavaScript, images) if any are externally referenced from the HTML page you submitted.
+    These resources need to be publicly available in order for Smartling to access them. If this is not possible, consider using the automation features of the
+    <a href="http://support.smartling.com/hc/en-us/articles/202007178-Using-the-Smartling-Context-Capture-Extension-for-Chrome" rel="nofollow">
+        Smartling Context Capture Extension for Chrome
+    </a>
+    to capture context.
+</p>
+<p>
+    Smartling organizes content by URLs and URL context groups, and Files. The service will not change the context for strings that are already contextualized
+unless you specifically use the override directive. This is functionally equivalent to using the Chrome Plugin and    <a href="http://support.smartling.com/hc/en-us/articles/202007178#overwrite" rel="nofollow">overwriting context by selecting specific strings</a>. Context
+    groups are created automatically when you add context and use a URL that already has strings associated with it. Creating a new context group will not
+    change strings that already have context with that URL. Strings that have no context before the call will appear in a separate group under the same URL.
+</p>
+<p>
+    All API URLs have the following base: <a href="https://api.smartling.com/v1" rel="nofollow">https://api.smartling.com/v1</a>, and all of the following
+calls require both the<strong> apiKey</strong> and<strong>projectId</strong> parameter which you can find within your Smartling project's dashboard:    <a href="https://dashboard.smartling.com/settings/api" rel="nofollow">https://dashboard.smartling.com/settings/api</a>
+</p>
+<p>
+    Smartling supports string variants, which are duplications of the same string with different keys for context. You cannot specify which variant of a string
+    you are contextualizing with the current version of this API.
+</p>
+    {% assign FAPIMethods = site.data.MiscAPIMethods %}
+    {% for FAPIMethod in FAPIMethods %}
+        {% if FAPIMethod.Method == 'HTMLContextUpload' %}
+    <section>
+           <a class="anchor" id="{{FAPIMethod.Method}}"></a>
+           <h2>{{FAPIMethod.Method}} ({{FAPIMethod.Url}})</h2>
+           <p>{{FAPIMethod.Intro}}</p>
+    <br/>
+    <div class="panel panel-default">
+        <div class="panel-heading">Parameters</div>
+        <div class="panel-body">
+            {% include FAPIMethodParameters.html %}
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">Returns</div>
+        <div class="panel-body">
+            {% include FAPIReturns.html %}
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">Examples</div>
+        <div class="panel-body">
+            {% include FAPICodeExamples.html %}
+        </div>
+    </div>
+    </section>
+        {% endif %} 
+    {% endfor %}
+
+    {% for FAPIMethod in FAPIMethods %}
+        {% if FAPIMethod.Method == 'HTMLContextStats' %}
+    <section>
+           <a class="anchor" id="{{FAPIMethod.Method}}"></a>
+           <h2>{{FAPIMethod.Method}} ({{FAPIMethod.Url}})</h2>
+           <p>{{FAPIMethod.Intro}}</p>
+    <br/>
+    <div class="panel panel-default">
+        <div class="panel-heading">Parameters</div>
+        <div class="panel-body">
+            {% include FAPIMethodParameters.html %}
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">Returns</div>
+        <div class="panel-body">
+            {% include FAPIReturns.html %}
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">Examples</div>
+        <div class="panel-body">
+            {% include FAPICodeExamples.html %}
+        </div>
+    </div>
+    </section>
+        {% endif %} 
+    {% endfor %}
+<section>
+           <a class="anchor" id="HTMLClasses"></a>
+           <h2>Special HTML Classes</h2>
+           <p>To control the matching process, you can use several HTML classes (<a href="/public/Example-Files/HTML-Context-Classes.html">sample file</a>).</p>
+           <table class="table">
+            <tr>
+                <th>Class Name</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>sl-notranslate</td>
+                <td>Smartling will not match text inside an <code>sl-notranslate</code> block, including all nested tags. You can use nested <code>sl-translate</code> blocks to override the behavior of <code>sl-notranslate</code>. Note that this is different from the behavior of <a href="http://support.smartling.com/hc/en-us/articles/201297393-How-to-Exclude-Content-from-Translation">no-translate directives for the Global Delivery Network.</a></td>
+            </tr>
+            <tr>
+                <td>sl-translate</td>
+                <td>Should be used to override behavior of <code>sl-notranslate</code> class for nested text blocks</td>
+            </tr>
+            <tr>
+                <td>sl-override-context</td>
+                <td><p>By default, Smartling will not override existing context for a string, even if it finds the string more than once. You can use the <code>sl-override-context</code> class to change this behavior. Smartling will update context for a string inside <code>sl-override-context</code> on every submission.</p><p>You can also use the clear context feature in the dashboard to remove a string's context, and then recontexualize it using the API or the Smartling Context Capture Extension for Chrome.</p></td>
+            </tr>

@@ -1,14 +1,15 @@
 ---
  - file_type: 'Android XML'
    template: 'standard'
+   link: /pages/supported-file-types/Android-XML/
    extension: '.xml'
    smartling_identifier: 'android'
    download_sample: 'android.xml'
    resource_info: '<ul><li><a href="http://developer.android.com/guide/topics/resources/string-resource.html">Android String Resources</a></li><li><a href="http://developer.android.com/guide/topics/resources/localization.html">Android Localization</a></li></ul>'
    keys_variants: 'Every string is created with key/variant metadata, which is the value of the <code>string.name</code> attribute.  If the value of two strings is the same, but the <code>string.name</code> attribute is different, Smartling creates two strings.'
    string_instructions: 'String instructions can be set using the instruction_comments_enabled and instruction_attributes directives'
-   other: '<p>To exclude a string from translation use the <code>translatable="FALSE"</code> attribute and value in the string tag:</p><pre><code>&lt;string name=&quot;string_11&quot; translatable=&quot;FALSE&quot;&gt;This android string has been marked not to be translated with translable attribute.&lt;/string&gt;</code></pre>'
-   directive_format: '&lt!-- smarling.[directive_name] = [value] --&gt'
+   other: '<p>To exclude a string from translation use the <code>translatable="FALSE"</code> attribute and value in the string tag:</p><pre><code>&lt;string name=&quot;string_11&quot; translatable=&quot;FALSE&quot;&gt;This android string has been marked not to be translated with translable attribute.&lt;/string&gt;</code></pre><p>When downloading translated Android XML files via the <a href="/pages/API/FileAPI/Download-File/">File API</a>, setting the parameter <code>includeOriginalStrings=false</code> will strip untranslated elements from the file.'
+   directive_format: '&lt!-- smartling.[directive_name] = [value] --&gt'
    directive_instructions: 'The directive must be a single comment on one line, and there should not be any inline trailing symbols after the directive.  Directives apply to all strings that follow them. Directives can be changed throughout the file'
    directive_prefix: '&lt!-- '
    directive_suffix: ' --&gt'
@@ -20,6 +21,7 @@
 
  - file_type: 'iOS String Files'
    template: 'standard'
+   link: /pages/supported-file-types/iOS-string-files/
    extension: '.strings'
    smartling_identifier: 'ios'
    download_sample: 'ios.strings'
@@ -36,6 +38,7 @@
 
  - file_type: 'iOS Stringsdict'
    template: 'standard'
+   link: /pages/supported-file-types/iOS-stringsdict/
    extension: '.stringsdict'
    smartling_identifier: 'stringsdict'
    download_sample: ''
@@ -44,6 +47,7 @@
 
  - file_type: 'Gettext PO/POT'
    template: 'standard'
+   link: /pages/supported-file-types/Gettext-PO-POT/
    extension: '.pot / .po'
    smartling_identifier: 'gettext'
    download_sample: 'gettext.pot'
@@ -61,11 +65,12 @@
 
  - file_type: 'HTML'
    template: 'standard'
+   link: /pages/supported-file-types/HTML/
    extension: '.html'
    smartling_identifier: 'html'
    resource_info: '<a href="http://www.w3.org/TR/html5/">HTML5 Standards</a>'
    intro: 'By default Smartling will create a single String for each block element in the HTML document.  Additionally the value of <code>alt</code> and <code>title</code> attributes are captured as a single string. Smartling does not captre the values of any other attributes. '
-   directive_format: '&lt!-- smarling.[directive_name] = [value] --&gt'
+   directive_format: '&lt!-- smartling.[directive_name] = [value] --&gt'
    directive_instructions: ''
    directive_prefix: '&lt!-- '
    directive_suffix: ' --&gt' 
@@ -73,8 +78,9 @@
       - placeholder_format_custom
       - force_inline_for_tags
 
- - file_type: 'Java Property Files'
+ - file_type: 'Java Properties'
    template: 'standard'
+   link: /pages/supported-file-types/Java-Properties/
    extension: '.properties'
    smartling_identifier: 'javaProperties'
    download_sample: 'java.properties'
@@ -94,12 +100,13 @@
 
  - file_type: 'YAML'
    template: 'standard'
+   link: /pages/supported-file-types/YAML/
    extension: '.yml'
    smartling_identifier: 'yaml'
    download_sample: 'yaml.yml'
    resource_info: '<a href="http://guides.rubyonrails.org/i18n.html">Rails Internationalization</a>'
    keys_variants: 'Every string is created with variant metadata. The variant metadata is the full path of keys leading to the translatable string.'
-   string_instructions:
+   string_instructions: 'Smartling will automatically ingest and display file comments as instructions for translators. The comments must immediately precede the string. For example, for the following comment:<pre># Back button label<br/>button: ''Back''</pre><p>the text "Back button label" will be captured as a file instruction for the string ''Back''.</p>'
    specify_paths: '<p>Some directives require you to specify a path or set of paths to keys or strings in the file. A path is a slash-separated string which uses Xpath-like syntax (although it''s not Xpath.). The nodes separator is always <code>/</code> (slash).</p><p>Wildcards are allowed in path definitions.<p><ul><li>If no wildcards, then the path identifies a single node and all its children ("exact subpath").</li><li>If wildcards, then a path identifies a set of nodes and all their children ("path pattern"). Currently, only the <code>*</code> (asterisk) wildcard is implemented, which means "one or more nodes with any names".</li><li>Exact subpaths have precedence over path patterns.</li></ul><p>For example, in the following path specifications:</p><pre>[*/text, */string, system/log/text, system/log/text/details]</pre><p>Smartling processes these paths as follows:</p><ul><li><code>/description/text</code> — matches <code>*/text</code> pattern</li><li><code>/description/general/text</code> - matches <code> */text</code> pattern directly.</li><li><code>/description/text/general</code> — matches - its parent, <code>/description/text</code> , matches <code>*/text</code> pattern</li><li><code>/system/log/text</code> — matches both <code>/system/log/text</code> (exact path) and <code>*/text</code> (pattern); exact path wins</li><li><code>/system/log/text/details</code> — its parent, <code>/system/log/text</code>, matches both exact path and pattern; exact path wins</li></ul>'
    other: 'Smartling supports plural translations when the original language strings use the <a href="http://guides.rubyonrails.org/i18n.html#pluralization">Ruby on Rails i18n API''s pluralization syntax</a>. To avoid mistakenly ingesting strings as plurals because they happen to use the key name "one,other" etc., use the plurals_detection directive to turn detection off and then back on again.'
    directive_format: '# smartling.[directive_name] = [value]'
@@ -115,34 +122,37 @@
 
  - file_type: 'XLIFF'
    template: 'standard'
+   link: /pages/supported-file-types/XLIFF/
    extension: '.xml, .xlf, .xliff'
    smartling_identifier: 'xliff'
    download_sample: 'xliff.xml'
    resource_info: '<ul><li><a href="http://en.wikipedia.org/wiki/XLIFF">Background on XLIFF</a></li><li><a href="http://docs.oasis-open.org/xliff/xliff-core/xliff-core.html">OASIS specification</a></li></ul>'
    intro: 'Smartling supports .xlf, .xliff, and .xml files that use the XML Localization Interchange File Format (XLIFF)'
    keys_variants: 
-   directive_format: '&lt!-- smarling.[directive_name] = [value] --&gt'
+   directive_format: '&lt!-- smartling.[directive_name] = [value] --&gt'
    directive_instructions: 'The directive must be a single comment on one line, and there should not be any inline trailing symbols after the directive.  Directives apply to all strings that follow them. Directives can be changed throughout the file'
    directive_prefix: '&lt!-- '
    directive_suffix: ' --&gt'
    string_instructions: 
    directives:
       - placeholder_format_custom
+      - xliff_tags_to_placeholder
 
  - file_type: 'Custom XML'
    template: 'standard'
+   link: /pages/supported-file-types/Custom-XML/
    extension: '.xml'
    smartling_identifier: 'xml'
    download_sample: 'customxml.xml'
    resource_info: '<a href="http://www.w3.org/standards/xml/">XML Standards</a>'
-   intro: 'Smartling supports generic XML files by processing text within specified tags and attributes. You must specify the tags and attributes you want translated using the <a href="#xml_translate_paths">translate_paths</a> directive'
-   keys_variants: 'Key and Variant metadata must be enabled and configured using the <a href="#xml_source_key_paths">source_key_paths</a> and <a href="#xml_variants_enabled">variants_enabled</a> directives.'
-   directive_format: '&lt!-- smarling.[directive_name] = [value] --&gt'
+   intro: 'Smartling supports generic XML files by processing text within specified tags and attributes. You must specify the tags and attributes you want translated using the translate_paths directive'
+   keys_variants: 'Key and Variant metadata must be enabled and configured using the source_key_paths and variants_enabled directives.'
+   directive_format: '&lt!-- smartling.[directive_name] = [value] --&gt'
    directive_instructions: 'The directive must be a single comment on one line, and there should not be any inline trailing symbols after the directive.  Directives apply to all strings that follow them. Directives can be changed throughout the file'
    directive_prefix: '&lt!-- '
    directive_suffix: ' --&gt'
    string_instructions: 
-   specify_paths: '<p>Some directives require you to specify a path or set of paths to keys or strings in the file. A path is a slash-separated string which uses Xpath-like syntax (although it''s not Xpath.). The nodes separator is always <code>/</code> (slash).</p><p>Wildcards are allowed in path definitions.<p><ul><li>If no wildcards, then the path identifies a single node and all its children ("exact subpath").</li><li>If wildcards, then a path identifies a set of nodes and all their children ("path pattern"). Currently, only the <code>*</code> (asterisk) wildcard is implemented, which means "one or more nodes with any names".</li><li>Exact subpaths have precedence over path patterns.</li></ul><p>You can also specify an attribute by using <code>[node].[attribute]</code><p>For example, in the following path specificationss:</p><pre>[*/text, */string, */text.name, system/log/text, system/log/text/details]</pre><p>Smartling processes these paths as follows:</p><ul><li><code>/description/text</code> — matches <code>*/text</code> pattern</li><li><code>/description/general/text</code> - matches <code> */text</code> pattern directly.</li><li><code>/description/text/general</code> — matches - its parent, <code>/description/text</code> , matches <code>*/text</code> pattern</li><li><code>/system/log/text</code> — matches both <code>/system/log/text</code> (exact path) and <code>*/text</code> (pattern); exact path wins</li><li><code>/system/log/text/details</code> — its parent, <code>/system/log/text</code>, matches both exact path and pattern; exact path wins</li><li><code>/description/text.name</code> matches <code> */text.name</code> pattern directly.</li></ul>'
+   specify_paths: '<p>Some directives require you to specify a path or set of paths to keys or strings in the file. A path is a slash-separated string which uses Xpath-like syntax (although it''s not Xpath.). The nodes separator is always <code>/</code> (slash).</p><p>Wildcards are not allowed in path definitions.</p><p>You can also specify an attribute by using <code>[node].[attribute]</code></p> For the <code>translate_paths</code> directive, ending the path with a trailing <code>/</code> (slash) will also translate all child nodes.'
    other: '<p>Note: Some XML files closely resemble HTML files and are more effectively translated by parsing them as HTML files. Smartling allows you to specify HTML as the file type when uploading an XML file in the dashboard to cope with this type of XML files. If uploading via API, give "html" as the Smartling identifier for the file.</p><p><strong>Note:</strong> When using <a href="/pages/API/Download-Translations/">file/get</a> to download properties files from Smartling, the parameter <code>includeOriginalStrings=false</code> ensures that if no translations are available, Smartling returns an empty string. If the parameter is set to true, Smartling returns the original string.</p>'
    directives:
       - translate_paths
@@ -155,13 +165,14 @@
 
  - file_type: 'JSON'
    template: 'standard'
+   link: /pages/supported-file-types/JSON/
    extension: '.json'
    smartling_identifier: 'json'
    download_sample: 'json.json'
    resource_info: '<a href="http://json.org/">Official JSON Standards</a>'
    keys_variants: 'By default, the full path of keys leading to a string are captured as Key and Variant metadata. Custom key paths can be set and variant behavior turned off with directives'
    specify_paths: '<p>Some directives require you to specify a path or set of paths to keys or strings in the file. A path is a slash-separated string which uses Xpath-like syntax (although it''s not Xpath.). The nodes separator is always <code>/</code> (slash).</p><p>Wildcards are allowed in path definitions.<p><ul><li>If no wildcards, then the path identifies a single node and all its children ("exact subpath").</li><li>If wildcards, then a path identifies a set of nodes and all their children ("path pattern"). Currently, only the <code>*</code> (asterisk) wildcard is implemented, which means "one or more nodes with any names".</li><li>Exact subpaths have precedence over path patterns.</li></ul><p>For example, in the following path specifications:</p><pre>[*/text, */string, system/log/text, system/log/text/details]</pre><p>Smartling processes these paths as follows:</p><ul><li><code>/description/text</code> — matches <code>*/text</code> pattern</li><li><code>/description/general/text</code> - matches <code> */text</code> pattern directly.</li><li><code>/description/text/general</code> — matches - its parent, <code>/description/text</code> , matches <code>*/text</code> pattern</li><li><code>/system/log/text</code> — matches both <code>/system/log/text</code> (exact path) and <code>*/text</code> (pattern); exact path wins</li><li><code>/system/log/text/details</code> — its parent, <code>/system/log/text</code>, matches both exact path and pattern; exact path wins</li></ul>'
-   other: '<p><strong>Note:</strong> When using <a href="/pages/API/Download-Translations/">file/get</a> to download properties files from Smartling, the parameter <code>includeOriginalStrings=false</code> ensures that if no translations are available, Smartling returns an empty string. If the parameter is set to true, Smartling returns the original string.</p>'
+   other: '<p>New defaults for JSON handling are in place for accounts created after June 11 2015. See <a href="http://support.smartling.com/hc/en-us/articles/205589697">here</a> for details.</p><p><strong>Note:</strong> When using <a href="/pages/API/Download-Translations/">file/get</a> to download properties files from Smartling, the parameter <code>includeOriginalStrings=false</code> ensures that if no translations are available, Smartling returns an empty string. If the parameter is set to true, Smartling returns the original string.</p>'
    directive_format: '{<br/>&nbsp;&nbsp;&nbsp;&nbsp;"smartling" : {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"directive_name" : "value",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"directive_name" : "value",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"..."<br/>&nbsp;&nbsp;&nbsp;&nbsp;},<br/>&nbsp;&nbsp;&nbsp;&nbsp;...<br/>}'
    directive_instructions: 'JSON directives are set at the top of the file, in the "smartling" node. Directives apply to the whole file and cannot be changed.'
    directives:
@@ -175,6 +186,7 @@
 
  - file_type: 'QT Linguist'
    template: 'standard'
+   link: /pages/supported-file-types/QT-Linguist/
    extension: '.ts'
    smartling_identifier: 'qt'
    resource_info: '<a href="http://doc.qt.digia.com/4.5/linguist-ts-file-format.html">QT Linguist Docs</a>'
@@ -187,6 +199,7 @@
 
  - file_type: 'MadCap Lingo ZIP packages'
    template: 'standard'
+   link: /pages/supported-file-types/Madcap-Lingo-ZIP-Packages/
    extension: '.zip'
    smartling_identifier: 'madcap'
    download_sample: 'madcap.zip'
@@ -196,6 +209,7 @@
 
  - file_type: 'Office Open XML'
    template: 'standard'
+   link: /pages/supported-file-types/Office-Open-XML/
    extension: '.docx, .xlsx, .pptx'
    smartling_identifier: 'docx'
    resource_info: '<a href="http://msdn.microsoft.com/en-ca/office/bb265236.aspx">Open XML for Developers</a>'
@@ -204,6 +218,7 @@
 
  - file_type: 'InDesign Markup Language'
    template: 'standard'
+   link: /pages/supported-file-types/Adobe-IDML/
    extension: '.idml'
    smartling_identifier: 'idml'
    resource_info: '<a href="http://www.adobe.com/devnet/indesign/documentation.html#idml">InDesign Markup Language Resources</a>'
@@ -214,11 +229,12 @@
 
  - file_type: 'Resx'
    template: 'standard'
+   link: /pages/supported-file-types/RESX/
    extension: '.resx and .resw'
    smartling_identifier: 'resx'
    resource_info: '<a href="http://msdn.microsoft.com/en-us/library/ekyft91f%28v=vs.90%29.aspx">Microsoft Resx Resources</a>'
    string_instructions: '<p>Smartling automatically captures RESX comments and makes them translator instructions.</p><pre><code>&lt;data name=&quot;resx_string6&quot; xml:space=&quot;preserve&quot;&gt;<br/>&nbsp;&nbsp;&nbsp;&lt;value&gt;resx string6 has a comment.&lt;/value&gt;<br/>&nbsp;&nbsp;&nbsp;&lt;comment&gt;comment for manual resx string6 will appear as a Smartling translator instruction&lt;/comment&gt;<br/>&lt;/data&gt;</code></pre>'
-   directive_format: '&lt!-- smarling.[directive_name] = [value] --&gt'
+   directive_format: '&lt!-- smartling.[directive_name] = [value] --&gt'
    directive_instructions: 'The inline directive must be a single directive on one line within its own comment block, and there should not be any inline trailing symbols after the directive.'
    directive_prefix: '&lt!-- '
    directive_suffix: ' --&gt'
@@ -228,11 +244,12 @@
 
  - file_type: 'Plain Text'
    template: 'standard'
+   link: /pages/supported-file-types/Plain-Text/
    extension: '.txt'
-   smartling_identifier: 'txt'
+   smartling_identifier: 'plainText'
    resource_info: '<a href=""></a>'
    intro: 'The plain text document format is a simple way to quickly translate text. Smartling considers each line of text in the document a single translation string.  Each string is considered unique by file - which means if two files have the exact same line of text - they will be captured as two separate strings. '
-   directive_format: 'smarling.[directive_name] = [value]'
+   directive_format: 'smartling.[directive_name] = [value]'
    directive_instructions: 'Unlike other file types, plain text does not support inline file directives as comments, in order to use a directive you must specify each directive using the <a href="/pages/API/Download-Translations/">file upload API</a>'
    directives:
       - placeholder_format_custom
@@ -240,6 +257,7 @@
 
  - file_type: 'CSV'
    template: 'standard'
+   link: /pages/supported-file-types/CSV/
    extension: '.csv'
    smartling_identifier: 'csv'
    resource_info: '<a href="http://www.ietf.org/rfc/rfc4180.txt">Comma-Separated Values (CSV) files  RFC</a>'
@@ -247,9 +265,9 @@
    keys_variants: 
    keys_variants_info: ''
    string_instructions: 'Set using string_instructions_paths directive.'
-   specify_paths: '<p>Some directives require you to specify a path or set of paths to keys or strings in the file. A path in CSV files is simply a column number, such as <code>col#1</code></p>'
-   other: '<p>You may define values with and without quotations. For example:</p> <pre><code>value1, "Value 2"</code></pre> <p>If you want to use the symbol " inside quoted value you escape it with double quotes like:</p> <pre><code>"value""178"</code></pre> <p>which corresponds to the string: <strong?value"178</strong></p><p>Smartling offers several options for downloading CSV files. <a href="later">More info</a></p>'
-   directive_format: '# smarling.[directive_name] = [value]'
+   specify_paths: '<p>Some directives require you to specify a path or set of paths to keys or strings in the file. A path in CSV files is simply a column number, such as <code>1</code></p><p><strong>Note:</strong> When declaring a path for a key or string instruction the key or instruction will be applied to the next translatable string to the right, so you will need to organize your files so that keys and instructions are to the left of translatable strings in each row.</p>'
+   other: '<p>You may define values with and without quotations. For example:</p> <pre><code>value1, "Value 2"</code></pre> <p>If you want to use the symbol " inside quoted value you escape it with double quotes like:</p> <pre><code>"value""178"</code></pre> <p>which corresponds to the string: <strong?value"178</strong></p><p>Smartling offers several options for downloading CSV files. <a href="/pages/Misc/CSV-Download/">More info</a></p>'
+   directive_format: '# smartling.[directive_name] = [value]'
    directive_prefix: '# '
    directive_suffix: ''
    directive_instructions: 'Directives are specified using comments. Each directive must be a single comment on one line, and there should not be any inline trailing symbols after the directive. The directives must be defined at the top of the file, ahead of the csv content.'
@@ -269,5 +287,3 @@
       - locales_map
       - add_utf8_bom
       - output_not_translated_row
-
-

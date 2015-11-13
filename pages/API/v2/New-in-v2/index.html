@@ -1,0 +1,43 @@
+---
+layout: page
+title:  New in V2
+Section: New in V2
+---
+<p> </p>
+<p dir="ltr">
+    Smartling is rolling out a new, expanded suite of APIs. Beginning with Authentication and Files APIs. API v1 is still supported but will be deprecated
+    [date].
+</p>
+<p dir="ltr">
+    Version 2 of FilesAPI will be familiar to you if you’ve used v1 but there are two important differences to keep in mind while you’re getting started.
+</p>
+
+<p dir="ltr">
+    <strong>Authentication</strong>
+</p>
+
+<p dir="ltr">
+    V2 APIs replace the single API key with Oauth 2.0 authentication. To begin using v2, contact your Client Services Manager to arrange a User ID and Secret
+    for Oauth authentication. See <a href="/pages/API/v2/Authentication/">Authentication</a> for more information.
+</p>
+
+<p dir="ltr">
+    <strong>Path Variables</strong>
+</p>
+
+<p dir="ltr">
+    Some V2 URLs contain path variables that you need to consider when you write your calls. In FilesAPI there are two path variables that may appear in a URL.
+
+</p>
+<ul>
+    <li dir="ltr">
+        <p dir="ltr">
+            <code>projectId</code> - the unique identifier for a Smartling project. You can find this information in the Smartling dashboard at <strong>Project Settings &gt; API</strong>.
+        </p>
+    </li>
+        <li dir="ltr">
+        <p dir="ltr">
+            <code>locale</code> - the locale code for a translated file. You can find a full list of locale codes used in each of your projects in the Smartling dashboard at <strong>Project Settings &gt; API</strong>.
+        </p>
+    </li>
+</ul>

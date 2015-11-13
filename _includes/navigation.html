@@ -1,17 +1,18 @@
 
 <div class="main-nav" id="main-nav">
-<ul class="nav myScrollspy">
+<ul class="nav">
         <li><a href="/"><i class="fa fa-home"></i> Home</a></li>
-        <li class="{% if page.url contains "/pages/API" %}shown{% endif %}"><a href="/pages/API"><i class="fa fa-cogs"></i> API</a>
+        <li class="{% if page.url contains "/pages/API/v1" %}shown{% endif %}"><a href="/pages/API/v1"><i class="fa fa-cogs"></i> API v1</a>
              <ul class="secondary">
                 <li class="">
                     <a href="/pages/API/Getting-Started" class="title">Getting Started</a>
-                    <ul class="nav nav-tabs nav-stacked {% if page.url contains "/pages/API/Getting-Started" %}shown{% endif %} tertiary">
-                        <li><a href="/pages/API/Getting-Started/Response-Format">Response Format</a></li>
-                        <li><a href="/pages/API/Getting-Started/Sandbox">API Sandbox</a></li>
-                    </ul>
                 </li>
-            </ul>           
+            </ul>   
+             <ul class="secondary">
+                <li class="">
+                    <a href="/pages/API/Getting-Started/Response-Format" class="title">Response Format</a>
+                </li>
+            </ul>
             <ul class="secondary" >
                 <li class="">
                     <a href="/pages/API/FileAPI" class="title">File API</a>
@@ -19,43 +20,80 @@
                     <ul class="nav nav-tabs nav-stacked {% if page.url contains "/pages/API/FileAPI" %}shown{% endif %} tertiary">
 
                     {% for FAPIMethod in site.data.FAPIMethods %}
-                        <li><a href="#{{FAPIMethod.Method}}">{{FAPIMethod.Name}} ({{FAPIMethod.Type}})</a></li>
+                        <li class= "{% if page.url contains FAPIMethod.Link %}active{% endif %}"><a href="{{FAPIMethod.Link}}">{{FAPIMethod.Name}} ({{FAPIMethod.Type}})</a></li>
                     {% endfor %}
 
                     </ul>
                 </li>
             </ul>
             <ul class="secondary">
-                <li>
+                <li class="{% if page.url contains "/pages/API/Glossary-Export" %} active {% endif %}">
                     <a href="/pages/API/Glossary-Export" class="title">Glossary Export</a>
                 </li>
             </ul>
             <ul class="secondary">
-                <li class="">
+                <li class="{% if page.url contains "/pages/API/HTML-Context" %} active {% endif %}">
                     <a href="/pages/API/HTML-Context" class="title">HTML Context</a>
                 </li>
             </ul>
              <ul class="secondary">
-                <li class="">
+                <li class="{% if page.url contains "/pages/API/Download-Translations" %} active {% endif %}">
                     <a href="/pages/API/Download-Translations" class="title">Download Translations</a>
                 </li>
             </ul>
-             <ul class="secondary">
-                <li class="">
+             <ul>
+                <li class="{% if page.url contains "/pages/API/Projects" %} active {% endif %}">
                     <a href="/pages/API/Projects" class="title">Projects</a>
                 </li>
             </ul>
               <ul class="secondary">
-                <li class="">
+                <li class="{% if page.url contains "/pages/API/Translation-Imports" %} active {% endif %}">
                     <a href="/pages/API/Translation-Imports" class="title">Translation Imports</a>
                 </li>
             </ul>
              <ul class="secondary">
-                <li class="">
+                <li class="{% if page.url contains "/pages/API/Reset-Cache" %} active {% endif %}">
                     <a href="/pages/API/Reset-Cache" class="title">Reset Cache (beta)</a>
                 </li>
             </ul>
         </li>
+
+        <li class="{% if page.url contains "/pages/API/v2" %}shown{% endif %}"><a href="/pages/API/v2"><i class="fa fa-cogs"></i> API v2</a>
+             <ul class="secondary">
+                <li class="">
+                    <a href="/pages/API/v2/New-in-v2" class="title">New in v2</a>
+                    <ul class="nav nav-tabs nav-stacked {% if page.url contains "/pages/API/New-in-v2" %}shown{% endif %} tertiary">                        
+                    </ul>
+                </li>
+            </ul>           
+            <ul class="secondary" >
+                <li class="">
+                    <a href="/pages/API/v2/Authentication" class="title">Authentication</a>
+                    <ul class="nav nav-tabs nav-stacked {% if page.url contains "/pages/API/v2/Authentication" %}shown{% endif %} tertiary">
+                    {% for Method in site.data.v2Methods %}
+                        {% if Method.Link contains "/pages/API/v2/Authentication" %}
+                            <li class= "{% if page.url contains Method.Link %}active{% endif %}"><a href="{{Method.Link}}">{{Method.Name}} ({{Method.Type}})</a></li>
+                        {% endif %}
+                    {% endfor %}
+                    </ul>
+                </li>
+            </ul>
+
+
+
+            <ul class="secondary" >
+                <li class="">
+                    <a href="/pages/API/v2/FileAPI" class="title">Files</a>
+                    <ul class="nav nav-tabs nav-stacked {% if page.url contains "/pages/API/v2/FileAPI" %}shown{% endif %} tertiary">
+                    {% for Method in site.data.v2Methods %}
+                        {% if Method.Link contains "/pages/API/v2/FileAPI" %}
+                            <li class= "{% if page.url contains Method.Link %}active{% endif %}"><a href="{{Method.Link}}">{{Method.Name}} ({{Method.Type}})</a></li>
+                        {% endif %}
+                    {% endfor %}
+                    </ul>
+                </li>
+            </ul>
+            
 
         <li class="{% if page.url contains "/pages/supported-file-types" %}shown{% endif %}">
             <a href="/pages/supported-file-types"><i class="fa fa-thumbs-up"></i> Supported File Types</a>
@@ -63,24 +101,24 @@
             <ul class="nav nav-tabs nav-stacked secondary">
 
                 {% for SupportedFileType in site.data.SupportedFileTypes %}
-                <li><a href="#{{SupportedFileType.smartling_identifier}}">{{SupportedFileType.file_type}}</a></li>
+                <li class= "{% if page.url contains SupportedFileType.link %}active{% endif %}"><a href="{{SupportedFileType.link}}">{{SupportedFileType.file_type}}</a></li>
                 {% endfor %}
             </ul>
         </li>
         <li class="{% if page.url contains "/pages/SDKs/" %}shown{% endif %}"><a href="/pages/SDKs"><i class="fa fa-briefcase"></i> SDKs</a></li>
         <li class="{% if page.url contains "/pages/Repository-Connector" %}shown{% endif %}"><a href="/pages/Repository-Connector/"><i class="fa fa-cloud-download"></i> Repository Connector</a>
              <ul class="secondary">
-                <li class="">
+                <li class="{% if page.url contains "/pages/Repository-Connector/Install-and-Setup" %} active {% endif %}">
                     <a href="/pages/Repository-Connector/Install-and-Setup" class="title">Installation and Setup</a>
                 </li>
             </ul>
             <ul class="secondary">
-                <li class="">
+                <li class="{% if page.url contains "/pages/Repository-Connector/Repository-Configuration" %} active {% endif %}">
                     <a href="/pages/Repository-Connector/Repository-Configuration" class="title">Repository Configuration</a>
                 </li>
             </ul>
             <ul class="secondary">
-                <li class="">
+                <li class="{% if page.url contains "/pages/Repository-Connector/FAQ-and-Advanced" %} active {% endif %}">
                     <a href="/pages/Repository-Connector/FAQ-and-Advanced" class="title">FAQ and Advanced</a>
                 </li>
             </ul>
@@ -88,13 +126,18 @@
         <li class="{% if page.url contains "/pages/Shell-Scripts/" %}shown{% endif %}"><a href="/pages/Shell-Scripts"><i class="fa fa-desktop"></i> Command Line Scripts</a></li>
         <li class="{% if page.url contains "/pages/Misc" %}shown{% endif %}"><a href="/pages/Misc"><i class="fa fa-plus-circle"></i> Misc</a>
              <ul class="secondary">
-                <li class="">
+                <li class="{% if page.url contains "/pages/Misc/Language-Identifiers" %} active {% endif %}">
                     <a href="/pages/Misc/Language-Identifiers" class="title">Language Identifiers</a>
                 </li>
             </ul>
             <ul class="secondary">
-                <li class="">
+                <li class="{% if page.url contains "/pages/Misc/Ruby-Localization" %} active {% endif %}">
                     <a href="/pages/Misc/Ruby-Localization" class="title">Ruby Localization</a>
+                </li>
+            </ul>
+            <ul class="secondary">
+                <li class="{% if page.url contains "/pages/Misc/CSV-Download" %} active {% endif %}">
+                    <a href="/pages/Misc/CSV-Download" class="title">CSV Download Options</a>
                 </li>
             </ul>
         </li>

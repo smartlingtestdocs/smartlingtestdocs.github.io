@@ -1073,7 +1073,7 @@ html {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 body {
-  font-family: "proxima-nova";
+  font-family: "adelle-sans", sans-serif;
   font-size: 17px;
   line-height: 1.42857143;
   color: #333333;
@@ -3871,7 +3871,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav > li > a:hover,
 .nav > li > a:focus {
   text-decoration: none;
-  background-color: #eeeeee;
+  
 }
 .nav > li.disabled > a {
   color: #777777;
@@ -5812,7 +5812,7 @@ button.close {
   position: absolute;
   z-index: 1070;
   display: block;
-  font-family: "proxima-nova";
+  font-family: "adelle-sans", sans-serif;
   font-size: 15px;
   font-weight: normal;
   line-height: 1.4;
@@ -5919,7 +5919,7 @@ button.close {
   display: none;
   max-width: 276px;
   padding: 1px;
-  font-family: "proxima-nova";
+  font-family: "adelle-sans", sans-serif;
   font-size: 17px;
   font-weight: normal;
   line-height: 1.42857143;

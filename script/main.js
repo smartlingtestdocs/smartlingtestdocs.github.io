@@ -7,6 +7,8 @@ $(document).ready(function(){
 
     setFirstGistSamplesToActive();
 
+    setupMenuButton();
+
 });
 
 
@@ -27,5 +29,23 @@ var setFirstGistSamplesToActive = function(){
     $(".code-sample ul").find("li:eq(0) a").click();
 
 };
+
+var setupMenuButton = function(){
+
+    $(".sidebar").on("click", "a", function(){
+
+        $(".sidebar").toggle();
+
+    });
+
+
+    $(".menuButton").click(function(){
+
+        $(".sidebar").toggle();
+
+    });
+
+};
+
 
 })(jQuery);

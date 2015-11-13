@@ -1,0 +1,110 @@
+---
+layout: page
+title:  Translation Import API
+method: TranslationImport
+redirect_from: "https://docs.smartling.com/display/docs/Translation+Imports"
+---
+<p>
+    The Import API allows you to import existing translated content by matching keys from an original source file to keys in the translated file (10 MB limit).
+</p>
+<p>
+    If you select the overwrite option, Smartling will overwrite any translation that is already in Smartling, with the translation in the file being imported
+    from.
+</p>
+<p>
+    Any Smartling directives in the original source file (for example, placeholders) must also appear in the translated file.
+</p>
+<p>
+    The Import API uses the following URL: <a href="https://api.smartling.com/v1/file/import" rel="nofollow">https://api.smartling.com/v1/file/import</a> and
+    is a HTTP POST, multipart/form-data type.
+</p>
+<p>
+    You cannot import translations unless there are source strings in the Smartling Dashboard to match those translations to. You must upload your source file
+    first, then import your translations. Smartling matches translated strings with source strings that share the same key, so you can only import translations
+    for files that use key/value pairs.
+</p>
+<p>
+    The Import API sets successful string translation imports to the workflow state specified and creates a translation memory entry.
+</p>
+
+
+    {% assign FAPIMethods = site.data.MiscAPIMethods %}
+    {% for FAPIMethod in FAPIMethods %}
+        {% if FAPIMethod.Method == 'TranslationImport' %}
+    <section>
+           <a class="anchor" id="{{FAPIMethod.Method}}"></a>
+           <h2>{{FAPIMethod.Method}} ({{FAPIMethod.Url}})</h2>
+           <p>{{FAPIMethod.Intro}}</p>
+    <br/>
+    <div class="panel panel-default">
+        <div class="panel-heading">Parameters</div>
+        <div class="panel-body">
+            {% include FAPIMethodParameters.html %}
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">Returns</div>
+        <div class="panel-body">
+            {% include FAPIReturns.html %}
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">Examples</div>
+        <div class="panel-body">
+            {% include FAPICodeExamples.html %}
+        </div>
+    </div>
+    </section>
+        {% endif %} 
+    {% endfor %}
+
+<section>
+           <a class="anchor" id="ImportExamples"></a>
+           <h2>Import Examples for Android XML</h2>
+           <p>Original English file:</p>
+           <pre><code>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;resources&gt;
+    &lt;string name=&quot;string_1&quot;&gt;Hello&lt;/string&gt;
+    &lt;string name=&quot;string_2&quot;&gt;Goodbye&lt;/string&gt;
+&lt;/resources&gt;
+</code></pre>
+
+  <p>Spanish translation file:</p>
+           <pre><code>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;resources&gt;
+    &lt;string name=&quot;string_1&quot;&gt;Hola&lt;/string&gt;
+    &lt;string name=&quot;string_2&quot;&gt;Adios&lt;/string&gt;
+&lt;/resources&gt;
+</code></pre>
+</section>
+
+<section>
+           <a class="anchor" id="Errors"></a>
+           <h2>Import Errors</h2>
+           
+           <h3>Key not found:</h3>
+           <p>The import file included a key that does not exist in the original source file, so Smartling couldn't match it to an original string.</p>
+
+            <h3>Placeholder Mismatch</h3>
+           <p>If the number of placeholders in your translation for a string does not match the number of placeholders in the original source string, Smartling won’t set the string to the “published” workflow state. Smartling sets the imported translation to the “In Translation” workflow state for the appropriate locale in the Smartling dashboard at Content > In Translation and creates an unresolved issue for the string credited to the API user with the comment:  "Placeholders mismatch for the translation import". Smartling will not create a Translation Memory entity for strings that fail to import to the “Published” workflow state. </p>
+
+            <p>Authorized users can use the Smartling Dashboard and Translation Interface (TI) to edit the translation, make corrections, and resolve the issue. The Smartling TI requires that you provide the appropriate number of placeholders (there is an exception to the placeholder requirement for translation of Plural strings.)  </p>
+
+</section>
+
+<section>
+           <a class="anchor" id="ImportExamples"></a>
+           <h2>Limitations</h2>
+           <p>
+            <ul>
+                <li>The Import API does not yet support the <a href="https://github.com/Smartling/ios-i18n">Smartling iOS plurals format.</a></li>
+                <li>TMX imports follow a different process and will not require that you upload an original source language first.  Uploaded TMX files are associated with a Smartling account and can be shared with all projects in an account.</li>
+            </ul>
+           </p>
+
+</section>
+
+
+           
