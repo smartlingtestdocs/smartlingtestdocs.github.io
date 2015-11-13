@@ -26,6 +26,12 @@ html {
     text-align: left !important;
     margin-left: 25px;
   }
+
+  .homeBanner .betawarning {
+    text-align: left !important;
+    margin-left: 25px;
+  }
+
   .homeBanner .searchBox {
     margin-left: 0 !important;
     margin-bottom: 20px;
