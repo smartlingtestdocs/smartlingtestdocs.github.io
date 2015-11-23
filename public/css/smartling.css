@@ -26,12 +26,10 @@ html {
     text-align: left !important;
     margin-left: 25px;
   }
-
   .homeBanner .betawarning {
     text-align: left !important;
     margin-left: 25px;
   }
-
   .homeBanner .searchBox {
     margin-left: 0 !important;
     margin-bottom: 20px;
@@ -94,14 +92,6 @@ html {
   text-align: center;
   padding: 15px;
 }
-
-.homeBanner .betawarning {
-  width: 500px;
-  display: inline-block;
-  text-align: center;
-  padding: 15px;
-}
-
 .homeBanner .logo img {
   width: 150px;
 }
@@ -113,6 +103,13 @@ html {
   width: 20%;
   color: #fff;
 }
+.homeBanner .betawarning {
+  width: 500px;
+  display: inline-block;
+  text-align: center;
+  padding: 15px;
+}
+
 .homeBanner .searchBox input {
   width: 100%;
   border: 1px solid #eee !important;
@@ -231,10 +228,13 @@ html {
   padding-left: 65px;
   color: #ffffff;
 }
-.main-nav ul ul > li > a {
-  padding-left: 50px;
+
+.main-nav ul .tertiary > li.file-2 > a {
+  padding-left: 80px;
   border: none;
+  color: none;
 }
+
 .main-nav ul ul > li a:hover {
   background-color: #5d686a;
   border-left: 5px solid #63c2dd;
