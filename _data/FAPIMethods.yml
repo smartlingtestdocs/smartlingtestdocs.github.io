@@ -326,5 +326,5 @@
             Description: Smartling locale identifier
 
           - Name: lastModified
-            Description: 'The time and date the file was last modifed - YYYY-MM-DDThh:mm:ss.'
+            Description: 'The time and date the file was last modified - YYYY-MM-DDThh:mm:ss.'
 

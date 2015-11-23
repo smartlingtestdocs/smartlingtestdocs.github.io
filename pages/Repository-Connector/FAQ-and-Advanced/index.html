@@ -19,6 +19,26 @@ title:  Repository Connector - FAQs and Advanced
             Can I alter the configuration files while the Repository Connector is running?
         </a>
     </li>
+    <li>
+        <a href="#Memory">
+            How much memory do I need to allocate?
+        </a>
+    </li>
+    <li>
+        <a href="#Logs">
+            How do I control the size of my logs?
+        </a>
+    </li>
+    <li>
+        <a href="#AWS">
+            What size AWS ec2 instance is appropriate for deploying?
+        </a>
+    </li>
+    <li>
+        <a href="#Callback">
+            Can I configure callbacks for completed translation instead of using the cron checker?
+        </a>
+    </li>
 </ul>
 
 <section>
@@ -50,8 +70,76 @@ title:  Repository Connector - FAQs and Advanced
 Can I alter the configuration files while the Repository Connector is running?
 </h4>
 <p>
-   You can alter the translation configuration file while the connector is running. If it is hosted in your code repository, any new commit to this file will trigger an automatic update to the Smartling dashboard. However, changes to the <code>repo-connector.conf</code> file require a restart to come into effect.d
+   You can alter the translation configuration file while the connector is running. If it is hosted in your code repository, any new commit to this file will trigger an automatic update to the Smartling dashboard. However, changes to the <code>repo-connector.conf</code> file require a restart to come into effect.
 </p>
       </section>
+      
+<section>
+    <a class="anchor" id="Memory"></a>
+<h4 >
+How much memory do I need to allocate?
+</h4>
+<p>
+   On average, memory consumption for an instance of the Repository Connector is around 40M. We recommend having at least 64M available. You can define maximum memory allocation for the connector by starting with the <code>-Xmx</code> flag on startup. For example, to set the max memory to 64M: <code>java -Xmx64M -jar repo-connector-1.4.2.jar -start</code>
+</p>
+      </section>
+      
+<section>
+    <a class="anchor" id="Logs"></a>
+<h4 >
+How do I control the size of my logs?
+</h4>
+<p>
+   The Repository Connector uses logback. You can configure the length of history and the file size of your logs by editing the <code>logback.xml</code> file in the <code>cfg</code> directory. See the <a href="http://logback.qos.ch/manual/appenders.html">Logback documentation</a> for full options.
+</p>
+      </section>
+
+<section>
+    <a class="anchor" id="AWS"></a>
+<h4 >
+What size AWS ec2 instance is appropriate for deploying?
+</h4>
+<p>
+   Space requirements for the Repository Connector are not high. For most use cases, a micro instance will be sufficient.
+</p>
+      </section>
+    
+<section>
+    <a class="anchor" id="Callback"></a>
+<h4 >
+Can I configure callbacks for completed translation instead of using the cron checker?
+</h4>
+<p>
+   For most use cases, we recommend using the standard cron checker to look for completed applications. However, it is possible to configure callbacks, as long as you can open a port for an http listener.
+</p>
+<p>
+    To configure callbacks, you need to add an "http" section to the repo-connector.conf file. It should look like this:
+</p>
+<pre>
+    &nbsp;&nbsp;&quot;http&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&quot;host&quot;:&nbsp;&quot;localhost&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&quot;port&quot;:&nbsp;&quot;5555&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&quot;protocol&quot;:&nbsp;&quot;http&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&quot;callbackUrl&quot;:&nbsp;&quot;http://callback.mydomain.com&quot;<br/>&nbsp;&nbsp;}
+</pre>
+<p><strong>Parameters:</strong></p>
+<ul>
+    <li>
+        <code>host</code> - the host name, set by default to localhost. Public server may require value to be set to ‘0.0.0.0’
+    </li>
+    <li>
+        <code>port</code> - the local port for the http listener. Any free port can be assigned.
+    </li>
+    <li>
+        <code>protocol</code> - can be set to <code>http</code> or <code>https</code> depending on the requirements of your server.
+    </li>
+    <li>
+        <code>callbackURL</code> - URL for your instance of the Repository Connector. This is the URL that Smartling will send a callback to on completion of translation for a file.
+    </li>
+</ul>
+    <p>
+        We recommend still running a regular Cron checker in case there are errors with your callbacks.
+    </p>
+      </section>
+
+
+
+
 
     

@@ -58,7 +58,7 @@
             </ul>
         </li>
 
-        <li class="{% if page.url contains "/pages/API/v2" %}shown{% endif %}"><a href="/pages/API/v2"><i class="fa fa-cogs"></i> API v2</a>
+        <li class="{% if page.url contains "/pages/API/v2" %}shown{% endif %}"><a href="/pages/API/v2"><i class="fa fa-cogs"></i> API v2 (beta)</a>
              <ul class="secondary">
                 <li class="">
                     <a href="/pages/API/v2/New-in-v2" class="title">New in v2</a>
@@ -81,7 +81,7 @@
 
 
 
-            <ul class="secondary" >
+            <!--<ul class="secondary" >
                 <li class="">
                     <a href="/pages/API/v2/FileAPI" class="title">Files</a>
                     <ul class="nav nav-tabs nav-stacked {% if page.url contains "/pages/API/v2/FileAPI" %}shown{% endif %} tertiary">
@@ -89,7 +89,42 @@
                         {% if Method.Link contains "/pages/API/v2/FileAPI" %}
                             <li class= "{% if page.url contains Method.Link %}active{% endif %}"><a href="{{Method.Link}}">{{Method.Name}} ({{Method.Type}})</a></li>
                         {% endif %}
-                    {% endfor %}
+                    {% endfor %} 
+
+
+                    <li class= "{% if page.url contains Method.Link %}active{% endif %}"><a href="{{Method.Link}}">{{Method.Name}}</a></li>
+
+
+                    </ul>
+                </li>
+            </ul>-->
+
+                <ul class="secondary" >
+                <li class="">
+                    <a href="/pages/API/v2/FileAPI" class="title">Files</a>
+                    <ul class="nav nav-tabs nav-stacked shown tertiary">
+
+                            <li class= ""><a href="/pages/API/v2/FileAPI/Upload-File/">Upload File</a></li>
+                            <li><a>Download Tranlsated Files</a></li>
+                            <li class= "file-2"><a href="/pages/API/v2/FileAPI/Download-File/Single-Locale">Single Locale</a></li>
+                            <li class= "file-2"><a href="/pages/API/v2/FileAPI/Download-File/Multiple-Locales">Multiple Locales as .ZIP</a></li>
+                            <li class= "file-2"><a href="/pages/API/v2/FileAPI/Download-File/All-Locales">All Locales as .ZIP</a></li>
+                            <li class= "file-2"><a href="/pages/API/v2/FileAPI/Download-File/All-Locales-CSV">All Locales in one File - CSV</a></li>
+                            <li class= ""><a href="/pages/API/v2/FileAPI/List/">List</a></li>
+                            <li><a>Status</a></li>
+                            <li class= "file-2"><a href="/pages/API/v2/FileAPI/Status/All-Locales">All Locales</a></li>
+                            <li class= "file-2"><a href="/pages/API/v2/FileAPI/Status/Single-Locale">Single Locale / Extended Response</a></li>
+                            <li class= ""><a href="/pages/API/v2/FileAPI/Rename/">Rename</a></li>
+                            <li class= ""><a href="/pages/API/v2/FileAPI/Delete/">Delete</a></li>
+                            <li><a>Last Modified</a></li>
+                            <li class= "file-2"><a href="/pages/API/v2/FileAPI/Last-Modified/Single-Locale/">Single locale</a></li>
+                            <li class= "file-2"><a href="/pages/API/v2/FileAPI/Last-Modified/All-Locales/">All locales</a></li>
+                            <li><a>Authorize Content</a></li>
+                            <li class= "file-2"><a href="/pages/API/v2/FileAPI/Authorize-Content/List-Authorized-Locales">List Authorized Locales</a></li>
+                            <li class= "file-2"><a href="/pages/API/v2/FileAPI/Authorize-Content/Authorize-Unauthorize/">Authorize / Unauthorize</a></li>
+                            <li class= ""><a href="/pages/API/v2/FileAPI/Import-Translations/">Import Translations</a></li>
+                        
+                    
                     </ul>
                 </li>
             </ul>

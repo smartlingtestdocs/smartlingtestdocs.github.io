@@ -233,9 +233,9 @@
     Examples:
         - CodeCSV: 'smartling.add_utf8_bom=TRUE'
 
-  - Directive:      'translate_mode'
+  - Directive:      'translate_mode (DEPRECATED)'
     Values:         '<code>ALL</code> or <code>CUSTOM</code>'
-    Description:    '<p>If set to <code>ALL</code>, all values will be translated. If set to <code>CUSTOM</code>, only the paths specified using the <code>translate_paths</code> directive will be translated</p>'
+    Description:    '<p>This directive is no longer supported for files uploaded after 13 October 2015.</p>'
     Examples:
         - CodeJSON: '"translate_mode" : "CUSTOM"'
 

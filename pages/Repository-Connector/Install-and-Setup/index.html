@@ -36,7 +36,7 @@ title:  Repository Connector - Install and Configure
 <h4>Install the connector</h4>
 
 <p>
-Download the <a href="https://smartling-connector-public.s3.amazonaws.com/repo_connector/repo-connector-1.4.0-bin.zip" rel="nofollow">Repository Connector package</a>
+Download the <a href="https://smartling-connector-public.s3.amazonaws.com/repo_connector/repo-connector-1.4.3-bin.zip" rel="nofollow">Repository Connector package</a>
     and unpack it into the desired folder. The application should be hosted on a server that is continuously available and publicly addressable, with Java
     version 7 or higher.
 </p>
@@ -118,6 +118,13 @@ Download the <a href="https://smartling-connector-public.s3.amazonaws.com/repo_c
                 <code>resourcesConfig</code> - the path to the repository configuration file, if hosted in your code repository. Default is 'smartling-config.json'
             </p>
         </li>
+
+        <li dir="ltr">
+            <p dir="ltr">
+                <code>namespace</code> - <code>TRUE</code> or <code>FALSE</code> (default). If <code>TRUE</code>, strings are shared between all files. Repeated strings are translated only once in Smartling. If your file names contain version information, this setting will avoid having to retranslate entire files when you upload a new version. If <code>FALSE</code>, strings are unique to each file. See the <a href="http://support.smartling.com/hc/en-us/articles/207178807">namespace</a> documentation for more details. <strong>Warning:</strong> This property should not be edited after you start uploading content to Smartling.
+            </p>
+        </li>
+
         <li dir="ltr">
             <p dir="ltr">
                 <code>serverResourcesConfig</code> - if you would prefer not to commit the repository configuration file to your code repository, you can host it on the
@@ -127,8 +134,9 @@ Download the <a href="https://smartling-connector-public.s3.amazonaws.com/repo_c
         </li>
         <li dir="ltr">
             <p dir="ltr">
-                <code>branches</code> - Regular expression for branch names to be checked for resources. If this is undefined, all branch names will be checked.
+                <code>branches</code> - Regular expression for branch names to be checked for resources. If this is undefined, all branch names will be checked. Example:
             </p>
+            <pre>"branches": "(dev|master|dev_cx-chat|dev_active-booking)",</pre>
         </li>
         <li dir="ltr">
             <p dir="ltr">
@@ -147,6 +155,26 @@ Download the <a href="https://smartling-connector-public.s3.amazonaws.com/repo_c
                 </p>
             </li>
         </ul>
+
+        <li dir="ltr">
+            <p dir="ltr">
+                <code>downloadTranslations</code> - Settings for downloading tranlsated files from Smartling.
+            </p>
+        </li>
+        <ul>
+            <li dir="ltr">
+                <p dir="ltr">
+                    <code>trigger</code> - <code>COMPLETED</code> or <code>ONCHANGE</code> - determines when to download translated files from Smartling. <code>COMPLETED</code> downloads files only when all translations are complete. <code>ONCHANGE</code> downloads translated files whenever they are updated. Default is <code>COMPLETED.</code>
+                </p>
+            </li>
+            <li dir="ltr">
+                <p dir="ltr">
+                    <code>retrievalType</code> - Sets type of translation for downloaded files. Allowed values are <code>PUBLISHED</code> (default), <code>PENDING</code>, and <code>PSEUDO</code>. See <a href="http://docs.smartling.com/pages/API/FileAPI/Download-File/">Download Files</a> for more information on retrieval type.
+                </p>
+            </li>
+        </ul>
+        
+
         <li dir="ltr">
             <p dir="ltr">
                 Other authentication options are included in the example file.
@@ -162,18 +190,18 @@ Download the <a href="https://smartling-connector-public.s3.amazonaws.com/repo_c
 <p>
     To start the Repository Connector, execute:
 </p>
-<pre>java -jar repo-connector-1.3.3.jar -start</pre>
+<pre>java -jar repo-connector-1.4.2.jar -start</pre>
 <p>
     To stop the Repository Connector, execute:
 </p>
-<pre>java -jar repo-connector-1.3.3.jar -stop</pre>
+<pre>java -jar repo-connector-1.4.2.jar -stop</pre>
 <p>
     If you have saved your configuration files in a folder other than the default (/cfg) add the parameter -configuration &lt;folder_name&gt; to the command.
 </p>
 <p>
     To run as a daemon, execute:
 </p>
-<pre>java -jar repo-connector-1.3.3.jar -start&amp;</pre>
+<pre>java -jar repo-connector-1.4.2.jar -start&amp;</pre>
 <p>
 Once the Repository Connector is running, you will still need to    <a href="/pages/Repository-Connector/Repository-Configuration" rel="nofollow">configure your repository</a> before
     you can push files to Smartling.
