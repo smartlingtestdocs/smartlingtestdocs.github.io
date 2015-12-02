@@ -158,12 +158,15 @@
     Return:
         String: 
         Json: ''
+        Parameters:
 
+          - Name: ''
+            Description: ''
 
 
   - Method: CloneProject
     Name: Clone Project
-    Url: '/projects-api/v2/projects/{projectId}/clone'
+    Url: '/accounts-api/v2/projects/{projectId/clone'
     Link: '/pages/API/v2/Projects/Clone-Project/'
     Type : POST
     Intro: ''
@@ -180,19 +183,24 @@
           Description: 'Name for the new project'
 
         - Name: 'categoryValueUid'
-          Required: ''
-          Type: 'string'
-          Description: 'Assigns a category to the new project'
+          Required: 
+          Type: ''
+          Description: ''
 
         - Name: 'targetLocales'
-          Required: 'YES'
-          Type: 'Array'
-          Description: 'Array of target languages for the new project.'
+          Required: 
+          Type: ''
+          Description: ''
 
 
 
     Return:
-        String: 'Returns a standard <a ref="/pages/API/v2/Projects/Project-Details/">project details</a> response for the new project.'
+        String: 
+        Json: ''
+        Parameters:
+
+          - Name: ''
+            Description: ''
 
 
   - Method: AddLocale
@@ -200,7 +208,7 @@
     Url: '/projects-api/v2/projects/{projectId}/targetLocales'
     Link: '/pages/API/v2/Projects/Add-Locale'
     Type : POST
-    Intro: 'Adds a target locale to a project'
+    Intro: ''
     CurlGist: 
     RubyGist: 
     PHPGist:  
@@ -220,7 +228,12 @@
 
 
     Return:
-        String: 'Returns a standard <a ref="/pages/API/v2/Projects/Project-Details/">project details</a> response for the new project.'
+        String: 
+        Json: ''
+        Parameters:
+
+          - Name: ''
+            Description: ''
 
 
   - Method: ArchiveProject
@@ -237,7 +250,7 @@
     PythonGist: 
 
     Return:
-        String: 'Standard <a href="/pages/API/v2/Projects/Project-Details/">project details</a> response for the project'
+        String: 'Standard <a href="/pages/API/v2/Projects/Project-Details/">project details</a> response for the unarchived project'
 
 
   - Method: UnarchiveProject
@@ -245,7 +258,7 @@
     Url: '/projects-api/v2/projects/{projectId}/unarchive'
     Link: '/pages/API/v2/Projects/Unarchive-Project/'
     Type : POST
-    Intro: 'Unarchives an archived project. No paramaters are required.'
+    Intro: ''
     CurlGist: 
     RubyGist: 
     PHPGist:  
@@ -264,59 +277,8 @@
     Name: Authorize Content
     Url: '/projects-api/v2/projects/{projectId}/authorize'
     Link: '/pages/API/v2/Content/Authorize-Content/'
-    Type: GET
-    Intro: 'Authorizes all unauthorized content in the project for selected languages.'
-    CurlGist: 
-    RubyGist: 
-    PHPGist:  
-    JavaGist: 
-    CsharpGist: 
-    PythonGist: 
-    Parameters:
-        - Name: 'items'
-          Required: 'YES'
-          Type: 'Array'
-          Description: '<p>JSON array with each item containing:</p><ul><li><code>workflowUid</code> - Unique identifier for the workflow the authorized content should be sent to.</li><li><code>targetLocaleId</code> - Smartling locale the content is authorized for.'
-
-    Return:
-        String: 'Standard success response.'
-
-
-  - Method: ContentProgress
-    Name: Content Progress
-    Url: '/projects-api/v2/projects/{projectId}/progress'
-    Link: '/pages/API/v2/Content/Content-Progress/'
-    Type: GET
+    Type : GET
     Intro: ''
-    CurlGist: 
-    RubyGist: 
-    PHPGist:  
-    JavaGist: 
-    CsharpGist: 
-    PythonGist: 
-    Parameters:
-        - Name: 'workflowUid'
-          Required: 'YES'
-          Type: 'string'
-          Description: 'Unique identifier for the workflow you''re querying.'
-
-        - Name: 'targetLocaleId'
-          Required: 'YES'
-          Type: 'string'
-          Description: 'Smartling code for the locale you''re  querying.'
-
-    Return: 
-        String: 'Returns a string count and word count for each step in the workflow you are querying in the following format:'
-
-        Json: '200&nbsp;OK<br/>{<br/> &quot;response&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp; &quot;code&quot;:&nbsp;&quot;SUCCESS&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;  &quot;data&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;contentProgressReport&quot;:&nbsp;[<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &quot;targetLocaleId&quot;:&nbsp;&quot;ru-RU&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &quot;targetLocaleDescription&quot;:&nbsp;&quot;Russian&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;workflowProgressReportList&quot;:&nbsp;[<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &quot;workflowUid&quot;:&nbsp;&quot;aa0e50f52833&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &quot;workflowName&quot;:&nbsp;&quot;Translation&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &quot;workflowStepSummaryReportItemList&quot;:&nbsp;[<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &quot;workflowStepUid&quot;:&nbsp;&quot;c1ceaee3643e&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &quot;workflowStepName&quot;:&nbsp;&quot;Translation&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &quot;stringCount&quot;:&nbsp;201,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;wordCount&quot;:&nbsp;752<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  },<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &quot;workflowStepUid&quot;:&nbsp;&quot;2739a09f8f36&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &quot;workflowStepName&quot;:&nbsp;&quot;Published&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &quot;stringCount&quot;:&nbsp;0,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;wordCount&quot;:&nbsp;0<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  }<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  ]<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  }<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  ]<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  }<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  ]<br/>&nbsp;&nbsp;&nbsp;&nbsp;  }<br/>  }<br/>}'
-
-
-  - Method: RequestFuzzyEstimate
-    Name: Request Fuzzy Match Estimate
-    Url: '/contents-api/v2/projects/{projectId}/estimate'
-    Link: '/pages/API/v2/Content/Fuzzy-Estimate/'
-    Type: GET
-    Intro: 'Request a <a href="http://support.smartling.com/hc/en-us/articles/201255313">Fuzzy Match Estimate</a> for all content. Returns a report identifier that can be used to retrieve the estimate (./)'
     CurlGist: 
     RubyGist: 
     PHPGist:  
@@ -331,11 +293,65 @@
 
     Return:
         String: 
-        Json: '200&nbsp;OK<br/>{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&quot;response&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;code&quot;:&nbsp;&quot;SUCCESS&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;data&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;reportUid&quot;:&nbsp;&quot;abc123&quot;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>}'
+        Json: ''
         Parameters:
 
-          - Name: 'reportUid'
-            Description: 'Unique identifier that can be used to retrieve the report.'
+          - Name: ''
+            Description: ''
+
+
+  - Method: AuthorizeContent
+    Name: Authorize Content
+    Url: '/projects-api/v2/projects/{projectId}/authorize'
+    Link: '/pages/API/v2/Content/Authorize-Content/'
+    Type : GET
+    Intro: ''
+    CurlGist: 
+    RubyGist: 
+    PHPGist:  
+    JavaGist: 
+    CsharpGist: 
+    PythonGist: 
+    Parameters:
+        - Name: ''
+          Required: ''
+          Type: ''
+          Description: ''
+
+    Return:
+        String: 
+        Json: ''
+        Parameters:
+
+          - Name: ''
+            Description: ''
+
+
+  - Method: AuthorizeContent
+    Name: Authorize Content
+    Url: '/projects-api/v2/projects/{projectId}/authorize'
+    Link: '/pages/API/v2/Content/Authorize-Content/'
+    Type : GET
+    Intro: ''
+    CurlGist: 
+    RubyGist: 
+    PHPGist:  
+    JavaGist: 
+    CsharpGist: 
+    PythonGist: 
+    Parameters:
+        - Name: ''
+          Required: ''
+          Type: ''
+          Description: ''
+
+    Return:
+        String: 
+        Json: ''
+        Parameters:
+
+          - Name: ''
+            Description: ''
 
 
 ### Files API
@@ -344,7 +360,7 @@
     Name: 'Upload File'
     Url: '/files-api/v2/projects/{projectId}/file'
     Link: "/pages/API/v2/FileAPI/Upload-File/"
-    Type: POST
+    Type : POST
     Intro: 'Uploads original source content to Smartling (50MB limit for .ppt, .pptx; 25MB limit for .idml; 20MB limit for .doc, .docx; and 10MB limit for all others).'
     CurlGist: 428369801cd80a75aca3
     RubyGist: 

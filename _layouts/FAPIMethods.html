@@ -10,12 +10,14 @@ layout: default
           <a class="anchor" id="{{FAPIMethod.Method}}"></a>
           <h2>{{FAPIMethod.Name}} ({{FAPIMethod.Url}})</h2>
            <p>{{FAPIMethod.Intro}}</p>
+    {% if Method.Parameters %}
     <div class="panel panel-default">
         <div class="panel-heading">Parameters</div>
         <div class="panel-body">
             {% include FAPIMethodParameters.html %}
         </div>
     </div>
+    {% endif %}
     <div class="panel panel-default">
         <div class="panel-heading">Returns</div>
         <div class="panel-body">

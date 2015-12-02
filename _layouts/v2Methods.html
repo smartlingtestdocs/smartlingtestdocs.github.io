@@ -2,6 +2,9 @@
 layout: default
 ---
 
+<p>this is a test</p>
+
+
 <div class="page">
 {% for Method in site.data.v2Methods %}
     {% if Method.Method == page.method %}
@@ -10,18 +13,26 @@ layout: default
     <h3>{{Method.Type}} - {{Method.Url}}</h3>
     <p> </p>
     <p>{{Method.Intro}}</p>
+
+    {% if Method.Parameters %}
     <div class="panel panel-default">
         <div class="panel-heading">Parameters</div>
         <div class="panel-body">
             {% include v2MethodParameters.html %}
         </div>
     </div>
+    {% endif %}
+    
+    {% if Method.Return %}
     <div class="panel panel-default">
         <div class="panel-heading">Returns</div>
         <div class="panel-body">
             {% include v2Returns.html %}
         </div>
     </div>
+    {% endif %}
+
+    {% if Method.Curlgist %}
     <div class="panel panel-default">
         <div class="panel-heading">Examples</div>
         <div class="panel-body">
@@ -29,6 +40,7 @@ layout: default
         </div>
         <br/>
     </div>
+    {% endif %}
 
     {% endif %}
 {% endfor %}

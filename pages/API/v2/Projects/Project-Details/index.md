@@ -1,7 +1,6 @@
 ---
-layout: FAPIMethods
-title:  List
-method: List
+layout: v2Methods
+title:  Project Details
+method: ProjectDetails
 ---
 
-Lists recently uploaded files. Returns a maximum of 500 files.
