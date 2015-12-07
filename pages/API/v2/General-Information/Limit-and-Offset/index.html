@@ -1,0 +1,15 @@
+---
+title: Limit and Offset
+layout: default
+---
+
+<br/><br/>
+
+<h2>Limit and Offset</h2>
+<br/>
+
+<p>For calls that return long lists of results, use Limit and Offset to return results in pages. <code>limit</code> sets the number of results that will be returned. <code>offset</code> determines the first record to be returned.</p>
+
+<p>For example, you can set your first call to return a <code>limit</code> of 50 items with an <code>offset</code> of zero to get the first 50 results. A second call with a <code>limit</code> of 50 and an <code>offset</code> of 50 will return results 51-100, and so on. You can use the <code>totalCount</code> parameter of the response to determine how many calls you will need to make to retrieve the full set of results.</p>
+
+<p>If <code>limit</code> is not specified, results are capped at 500 by default.</p>

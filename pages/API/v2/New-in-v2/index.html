@@ -9,7 +9,7 @@ Section: New in V2
     [date].
 </p>
 <p dir="ltr">
-    Version 2 of FilesAPI will be familiar to you if you’ve used v1 but there are two important differences to keep in mind while you’re getting started.
+    Version 2 of FilesAPI will be familiar to you if you’ve used v1 but there are some important differences to keep in mind while you’re getting started.
 </p>
 
 <p dir="ltr">
@@ -39,5 +39,63 @@ Section: New in V2
         <p dir="ltr">
             <code>locale</code> - the locale code for a translated file. You can find a full list of locale codes used in each of your projects in the Smartling dashboard at <strong>Project Settings &gt; API</strong>.
         </p>
+    </li>
+</ul>
+
+<p><strong>Arrays</strong></p>
+
+<p>Most Smartling API arguments are strings, but some v2 calls take arrays as arguments to return information on multiple files or locales. Passing multiple values in a GET request looks like this.</p>
+
+<pre><code>?localeId[]=de-DE&localeId[]=fr-FR</code></pre>
+
+<p>Don’t forget the square brackets for array values, even if you’re only passing a single argument.</p>
+
+<p dir="ltr">
+    <strong>New Options</strong>
+</p>
+<p dir="ltr">
+    If you’re already using v1 of Smartling’s File API, you may be able to improve on your integration with the new, more powerful calls included in v2.
+    Significant new options include:
+</p>
+<ul>
+    <li dir="ltr">
+        <p dir="ltr">
+            You now have four different options for downloading files:
+        </p>
+    </li>
+    <ul>
+        <li dir="ltr">
+            <p dir="ltr">
+                <a href="/pages/API/v2/FileAPI/Download-File/Single-Locale">Download a single translated file;</a>
+            </p>
+        </li>
+        <li dir="ltr">
+            <p dir="ltr">
+                <a href="/pages/API/v2/FileAPI/Download-File/All-Locales">Download all locales for a single file as a .ZIP archive</a>
+            </p>
+        </li>
+        <li dir="ltr">
+            <p dir="ltr">
+                <a href="/pages/API/v2/FileAPI/Download-File/Multiple-Locales">Download multiple files for multiple locales as a .ZIP archive</a>
+            </p>
+        </li>
+        <li dir="ltr">
+            <p dir="ltr">
+                <a href="/pages/API/v2/FileAPI/Download-File/All-Locales-CSV">Download translations for all locales in a single CSV file</a>
+            </p>
+        </li>
+    </ul>
+    <li dir="ltr">
+        <p dir="ltr">
+            <a href="/files-api/v2/projects/{projectId}/file/authorized_locales">Authorize the content of a previously uploaded file</a>
+        </p>
+    </li>
+    <li dir="ltr">
+        <p dir="ltr">
+            Choose between detailed status of a file in a <a href="/pages/API/v2/FileAPI/Status/Single-Locale">single locale</a> or a summary for <a href="/pages/API/v2/FileAPI/Status/All-Locales">all locales.</a>
+        </p>
+    </li>
+    <li dir="ltr">
+        Check last modified dates for a <a href="/pages/API/v2/FileAPI/Last-Modified/Single-Locale/">select locale</a> or <a href="/pages/API/v2/FileAPI/Last-Modified/All-Locales/">all locales.</a>
     </li>
 </ul>

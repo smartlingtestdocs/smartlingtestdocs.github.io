@@ -1,4 +1,8 @@
 ---
+
+
+
+
   - Method: Authenticate
     Name: 'Authenticate'
     Url: '/auth-api/v2/authenticate'
@@ -22,7 +26,7 @@
 
     Return:
         String: 
-        Json: '200&nbsp;OK<br/>{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&quot;response&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;code&quot;:&nbsp;&quot;SUCCESS&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;data&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;accessToken&quot;:&nbsp;&quot;{access token};,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;expiresIn&quot;:&nbsp;1458,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;refreshExpiresIn&quot;:&nbsp;1455,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;refreshToken&quot;:&nbsp;&quot;{refresh token}&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;tokenType&quot;:&nbsp;&quot;Bearer&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;sessionState&quot;:&nbsp;&quot;&quot;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>}'
+        Json: '200&nbsp;OK<br/>{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&quot;response&quot;&nbsp;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;code&quot;&nbsp;:&nbsp;&quot;SUCCESS&quot,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;data&quot;&nbsp;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;accessToken&quot;:&nbsp;&quot;{access token}",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;expiresIn&quot;:&nbsp;1458,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;refreshExpiresIn&quot;:&nbsp;1455,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;refreshToken&quot;:&nbsp;&quot;{refresh token}&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;tokenType&quot;:&nbsp;&quot;Bearer&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;sessionState&quot;:&nbsp;&quot;&quot;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>}'
         Parameters:
 
           - Name: accessToken
@@ -62,7 +66,7 @@
 
     Return:
         String: 
-        Json: '200&nbsp;OK<br/>{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&quot;response&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;code&quot;:&nbsp;&quot;SUCCESS&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;data&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;accessToken&quot;:&nbsp;&quot;{access token};,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;expiresIn&quot;:&nbsp;1458,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;refreshExpiresIn&quot;:&nbsp;1455,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;refreshToken&quot;:&nbsp;&quot;{refresh token}&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;tokenType&quot;:&nbsp;&quot;Bearer&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;sessionState&quot;:&nbsp;&quot;&quot;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>}'
+        Json: '200&nbsp;OK<br/>{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&quot;response&quot;&nbsp;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;code&quot;&nbsp;:&nbsp;&quot;SUCCESS&quot,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;data&quot;&nbsp;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;accessToken&quot;:&nbsp;&quot;{access token}",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;expiresIn&quot;:&nbsp;1458,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;refreshExpiresIn&quot;:&nbsp;1455,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;refreshToken&quot;:&nbsp;&quot;{refresh token}&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;tokenType&quot;:&nbsp;&quot;Bearer&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;sessionState&quot;:&nbsp;&quot;&quot;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>}'
         Parameters:
 
           - Name: accessToken
@@ -125,20 +129,20 @@
           - Name: 'projectName'
             Description: 'The name of the project'
 
-          - Name: ''
-            Description: ''
+          - Name: 'accountUid'
+            Description: 'The unique identifier for your account.'
 
-          - Name: ''
-            Description: ''
+          - Name: 'sourceLocaleId'
+            Description: 'Smartling locale code for the source language'
 
-          - Name: ''
-            Description: ''
+          - Name: 'sourceLocaleDescription'
+            Description: 'Full source language description for the project.'
 
-          - Name: ''
-            Description: ''
+          - Name: 'archived'
+            Description: 'Boolean - records whether the project has been archived.'
 
-          - Name: ''
-            Description: ''
+          - Name: 'targetLocales'
+            Description: 'Array of target locales for the project.'
 
 
 
@@ -166,7 +170,7 @@
     Url: '/projects-api/v2/projects/{projectId}/clone'
     Link: '/pages/API/v2/Projects/Clone-Project/'
     Type : POST
-    Intro: ''
+    Intro: 'Creates a new project with identical parameters to the existing project.'
     CurlGist: 
     RubyGist: 
     PHPGist:  
@@ -257,6 +261,8 @@
         String: 'Standard <a href="/pages/API/v2/Projects/Project-Details/">project details</a> response for the unarchived project'
 
 
+
+
 # Content
 
 
@@ -337,6 +343,217 @@
           - Name: 'reportUid'
             Description: 'Unique identifier that can be used to retrieve the report.'
 
+### 
+
+  - Method: ListUsers
+    Name: 'Retrieve List of Users'
+    Url: '/people-api/v2/accounts/{accountUid}/users'
+    Link: ''
+    Type: GET
+    Intro: 'Lists all users assigned to an account.'
+    CurlGist: 
+    RubyGist: 
+    PHPGist:  
+    JavaGist: 
+    CsharpGist: 
+    PythonGist: 
+    Parameters:
+        - Name: emailFilter
+          Required: 
+          Description: 'Search string to filter users by email address.'
+
+        - Name: nameFilter
+          Required: 
+          Description: 'Search strings to filter users by name.'
+
+        - Name: roleValue
+          Required: 
+          Description: 'Filter for an allowed role'
+
+        - Name: offset
+          Required: 
+          Description: ''
+
+        - Name: limit 
+          Required: 
+          Description: ''
+
+    Return:
+        String: 
+        Json: ''
+
+        Parameters:
+
+          - Name: 
+            Description: ''
+
+  - Method: ListAgencies
+    Name: 'Retrieve List of Agencies'
+    Url: ''
+    Link: ''
+    Type : 
+    Intro: ''
+    CurlGist: 
+    RubyGist: 
+    PHPGist:  
+    JavaGist: 
+    CsharpGist: 
+    PythonGist: 
+    Parameters:
+        - Name: 
+          Required: 
+          Description: ''
+
+        - Name: 
+          Required: 
+          Description: ''
+
+    Return:
+        String: 
+        Json: ''
+
+        Parameters:
+
+          - Name: 
+            Description: ''
+
+  - Method: GetUserAssignmentInfo
+    Name: 'Get User Assignment Information'
+    Url: ''
+    Link: ''
+    Type : 
+    Intro: ''
+    CurlGist: 
+    RubyGist: 
+    PHPGist:  
+    JavaGist: 
+    CsharpGist: 
+    PythonGist: 
+    Parameters:
+        - Name: 
+          Required: 
+          Description: ''
+
+        - Name: 
+          Required: 
+          Description: ''
+
+    Return:
+        String: 
+        Json: ''
+
+        Parameters:
+
+          - Name: 
+            Description: ''
+
+
+  - Method: CreateUserAssignments
+    Name: 'Create User Assignments'
+    Url: ''
+    Link: ''
+    Type : 
+    Intro: ''
+    CurlGist: 
+    RubyGist: 
+    PHPGist:  
+    JavaGist: 
+    CsharpGist: 
+    PythonGist: 
+    Parameters:
+        - Name: 
+          Required: 
+          Description: ''
+
+        - Name: 
+          Required: 
+          Description: ''
+
+    Return:
+        String: 
+        Json: ''
+
+        Parameters:
+
+          - Name: 
+            Description: ''
+
+  - Method: GetAgencyAssignmentInfo
+    Name: 'Get Agency Assignment Info'
+    Url: ''
+    Link: ''
+    Type : 
+    Intro: ''
+    CurlGist: 
+    RubyGist: 
+    PHPGist:  
+    JavaGist: 
+    CsharpGist: 
+    PythonGist: 
+    Parameters:
+        - Name: 
+          Required: 
+          Description: ''
+
+        - Name: 
+          Required: 
+          Description: ''
+
+    Return:
+        String: 
+        Json: ''
+
+        Parameters:
+
+          - Name: 
+            Description: ''
+
+  - Method: CreateAgencyAssignments
+    Name: 'Create Agency Assignments'
+    Url: ''
+    Link: ''
+    Type : 
+    Intro: ''
+    CurlGist: 
+    RubyGist: 
+    PHPGist:  
+    JavaGist: 
+    CsharpGist: 
+    PythonGist: 
+    Parameters:
+        - Name: 
+          Required: 
+          Description: ''
+
+        - Name: 
+          Required: 
+          Description: ''
+
+    Return:
+        String: 
+        Json: ''
+
+        Parameters:
+
+          - Name: 
+            Description: ''
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ### Files API
 
@@ -346,7 +563,7 @@
     Link: "/pages/API/v2/FileAPI/Upload-File/"
     Type: POST
     Intro: 'Uploads original source content to Smartling (50MB limit for .ppt, .pptx; 25MB limit for .idml; 20MB limit for .doc, .docx; and 10MB limit for all others).'
-    CurlGist: 428369801cd80a75aca3
+    CurlGist: 98c190bdbcb4c321f5af
     RubyGist: 
     PHPGist:  
     JavaGist: 
@@ -466,7 +683,7 @@
     Link: "/pages/API/v2/FileAPI/Download-File/Multiple-Locales"
     Type : GET
     Intro: '<p>Downloads the requested translated files from Smartling as a ZIP.</p><p>It is important to check the HTTP response status code. If Smartling finds and returns the file normally, you will receive a 200 SUCCESS response. If you receive any other response status code than 200, the requested files will not be part of the response.</p><p>When you upload a UTF-16 character encoded file, then /file/get requests for that file will have a character encoding of UTF-16. All other uploaded files will return with a character encoding of UTF-8.</p><p>You can always use the content-type header in the response of a file/get request can always to determine the character encoding.</p>'
-    CurlGist: 
+    CurlGist: 26568852d6fc8aa68269
     RubyGist: 
     PHPGist:  
     JavaGist: 
@@ -474,12 +691,14 @@
     PythonGist: 
     Parameters:
         - Name: FileUris
+          Type: Array
           Required: required
-          Description: 'FileUri is the Smartling Value that uniquely identifies a file.'
+          Description: 'Smartling Values that each uniquely identify a file.'
 
         - Name: localeIds
+          Type: Array
           Required: required
-          Description: 'List of locales to download. Format is (TBD)'
+          Description: 'List of locales to download.'
 
         - Name: retrievalType
           Required: optional
@@ -538,7 +757,7 @@
     Link: "/pages/API/v2/FileAPI/Download-File/All-Locales"
     Type : GET
     Intro: '<p>Downloads the requested translated files from Smartling as a ZIP.</p><p>It is important to check the HTTP response status code. If Smartling finds and returns the file normally, you will receive a 200 SUCCESS response. If you receive any other response status code than 200, the requested files will not be part of the response.</p><p>When you upload a UTF-16 character encoded file, then /file/get requests for that file will have a character encoding of UTF-16. All other uploaded files will return with a character encoding of UTF-8.</p><p>You can always use the content-type header in the response of a file/get request can always to determine the character encoding.</p>'
-    CurlGist: 
+    CurlGist: fe6bb1083f0e9eb0724a
     RubyGist: 
     PHPGist:  
     JavaGist: 
@@ -546,8 +765,9 @@
     PythonGist: 
     Parameters:
         - Name: FileUris
+          Type: Array
           Required: required
-          Description: 'FileUri is the Smartling Value that uniquely identifies a file.'
+          Description: 'Smartling Values that each uniquely identify a file.'
 
         - Name: retrievalType
           Required: optional
@@ -606,16 +826,16 @@
     Link: "/pages/API/v2/FileAPI/Download-File/All-Locales-CSV"
     Type : GET
     Intro: '<p>Downloads all translations for the requested file in a single CSV file.</p><p><strong>Note:</strong> In most cases, this option requires customized file directives to be added to the original file. See <a href="/pages/Misc/CSV-Download/">CSV File Download Options</a> for more details. </p><p>It is important to check the HTTP response status code. If Smartling finds and returns the file normally, you will receive a 200 SUCCESS response. If you receive any other response status code than 200, the requested files will not be part of the response.</p><p>When you upload a UTF-16 character encoded file, then /file/get requests for that file will have a character encoding of UTF-16. All other uploaded files will return with a character encoding of UTF-8.</p><p>You can always use the content-type header in the response of a file/get request can always to determine the character encoding.</p>'
-    CurlGist: 
+    CurlGist: 2eb17ac278a21f9e433c
     RubyGist: 
     PHPGist:  
     JavaGist: 
     CsharpGist: 
     PythonGist: 
     Parameters:
-        - Name: FileUris
+        - Name: FileUri
           Required: required
-          Description: 'FileUri is the Smartling Value that uniquely identifies a file.'
+          Description: 'Smartling value that uniquely identifies a file.'
 
         - Name: retrievalType
           Required: optional
@@ -725,11 +945,11 @@
 
   - Method: StatusAllLocales
     Name: 'Status - All Locales'
-    Url: '/files-api/v2/projects/{projectId}/locales/{localeId}/file/status'
-    Link: "/pages/API/v2/FileAPI/Status/"
+    Url: '/files-api/v2/projects/{projectId}/file/status'
+    Link: "/pages/API/v2/FileAPI/Status/All-Locales"
     Type : GET
     Intro: 'Returns information on a specific file.'
-    CurlGist: 
+    CurlGist: 743b87626685d6beb670
     RubyGist: 
     PHPGist:  
     JavaGist: 
@@ -780,10 +1000,10 @@
   - Method: StatusSingleLocale
     Name: 'Status - Single Locale / Extended Response'
     Url: '/files-api/v2/projects/{projectId}/locales/{localeId}/file/status'
-    Link: "/pages/API/v2/FileAPI/Status/"
+    Link: "/pages/API/v2/FileAPI/Status/Single-Locale"
     Type : GET
-    Intro: 'Returns information on a specific file'
-    CurlGist: 
+    Intro: 'Returns detailed status information on a specific file'
+    CurlGist: da04044a859e1e5f84c5
     RubyGist: 
     PHPGist:  
     JavaGist: 
@@ -882,7 +1102,7 @@
   - Method: LastModifiedSingleLocale
     Name: 'Last Modified (by locale)'
     Url: '/files-api/v2/projects/{projectId}/locales/{localeId}/file/last_modified'
-    Link: "/pages/API/v2/FileAPI/LastModified-Locale/"
+    Link: "/pages/API/v2/FileAPI/Last-Modified/Single-Locale/"
     Type : GET
     Intro: 'Returns the date a file was last modified in a specified locale'
     CurlGist: 
@@ -911,7 +1131,7 @@
   - Method: LastModifiedAllLocales
     Name: 'Last Modified (all locales)'
     Url: '/files-api/v2/projects/{projectId}/locales/{localeId}/file/last_modified'
-    Link: "/pages/API/v2/FileAPI/LastModified-All/"
+    Link: "/pages/API/v2/FileAPI/Last-Modified/All-Locales/"
     Type : GET
     Intro: 'Returns the date a file was last modified in a each locale'
     CurlGist: 
@@ -939,56 +1159,6 @@
 
           - Name: lastModified
             Description: 'The date the file was last modified for the specified locale'
-
- -  Method: TEST
-    Name: 'List Authorized Locales'
-    Url: '/files-api/v2/projects/{projectId}/file/authorized_locales'
-    Link: '/pages/API/v2/FileAPI/Authorize-Content/List-Authorized-Locales/'
-    Type : GET
-    Intro: 'Returns a list of locales the file is authorized for.'
-    CurlGist: 
-    RubyGist: 
-    PHPGist:  
-    JavaGist: 
-    CsharpGist: 
-    PythonGist: 
-    Parameters:
-        - Name: fileUri
-          Required: required
-          Description: 'Value that uniquely identifies the file.'
-
-    Return:
-        String: 
-        Json: '200&nbsp;OK<br/>{<br/>&nbsp;&quot;response&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;code&quot;:&nbsp;&quot;SUCCESS&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;messages&quot;:&nbsp;[],<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;data&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&quot;locales&quot;&nbsp;:&nbsp;[<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;fr-FR&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;es-ES&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...]<br/>}<br/>&nbsp;&nbsp;}<br/>}'
-        Parameters:
-
-          - Name: locales
-            Description: 'Array of locales the file is authorized for'
-
- -  Method: AuthorizeUnauthorizeContent
-    Name: 'Authorize / Unauthorize'
-    Url: '/files-api/v2/projects/{projectId}/file/authorized_locales'
-    Link: '/pages/API/v2/FileAPI/authorize-locales/'
-    Type : PUT / DELETE
-    Intro: 'Authorize or Unauthorize a file for translation in the specified locales. A PUT request authorizes, while a DELETE request unauthorizes.'
-    CurlGist: 
-    RubyGist: 
-    PHPGist:  
-    JavaGist: 
-    CsharpGist: 
-    PythonGist: 
-    Parameters:
-        - Name: fileUri
-          Required: required
-          Description: 'Value that uniquely identifies the file.'
-
-    Parameters:
-        - Name: localeIds
-          Required: required
-          Description: 'Smartling codes for the locales to authorize/unauthorize. Can be a single locale or an array.'
-
-    Return:
-        String: 'Smartling returns a standard response format. The response will contain a SUCCESS response code indicating the authorization / unauthorization is complete. The response includes no data.'
 
   - Method: Import
     Name: 'Import Translations'
@@ -1040,6 +1210,56 @@
 
           - Name: translationImportErrors.messages
             Description: 'Information about an import error'
+
+  - Method: ListAuthLocales
+    Name: 'List Authorized Locales'
+    Url: '/files-api/v2/projects/{projectId}/file/authorized_locales'
+    Link: '/pages/API/v2/FileAPI/Authorize-Content/List-Authorized-Locales/'
+    Type : GET
+    Intro: 'Returns a list of locales the file is authorized for.'
+    CurlGist: 
+    RubyGist: 
+    PHPGist:  
+    JavaGist: 
+    CsharpGist: 
+    PythonGist: 
+    Parameters:
+      - Name: fileUri
+        Required: required
+        Description: 'Value that uniquely identifies the file.'
+
+    Return:
+      String: 
+      Json: '200&nbsp;OK<br/>{<br/>&nbsp;&quot;response&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;code&quot;:&nbsp;&quot;SUCCESS&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;messages&quot;:&nbsp;[],<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;data&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&quot;locales&quot;&nbsp;:&nbsp;[<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;fr-FR&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;es-ES&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...]<br/>}<br/>&nbsp;&nbsp;}<br/>}'
+      Parameters:
+
+        - Name: locales
+          Description: 'Array of locales the file is authorized for'
+
+  -  Method: AuthorizeUnauthorizeContent
+     Name: 'Authorize / Unauthorize'
+     Url: '/files-api/v2/projects/{projectId}/file/authorized_locales'
+     Link: '/pages/API/v2/FileAPI/authorize-locales/'
+     Type : PUT / DELETE
+     Intro: 'Authorize or Unauthorize a file for translation in the specified locales. A PUT request authorizes, while a DELETE request unauthorizes.'
+     CurlGist: 
+     RubyGist: 
+     PHPGist:  
+     JavaGist: 
+     CsharpGist: 
+     PythonGist: 
+     Parameters:
+         - Name: fileUri
+           Required: required
+           Description: 'Value that uniquely identifies the file.'
+
+     Parameters:
+         - Name: localeIds
+           Required: required
+           Description: 'Smartling codes for the locales to authorize/unauthorize. Can be a single locale or an array.'
+
+     Return:
+         String: 'Smartling returns a standard response format. The response will contain a SUCCESS response code indicating the authorization / unauthorization is complete. The response includes no data.'
 
 
 ---

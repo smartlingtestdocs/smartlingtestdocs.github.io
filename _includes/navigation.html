@@ -72,7 +72,7 @@
                     <ul class="nav nav-tabs nav-stacked {% if page.url contains "/pages/API/v2/Authentication" %}shown{% endif %} tertiary">
                     {% for Method in site.data.v2Methods %}
                         {% if Method.Link contains "/pages/API/v2/Authentication" %}
-                            <li class= "{% if page.url contains Method.Link %}active{% endif %}"><a href="{{Method.Link}}">{{Method.Name}} ({{Method.Type}})</a></li>
+                            <li class= "{% if page.url contains Method.Link %}active{% endif %}"><a href="{{Method.Link}}">{{Method.Name}}</a></li>
                         {% endif %}
                     {% endfor %}
                     </ul>
@@ -102,7 +102,8 @@
                 <ul class="secondary" >
                 <li class="">
                     <a href="/pages/API/v2/FileAPI" class="title">Files</a>
-                    <ul class="nav nav-tabs nav-stacked shown tertiary">
+                    
+                    <ul class="nav nav-tabs nav-stacked {% if page.url contains "/pages/API/v2/FileAPI" %}shown{% endif %} tertiary">
 
                             <li class= ""><a href="/pages/API/v2/FileAPI/Upload-File/">Upload File</a></li>
                             <li><a>Download Tranlsated Files</a></li>
@@ -123,9 +124,8 @@
                             <li class= "file-2"><a href="/pages/API/v2/FileAPI/Authorize-Content/List-Authorized-Locales">List Authorized Locales</a></li>
                             <li class= "file-2"><a href="/pages/API/v2/FileAPI/Authorize-Content/Authorize-Unauthorize/">Authorize / Unauthorize</a></li>
                             <li class= ""><a href="/pages/API/v2/FileAPI/Import-Translations/">Import Translations</a></li>
-                        
-                    
                     </ul>
+                    
                 </li>
             </ul>
 
@@ -155,7 +155,11 @@
                 </li>
             </ul>
 
-
+            <ul class="secondary" >
+                <li class="">
+                    <a href="/pages/API/v2/General-Information/Limit-and-Offset/" class="title">General Information</a>
+                </li>
+            </ul>
             
 
         <li class="{% if page.url contains "/pages/supported-file-types" %}shown{% endif %}">

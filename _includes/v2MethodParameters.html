@@ -7,7 +7,7 @@
                 <h4>{{Parameter.Name}} ({{Parameter.Required}})</h4>
 
 
-                <p>{{Parameter.Description}}</p>
+                <p>{% if Parameter.Type %}<em>{{Parameter.Type}}</em> - {% endif %}{{Parameter.Description}}</p>
 
                 {% if Parameter.Values.size > 0 %}
                 <table class="table">
