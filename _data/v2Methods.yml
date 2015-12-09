@@ -1,14 +1,12 @@
 ---
 
 
-
-
   - Method: Authenticate
     Name: 'Authenticate'
     Url: '/auth-api/v2/authenticate'
     Link: '/pages/API/v2/Authentication/Authenticate/'
     Type : POST
-    Intro: ''
+    Intro: 'Authenticates the user with a User Identifier and Secret. Returns an access token that can be attached to the header of any API request to authenticate the user, and a refresh token which can be used to obtain a new access token. See <a href="/pages/API/v2/Authentication/">Authentication</a> for more information.'
     CurlGist: 7ade6ca1e334e8cc51ce
     RubyGist: 
     PHPGist:  
@@ -52,7 +50,7 @@
     Url: '/auth-api/v2/authenticate/refresh'
     Link: '/pages/API/v2/Authentication/Refresh-Authentication/'
     Type : POST
-    Intro: ''
+    Intro: 'Returns a renewed access token that can be attached to the header of any API request to authenticate the user, and a refresh token which can be used to obtain a new access token. See <a href="/pages/API/v2/Authentication/">Authentication</a> for more information.'
     CurlGist: 6dd0ebe17c19927b5d80
     RubyGist: 
     PHPGist:  
@@ -98,7 +96,7 @@
     Url: '/accounts-api/v2/accounts/{accountUid}/projects'
     Link: '/pages/API/v2/Projects/List-Projects'
     Type : GET
-    Intro: ''
+    Intro: 'Returns a list of all projects in an account, including basic project details.'
     CurlGist: 
     RubyGist: 
     PHPGist:  
@@ -151,7 +149,7 @@
     Url: '/accounts-api/v2/projects/{projectId}'
     Link: '/pages/API/v2/Projects/Project-Details/'
     Type : GET
-    Intro: ''
+    Intro: 'Returns detailed information on a specified project. Except for the <code>projectId</code> path variable, no arguments are required.'
     CurlGist: 
     RubyGist: 
     PHPGist:  
@@ -161,7 +159,31 @@
 
     Return:
         String: 
-        Json: ''
+        Json: '200&nbsp;OK<br/>{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&quot;response&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;code&quot;:&nbsp;&quot;SUCCESS&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;data&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;projectId&quot;:&nbsp;&quot;2249fadc3&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;projectName&quot;:&nbsp;&quot;Project&nbsp;111&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;accountUid&quot;:&nbsp;&quot;48ade9f989&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;sourceLocaleId&quot;:&nbsp;&quot;en-US&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;sourceLocaleDescription&quot;:&nbsp;&quot;English&nbsp;(United&nbsp;States)&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;archived&quot;&nbsp;:&nbsp;false,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;targetLocales&quot;:&nbsp;[<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;localeId&quot;:&nbsp;&quot;de-DE&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;description&quot;:&nbsp;&quot;German&nbsp;(Germany)&quot;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>}'
+
+        Parameters:
+
+          - Name: 'projectId'
+            Description: 'The unique identifier for the project'
+
+          - Name: 'projectName'
+            Description: 'The name of the project'
+
+          - Name: 'accountUid'
+            Description: 'The unique identifier for your account.'
+
+          - Name: 'sourceLocaleId'
+            Description: 'Smartling locale code for the source language'
+
+          - Name: 'sourceLocaleDescription'
+            Description: 'Full source language description for the project.'
+
+          - Name: 'archived'
+            Description: 'Boolean - records whether the project has been archived.'
+
+          - Name: 'targetLocales'
+            Description: 'Array of target locales for the project.'
+
 
 
 
@@ -262,7 +284,6 @@
 
 
 
-
 # Content
 
 
@@ -281,7 +302,7 @@
     Parameters:
         - Name: 'items'
           Required: 'YES'
-          Type: 'Array'
+          Type: 'array'
           Description: '<p>JSON array with each item containing:</p><ul><li><code>workflowUid</code> - Unique identifier for the workflow the authorized content should be sent to.</li><li><code>targetLocaleId</code> - Smartling locale the content is authorized for.'
 
     Return:
@@ -821,7 +842,7 @@
         String: '<p>200&nbsp;OK<br/>HEADER:<br/>Content-Disposition:&nbsp;attachment;&nbsp;filename=&quot;fname.ext&quot;<br/>file&nbsp;contents</p><p>The filename is based on the fileUri associated with the requested file. In most cases, the filename is exactly the fileUri provided. The only exception to this is with .pot gettext files. When a .pot file is specified as the fileUri, Smartling returns a .po file.</p>'
 
   - Method: DownloadFileAllLocalesCSV
-    Name: 'Download Translated Files - All Locales in one File - CSV'
+    Name: 'Download Translated File - All Locales in one File - CSV'
     Url: '/files-api/v2/projects/{projectId}/locales/all/file'
     Link: "/pages/API/v2/FileAPI/Download-File/All-Locales-CSV"
     Type : GET
