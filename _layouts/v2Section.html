@@ -16,7 +16,7 @@ layout: default
       {% assign pageurl = page.url | replace: 'index.html', '' %}
       {% for Method in site.data.v2Methods %}
       {% if Method.Link contains pageurl %}
-      <li><a href="{{Method.Link}}">{{Method.Name}} ({{Method.Type}})</a></li>
+      <li><a href="{{FAPIMethod.Link}}">{{Method.Name}} - {{Method.Url}} ({{Method.Type}})</a></li>
       {% endif %}
       {% endfor %}
     </ul>

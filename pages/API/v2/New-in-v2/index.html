@@ -17,8 +17,15 @@ Section: New in V2
 </p>
 
 <p dir="ltr">
-    V2 APIs replace the single API key with Oauth 2.0 authentication. To begin using v2, contact your Client Services Manager to arrange a User ID and Secret
-    for Oauth authentication. See <a href="/pages/API/v2/Authentication/">Authentication</a> for more information.
+    <p>V2 APIs replace the single API key with Oauth 2.0 authentication, requiring an access token to be included in the header of every request. Tokens are obtained via an Authenticate request containing a User ID and User Secret.</p>
+    
+    <p><strong>To obtain a User ID and User Secret:</strong></p>
+    
+    <p><strong>(1)</strong> Navigate to Project Settings > API, switch to the v2.0 tab, click <strong>Create Token</strong> and enter a name.<br/><img src="auth1.png" width="700px"></p>
+
+    <p><strong>(2)</strong> Once the token is created, record your User ID and User Secret for use in Authentication requests. <strong>Note:</strong> The User Secret is only available when the token is first created so make sure you record it immediately.<br/><img src="auth2.png" width="700px"></p>
+
+    <p>See <a href="/pages/API/v2/Authentication/">Authentication</a> for more information.</p>
 </p>
 
 <p dir="ltr">
@@ -40,6 +47,14 @@ Section: New in V2
             <code>locale</code> - the locale code for a translated file. You can find a full list of locale codes used in each of your projects in the Smartling dashboard at <strong>Project Settings &gt; API</strong>.
         </p>
     </li>
+</ul>
+
+<p><strong>New Terminology</strong></p>
+
+<p>Some terminology and parameter names in v2 are different from their v1 equivalents. Changes include</p>
+<ul>
+    <li>To bring the API in line with Smartling's Dashboard terminology, the API uses 'authorize' instead of 'approve'. For example, the <code>localesToApprove</code> parameter in the v1 version of <a href="/pages/API/v1/FileAPI/Upload-File/">Upload File</a> call is now <code>localeIdsToApprove</code> in v2</li>
+    <li>URLs now use hyphens (-) instead of underscores (_). For example: <code>/last_modified</code> is now <code>/last-modified</code></li>
 </ul>
 
 <p><strong>Arrays</strong></p>
