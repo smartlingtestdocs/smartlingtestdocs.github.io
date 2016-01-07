@@ -1,0 +1,84 @@
+  - Method: Authenticate
+    Name: 'Authenticate'
+    Url: '/auth-api/v2/authenticate'
+    Link: '/pages/API/v2/authentication/authenticate/'
+    Type : POST
+    Intro: ''
+    CurlGist: 7ade6ca1e334e8cc51ce
+    RubyGist: 
+    PHPGist:  
+    JavaGist: 
+    CsharpGist: 
+    PythonGist: 
+    Parameters:
+        - Name: userIdentifier
+          Required: required
+          Description: 'Identifies the API User'
+
+        - Name: userSecret
+          Required: required
+          Description: 'Authenticates the API User'
+
+    Return:
+        String: 
+        Json: '200&nbsp;OK<br/>{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&quot;response&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;code&quot;:&nbsp;&quot;SUCCESS&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;data&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;accessToken&quot;:&nbsp;&quot;{access token};,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;expiresIn&quot;:&nbsp;1458,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;refreshExpiresIn&quot;:&nbsp;1455,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;refreshToken&quot;:&nbsp;&quot;{refresh token}&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;tokenType&quot;:&nbsp;&quot;Bearer&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;sessionState&quot;:&nbsp;&quot;&quot;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>}'
+        Parameters:
+
+          - Name: accessToken
+            Description: 'Token to authenticate all other API requests.'
+
+          - Name: expiresIn
+            Description: 'Number of seconds until access token expires'
+
+          - Name: refreshToken
+            Description: 'Token for a Refresh Authentication request'
+
+          - Name: refreshExpiresIn
+            Description: Number of seconds until refresh token expires.
+
+          - Name: tokenType
+            Description: 'Type of access token being returned. Currently, this will always be <code>Bearer</code>'
+
+          - Name: sessionState
+            Description: ''
+
+  - Method: RefreshAuthentication
+    Name: 'Refresh Authentication'
+    Url: '/auth-api/v2/authenticate/refresh'
+    Link: '/pages/API/v2/authentication/refresh/'
+    Type : POST
+    Intro: ''
+    CurlGist: 6dd0ebe17c19927b5d80
+    RubyGist: 
+    PHPGist:  
+    JavaGist: 
+    CsharpGist: 
+    PythonGist: 
+    Parameters:
+        - Name: refreshToken
+          Required: required
+          Description: 'Identifies the API User'
+
+    Return:
+        String: 
+        Json: '200&nbsp;OK<br/>{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&quot;response&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;code&quot;:&nbsp;&quot;SUCCESS&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;data&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;accessToken&quot;:&nbsp;&quot;{access token};,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;expiresIn&quot;:&nbsp;1458,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;refreshExpiresIn&quot;:&nbsp;1455,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;refreshToken&quot;:&nbsp;&quot;{refresh token}&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;tokenType&quot;:&nbsp;&quot;Bearer&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;sessionState&quot;:&nbsp;&quot;&quot;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>}'
+        Parameters:
+
+          - Name: accessToken
+            Description: 'Token to authenticate all other API requests.'
+
+          - Name: expiresIn
+            Description: 'Number of seconds until access token expires'
+
+          - Name: refreshToken
+            Description: 'Token for a Refresh Authentication request'
+
+          - Name: refreshExpiresIn
+            Description: Number of seconds until refresh token expires.
+
+          - Name: tokenType
+            Description: 'Type of access token being returned. Currently, this will always be <code>Bearer</code>'
+
+          - Name: sessionState
+            Description: ''
+
