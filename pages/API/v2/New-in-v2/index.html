@@ -17,9 +17,8 @@ Section: New in V2
 </p>
 
 <p dir="ltr">
-    <p>V2 APIs replace the single API key with Oauth 2.0 authentication. To begin using v2, in the Smartling Dashboard, go to <a href="https://dashboard.smartling.com/settings/api">Project Settings > API.</a>, switch to the v2.0 tab and click <strong>Create Token</strong>. 
-
-    <p>See <a href="/pages/API/v2/Authentication/">Authentication</a> for more information.</p>
+    V2 APIs replace the single API key with Oauth 2.0 authentication. To begin using v2, contact your Client Services Manager to arrange a User ID and Secret
+    for Oauth authentication. See <a href="/pages/API/v2/Authentication/">Authentication</a> for more information.
 </p>
 
 <p dir="ltr">
@@ -41,14 +40,6 @@ Section: New in V2
             <code>locale</code> - the locale code for a translated file. You can find a full list of locale codes used in each of your projects in the Smartling dashboard at <strong>Project Settings &gt; API</strong>.
         </p>
     </li>
-</ul>
-
-<p><strong>Altered Terminology</strong></p>
-
-<p>Some terminology and parameter names in v2 are different from their v1 equivalents. Changes include</p>
-<ul>
-    <li>To bring the API in line with Smartling's Dashboard terminology, the API uses 'authorize' instead of 'approve'. For example, the <code>localesToApprove</code> parameter in the v1 version of <a href="/pages/API/v1/FileAPI/Upload-File/">Upload File</a> call is now <code>localeIdsToApprove</code> in v2</li>
-    <li>URLs now use hyphens (-) instead of underscores (_). For example: <code>/last_modified</code> is now <code>/last-modified</code></li>
 </ul>
 
 <p><strong>Arrays</strong></p>

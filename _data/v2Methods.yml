@@ -1,14 +1,12 @@
 ---
 
 
-
-
   - Method: Authenticate
     Name: 'Authenticate'
     Url: '/auth-api/v2/authenticate'
     Link: '/pages/API/v2/Authentication/Authenticate/'
     Type : POST
-    Intro: ''
+    Intro: 'Authenticates the user with a User Identifier and Secret. Returns an access token that can be attached to the header of any API request to authenticate the user, and a refresh token which can be used to obtain a new access token. See <a href="/pages/API/v2/Authentication/">Authentication</a> for more information.'
     CurlGist: 7ade6ca1e334e8cc51ce
     RubyGist: 
     PHPGist:  
@@ -52,7 +50,7 @@
     Url: '/auth-api/v2/authenticate/refresh'
     Link: '/pages/API/v2/Authentication/Refresh-Authentication/'
     Type : POST
-    Intro: ''
+    Intro: 'Returns a renewed access token that can be attached to the header of any API request to authenticate the user, and a refresh token which can be used to obtain a new access token. See <a href="/pages/API/v2/Authentication/">Authentication</a> for more information.'
     CurlGist: 6dd0ebe17c19927b5d80
     RubyGist: 
     PHPGist:  
@@ -98,7 +96,7 @@
     Url: '/accounts-api/v2/accounts/{accountUid}/projects'
     Link: '/pages/API/v2/Projects/List-Projects'
     Type : GET
-    Intro: ''
+    Intro: 'Returns a list of all projects in an account, including basic project details.'
     CurlGist: 
     RubyGist: 
     PHPGist:  
@@ -151,7 +149,7 @@
     Url: '/accounts-api/v2/projects/{projectId}'
     Link: '/pages/API/v2/Projects/Project-Details/'
     Type : GET
-    Intro: ''
+    Intro: 'Returns detailed information on a specified project. Except for the <code>projectId</code> path variable, no arguments are required.'
     CurlGist: 
     RubyGist: 
     PHPGist:  
@@ -161,7 +159,31 @@
 
     Return:
         String: 
-        Json: ''
+        Json: '200&nbsp;OK<br/>{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&quot;response&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;code&quot;:&nbsp;&quot;SUCCESS&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;data&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;projectId&quot;:&nbsp;&quot;2249fadc3&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;projectName&quot;:&nbsp;&quot;Project&nbsp;111&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;accountUid&quot;:&nbsp;&quot;48ade9f989&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;sourceLocaleId&quot;:&nbsp;&quot;en-US&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;sourceLocaleDescription&quot;:&nbsp;&quot;English&nbsp;(United&nbsp;States)&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;archived&quot;&nbsp;:&nbsp;false,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;targetLocales&quot;:&nbsp;[<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;localeId&quot;:&nbsp;&quot;de-DE&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;description&quot;:&nbsp;&quot;German&nbsp;(Germany)&quot;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>}'
+
+        Parameters:
+
+          - Name: 'projectId'
+            Description: 'The unique identifier for the project'
+
+          - Name: 'projectName'
+            Description: 'The name of the project'
+
+          - Name: 'accountUid'
+            Description: 'The unique identifier for your account.'
+
+          - Name: 'sourceLocaleId'
+            Description: 'Smartling locale code for the source language'
+
+          - Name: 'sourceLocaleDescription'
+            Description: 'Full source language description for the project.'
+
+          - Name: 'archived'
+            Description: 'Boolean - records whether the project has been archived.'
+
+          - Name: 'targetLocales'
+            Description: 'Array of target locales for the project.'
+
 
 
 
@@ -262,7 +284,6 @@
 
 
 
-
 # Content
 
 
@@ -281,7 +302,7 @@
     Parameters:
         - Name: 'items'
           Required: 'YES'
-          Type: 'Array'
+          Type: 'array'
           Description: '<p>JSON array with each item containing:</p><ul><li><code>workflowUid</code> - Unique identifier for the workflow the authorized content should be sent to.</li><li><code>targetLocaleId</code> - Smartling locale the content is authorized for.'
 
     Return:
@@ -562,7 +583,7 @@
     Url: '/files-api/v2/projects/{projectId}/file'
     Link: "/pages/API/v2/FileAPI/Upload-File/"
     Type: POST
-    Intro: '<p>Uploads original source content to Smartling (50MB limit for .ppt, .pptx; 25MB limit for .idml; 20MB limit for .doc, .docx; and 10MB limit for all others).</p><p><strong>Note:</strong> Smartilng assumes that all uploaded files use UTF-8 encoding. Any <code>Content-Type</code> header in your upload call is ignored.</p>'
+    Intro: 'Uploads original source content to Smartling (50MB limit for .ppt, .pptx; 25MB limit for .idml; 20MB limit for .doc, .docx; and 10MB limit for all others).'
     CurlGist: 98c190bdbcb4c321f5af
     RubyGist: 
     PHPGist:  
@@ -578,9 +599,9 @@
           Required: required
           Description: 'Value that uniquely identifies the uploaded file. This ID can be used to request the file back. We recommend you use file path + file name, similar to how version control systems identify the file. Example: /myproject/i18n/ui.properties.'
 
-        - Name: authorized
+        - Name: approved
           Required: optional
-          Description: 'Determines whether content in the file is authorized (available for translation) upon submitting the file via the Smartling Dashboard. An error message will return if there are insufficient translation funds and authorized is set to true.If string has been completely excluded for translation from all languages, or excluded from translation for a specific language, <code>authorize</code> will NOT authorize it.'
+          Description: 'Determines whether content in the file is authorized (available for translation) upon submitting the file via the Smartling Dashboard. An error message will return if there are insufficient translation funds and approved is set to true.If string has been completely excluded for translation from all languages, or excluded from translation for a specific language, approved will NOT authorize it.'
           Values:
             - Value: TRUE
               Description: 'Content will be available for translation on upload'
@@ -589,10 +610,9 @@
               Default: 'YES'
               Description: 'Content will be added to the "Awaiting Authorization" queue on upload'
 
-        - Name: 'localeIdsToAuthorize[]'
-          Type: array
+        - Name: localesToApprove
           Required: optional
-          Description: 'This value, if set, authorizes strings for translation into specific locales. Use the project/locale/list call to get the list of locales for the project or see them in the dashboard on the API settings page. Use multiple localeIdsToAuthorize parameter pairs to authorize more than one locale. You can add languages by uploading the file again and indicating the language to authorize with <code>localeIdsToAuthorize</code> or all languages with <code>authorized</code>, or in the dashboard using the "Show Partially Authorized" filter option from the Awaiting Authorization list. If string has been completely excluded for translation from all languages, or excluded from translation for a specific language, localesIdsToAuthorie will NOT authorize it. <strong>Note:</strong> Do not set the <code>authorized</code> parameter to TRUE if you want to specify individual locales to authorize. Submitting an upload with both of these parameters set will result in a validation error.'
+          Description: 'This value, if set, authorizes strings for translation into specific locales. Use the project/locale/list call to get the list of locales for the project or see them in the dashboard on the API settings page. Use multiple localesToApprove parameter pairs to authorize more than one locale. You can add languages by uploading the file again and indicating the language to authorize with localesToApprove or all languages with approved, or in the dashboard using the "Show Partially Authorized" filter option from the Awaiting Authorization list. If string has been completely excluded for translation from all languages, or excluded from translation for a specific language, localesToApprove will NOT authorize it. <strong>Note:</strong> Do not set the <code>approved</code> parameter to TRUE if you want to specify individual locales to approve. Submitting an upload with both of these parameters set will result in a validation error.'
 
         - Name: fileType
           Required: required
@@ -604,7 +624,7 @@
 
         - Name: 'smartling.[command]'
           Required: optional
-          Description: 'Provides custom parser configuration for supported file types. See <a href=/pages/Supported-File-Types/>Supported File Types</a> for more details.'
+          Description: 'Provides custom parser configuration for supported file types. See Supported File Types for more details.'
 
         - Name: callbackUrl
           Required: optional
@@ -822,7 +842,7 @@
         String: '<p>200&nbsp;OK<br/>HEADER:<br/>Content-Disposition:&nbsp;attachment;&nbsp;filename=&quot;fname.ext&quot;<br/>file&nbsp;contents</p><p>The filename is based on the fileUri associated with the requested file. In most cases, the filename is exactly the fileUri provided. The only exception to this is with .pot gettext files. When a .pot file is specified as the fileUri, Smartling returns a .po file.</p>'
 
   - Method: DownloadFileAllLocalesCSV
-    Name: 'Download Translated Files - All Locales in one File - CSV'
+    Name: 'Download Translated File - All Locales in one File - CSV'
     Url: '/files-api/v2/projects/{projectId}/locales/all/file'
     Link: "/pages/API/v2/FileAPI/Download-File/All-Locales-CSV"
     Type : GET
@@ -927,7 +947,7 @@
 
     Return:
         String: 
-        Json: '200&nbsp;OK<br/>{<br/>&nbsp;&nbsp;&quot;response&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;code&quot;:&nbsp;&quot;SUCCESS&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;messages&quot;:&nbsp;[],<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;data&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&quot;totalCount&quot;:&nbsp;&quot;[number]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&quot;items&quot;&nbsp;:&nbsp;[{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;fileUri&quot;:&nbsp;&quot;[/myproject/i18n/ui.properties]&quot;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;lastUploaded&quot;:&nbsp;&quot;[YYYY-MM-DDThh:mm:ssZ]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;fileType&quot;:&nbsp;&quot;[fileType]&quot;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;hasInstructions&quot;&nbsp;:&nbsp;&quot;false&quot;<br/>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;...&nbsp;}&nbsp;]<br/>}<br/>&nbsp;&nbsp;&nbsp;}<br/>}'
+        Json: '{<br/>&nbsp;&nbsp;&quot;response&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;code&quot;:&nbsp;&quot;SUCCESS&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;messages&quot;:&nbsp;[],<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;data&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&quot;totalCount&quot;:&nbsp;&quot;[number]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&quot;items&quot;&nbsp;:&nbsp;[{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;fileUri&quot;:&nbsp;&quot;[/myproject/i18n/ui.properties]&quot;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;lastUploaded&quot;:&nbsp;&quot;[YYYY-MM-DDThh:mm:ssZ]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;fileType&quot;:&nbsp;&quot;[fileType]&quot;&nbsp;},<br/>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;...&nbsp;}&nbsp;]<br/>}<br/>&nbsp;&nbsp;&nbsp;}<br/>}'
 
         Parameters:
 
@@ -942,9 +962,6 @@
 
           - Name: fileType
             Description: 'The type of file: android, ios, gettext, javaProperties, xliff, yaml, etc'
-
-          - Name: hasInstructions
-            Description: 'Boolean - records whether translator instructions have been captured for the file.'
 
 
   - Method: StatusAllLocales
@@ -966,7 +983,7 @@
 
     Return:
         String: 
-        Json: '200&nbsp;OK<br/>{<br/>&nbsp;&quot;response&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;code&quot;:&nbsp;&quot;SUCCESS&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;messages&quot;:&nbsp;[],<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;data&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&quot;fileUri&quot;:&nbsp;&quot;[/myproject/i18n/admin_ui.properties]&quot;,<br/>&nbsp;&nbsp;&nbsp;&quot;totalStringCount&quot;:&nbsp;&quot;[number]&quot;,<br/>&nbsp;&nbsp;&nbsp;&quot;totalWordCount&quot;:&nbsp;&quot;[number]&quot;,<br/>&nbsp;&nbsp;&nbsp;&quot;fileType&quot;:&nbsp;&quot;[fileType]&quot;,<br/>&nbsp;&nbsp;&nbsp;&quot;lastUploaded&quot;:&nbsp;&quot;[YYYY-MM-DDThh:mm:ssZ]&quot;,<br/>&nbsp;&nbsp;&nbsp;&quot;totalCount&quot;&nbsp;:&nbsp;&quot;2&quot;<br/>&nbsp;&nbsp;&nbsp;&quot;items&quot;&nbsp;:&nbsp;[{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;localeId&quot;&nbsp;:&nbsp;&quot;de-DE&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;authorizedStringCount&quot;&nbsp;:&nbsp;&quot;[number]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;completedStringCount&quot;:&nbsp;&quot;[number]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;authorizedWordCount&quot;&nbsp;:&nbsp;&quot;[number]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;excludedWordCount&quot;&nbsp;:&nbsp;&quot;[number]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;parserVersion&quot;&nbsp;:&nbsp;&quot;3&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;hasInstructions&quot;&nbsp;:&nbsp;&quot;true&quot;},<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{...}&nbsp;]<br/>&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;}<br/>}'
+        Json: '200&nbsp;OK<br/>{<br/>&nbsp;&quot;response&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;code&quot;:&nbsp;&quot;SUCCESS&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;messages&quot;:&nbsp;[],<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;data&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&quot;fileUri&quot;:&nbsp;&quot;[/myproject/i18n/admin_ui.properties]&quot;,<br/>&nbsp;&nbsp;&nbsp;&quot;totalStringCount&quot;:&nbsp;&quot;[number]&quot;,<br/>&nbsp;&nbsp;&nbsp;&quot;totalWordCount&quot;:&nbsp;&quot;[number]&quot;,<br/>&nbsp;&nbsp;&nbsp;&quot;fileType&quot;:&nbsp;&quot;[fileType]&quot;,<br/>&nbsp;&nbsp;&nbsp;&quot;lastUploaded&quot;:&nbsp;&quot;[YYYY-MM-DDThh:mm:ssZ]&quot;,<br/>&nbsp;&nbsp;&nbsp;&quot;totalCount&quot;&nbsp;:&nbsp;2<br/>&nbsp;&nbsp;&nbsp;&quot;items&quot;&nbsp;:&nbsp;[{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;localeId&quot;&nbsp;:&nbsp;&quot;de-DE&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;authorizedStringCount&quot;:&nbsp;&quot;[number]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;completedStringCount&quot;:&nbsp;&quot;[number]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;authorizedWordCount&quot;&nbsp;:&nbsp;&quot;[number]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;excludedWordCount&quot;&nbsp;:&nbsp;&quot;[number]&quot;&nbsp;},<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{...}&nbsp;]<br/>}<br/>&nbsp;&nbsp;}<br/>}'
 
         Parameters:
 
@@ -1000,12 +1017,6 @@
           - Name: excludedWordCount
             Description: The number of excluded words in the uploaded file.
 
-          - Name: parserVersion
-            Description: 'Records the version of Smartling''s File Parser used to parse the file.'
-
-          - Name: hasInstructions
-            Description: 'Boolean - records whether translator instructions have been captured for the file.'
-
 
   - Method: StatusSingleLocale
     Name: 'Status - Single Locale / Extended Response'
@@ -1026,7 +1037,7 @@
 
     Return:
         String: 
-        Json: '200&nbsp;OK<br/>{<br/>&nbsp;&quot;response&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;code&quot;:&nbsp;&quot;SUCCESS&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;messages&quot;:&nbsp;[],<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;data&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&quot;fileUri&quot;&nbsp;:&nbsp;&quot;[/myproject/i18n/admin_ui.properties]&quot;,<br/>&nbsp;&nbsp;&nbsp;&quot;totalStringCount&quot;&nbsp;:&nbsp;&quot;[number]&quot;,<br/>&nbsp;&nbsp;&nbsp;&quot;totalWordCount&quot;&nbsp;:&nbsp;&quot;[number]&quot;,<br/>&nbsp;&nbsp;&nbsp;&quot;authorizedStringCount&quot;&nbsp;:&nbsp;&quot;[number]&quot;,<br/>&nbsp;&nbsp;&nbsp;&quot;completedStringCount&quot;:&nbsp;&quot;[number]&quot;,<br/>&nbsp;&nbsp;&nbsp;&quot;excludedStringCount&quot;:&nbsp;&nbsp;&quot;[number]&quot;,<br/>&nbsp;&nbsp;&nbsp;&quot;completedWordCount&quot;&nbsp;:&nbsp;&quot;[number]&quot;,<br/>&nbsp;&nbsp;&nbsp;&quot;authorizedWordCount&quot;&nbsp;:&nbsp;&quot;[number]&quot;,<br/>&nbsp;&nbsp;&nbsp;&quot;excludedWordCount&quot;&nbsp;:&nbsp;&quot;[number]&quot;,<br/>&nbsp;&nbsp;&nbsp;&quot;lastUploaded&quot;&nbsp;:&nbsp;&quot;[YYYY-MM-DDThh:mm:ssZ]&quot;,<br/>&nbsp;&nbsp;&nbsp;&quot;fileType&quot;&nbsp;:&nbsp;&quot;[fileType]&quot;,<br/>&nbsp;&nbsp;&nbsp;&quot;parserVersion&quot;&nbsp;:&nbsp;&quot;3&quot;,<br/>&nbsp;&nbsp;&nbsp;&quot;hasInstructions&quot;&nbsp;:&nbsp;&quot;true&quot;}<br/>&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;}<br/>}'
+        Json: '{<br/>&nbsp;&quot;response&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;code&quot;:&nbsp;&quot;SUCCESS&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;messages&quot;:&nbsp;[],<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;data&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&quot;fileUri&quot;:&nbsp;&quot;[/myproject/i18n/admin_ui.properties]&quot;,<br/>&nbsp;&nbsp;&nbsp;&quot;totalStringCount&quot;:&nbsp;&quot;[number]&quot;,<br/>&nbsp;&nbsp;&nbsp;&quot;totalWordCount&quot;:&nbsp;&quot;[number]&quot;,<br/>&nbsp;&nbsp;&nbsp;&quot;authorizedStringCount&quot;:&nbsp;&quot;[number]&quot;,<br/>&nbsp;&nbsp;&nbsp;&quot;completedStringCount&quot;:&nbsp;&quot;[number]&quot;,<br/>&nbsp;&nbsp;&nbsp;&quot;excludedStringCount&quot;:&nbsp;&nbsp;&quot;[number]&quot;,<br/>&nbsp;&nbsp;&nbsp;&quot;completedWordCount&quot;&nbsp;:&nbsp;&quot;[number]&quot;,<br/>&nbsp;&nbsp;&nbsp;&quot;authorizedWordCount&quot;&nbsp;:&nbsp;&quot;[number]&quot;,<br/>&nbsp;&nbsp;&nbsp;&quot;excludedWordCount&quot;&nbsp;:&nbsp;&quot;[number]&quot;,<br/>&nbsp;&nbsp;&nbsp;&quot;lastUploaded&quot;:&nbsp;&quot;[YYYY-MM-DDThh:mm:ssZ]&quot;,<br/>&nbsp;&nbsp;&nbsp;&quot;fileType&quot;:&nbsp;&quot;[fileType]&quot;<br/>}<br/>&nbsp;&nbsp;}<br/>}'
 
         Parameters:
 
@@ -1062,12 +1073,6 @@
 
           - Name: fileType
             Description: 'The type of file: android, ios, gettext, javaProperties, xliff, yaml, etc'
-
-          - Name: parserVersion
-            Description: 'Records the version of Smartling''s File Parser used to parse the file.'
-
-          - Name: hasInstructions
-            Description: 'Boolean - records whether translator instructions have been captured for the file.'
 
   - Method: Rename
     Name: 'Rename'
@@ -1117,7 +1122,7 @@
 
   - Method: LastModifiedSingleLocale
     Name: 'Last Modified (by locale)'
-    Url: '/files-api/v2/projects/{projectId}/locales/{localeId}/file/last-modified'
+    Url: '/files-api/v2/projects/{projectId}/locales/{localeId}/file/last_modified'
     Link: "/pages/API/v2/FileAPI/Last-Modified/Single-Locale/"
     Type : GET
     Intro: 'Returns the date a file was last modified in a specified locale'
@@ -1146,7 +1151,7 @@
 
   - Method: LastModifiedAllLocales
     Name: 'Last Modified (all locales)'
-    Url: '/files-api/v2/projects/{projectId}/locales/{localeId}/file/last-modified'
+    Url: '/files-api/v2/projects/{projectId}/locales/{localeId}/file/last_modified'
     Link: "/pages/API/v2/FileAPI/Last-Modified/All-Locales/"
     Type : GET
     Intro: 'Returns the date a file was last modified in a each locale'
@@ -1229,7 +1234,7 @@
 
   - Method: ListAuthLocales
     Name: 'List Authorized Locales'
-    Url: '/files-api/v2/projects/{projectId}/file/authorized-locales'
+    Url: '/files-api/v2/projects/{projectId}/file/authorized_locales'
     Link: '/pages/API/v2/FileAPI/Authorize-Content/List-Authorized-Locales/'
     Type : GET
     Intro: 'Returns a list of locales the file is authorized for.'
@@ -1254,7 +1259,7 @@
 
   -  Method: AuthorizeUnauthorizeContent
      Name: 'Authorize / Unauthorize'
-     Url: '/files-api/v2/projects/{projectId}/file/authorized-locales'
+     Url: '/files-api/v2/projects/{projectId}/file/authorized_locales'
      Link: '/pages/API/v2/FileAPI/authorize-locales/'
      Type : PUT / DELETE
      Intro: 'Authorize or Unauthorize a file for translation in the specified locales. A PUT request authorizes, while a DELETE request unauthorizes.'
@@ -1277,38 +1282,6 @@
      Return:
          String: 'Smartling returns a standard response format. The response will contain a SUCCESS response code indicating the authorization / unauthorization is complete. The response includes no data.'
 
-  - Method: GetTranslations
-    Name: 'Get Translations'
-    Url: '/files-api/v2/projects/{projectId}/locales/{localeId}/file/get-translations'
-    Link: '/pages/API/v2/FileAPI/Get-Translations/'
-    Type : POST
-    Intro: '<p>Temporarily uploads a file, then returns a translated version for requested locales.</p><p>This call can be used instead of a standard upload/download if you keep different versions of a file in multiple branches or are triggering rebuilds, and don’t want your files in Smartling to be overwritten by out-of-date versions of a file.</p><p>To use the call, you upload a file and identify the Smartling URI where the main version of that file is saved. Smartling will match strings shared between the uploaded file and the main file and return any available translations.</p>'
-    CurlGist: 
-    RubyGist: 
-    PHPGist:  
-    JavaGist: 
-    CsharpGist: 
-    PythonGist: 
-    Parameters:
-
-        - Name: file
-          Required: required
-          Description: 'The file contents to upload. This should be submitted via a multipart/form-data POST request.'
-
-        - Name: fileUri
-          Required: required
-          Description: 'Identifies an existing file in Smartling. Smartling will create namespace, directives and instructions for the temporary file based on this file.'
-
-        - Name: retrievalType
-          Required: optional
-          Description: 'Determines the desired format for the download. Applies to translated files only.'
-
-        - Name: includeOriginalStrings
-          Required: optional
-          Description: 'Specifies whether Smartling will return the original string or an empty string where no translation is availabe. This parameter is supported for gettext, java properties, custom XML, and JSON files only.'
-
-    Return:
-        String: '<code>200 OK<br/>HEADER:<br/>Content-Disposition: attachment; filename=&quot;fname.ext&quot;<br/>translated file contents</code>'
 
 ---
 
