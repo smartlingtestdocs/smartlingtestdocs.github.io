@@ -8,7 +8,7 @@
     Url: '/auth-api/v2/authenticate'
     Link: '/pages/API/v2/Authentication/Authenticate/'
     Type : POST
-    Intro: ''
+    Intro: 'Authenticates the user with a User Identifier and Secret. Returns an access token that can be attached to the header of any API request to authenticate the user, and a refresh token which can be used to obtain a new access token. See <a href="/pages/API/v2/Authentication/">Authentication</a> for more information.'
     CurlGist: 7ade6ca1e334e8cc51ce
     RubyGist: 
     PHPGist:  
@@ -52,7 +52,7 @@
     Url: '/auth-api/v2/authenticate/refresh'
     Link: '/pages/API/v2/Authentication/Refresh-Authentication/'
     Type : POST
-    Intro: ''
+    Intro: 'Returns a renewed access token that can be attached to the header of any API request to authenticate the user, and a refresh token which can be used to obtain a new access token. See <a href="/pages/API/v2/Authentication/">Authentication</a> for more information.'
     CurlGist: 6dd0ebe17c19927b5d80
     RubyGist: 
     PHPGist:  
@@ -98,7 +98,7 @@
     Url: '/accounts-api/v2/accounts/{accountUid}/projects'
     Link: '/pages/API/v2/Projects/List-Projects'
     Type : GET
-    Intro: ''
+    Intro: 'Returns a list of all projects in an account, including basic project details.'
     CurlGist: 
     RubyGist: 
     PHPGist:  
