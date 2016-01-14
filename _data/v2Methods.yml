@@ -1,8 +1,6 @@
 ---
 
 
-
-
   - Method: Authenticate
     Name: 'Authenticate'
     Url: '/auth-api/v2/authenticate'
@@ -44,9 +42,6 @@
           - Name: tokenType
             Description: 'Type of access token being returned. Currently, this will always be <code>Bearer</code>'
 
-          - Name: sessionState
-            Description: ''
-
   - Method: RefreshAuthentication
     Name: 'Refresh Authentication'
     Url: '/auth-api/v2/authenticate/refresh'
@@ -83,13 +78,6 @@
 
           - Name: tokenType
             Description: 'Type of access token being returned. Currently, this will always be <code>Bearer</code>'
-
-          - Name: sessionState
-            Description: ''
-
-
-
-
 
 
 
@@ -638,7 +626,7 @@
     CsharpGist: 
     PythonGist: 
     Parameters:
-        - Name: FileUri
+        - Name: fileUri
           Required: required
           Description: 'Value that uniquely identifies the downloaded file.'
 
@@ -691,7 +679,7 @@
     CsharpGist: 
     PythonGist: 
     Parameters:
-        - Name: FileUris
+        - Name: fileUris
           Type: Array
           Required: required
           Description: 'Smartling Values that each uniquely identify a file.'
@@ -765,7 +753,7 @@
     CsharpGist: 
     PythonGist: 
     Parameters:
-        - Name: FileUris
+        - Name: fileUris
           Type: Array
           Required: required
           Description: 'Smartling Values that each uniquely identify a file.'
@@ -834,7 +822,7 @@
     CsharpGist: 
     PythonGist: 
     Parameters:
-        - Name: FileUri
+        - Name: fileUri
           Required: required
           Description: 'Smartling value that uniquely identifies a file.'
 
@@ -1075,7 +1063,7 @@
     Link: "/pages/API/v2/FileAPI/Rename/"
     Type : POST
     Intro: 'Renames an uploaded file by changing the fileUri. After renaming the file, the file will only be identified by the new fileUri you provide.'
-    CurlGist: 
+    CurlGist: 4e91b9c93c0e88759cd0
     RubyGist: 
     PHPGist:  
     JavaGist: 
@@ -1134,7 +1122,7 @@
 
         - Name: lastModifiedAfter
           Required: optional
-          Description: 'Limits the return to only those file and locale combinations that have a <code>lastModified</code> date after the parameter <code>lastModifiedAfter</code>. The items array will be empty if the file has not been modified in any of the locales since the lastModifiedAfter date specified. The date should be formatted according to <a href="/pages/API/">Date Format</a>'
+          Description: 'Limits the return to only those file and locale combinations that have a <code>lastModified</code> date after the parameter <code>lastModifiedAfter</code>. The items array will be empty if the file has not been modified in any of the locales since the lastModifiedAfter date specified. The date should be formatted according to <a href="/pages/API/v2#DateFormat">Date Format</a>.'
 
     Return:
         String: 
@@ -1146,7 +1134,7 @@
 
   - Method: LastModifiedAllLocales
     Name: 'Last Modified (all locales)'
-    Url: '/files-api/v2/projects/{projectId}/locales/{localeId}/file/last-modified'
+    Url: '/files-api/v2/projects/{projectId}/file/last_modified'
     Link: "/pages/API/v2/FileAPI/Last-Modified/All-Locales/"
     Type : GET
     Intro: 'Returns the date a file was last modified in a each locale'
@@ -1163,7 +1151,7 @@
 
         - Name: lastModifiedAfter
           Required: optional
-          Description: 'Limits the return to only those file and locale combinations that have a <code>lastModified</code> date after the parameter <code>lastModifiedAfter</code>. The items array will be empty if the file has not been modified in any of the locales since the lastModifiedAfter date specified. The date should be formatted according to <a href="/pages/API/">Date Format</a>'
+          Description: 'Limits the return to only those file and locale combinations that have a <code>lastModified</code> date after the parameter <code>lastModifiedAfter</code>. The items array will be empty if the file has not been modified in any of the locales since the lastModifiedAfter date specified. The date should be formatted according to <a href="/pages/API/v2#DateFormat">Date Format</a>.'
 
     Return:
         String: 
