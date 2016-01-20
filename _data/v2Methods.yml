@@ -582,6 +582,10 @@
           Required: optional
           Description: 'This value, if set, authorizes strings for translation into specific locales. Use the project/locale/list call to get the list of locales for the project or see them in the dashboard on the API settings page. Use multiple localeIdsToAuthorize parameter pairs to authorize more than one locale. You can add languages by uploading the file again and indicating the language to authorize with <code>localeIdsToAuthorize</code> or all languages with <code>authorized</code>, or in the dashboard using the "Show Partially Authorized" filter option from the Awaiting Authorization list. If string has been completely excluded for translation from all languages, or excluded from translation for a specific language, localesIdsToAuthorie will NOT authorize it. <strong>Note:</strong> Do not set the <code>authorized</code> parameter to TRUE if you want to specify individual locales to authorize. Submitting an upload with both of these parameters set will result in a validation error.'
 
+        - Name: overwriteAuthorizedLocales
+          Required: optional
+          Description: ''
+
         - Name: fileType
           Required: required
           Description: 'Unique identifier for the file type. Permitted values: android, ios, gettext, html, javaProperties, yaml, xliff, xml, json, docx, pptx, xlsx, idml, qt, resx, plaintext, cvs, stringsdict.'
@@ -895,7 +899,7 @@
 
 
   - Method: List
-    Name: 'List'
+    Name: 'List Files'
     Url: '/files-api/v2/projects/{projectId}/files/list'
     Link: "/pages/API/v2/FileAPI/List/"
     Type : GET
@@ -950,6 +954,25 @@
           - Name: hasInstructions
             Description: 'Boolean - records whether translator instructions have been captured for the file.'
 
+  -  Method: ListFileTypes
+     Name: 'List File Types'
+     Url: '/files-api/v2/projects/{projectId}/file-types'
+     Link: '/pages/API/v2/FileAPI/List-File-Types/'
+     Type : GET
+     Intro: 'Returns a list of all file types currently represented in the project'
+     CurlGist: 
+     RubyGist: 
+     PHPGist:  
+     JavaGist: 
+     CsharpGist: 
+     PythonGist: 
+
+     Return:
+        Json: '{<br/>&nbsp;&nbsp;&quot;response&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&quot;code&quot;:&nbsp;&quot;SUCCESS&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&quot;messages&quot;:&nbsp;[],<br/>&nbsp;&nbsp;&nbsp;&nbsp;&quot;data&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;items&quot;:&nbsp;[<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;android&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;ios&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;gettext&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;javaProperties&quot;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;}<br/>}'
+        Parameters:
+
+          - Name: items
+            Description: 'Array of Smartling filetype codes for all filetypes currently in the project. See <a href="/pages/Supported-File-Types">Supported File Types</a> for more information.'
 
   - Method: StatusAllLocales
     Name: 'Status - All Locales'
@@ -1104,7 +1127,7 @@
     Link: "/pages/API/v2/FileAPI/Delete/"
     Type : POST
     Intro: '<p>Removes the file from Smartling. The file will no longer be available for download. Any complete translations for the file remain available for use within the system.</p><p>Smartling deletes files asynchronously and it typically takes a few minutes to complete. While deleting a file, you can not upload a file with the same fileUri.</p>'
-    CurlGist: 8c293ba56605a38f0345
+    CurlGist: bafce82ddbad01b4ca76
     RubyGist: 
     PHPGist:  
     JavaGist: 

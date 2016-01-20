@@ -12,18 +12,18 @@ Section: New in V2
     Version 2 of FilesAPI will be familiar to you if you’ve used v1 but there are some important differences to keep in mind while you’re getting started.
 </p>
 
-<p dir="ltr">
-    <strong>Authentication</strong>
-</p>
+<h3 dir="ltr">
+    Authentication
+</h3>
 
 <p dir="ltr">
     <p>V2 APIs replace the single API key with Oauth 2.0 authentication, requiring an access token to be included in the header of every request. Tokens are obtained via an Authenticate request containing a User ID and User Secret.</p>
 
     <p>See <a href="/pages/API/v2/Authentication/">Authentication</a> for more information.</p>
 
-<p dir="ltr">
-    <strong>Path Variables</strong>
-</p>
+<h3 dir="ltr">
+    Path Variables
+</h3>
 
 <p dir="ltr">
     Some V2 URLs contain path variables that you need to consider when you write your calls. In FilesAPI there are two path variables that may appear in a URL.
@@ -42,7 +42,7 @@ Section: New in V2
     </li>
 </ul>
 
-<p><strong>New Terminology</strong></p>
+<h3>New Terminology</h3>
 
 <p>Some terminology and parameter names in v2 are different from their v1 equivalents. Changes include</p>
 <ul>
@@ -50,17 +50,26 @@ Section: New in V2
     <li>URLs now use hyphens (-) instead of underscores (_). For example: <code>/last_modified</code> is now <code>/last-modified</code></li>
 </ul>
 
-<p id="Arrays"><strong>Arrays</strong></p>
+<h3 id="Arrays">Arrays</h3>
 
-<p>Most Smartling API arguments are strings, but some v2 calls take arrays as arguments to return information on multiple files or locales. Passing multiple values in a GET request looks like this.</p>
+<p>Most Smartling API arguments are strings, but some v2 calls take arrays as arguments to return information on multiple files or locales.</p>
 
+<h4>Examples:</h4>
+
+<p><strong>Path Variables:</strong></p>
 <pre><code>?localeId[]=de-DE&localeId[]=fr-FR</code></pre>
-
 <p>Don’t forget the square brackets for array values, even if you’re only passing a single argument.</p>
 
-<p dir="ltr">
-    <strong>New Options</strong>
-</p>
+<p><strong>Multi-Part Form:</strong></p>
+<pre><code> -F "localeId[]=fr-FR" -F "localeId[]=de-DE"</code></pre>
+
+<p><strong>JSON:</strong></p>
+<pre><code>{"localeIds":["es-ES","zh-CN"]}</code></pre>
+
+
+<h3 dir="ltr">
+    New Options
+</h3>
 <p dir="ltr">
     If you’re already using v1 of Smartling’s File API, you may be able to improve on your integration with the new, more powerful calls included in v2.
     Significant new options include:
