@@ -1171,10 +1171,10 @@
 
     Return:
         String: 
-        Json: '200&nbsp;OK<br/>{<br/>&nbsp;&quot;response&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;code&quot;:&nbsp;&quot;SUCCESS&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;messages&quot;:&nbsp;[],<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;data&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&quot;totalCount&quot;:&nbsp;&quot;[number]&quot;,<br/>&nbsp;&nbsp;&nbsp;&quot;items&quot;&nbsp;:&nbsp;[{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;localeId&quot;:&nbsp;&quot;[fr-FR]&quot;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;lastModified&quot;:&nbsp;&quot;[YYYY-MM-DDThh:mm:ssZ]&quot;&nbsp;},<br/>&nbsp;&nbsp;&nbsp;{&nbsp;...&nbsp;}&nbsp;]<br/>}<br/>&nbsp;&nbsp;}<br/>}'
+        Json: '{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&quot;response&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;code&quot;:&nbsp;&quot;SUCCESS&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;messages&quot;:&nbsp;[],<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;data&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;totalCount&quot;:&nbsp;&quot;[number]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;items&quot;:&nbsp;[{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;localeId&quot;:&nbsp;&quot;[fr-FR]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;lastModified&quot;:&nbsp;&quot;[YYYY-MM-DDThh:mm:ssZ]&quot;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}]<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>}'
         Parameters:
 
-          - Name: locale
+          - Name: localeId
             Description: 'Smartling locale code'
 
           - Name: lastModified
@@ -1209,7 +1209,7 @@
           Description: '<p>Value indicating the workflow state to import the translations into. Content will be imported into the language''s default workflow.</p><ul><li><code>PUBLISHED</code> - The translated content is published.</li><li><code>POST_TRANSLATION</code> - The translated content is imported into the first step after translation - if there are none, it will be published.</li></ul>'
 
     Return: 
-        Json: '200&nbsp;OK<br/>{<br/>&nbsp;&quot;response&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;code&quot;:&nbsp;&quot;SUCCESS&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;messages&quot;:&nbsp;[],<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;data&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&quot;wordCount&quot;&nbsp;:&nbsp;&quot;[number]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&quot;stringCount&quot;&nbsp;:&nbsp;&quot;[number]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&quot;translationImportErrors&quot;&nbsp;:&nbsp;[{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;importKey&quot;&nbsp;:&nbsp;&quot;[string]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;stringHashcode&quot;&nbsp;:&nbsp;&quot;[string]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;contentFileId&quot;&nbsp;:&nbsp;&quot;[number]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;messages&quot;&nbsp;:&nbsp;[<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;[string]&quot;,&nbsp;&quot;[string]&quot;,&nbsp;...<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]},<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{...}]<br/>}<br/>&nbsp;&nbsp;}<br/>}'
+        Json: '{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&quot;response&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;code&quot;:&nbsp;&quot;SUCCESS&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;messages&quot;:&nbsp;[],<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;data&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;wordCount&quot;:&nbsp;&quot;[number]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;stringCount&quot;:&nbsp;&quot;[number]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;translationImportErrors&quot;:&nbsp;[{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;importKey&quot;:&nbsp;&quot;[string]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;stringHashcode&quot;:&nbsp;&quot;[string]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;contentFileId&quot;:&nbsp;&quot;[number]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;messages&quot;:&nbsp;[<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;[string]&quot;,&nbsp;&quot;[string]&quot;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}]<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>}'
 
         Parameters:
 
@@ -1256,12 +1256,12 @@
         - Name: locales
           Description: 'Array of locales the file is authorized for'
 
-  -  Method: AuthorizeUnauthorizeContent
+  -  Method: Authorize
      Name: 'Authorize / Unauthorize'
      Url: '/files-api/v2/projects/{projectId}/file/authorized-locales'
      Link: '/pages/API/v2/FileAPI/authorize-locales/'
-     Type : PUT / DELETE
-     Intro: 'Authorize or Unauthorize a file for translation in the specified locales. A PUT request authorizes, while a DELETE request unauthorizes.'
+     Type : PUT / POST
+     Intro: 'Authorize a file for translation in the specified locales.'
      CurlGist: 
      RubyGist: 
      PHPGist:  
@@ -1274,9 +1274,36 @@
            Description: 'Value that uniquely identifies the file.'
 
      Parameters:
-         - Name: localeIds
+         - Name: 'localeIds[]'
+           Type: array
            Required: required
-           Description: 'Smartling codes for the locales to authorize/unauthorize. Can be a single locale or an array.'
+           Description: 'Smartling codes for the locales to authorize'
+
+     Return:
+         String: 'Smartling returns a standard response format. The response will contain a SUCCESS response code indicating the authorization / unauthorization is complete. The response includes no data.'
+
+  -  Method: Unauthorize
+     Name: 'Unauthorize'
+     Url: '/files-api/v2/projects/{projectId}/file/authorized-locales'
+     Link: '/pages/API/v2/FileAPI/authorize-locales/'
+     Type : DELETE
+     Intro: 'Unauthorize a file for translation in the specified locales.'
+     CurlGist: 
+     RubyGist: 
+     PHPGist:  
+     JavaGist: 
+     CsharpGist: 
+     PythonGist: 
+     Parameters:
+         - Name: fileUri
+           Required: required
+           Description: 'Value that uniquely identifies the file.'
+
+     Parameters:
+         - Name: 'localeIds[]'
+           Type: array
+           Required: required
+           Description: 'Smartling codes for the locales to unauthorize.'
 
      Return:
          String: 'Smartling returns a standard response format. The response will contain a SUCCESS response code indicating the authorization / unauthorization is complete. The response includes no data.'
