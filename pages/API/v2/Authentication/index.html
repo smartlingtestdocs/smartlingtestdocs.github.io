@@ -14,7 +14,7 @@ Section: Authentication
 
 <p>Authentication header format is  <code>Authorization: Bearer {token}</code></p>
 
-<p>Access tokens expire every XX minutes, but you can get a new token by calling the Refresh Authentication API, using the refresh token returned by a successful Authentication.</p>
+<p>Access tokens expire every 5 minutes, but you can get a new token by calling the Refresh Authentication API, using the refresh token returned by a successful Authentication. Refresh tokens are valid for 1 hour.</p>
 
 <p>There are two main ways to handle Oauth authentication, depending on how you’re using Smartling’s API. The first way is to call the Authentication API before any other API call and pass the access token directly. This is best for intermittent API access.</p>
 
