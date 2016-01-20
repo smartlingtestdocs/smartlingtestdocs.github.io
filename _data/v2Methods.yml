@@ -550,7 +550,7 @@
     Url: '/files-api/v2/projects/{projectId}/file'
     Link: "/pages/API/v2/FileAPI/Upload-File/"
     Type: POST
-    Intro: '<p>Uploads original source content to Smartling (50MB limit for .ppt, .pptx; 25MB limit for .idml; 20MB limit for .doc, .docx; and 10MB limit for all others).</p><p><strong>Note:</strong> Smartilng assumes that all uploaded files use UTF-8 encoding. Any <code>Content-Type</code> header in your upload call is ignored.</p>'
+    Intro: '<p>Uploads original source content to Smartling (50MB limit for .ppt, .pptx; 25MB limit for .idml; 20MB limit for .doc, .docx; and 10MB limit for all others).</p><p><strong>Note:</strong> Smartilng assumes that all uploaded files use UTF-8 encoding. Any <code>Content-Type</code> header in your upload call is ignored.</p><p>See <a href="/pages/Supported-File-Types">Supported File Types</a> for a list of accepted file types.</p>'
     CurlGist: 98c190bdbcb4c321f5af
     RubyGist: 
     PHPGist:  
@@ -568,10 +568,10 @@
 
         - Name: authorized
           Required: optional
-          Description: 'Determines whether content in the file is authorized (available for translation) upon submitting the file via the Smartling Dashboard. An error message will return if there are insufficient translation funds and authorized is set to true.If string has been completely excluded for translation from all languages, or excluded from translation for a specific language, <code>authorize</code> will NOT authorize it.'
+          Description: 'Determines whether content in the file is authorized (available for translation) in all locales upon submitting the file via the Smartling Dashboard. An error message will return if there are insufficient translation funds and authorized is set to true. If a string has been completely excluded for translation from all languages, or excluded from translation for a specific language, <code>authorize</code> will NOT authorize it. <strong>Note:</strong> to specify a limited list of locales to authorize, use the <code>localeIdsToAuthorize[]</code> parameter.'
           Values:
             - Value: TRUE
-              Description: 'Content will be available for translation on upload'
+              Description: 'Content will be available for translation in all locales on upload'
 
             - Value: FALSE
               Default: 'YES'
@@ -599,7 +599,7 @@
           Description: 'A GET request that creates a callback to a URL when a file is 100% published for a locale. The callback gives the fileUri and locale with the format <code>http[/s]://your.url?locale=xx-XX&fileUri=your.file</code>. If you upload the file again, without a callbackUrl, it will remove any previous callbackUrl for that file. The RequestBin (http://requestb.in) service is a convenient way to test callback. RequestBin generates a short-lived disposable URL that displays all posted requests.'
 
     Return:
-      String: 
+      String: 'A successful upload usually receives a <code>200 SUCCESS</code> response, but if the upload is not complete after a minute, a <code>202 ACCEPTED</code> response will be sent. See <a href="/pages/API/v2/Response-Format">Response Format</a> for more details.'
       Json: '{<br/>&nbsp;&nbsp;&quot;response&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;code&quot;:&nbsp;&quot;SUCCESS&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;messages&quot;:&nbsp;[],<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;data&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&quot;overWritten&quot;:&nbsp;&quot;[true|false]&quot;,<br/>&nbsp;&nbsp;&nbsp;&quot;stringCount&quot;:&nbsp;&quot;[number]&quot;,<br/>&nbsp;&nbsp;&nbsp;&quot;wordCount&quot;:&nbsp;&quot;[number]&quot;<br/>}<br/>&nbsp;&nbsp;&nbsp;}<br/>}'
       Parameters:
 
@@ -612,13 +612,32 @@
         - Name: wordCount
           Description: The number of words in the uploaded file.
 
+  - Method : DownloadFileOriginal
+    Name: 'Download Original File'
+    Url: '/files-api/v2/projects/{projectId}/file'
+    Link: "/pages/API/v2/FileAPI/Download-File/Single-Locale"
+    Type : GET
+    Intro: '<p>Downloads the original version of the requested file from Smartling.</p><p>It is important to check the HTTP response status code. If Smartling finds and returns the file normally, you will receive a 200 SUCCESS response. If you receive any other response status code than 200, the requested file will not be part of the response.</p><p>When you upload a UTF-16 character encoded file, then /file/get requests for that file will have a character encoding of UTF-16. All other uploaded files will return with a character encoding of UTF-8.</p><p>You can always use the content-type header in the response of a file/get request to determine the character encoding.</p>'
+    CurlGist: 5e2075ebfd745c59dd57
+    RubyGist: 
+    PHPGist:  
+    JavaGist: 
+    CsharpGist: 
+    PythonGist: 
+    Parameters:
+        - Name: fileUri
+          Required: required
+          Description: 'Value that uniquely identifies the downloaded file.'
+
+    Return:
+        String: '<p>200&nbsp;OK<br/>HEADER:<br/>Content-Disposition:&nbsp;attachment;&nbsp;filename=&quot;fname.ext&quot;<br/>file&nbsp;contents</p><p>The filename is based on the fileUri associated with the requested file. In most cases, the filename is exactly the fileUri provided. The only exception to this is with .pot gettext files. When a .pot file is specified as the fileUri, Smartling returns a .po file.</p>'
 
   - Method : DownloadFileSingleLocale
     Name: 'Download Translated File - Single Locale'
     Url: '/files-api/v2/projects/{projectId}/locales/{localeId}/file'
     Link: "/pages/API/v2/FileAPI/Download-File/Single-Locale"
     Type : GET
-    Intro: '<p>Downloads the requested file from Smartling.</p><p>To download the original file, delete <code>/locales/{localeId}</code> from the URL.<p>It is important to check the HTTP response status code. If Smartling finds and returns the file normally, you will receive a 200 SUCCESS response. If you receive any other response status code than 200, the requested file will not be part of the response.</p><p>When you upload a UTF-16 character encoded file, then /file/get requests for that file will have a character encoding of UTF-16. All other uploaded files will return with a character encoding of UTF-8.</p><p>You can always use the content-type header in the response of a file/get request can always to determine the character encoding.</p>'
+    Intro: '<p>Downloads the requested file from Smartling.</p><p>To download the original file, delete <code>/locales/{localeId}</code> from the URL.<p>It is important to check the HTTP response status code. If Smartling finds and returns the file normally, you will receive a 200 SUCCESS response. If you receive any other response status code than 200, the requested file will not be part of the response.</p><p>When you upload a UTF-16 character encoded file, then /file/get requests for that file will have a character encoding of UTF-16. All other uploaded files will return with a character encoding of UTF-8.</p><p>You can always use the content-type header in the response of a file/get request to determine the character encoding.</p>'
     CurlGist: 94aba0d87463af617ecf
     RubyGist: 
     PHPGist:  
@@ -671,7 +690,7 @@
     Url: '/files-api/v2/projects/{projectId}/files/zip'
     Link: "/pages/API/v2/FileAPI/Download-File/Multiple-Locales"
     Type : GET
-    Intro: '<p>Downloads the requested translated files from Smartling as a ZIP.</p><p>It is important to check the HTTP response status code. If Smartling finds and returns the file normally, you will receive a 200 SUCCESS response. If you receive any other response status code than 200, the requested files will not be part of the response.</p><p>When you upload a UTF-16 character encoded file, then /file/get requests for that file will have a character encoding of UTF-16. All other uploaded files will return with a character encoding of UTF-8.</p><p>You can always use the content-type header in the response of a file/get request can always to determine the character encoding.</p>'
+    Intro: '<p>Downloads the requested translated files from Smartling as a ZIP.</p><p>It is important to check the HTTP response status code. If Smartling finds and returns the file normally, you will receive a 200 SUCCESS response. If you receive any other response status code than 200, the requested files will not be part of the response.</p><p>When you upload a UTF-16 character encoded file, then /file/get requests for that file will have a character encoding of UTF-16. All other uploaded files will return with a character encoding of UTF-8.</p><p>You can always use the content-type header in the response of a file/get request to determine the character encoding.</p>'
     CurlGist: 26568852d6fc8aa68269
     RubyGist: 
     PHPGist:  
@@ -745,7 +764,7 @@
     Url: '/files-api/v2/projects/{projectId}/locales/all/file/zip'
     Link: "/pages/API/v2/FileAPI/Download-File/All-Locales"
     Type : GET
-    Intro: '<p>Downloads the requested translated files from Smartling as a ZIP.</p><p>It is important to check the HTTP response status code. If Smartling finds and returns the file normally, you will receive a 200 SUCCESS response. If you receive any other response status code than 200, the requested files will not be part of the response.</p><p>When you upload a UTF-16 character encoded file, then /file/get requests for that file will have a character encoding of UTF-16. All other uploaded files will return with a character encoding of UTF-8.</p><p>You can always use the content-type header in the response of a file/get request can always to determine the character encoding.</p>'
+    Intro: '<p>Downloads the requested translated files from Smartling as a ZIP.</p><p>It is important to check the HTTP response status code. If Smartling finds and returns the file normally, you will receive a 200 SUCCESS response. If you receive any other response status code than 200, the requested files will not be part of the response.</p><p>When you upload a UTF-16 character encoded file, then /file/get requests for that file will have a character encoding of UTF-16. All other uploaded files will return with a character encoding of UTF-8.</p><p>You can always use the content-type header in the response of a file/get request to determine the character encoding.</p>'
     CurlGist: fe6bb1083f0e9eb0724a
     RubyGist: 
     PHPGist:  
@@ -814,7 +833,7 @@
     Url: '/files-api/v2/projects/{projectId}/locales/all/file'
     Link: "/pages/API/v2/FileAPI/Download-File/All-Locales-CSV"
     Type : GET
-    Intro: '<p>Downloads all translations for the requested file in a single CSV file.</p><p><strong>Note:</strong> In most cases, this option requires customized file directives to be added to the original file. See <a href="/pages/Misc/CSV-Download/">CSV File Download Options</a> for more details. </p><p>It is important to check the HTTP response status code. If Smartling finds and returns the file normally, you will receive a 200 SUCCESS response. If you receive any other response status code than 200, the requested files will not be part of the response.</p><p>When you upload a UTF-16 character encoded file, then /file/get requests for that file will have a character encoding of UTF-16. All other uploaded files will return with a character encoding of UTF-8.</p><p>You can always use the content-type header in the response of a file/get request can always to determine the character encoding.</p>'
+    Intro: '<p>Downloads all translations for the requested file in a single CSV file.</p><p><strong>Note:</strong> In most cases, this option requires customized file directives to be added to the original file. See <a href="/pages/Misc/CSV-Download/">CSV File Download Options</a> for more details. </p><p>It is important to check the HTTP response status code. If Smartling finds and returns the file normally, you will receive a 200 SUCCESS response. If you receive any other response status code than 200, the requested files will not be part of the response.</p><p>When you upload a UTF-16 character encoded file, then /file/get requests for that file will have a character encoding of UTF-16. All other uploaded files will return with a character encoding of UTF-8.</p><p>You can always use the content-type header in the response of a file/get request to determine the character encoding.</p>'
     CurlGist: 2eb17ac278a21f9e433c
     RubyGist: 
     PHPGist:  
@@ -896,7 +915,7 @@
         - Name: 'fileTypes[]'
           Type: array
           Required: optional
-          Description: 'Identifiers: android, ios, gettext, html, javaProperties, yaml, xliff, xml, json, docx, pptx, xlsx, idml, qt, resx, plaintext, cvs. File types are combined using the logical "OR".'
+          Description: 'Identifiers: android, ios, gettext, html, javaProperties, yaml, xliff, xml, json, docx, pptx, xlsx, idml, qt, resx, plaintext, cvs.'
 
         - Name: lastUploadedAfter
           Required: optional
@@ -912,7 +931,7 @@
 
     Return:
         String: 
-        Json: '200&nbsp;OK<br/>{<br/>&nbsp;&nbsp;&quot;response&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;code&quot;:&nbsp;&quot;SUCCESS&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;messages&quot;:&nbsp;[],<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;data&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&quot;totalCount&quot;:&nbsp;&quot;[number]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&quot;items&quot;&nbsp;:&nbsp;[{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;fileUri&quot;:&nbsp;&quot;[/myproject/i18n/ui.properties]&quot;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;lastUploaded&quot;:&nbsp;&quot;[YYYY-MM-DDThh:mm:ssZ]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;fileType&quot;:&nbsp;&quot;[fileType]&quot;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;hasInstructions&quot;&nbsp;:&nbsp;&quot;false&quot;<br/>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;...&nbsp;}&nbsp;]<br/>}<br/>&nbsp;&nbsp;&nbsp;}<br/>}'
+        Json: '{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&quot;response&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;code&quot;:&nbsp;&quot;SUCCESS&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;messages&quot;:&nbsp;[],<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;data&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;totalCount&quot;:&nbsp;&quot;[number]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;items&quot;:&nbsp;[{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;fileUri&quot;:&nbsp;&quot;[/myproject/i18n/ui.properties]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;lastUploaded&quot;:&nbsp;&quot;[YYYY-MM-DDThh:mm:ssZ]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;fileType&quot;:&nbsp;&quot;[fileType]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;hasInstructions&quot;:&nbsp;&quot;false&quot;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}]<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>}'
 
         Parameters:
 
