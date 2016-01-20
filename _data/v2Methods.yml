@@ -604,7 +604,7 @@
 
     Return:
       String: 'A successful upload usually receives a <code>200 SUCCESS</code> response, but if the upload is not complete after a minute, a <code>202 ACCEPTED</code> response will be sent. See <a href="/pages/API/v2/Response-Format">Response Format</a> for more details.'
-      Json: '{<br/>&nbsp;&nbsp;&quot;response&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;code&quot;:&nbsp;&quot;SUCCESS&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;messages&quot;:&nbsp;[],<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;data&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&quot;overWritten&quot;:&nbsp;&quot;[true|false]&quot;,<br/>&nbsp;&nbsp;&nbsp;&quot;stringCount&quot;:&nbsp;&quot;[number]&quot;,<br/>&nbsp;&nbsp;&nbsp;&quot;wordCount&quot;:&nbsp;&quot;[number]&quot;<br/>}<br/>&nbsp;&nbsp;&nbsp;}<br/>}'
+      Json: '{<br/>&nbsp;&nbsp;&quot;response&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&quot;code&quot;:&nbsp;&quot;SUCCESS&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&quot;data&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;overWritten&quot;:&nbsp;&quot;[true|false]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;stringCount&quot;:&nbsp;&quot;[number]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;wordCount&quot;:&nbsp;&quot;[number]&quot;<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;}<br/>}'
       Parameters:
 
         - Name: overWritten
