@@ -4,11 +4,36 @@ title:  Response Format
 redirect_from: "/display/docs/Response+Format/"
 ---
 
-<p>Responses are encoded into a generalized JSON structure with three basic properties: a response code, messages describing any errors that occurred during processing and a custom data object.</p>
+<p>Success responses are encoded into a generalized JSON structure with two basic properties: a response code, and a custom data object.</p>
 
-<pre>{"response":{"code":"SUCCESS","messages":[],"data":null,}}</pre>
+<pre><code>{
+    "response": {
+        "code": "SUCCESS",
+        "data": {
+            "localeId": "de-DE",
+            "lastModified": "[YYYY-MM-DDThh:mm:ssZ]"
+        }
+    }
+}</code></pre>
+<br/>
 
-<p>The generalized JSON response is returned by every service with three properties:</p>
+<p>Error responses include an array of errors, each with a key and message explaining the details of the error. Some errors may give additional details.</p>
+
+<pre><code>{
+  "response": {
+    "code": "VALIDATION_ERROR",
+    "errors": [{
+      "key": "parse.error",
+      "message": "There was a problem loading your file. No source strings found; Check your configuration http://goo.gl/OW6Q1o",
+      "details": {
+        "errorId": "cse8rqnf"
+      }
+    }]
+  }
+}</code></pre>
+<br/>
+
+<h4>Response Codes</h4>
 
 <style type="text/css">
 .tg  {border-collapse:collapse;border-spacing:0;}
@@ -68,12 +93,3 @@ redirect_from: "/display/docs/Response+Format/"
   </tr>
 </table></div>
 
-<br/>
-<h4>Examples:</h4>
-
-<pre>
-{"response":{"data":null,"code":"VALIDATION_ERROR","messages":["apiKey parameter is required","apiVersion parameter is required"]}}
-</pre>
-
-<pre>
-{"response":{"data":{"wordCount":1629,"stringCount":503,"overWritten":false},"code":"SUCCESS","messages":[]}}</pre>

@@ -24,7 +24,7 @@
 
     Return:
         String: 
-        Json: '200&nbsp;OK<br/>{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&quot;response&quot;&nbsp;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;code&quot;&nbsp;:&nbsp;&quot;SUCCESS&quot,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;data&quot;&nbsp;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;accessToken&quot;:&nbsp;&quot;{access token}",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;expiresIn&quot;:&nbsp;1458,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;refreshExpiresIn&quot;:&nbsp;1455,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;refreshToken&quot;:&nbsp;&quot;{refresh token}&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;tokenType&quot;:&nbsp;&quot;Bearer&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;sessionState&quot;:&nbsp;&quot;&quot;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>}'
+        Json: '{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&quot;response&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;code&quot;:&nbsp;&quot;SUCCESS&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;data&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;accessToken&quot;:&nbsp;&quot;{access&nbsp;token}&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;expiresIn&quot;:&nbsp;1458,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;refreshExpiresIn&quot;:&nbsp;1455,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;refreshToken&quot;:&nbsp;&quot;{refresh&nbsp;token}&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;tokenType&quot;:&nbsp;&quot;Bearer&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;sessionState&quot;:&nbsp;&quot;&quot;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>}'
         Parameters:
 
           - Name: accessToken
@@ -61,7 +61,7 @@
 
     Return:
         String: 
-        Json: '200&nbsp;OK<br/>{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&quot;response&quot;&nbsp;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;code&quot;&nbsp;:&nbsp;&quot;SUCCESS&quot,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;data&quot;&nbsp;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;accessToken&quot;:&nbsp;&quot;{access token}",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;expiresIn&quot;:&nbsp;1458,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;refreshExpiresIn&quot;:&nbsp;1455,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;refreshToken&quot;:&nbsp;&quot;{refresh token}&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;tokenType&quot;:&nbsp;&quot;Bearer&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;sessionState&quot;:&nbsp;&quot;&quot;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>}'
+        Json: '{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&quot;response&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;code&quot;:&nbsp;&quot;SUCCESS&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;data&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;accessToken&quot;:&nbsp;&quot;{access&nbsp;token}&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;expiresIn&quot;:&nbsp;1458,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;refreshExpiresIn&quot;:&nbsp;1455,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;refreshToken&quot;:&nbsp;&quot;{refresh&nbsp;token}&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;tokenType&quot;:&nbsp;&quot;Bearer&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;sessionState&quot;:&nbsp;&quot;&quot;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>}'
         Parameters:
 
           - Name: accessToken
@@ -619,7 +619,7 @@
   - Method : DownloadFileOriginal
     Name: 'Download Original File'
     Url: '/files-api/v2/projects/{projectId}/file'
-    Link: "/pages/API/v2/FileAPI/Download-File/Single-Locale"
+    Link: "/pages/API/v2/FileAPI/Download-File/Original-File"
     Type : GET
     Intro: '<p>Downloads the original version of the requested file from Smartling.</p><p>It is important to check the HTTP response status code. If Smartling finds and returns the file normally, you will receive a 200 SUCCESS response. If you receive any other response status code than 200, the requested file will not be part of the response.</p><p>When you upload a UTF-16 character encoded file, then /file/get requests for that file will have a character encoding of UTF-16. All other uploaded files will return with a character encoding of UTF-8.</p><p>You can always use the content-type header in the response of a file/get request to determine the character encoding.</p>'
     CurlGist: 5e2075ebfd745c59dd57
@@ -744,22 +744,6 @@
               Default: FALSE
               Description: 'If there is no translation, Smartling returns an empty string.'
 
-        - Name: fileNameMode
-          Required: optional
-          Description: 'TBC'
-
-        - Name: localeMode
-          Required: optional
-          Description: 'TBC'
-
-        - Name: zipFileName
-          Required: optional
-          Description: 'TBC'
-
-        - Name: mergedFile
-          Required: optional
-          Description: 'TBC'
-
     Return:
         String: '<p>200&nbsp;OK<br/>HEADER:<br/>Content-Disposition:&nbsp;attachment;&nbsp;filename=&quot;fname.ext&quot;<br/>file&nbsp;contents</p><p>The filename is based on the fileUri associated with the requested file. In most cases, the filename is exactly the fileUri provided. The only exception to this is with .pot gettext files. When a .pot file is specified as the fileUri, Smartling returns a .po file.</p>'
 
@@ -812,22 +796,6 @@
             - Value: false
               Default: FALSE
               Description: 'If there is no translation, Smartling returns an empty string.'
-
-        - Name: fileNameMode
-          Required: optional
-          Description: 'TBC'
-
-        - Name: localeMode
-          Required: optional
-          Description: 'TBC'
-
-        - Name: zipFileName
-          Required: optional
-          Description: 'TBC'
-
-        - Name: mergedFile
-          Required: optional
-          Description: 'TBC'
 
     Return:
         String: '<p>200&nbsp;OK<br/>HEADER:<br/>Content-Disposition:&nbsp;attachment;&nbsp;filename=&quot;fname.ext&quot;<br/>file&nbsp;contents</p><p>The filename is based on the fileUri associated with the requested file. In most cases, the filename is exactly the fileUri provided. The only exception to this is with .pot gettext files. When a .pot file is specified as the fileUri, Smartling returns a .po file.</p>'
@@ -931,11 +899,11 @@
 
         - Name: limit and offset
           Required: optional
-          Description: 'See <a href="/pages/API/v2/General-Information/Limit-and-Offset/">Limit and Offset</a>'
+          Description: 'See <a href="/pages/API/v2/General-Information/Limit-and-Offset/">Limit and Offset</a>. If not set, <code>limit</code> defaults to 500 and <code>offset</code> defaults to 0.'
 
     Return:
         String: 
-        Json: '{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&quot;response&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;code&quot;:&nbsp;&quot;SUCCESS&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;messages&quot;:&nbsp;[],<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;data&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;totalCount&quot;:&nbsp;&quot;[number]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;items&quot;:&nbsp;[{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;fileUri&quot;:&nbsp;&quot;[/myproject/i18n/ui.properties]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;lastUploaded&quot;:&nbsp;&quot;[YYYY-MM-DDThh:mm:ssZ]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;fileType&quot;:&nbsp;&quot;[fileType]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;hasInstructions&quot;:&nbsp;&quot;false&quot;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}]<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>}'
+        Json: '{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&quot;response&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;code&quot;:&nbsp;&quot;SUCCESS&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;data&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;totalCount&quot;:&nbsp;&quot;[number]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;items&quot;:&nbsp;[{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;fileUri&quot;:&nbsp;&quot;[/myproject/i18n/ui.properties]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;lastUploaded&quot;:&nbsp;&quot;[YYYY-MM-DDThh:mm:ssZ]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;fileType&quot;:&nbsp;&quot;[fileType]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;hasInstructions&quot;:&nbsp;&quot;false&quot;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}]<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>}'
 
         Parameters:
 
@@ -959,7 +927,7 @@
      Url: '/files-api/v2/projects/{projectId}/file-types'
      Link: '/pages/API/v2/FileAPI/List-File-Types/'
      Type : GET
-     Intro: 'Returns a list of all file types currently represented in the project'
+     Intro: 'Returns a list of all file types currently represented in the project.'
      CurlGist: 
      RubyGist: 
      PHPGist:  
@@ -968,7 +936,7 @@
      PythonGist: 
 
      Return:
-        Json: '{<br/>&nbsp;&nbsp;&quot;response&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&quot;code&quot;:&nbsp;&quot;SUCCESS&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&quot;messages&quot;:&nbsp;[],<br/>&nbsp;&nbsp;&nbsp;&nbsp;&quot;data&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;items&quot;:&nbsp;[<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;android&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;ios&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;gettext&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;javaProperties&quot;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;}<br/>}'
+        Json: '{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&quot;response&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;code&quot;:&nbsp;&quot;SUCCESS&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;data&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;items&quot;:&nbsp;[<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;android&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;ios&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;gettext&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;javaProperties&quot;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>}'
         Parameters:
 
           - Name: items
@@ -993,7 +961,7 @@
 
     Return:
         String: 
-        Json: '{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&quot;response&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;code&quot;:&nbsp;&quot;SUCCESS&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;messages&quot;:&nbsp;[],<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;data&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;fileUri&quot;:&nbsp;&quot;[/myproject/i18n/admin_ui.properties]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;totalStringCount&quot;:&nbsp;&quot;[number]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;totalWordCount&quot;:&nbsp;&quot;[number]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;fileType&quot;:&nbsp;&quot;[fileType]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;lastUploaded&quot;:&nbsp;&quot;[YYYY-MM-DDThh:mm:ssZ]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;totalCount&quot;:&nbsp;&quot;2&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;parserVersion&quot;:&nbsp;&quot;3&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;hasInstructions&quot;:&nbsp;&quot;true&quot;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;items&quot;:&nbsp;[{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;localeId&quot;:&nbsp;&quot;de-DE&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;authorizedStringCount&quot;:&nbsp;&quot;[number]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;completedStringCount&quot;:&nbsp;&quot;[number]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;authorizedWordCount&quot;:&nbsp;&quot;[number]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;excludedWordCount&quot;:&nbsp;&quot;[number]&quot;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}]<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>}<br/>'
+        Json: '{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&quot;response&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;code&quot;:&nbsp;&quot;SUCCESS&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;data&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;fileUri&quot;:&nbsp;&quot;[/myproject/i18n/admin_ui.properties]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;totalStringCount&quot;:&nbsp;&quot;[number]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;totalWordCount&quot;:&nbsp;&quot;[number]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;fileType&quot;:&nbsp;&quot;[fileType]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;lastUploaded&quot;:&nbsp;&quot;[YYYY-MM-DDThh:mm:ssZ]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;totalCount&quot;:&nbsp;&quot;2&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;parserVersion&quot;:&nbsp;&quot;3&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;hasInstructions&quot;:&nbsp;&quot;true&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;items&quot;:&nbsp;[{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;localeId&quot;:&nbsp;&quot;de-DE&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;authorizedStringCount&quot;:&nbsp;&quot;[number]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;completedStringCount&quot;:&nbsp;&quot;[number]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;authorizedWordCount&quot;:&nbsp;&quot;[number]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;excludedWordCount&quot;:&nbsp;&quot;[number]&quot;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}]<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>}'
 
         Parameters:
 
@@ -1039,7 +1007,7 @@
     Url: '/files-api/v2/projects/{projectId}/locales/{localeId}/file/status'
     Link: "/pages/API/v2/FileAPI/Status/Single-Locale"
     Type : GET
-    Intro: 'Returns detailed status information on a specific file'
+    Intro: 'Returns detailed status information on a specific file.'
     CurlGist: da04044a859e1e5f84c5
     RubyGist: 
     PHPGist:  
@@ -1053,7 +1021,7 @@
 
     Return:
         String: 
-        Json: '{<br/>&nbsp;&quot;response&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;code&quot;:&nbsp;&quot;SUCCESS&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;messages&quot;:&nbsp;[],<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;data&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&quot;fileUri&quot;&nbsp;:&nbsp;&quot;[/myproject/i18n/admin_ui.properties]&quot;,<br/>&nbsp;&nbsp;&nbsp;&quot;totalStringCount&quot;&nbsp;:&nbsp;&quot;[number]&quot;,<br/>&nbsp;&nbsp;&nbsp;&quot;totalWordCount&quot;&nbsp;:&nbsp;&quot;[number]&quot;,<br/>&nbsp;&nbsp;&nbsp;&quot;authorizedStringCount&quot;&nbsp;:&nbsp;&quot;[number]&quot;,<br/>&nbsp;&nbsp;&nbsp;&quot;completedStringCount&quot;:&nbsp;&quot;[number]&quot;,<br/>&nbsp;&nbsp;&nbsp;&quot;excludedStringCount&quot;:&nbsp;&nbsp;&quot;[number]&quot;,<br/>&nbsp;&nbsp;&nbsp;&quot;completedWordCount&quot;&nbsp;:&nbsp;&quot;[number]&quot;,<br/>&nbsp;&nbsp;&nbsp;&quot;authorizedWordCount&quot;&nbsp;:&nbsp;&quot;[number]&quot;,<br/>&nbsp;&nbsp;&nbsp;&quot;excludedWordCount&quot;&nbsp;:&nbsp;&quot;[number]&quot;,<br/>&nbsp;&nbsp;&nbsp;&quot;lastUploaded&quot;&nbsp;:&nbsp;&quot;[YYYY-MM-DDThh:mm:ssZ]&quot;,<br/>&nbsp;&nbsp;&nbsp;&quot;fileType&quot;&nbsp;:&nbsp;&quot;[fileType]&quot;,<br/>&nbsp;&nbsp;&nbsp;&quot;parserVersion&quot;&nbsp;:&nbsp;&quot;3&quot;,<br/>&nbsp;&nbsp;&nbsp;&quot;hasInstructions&quot;&nbsp;:&nbsp;&quot;true&quot;<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;}<br/>}'
+        Json: '{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&quot;response&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;code&quot;:&nbsp;&quot;SUCCESS&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;data&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;fileUri&quot;:&nbsp;&quot;[/myproject/i18n/admin_ui.properties]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;totalStringCount&quot;:&nbsp;&quot;[number]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;totalWordCount&quot;:&nbsp;&quot;[number]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;authorizedStringCount&quot;:&nbsp;&quot;[number]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;completedStringCount&quot;:&nbsp;&quot;[number]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;excludedStringCount&quot;:&nbsp;&quot;[number]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;completedWordCount&quot;:&nbsp;&quot;[number]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;authorizedWordCount&quot;:&nbsp;&quot;[number]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;excludedWordCount&quot;:&nbsp;&quot;[number]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;lastUploaded&quot;:&nbsp;&quot;[YYYY-MM-DDThh:mm:ssZ]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;fileType&quot;:&nbsp;&quot;[fileType]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;parserVersion&quot;:&nbsp;&quot;3&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;hasInstructions&quot;:&nbsp;&quot;true&quot;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>}'
 
         Parameters:
 
@@ -1165,7 +1133,7 @@
 
     Return:
         String: 
-        Json: '{<br/>&nbsp;&quot;response&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;code&quot;:&nbsp;&quot;SUCCESS&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;messages&quot;:&nbsp;[],<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;data&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;localeId&quot;:&nbsp;&quot;de-DE&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;lastModified&quot;:&nbsp;&quot;[YYYY-MM-DDThh:mm:ssZ]&quot;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>}'
+        Json: '{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&quot;response&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;code&quot;:&nbsp;&quot;SUCCESS&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;data&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;localeId&quot;:&nbsp;&quot;de-DE&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;lastModified&quot;:&nbsp;&quot;[YYYY-MM-DDThh:mm:ssZ]&quot;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>}'
         Parameters:
 
           - Name: lastModified
@@ -1194,7 +1162,7 @@
 
     Return:
         String: 
-        Json: '{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&quot;response&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;code&quot;:&nbsp;&quot;SUCCESS&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;messages&quot;:&nbsp;[],<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;data&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;totalCount&quot;:&nbsp;&quot;[number]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;items&quot;:&nbsp;[{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;localeId&quot;:&nbsp;&quot;[fr-FR]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;lastModified&quot;:&nbsp;&quot;[YYYY-MM-DDThh:mm:ssZ]&quot;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}]<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>}'
+        Json: '{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&quot;response&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;code&quot;:&nbsp;&quot;SUCCESS&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;data&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;totalCount&quot;:&nbsp;&quot;[number]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;items&quot;:&nbsp;[{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;localeId&quot;:&nbsp;&quot;[fr-FR]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;lastModified&quot;:&nbsp;&quot;[YYYY-MM-DDThh:mm:ssZ]&quot;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}]<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>}'
         Parameters:
 
           - Name: localeId
@@ -1232,7 +1200,7 @@
           Description: '<p>Value indicating the workflow state to import the translations into. Content will be imported into the language''s default workflow.</p><ul><li><code>PUBLISHED</code> - The translated content is published.</li><li><code>POST_TRANSLATION</code> - The translated content is imported into the first step after translation - if there are none, it will be published.</li></ul>'
 
     Return: 
-        Json: '{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&quot;response&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;code&quot;:&nbsp;&quot;SUCCESS&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;messages&quot;:&nbsp;[],<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;data&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;wordCount&quot;:&nbsp;&quot;[number]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;stringCount&quot;:&nbsp;&quot;[number]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;translationImportErrors&quot;:&nbsp;[{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;importKey&quot;:&nbsp;&quot;[string]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;stringHashcode&quot;:&nbsp;&quot;[string]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;contentFileId&quot;:&nbsp;&quot;[number]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;messages&quot;:&nbsp;[<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;[string]&quot;,&nbsp;&quot;[string]&quot;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}]<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>}'
+        Json: '{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&quot;response&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;code&quot;:&nbsp;&quot;SUCCESS&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;data&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;wordCount&quot;:&nbsp;&quot;[number]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;stringCount&quot;:&nbsp;&quot;[number]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;translationImportErrors&quot;:&nbsp;[{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;importKey&quot;:&nbsp;&quot;[string]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;stringHashcode&quot;:&nbsp;&quot;[string]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;contentFileId&quot;:&nbsp;&quot;[number]&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;messages&quot;:&nbsp;[<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;[string]&quot;,&nbsp;&quot;[string]&quot;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}]<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>}'
 
         Parameters:
 
@@ -1273,16 +1241,16 @@
 
     Return:
       String: 
-      Json: '200&nbsp;OK<br/>{<br/>&nbsp;&quot;response&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;code&quot;:&nbsp;&quot;SUCCESS&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;messages&quot;:&nbsp;[],<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;data&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&quot;locales&quot;&nbsp;:&nbsp;[<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;fr-FR&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;es-ES&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...]<br/>}<br/>&nbsp;&nbsp;}<br/>}'
+      Json: '{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&quot;response&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;code&quot;:&nbsp;&quot;SUCCESS&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;data&quot;:&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;locales&quot;:&nbsp;[<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;fr-FR&quot;,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;es-ES&quot;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>}'
       Parameters:
 
         - Name: locales
           Description: 'Array of locales the file is authorized for'
 
   -  Method: Authorize
-     Name: 'Authorize / Unauthorize'
+     Name: 'Authorize'
      Url: '/files-api/v2/projects/{projectId}/file/authorized-locales'
-     Link: '/pages/API/v2/FileAPI/authorize-locales/'
+     Link: '/pages/API/v2/FileAPI/Authorize-Content/Authorize'
      Type : PUT / POST
      Intro: 'Authorize a file for translation in the specified locales.'
      CurlGist: 
@@ -1308,7 +1276,7 @@
   -  Method: Unauthorize
      Name: 'Unauthorize'
      Url: '/files-api/v2/projects/{projectId}/file/authorized-locales'
-     Link: '/pages/API/v2/FileAPI/authorize-locales/'
+     Link: '/pages/API/v2/FileAPI/Authorize-Content/Unauthorize'
      Type : DELETE
      Intro: 'Unauthorize a file for translation in the specified locales.'
      CurlGist: 
