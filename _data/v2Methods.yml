@@ -582,10 +582,6 @@
           Required: optional
           Description: 'This value, if set, authorizes strings for translation into specific locales. Use the project/locale/list call to get the list of locales for the project or see them in the dashboard on the API settings page. Use multiple localeIdsToAuthorize parameter pairs to authorize more than one locale. You can add languages by uploading the file again and indicating the language to authorize with <code>localeIdsToAuthorize</code> or all languages with <code>authorized</code>, or in the dashboard using the "Show Partially Authorized" filter option from the Awaiting Authorization list. If string has been completely excluded for translation from all languages, or excluded from translation for a specific language, localesIdsToAuthorie will NOT authorize it. <strong>Note:</strong> Do not set the <code>authorized</code> parameter to TRUE if you want to specify individual locales to authorize. Submitting an upload with both of these parameters set will result in a validation error.'
 
-        - Name: overwriteAuthorizedLocales
-          Required: optional
-          Description: ''
-
         - Name: fileType
           Required: required
           Description: 'Unique identifier for the file type. Permitted values: android, ios, gettext, html, javaProperties, yaml, xliff, xml, json, docx, pptx, xlsx, idml, qt, resx, plaintext, cvs, stringsdict.'
@@ -724,14 +720,6 @@
               Default: TRUE
               Description: 'Smartling returns only published/pre-published translations.'
 
-            - Value: pseudo
-              Default: FALSE
-              Description: 'Smartling returns a modified version of the original text with certain characters transformed and the text expanded. For example, the uploaded string "This is a sample string", will return as "T~hís ~ís á s~ámpl~é str~íñg". Pseudo translations enable you to test how a longer string integrates into your application.'
-
-            - Value: contextMatchingInstrumented
-              Default: FALSE
-              Description: 'Smartling returns a modified version of the original file with strings wrapped in a specific set of Unicode symbols that can later be recognized and matched by the Chrome Context Capture Extension.'
-
         - Name: includeOriginalStrings
           Required: optional
           Description: 'Specifies whether Smartling will return the original string or an empty string where no translation is availabe. This parameter is supported for gettext, java properties, custom XML, and JSON files only.'
@@ -777,14 +765,6 @@
               Default: TRUE
               Description: 'Smartling returns only published/pre-published translations.'
 
-            - Value: pseudo
-              Default: FALSE
-              Description: 'Smartling returns a modified version of the original text with certain characters transformed and the text expanded. For example, the uploaded string "This is a sample string", will return as "T~hís ~ís á s~ámpl~é str~íñg". Pseudo translations enable you to test how a longer string integrates into your application.'
-
-            - Value: contextMatchingInstrumented
-              Default: FALSE
-              Description: 'Smartling returns a modified version of the original file with strings wrapped in a specific set of Unicode symbols that can later be recognized and matched by the Chrome Context Capture Extension.'
-
         - Name: includeOriginalStrings
           Required: optional
           Description: 'Specifies whether Smartling will return the original string or an empty string where no translation is availabe. This parameter is supported for gettext, java properties, custom XML, and JSON files only.'
@@ -829,13 +809,6 @@
               Default: TRUE
               Description: 'Smartling returns only published/pre-published translations.'
 
-            - Value: pseudo
-              Default: FALSE
-              Description: 'Smartling returns a modified version of the original text with certain characters transformed and the text expanded. For example, the uploaded string "This is a sample string", will return as "T~hís ~ís á s~ámpl~é str~íñg". Pseudo translations enable you to test how a longer string integrates into your application.'
-
-            - Value: contextMatchingInstrumented
-              Default: FALSE
-              Description: 'Smartling returns a modified version of the original file with strings wrapped in a specific set of Unicode symbols that can later be recognized and matched by the Chrome Context Capture Extension.'
 
         - Name: includeOriginalStrings
           Required: optional
