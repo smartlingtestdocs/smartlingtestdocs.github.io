@@ -2,6 +2,7 @@
 layout: FAPIMethods
 title:  Download Files
 method: DownloadFiles
+redirect_from: "/pages/API/FileAPI/Download-File"
 ---
 
 <section>

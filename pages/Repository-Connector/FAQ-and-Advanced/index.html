@@ -20,6 +20,11 @@ title:  Repository Connector - FAQs and Advanced
         </a>
     </li>
     <li>
+        <a href="#DownloadOptions">
+            What are my options for downloading translated files?
+        </a>
+    </li>
+    <li>
         <a href="#Memory">
             How much memory do I need to allocate?
         </a>
@@ -37,6 +42,11 @@ title:  Repository Connector - FAQs and Advanced
     <li>
         <a href="#Callback">
             Can I configure callbacks for completed translation instead of using the cron checker?
+        </a>
+    </li>
+    <li>
+        <a href="#CompleteConfig">
+            Can I see a complete configuration example with all optional parameters?
         </a>
     </li>
 </ul>
@@ -73,6 +83,33 @@ Can I alter the configuration files while the Repository Connector is running?
    You can alter the translation configuration file while the connector is running. If it is hosted in your code repository, any new commit to this file will trigger an automatic update to the Smartling dashboard. However, changes to the <code>repo-connector.conf</code> file require a restart to come into effect.
 </p>
       </section>
+      
+<section>
+    <a class="anchor" id="DownloadOptions"></a>
+<h4 >
+What are my options for downloading translated files?
+</h4>
+<p>
+   Smartling gives you a few advanced options for configuring how you get your translated files back from Smartling. To set these up, you need to add a <code>downloadTranslations</code> node to your repo-connector.conf. The <code>downloadTranslations</code> node can contain the following parameters:
+</p>
+        <ul>
+            <li dir="ltr">
+                <p dir="ltr">
+                    <code>trigger</code> - <code>COMPLETED</code> or <code>ONCHANGE</code> - determines when to download translated files from Smartling. <code>COMPLETED</code> downloads files only when all translations are complete. <code>ONCHANGE</code> downloads translated files whenever they are updated. Default is <code>COMPLETED.</code>
+                </p>
+            </li>
+            <li dir="ltr">
+                <p dir="ltr">
+                    <code>retrievalType</code> - Sets type of translation for downloaded files. Allowed values are <code>PUBLISHED</code> (default), <code>PENDING</code>, and <code>PSEUDO</code>. See <a href="http://docs.smartling.com/pages/API/FileAPI/Download-File/">Download Files</a> for more information on retrieval type.
+                </p>
+            </li>
+            <li dir="ltr">
+                <p dir="ltr">
+                    <code>includeOriginalStrings</code> - If <code>TRUE</code>, Smartling returns the original string if there is no translations available. If <code>FALSE</code>, Smartling returns a blank string if there is no translations. Defaults to <code>TRUE</code>
+                </p>
+            </li>
+        </ul>
+</section>
       
 <section>
     <a class="anchor" id="Memory"></a>
@@ -138,6 +175,15 @@ Can I configure callbacks for completed translation instead of using the cron ch
     </p>
       </section>
 
+<section>
+    <a class="anchor" id="CompleteConfig"></a>
+<h4 >
+Can I see a complete configuration example with all optional parameters?
+</h4>
+<p>
+   Sure! Download this <a href="/public/Example-Files/repo-connector-complete-example.conf">complete repo-connector.conf example file</a>, see comments for how each optional parameter is used. Recommended for advanced users only. If you use this file as a template to fill in your own information, remember to rename the file to <code>repo-connector.conf</code>.
+</p>
+      </section>
 
 
 

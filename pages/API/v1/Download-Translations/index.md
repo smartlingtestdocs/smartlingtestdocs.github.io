@@ -5,5 +5,6 @@ method: DownloadTranslations
 redirect_from: 
   - "/display/docs/Download+Translations+API/"
   - "https://docs.smartling.com/display/docs/Download+Translations+API/"
+  - "/pages/API/Download-Translations"
 ---
 

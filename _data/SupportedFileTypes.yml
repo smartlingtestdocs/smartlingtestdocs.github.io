@@ -18,6 +18,7 @@
       - placeholder_format
       - instruction_comments_enabled
       - instruction_attributes
+      - pseudo_inflation
 
  - file_type: 'iOS String Files'
    template: 'standard'
@@ -28,13 +29,14 @@
    resource_info: '<a href="https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/LoadingResources/Strings/Strings.html">String Resources</a>'
    keys_variants: 'Every string is created with key/variant metadata based on the keys in the file. If the keys are different for two strings with the same value, Smartling will create two strings using the key as context metadata.'
    string_instructions: 'Smartling will automatically ingest and display file comments as instructions for translators. The comments must immediately precede the string. For example, for the following comment:<pre><code>/* Back button label */<br/>"Back" = "Back";</code></pre><p>the text "Back button label" will be captured as a file instruction</p>If the comment contains the following text:</p><pre><code>/* No comment provided by engineer. */</code></pre><p>or if a line separates the comment and string, such as:</p><pre><code>/* Back button label */<br/><br/>"Back" = "Back";</code></pre><p>Smartling will not create an instruction.</p>'
-   directive_format: '/* smartling.[directive_name] = [value] */'
-   directive_instructions: 'The directive must be a single comment on one line, and there should not be any inline trailing symbols after the directive.  Directives apply to all strings that follow them. Directives can be changed throughout the file'
-   directive_prefix: '/* '
-   directive_suffix: ' */'
+   directive_format: '// smartling.[directive_name] = [value]'
+   directive_instructions: '<p>The directive must be a single comment on one line, and there should not be any inline trailing symbols after the directive.  Directives apply to all strings that follow them. Directives can be changed throughout the file.</p><p><strong>Note: </strong>The standard comment format of <code>*/ ... /*</code> will not work for directives.</p>'
+   directive_prefix: '// '
+   directive_suffix: ''
    directives:
       - placeholder_format_custom
       - placeholder_format
+      - pseudo_inflation
 
  - file_type: 'iOS Stringsdict'
    template: 'standard'
@@ -62,7 +64,10 @@
    directives:
       - placeholder_format_custom
       - placeholder_format
-
+      - pseudo_inflation
+   v3directives:
+      - sltrans
+ 
  - file_type: 'HTML'
    template: 'standard'
    link: /pages/supported-file-types/HTML/
@@ -77,6 +82,7 @@
    directives:
       - placeholder_format_custom
       - force_inline_for_tags
+      - pseudo_inflation
 
  - file_type: 'Java Properties'
    template: 'standard'
@@ -86,7 +92,7 @@
    download_sample: 'java.properties'
    resource_info: '<a href="http://docs.oracle.com/javase/tutorial/i18n/index.html">Java Localization Documentation</a>'
    keys_variants: 'Every string is created with key/variant metadata based on the keys in the file. If the keys are different for two strings with the same value, Smartling will create two strings using the key as context metadata.'
-   string_instructions: 
+   string_instructions: 'For files using <a href="pages/Misc/Parsers">Parser version 3</a>, Smartling will automatically ingest and display file comments as instructions for translators. The comments must immediately precede the string. For example, for the following comment:<pre><code># Back button label<br/>"Back" = "Back";</code></pre><p>the text "Back button label" will be captured as a file instruction</p>If the comment contains the following text:</p><pre><code># No comment provided by engineer.</code></pre><p>or if a line separates the comment and string, such as:</p><pre><code># Back button label<br/><br/>"Back" = "Back";</code></pre><p>Smartling will not create an instruction.</p>' 
    other: '<p>By default Smartling automatically captures properties that are formatted for both the MessageFormat.format and String.format methods.  By default all files are parsed as if <code>placeholder_format=JAVA</code> and <code>string_format=MESSAGE_FORMAT</code>, unless some other directive is given.</p><p><code>string_format=MESSAGE_FORMAT</code> uses placeholders in the syntax: <code>{*}</code> and the single quote (apostrophe) is an escape character, so to use the single quote character, it must be escaped as <code>''''</code>.  When MessageFormat parsing is on (default) in your source file single quotes must be escaped as two single quotes: <code>''''</code> otherwise it will not be captured.  If a translation has a single quote character, it will be escaped in the downloaded file as <code>''''</code>. Translators may use a single quote even when the original string has none. If MessageFormat is turned off then strings will not need single quotes escaping to capture them, and single quotes in translations will not be escaped.  You can turn MessageFormat off and on in a single file, using inline directives.</p><p><code>placeholder_format=JAVA</code> uses c-style placeholder syntax: <code>%d</code>, <code>%s</code>, <code>%4.2f</code>, etc. and because the <code>%</code> character is an escape character so displaying a single percent character literal requires that it be escaped as <code>%%</code> . When JAVA parsing is on (default) in your source file single percent characters must be escaped as two single percent characters: %% otherwise the % may trigger placeholder treatment and create an invalid placeholder in your string that causes incorrect capture and prevents proper translation.  When JAVA parsing is on Smartling will escape the % character in a translated string if the string has a JAVA formatted placeholder. Otherwise the % character in the translation are delivered unescaped.</p><p>If this default behavior is not desirable for your content you can turn off either of the formatting treatments for the entire file or just for the strings where you don''t want the behavior.  You can turn the behavior off and on throughout the file as needed.</p><p>You can also specify your own custom placeholder syntax that is in addition to the standard behavior from the above two directives.</p><p><strong>Note:</strong> When using <a href="/pages/API/Download-Translations/">file/get</a> to download properties files from Smartling, the parameter <code>includeOriginalStrings=false</code> ensures that if no translations are available, Smartling returns an empty string. If the parameter is set to true, Smartling returns the original string.</p>'
    directive_format: '# smartling.[directive_name] = [value]'
    directive_instructions: 'The directive must be a single comment on one line, and there should not be any inline trailing symbols after the directive.  Directives apply to all strings that follow them. Directives can be changed throughout the file'
@@ -97,6 +103,9 @@
       - placeholder_format
       - string_format
       - download_format
+      - pseudo_inflation
+   v3directives:
+      - sltrans
 
  - file_type: 'YAML'
    template: 'standard'
@@ -119,6 +128,9 @@
       - plurals_detection
       - download_format
       - string_format_paths
+      - pseudo_inflation
+   v3directives:
+      - sltrans
 
  - file_type: 'XLIFF'
    template: 'standard'
@@ -129,6 +141,7 @@
    resource_info: '<ul><li><a href="http://en.wikipedia.org/wiki/XLIFF">Background on XLIFF</a></li><li><a href="http://docs.oasis-open.org/xliff/xliff-core/xliff-core.html">OASIS specification</a></li></ul>'
    intro: 'Smartling supports .xlf, .xliff, and .xml files that use the XML Localization Interchange File Format (XLIFF)'
    keys_variants: 
+   other: '<p>For files using <a href="pages/Misc/Parsers">Parser version 3</a>, Smartling supports XLIFF''s <code>translate</code> attribute. Content where <code>translate = no</code> will be excluded from translation. See the <a href="http://docs.oasis-open.org/xliff/v1.2/os/xliff-core.html#translate">XLIFF Documentation</a> for details on the translate attribute.</p>'
    directive_format: '&lt!-- smartling.[directive_name] = [value] --&gt'
    directive_instructions: 'The directive must be a single comment on one line, and there should not be any inline trailing symbols after the directive.  Directives apply to all strings that follow them. Directives can be changed throughout the file'
    directive_prefix: '&lt!-- '
@@ -137,6 +150,7 @@
    directives:
       - placeholder_format_custom
       - xliff_tags_to_placeholder
+      - pseudo_inflation
 
  - file_type: 'Custom XML'
    template: 'standard'
@@ -162,6 +176,7 @@
       - sltrans
       - source_key_paths
       - variants_enabled
+      - pseudo_inflation
 
  - file_type: 'JSON'
    template: 'standard'
@@ -172,7 +187,7 @@
    resource_info: '<a href="http://json.org/">Official JSON Standards</a>'
    keys_variants: 'By default, the full path of keys leading to a string are captured as Key and Variant metadata. Custom key paths can be set and variant behavior turned off with directives'
    specify_paths: '<p>Some directives require you to specify a path or set of paths to keys or strings in the file. A path is a slash-separated string which uses Xpath-like syntax (although it''s not Xpath.). The nodes separator is always <code>/</code> (slash).</p><p>Wildcards are allowed in path definitions.<p><ul><li>If no wildcards, then the path identifies a single node and all its children ("exact subpath").</li><li>If wildcards, then a path identifies a set of nodes and all their children ("path pattern"). Currently, only the <code>*</code> (asterisk) wildcard is implemented, which means "one or more nodes with any names".</li><li>Exact subpaths have precedence over path patterns.</li></ul><p>For example, in the following path specifications:</p><pre>[*/text, */string, system/log/text, system/log/text/details]</pre><p>Smartling processes these paths as follows:</p><ul><li><code>/description/text</code> — matches <code>*/text</code> pattern</li><li><code>/description/general/text</code> - matches <code> */text</code> pattern directly.</li><li><code>/description/text/general</code> — matches - its parent, <code>/description/text</code> , matches <code>*/text</code> pattern</li><li><code>/system/log/text</code> — matches both <code>/system/log/text</code> (exact path) and <code>*/text</code> (pattern); exact path wins</li><li><code>/system/log/text/details</code> — its parent, <code>/system/log/text</code>, matches both exact path and pattern; exact path wins</li></ul>'
-   other: '<p>New defaults for JSON handling are in place for accounts created after June 11 2015. See <a href="http://support.smartling.com/hc/en-us/articles/205589697">here</a> for details.</p><p><strong>Note:</strong> When using <a href="/pages/API/Download-Translations/">file/get</a> to download properties files from Smartling, the parameter <code>includeOriginalStrings=false</code> ensures that if no translations are available, Smartling returns an empty string. If the parameter is set to true, Smartling returns the original string.</p>'
+   other: '<p>New defaults for JSON handling are in place for accounts created after June 11 2015. See <a href="http://support.smartling.com/hc/en-us/articles/205589697">here</a> for details.</p><p>The pseudo_inflation directive is not supported as an inline directive for JSON files, however, you can still control <a href="http://support.smartling.com/hc/en-us/articles/215601957">pseudo inflation</a> for JSON files by including it as an argument in the API <a href="/pages/API/FileAPI/Upload-File/">upload request</a>. For example: <code>smartling.pseudo_inflation=70</code>will result in pseudo translation length being increased by 70 percent. Accepted values are 50-100.</p><p><strong>Note:</strong> When using <a href="/pages/API/Download-Translations/">file/get</a> to download properties files from Smartling, the parameter <code>includeOriginalStrings=false</code> ensures that if no translations are available, Smartling returns an empty string. If the parameter is set to true, Smartling returns the original string.</p>'
    directive_format: '{<br/>&nbsp;&nbsp;&nbsp;&nbsp;"smartling" : {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"directive_name" : "value",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"directive_name" : "value",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"..."<br/>&nbsp;&nbsp;&nbsp;&nbsp;},<br/>&nbsp;&nbsp;&nbsp;&nbsp;...<br/>}'
    directive_instructions: 'JSON directives are set at the top of the file, in the "smartling" node. Directives apply to the whole file and cannot be changed.'
    directives:
@@ -204,7 +219,7 @@
    smartling_identifier: 'madcap'
    download_sample: 'madcap.zip'
    resource_info: '<a href="http://www.madcapsoftware.com/products/lingo/">Madcap Lingo software</a>'
-   intro: '<p>A MadCap package is a ZIP-archive with one or more XLIFF files, optionally organized in directories.</p><p>All notes on <a href="#xliff">XLIFF processing</a> also apply to MadCap packages.</p><p><strong>Note:</strong> A MadCap archive is treated as a single file. Translated strings in the archive will be associated with the .zip file, not the individual XLIFF files.</p><p>Non-XLIFF files in the archive are excluded from processing.</p><p>Directory structure and non-XLIFF files are preserved when downloading the translated archive.</p>'
+   intro: '<p>A MadCap package is a ZIP-archive with one or more XLIFF files, optionally organized in directories.</p><p><strong>Note:</strong> A MadCap archive is treated as a single file. Translated strings in the archive will be associated with the .zip file, not the individual XLIFF files.</p><p>Non-XLIFF files in the archive are excluded from processing.</p><p>Directory structure and non-XLIFF files are preserved when downloading the translated archive.</p>'
 
 
  - file_type: 'Office Open XML'
@@ -240,7 +255,9 @@
    directive_suffix: ' --&gt'
    directives:
       - placeholder_format_custom
-
+      - pseudo_inflation
+   v3directives:
+      - sltrans
 
  - file_type: 'Plain Text'
    template: 'standard'
@@ -254,6 +271,7 @@
    directives:
       - placeholder_format_custom
       - placeholder_format
+      - pseudo_inflation
 
  - file_type: 'CSV'
    template: 'standard'
@@ -287,3 +305,4 @@
       - locales_map
       - add_utf8_bom
       - output_not_translated_row
+      - pseudo_inflation

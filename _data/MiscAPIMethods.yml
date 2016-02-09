@@ -1,10 +1,10 @@
 
 
-  - Method: 'GlossaryExportAPI'
+  - Method: 'GlossaryExport'
     Url: 'glossary/download'
     Type : 'GET'
     CurlGist: ba693af0413fe03cf6aa
-    Intro: '<p>The glossary export API allows you to export your Smartling glossary to a file.</p><p>All URLs have the following base: https://api.smartling.com/v1, and all of the following calls require both the apiKey and projectId parameter which can be found in the <a href="https://dashboard.smartling.com/settings/api">Dashboard</a>.</p><p><strong>Note:</strong>Smartling''s CSV file format is very close to Google''s <a href="https://support.google.com/translate/toolkit/answer/147854?hl=en">custom glossary format</a> and contains the following columns:</p><pre><code>term, part_of_speech, description, do_not_translate</code></pre><p>plus two columsn for each locale - the first for the translation and the second for comments:</p><pre><code>ru-RU, ru-RU-comment</code></pre>'
+    Intro: '<p>The glossary export API allows you to export your Smartling glossary to a file.</p><p>All URLs have the following base: https://api.smartling.com/v1, and all of the following calls require both the apiKey and projectId parameter which can be found in the <a href="https://dashboard.smartling.com/settings/api">Dashboard</a>.</p><p><strong>Note: </strong>Smartling''s CSV file format is very close to Google''s <a href="https://support.google.com/translate/toolkit/answer/147854?hl=en">custom glossary format</a> and contains the following columns:</p><pre><code>term, part_of_speech, description, do_not_translate</code></pre><p>plus two columsn for each locale - the first for the translation and the second for comments:</p><pre><code>ru-RU, ru-RU-comment</code></pre>'
     Parameters:
         - Name: exportType
           Required: optional

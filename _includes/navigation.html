@@ -1,226 +1,207 @@
-
 <div class="main-nav" id="main-nav">
-<ul class="nav">
-        <li><a href="/"><i class="fa fa-home"></i> Home</a></li>
-        <li class="{% if page.url contains "/pages/API/v1" %}shown{% endif %}"><a href="/pages/API/v1"><i class="fa fa-cogs"></i> API v1</a>
-             <ul class="secondary">
+    <ul class="nav">
+        <li>    
+            <a href="/"><i class="fa fa-home"></i> Home</a>
+        </li>
+        <li class="{% if page.url contains "/pages/API/v1" %}shown{% endif %}">
+            <a href="/pages/API/v1"><i class="fa fa-cogs"></i> API v1</a>
+            <ul class="secondary">
                 <li class="">
-                    <a href="/pages/API/Getting-Started" class="title">Getting Started</a>
+                    <a href="/pages/API/v1/Getting-Started" class="title">Getting Started</a>
                 </li>
-            </ul>   
-             <ul class="secondary">
                 <li class="">
-                    <a href="/pages/API/Getting-Started/Response-Format" class="title">Response Format</a>
+                    <a href="/pages/API/v1/Getting-Started/Response-Format" class="title">Response Format</a>
                 </li>
-            </ul>
-            <ul class="secondary" >
+                <li class="{% if page.url contains "/pages/API/v1/Shell-Scripts/" %}shown{% endif %}">
+                    <a href="/pages/API/v1/Shell-Scripts"> Command Line Scripts</a>
+                </li>
+                <li class="{% if page.url contains "/pages/API/v1/SDKs/" %}shown{% endif %}">
+                    <a href="/pages/API/v1/SDKs">SDKs</a>
+                </li>
                 <li class="">
-                    <a href="/pages/API/FileAPI" class="title">File API</a>
-
-                    <ul class="nav nav-tabs nav-stacked {% if page.url contains "/pages/API/FileAPI" %}shown{% endif %} tertiary">
-
-                    {% for FAPIMethod in site.data.FAPIMethods %}
-                        <li class= "{% if page.url contains FAPIMethod.Link %}active{% endif %}"><a href="{{FAPIMethod.Link}}">{{FAPIMethod.Name}} ({{FAPIMethod.Type}})</a></li>
-                    {% endfor %}
-
+                    <a href="/pages/API/v1/FileAPI" class="title">File API</a>
+                    <ul class="{% if page.url contains "/pages/API/v1/FileAPI" %}shown{% endif %} tertiary">
+                        {% for FAPIMethod in site.data.FAPIMethods %}
+                            <li class= "{% if page.url contains FAPIMethod.Link %}active{% endif %}">
+                                <a href="{{FAPIMethod.Link}}">{{FAPIMethod.Name}} ({{FAPIMethod.Type}})</a>
+                            </li>
+                        {% endfor %}
                     </ul>
                 </li>
+                <li class="{% if page.url contains "/pages/API/v1/Glossary-Export" %} active {% endif %}">
+                    <a href="/pages/API/v1/Glossary-Export" class="title">Glossary Export</a>
+                </li>
+                <li class="{% if page.url contains "/pages/API/v1/HTML-Context" %} active {% endif %}">
+                    <a href="/pages/API/v1/HTML-Context" class="title">HTML Context</a>
+                </li>
+                <li class="{% if page.url contains "/pages/API/v1/Download-Translations" %} active {% endif %}">
+                    <a href="/pages/API/v1/Download-Translations" class="title">Download Translations</a>
+                </li>
+                <li class="{% if page.url contains "/pages/API/v1/Projects" %} active {% endif %}">
+                    <a href="/pages/API/v1/Projects" class="title">Projects</a>
+                </li>
+                <li class="{% if page.url contains "/pages/API/v1/Translation-Imports" %} active {% endif %}">
+                    <a href="/pages/API/v1/Translation-Imports" class="title">Translation Imports</a>
+                </li>
+                <li class="{% if page.url contains "/pages/API/v1/Reset-Cache" %} active {% endif %}">
+                    <a href="/pages/API/v1/Reset-Cache" class="title">Reset Cache</a>
+                </li>
             </ul>
+        </li>
+        <li class="{% if page.url contains "/pages/API/v2" %}shown{% endif %}">
+            <a href="/pages/API/v2"><i class="fa fa-cogs"></i> API v2</a>
             <ul class="secondary">
-                <li class="{% if page.url contains "/pages/API/Glossary-Export" %} active {% endif %}">
-                    <a href="/pages/API/Glossary-Export" class="title">Glossary Export</a>
+                <li class="">
+                    <a href="/pages/API/v2/New-in-v2" class="title">New in v2</a>
                 </li>
-            </ul>
-            <ul class="secondary">
-                <li class="{% if page.url contains "/pages/API/HTML-Context" %} active {% endif %}">
-                    <a href="/pages/API/HTML-Context" class="title">HTML Context</a>
+                <li class="">
+                    <a href="/pages/API/v2/Response-Format" class="title">Response Format</a>
                 </li>
-            </ul>
-             <ul class="secondary">
-                <li class="{% if page.url contains "/pages/API/Download-Translations" %} active {% endif %}">
-                    <a href="/pages/API/Download-Translations" class="title">Download Translations</a>
+                <li class="">
+                    <a href="/pages/API/v2/SDKs">SDKs</a>
                 </li>
-            </ul>
-             <ul>
-                <li class="{% if page.url contains "/pages/API/Projects" %} active {% endif %}">
-                    <a href="/pages/API/Projects" class="title">Projects</a>
+                <li class="">
+                    <a href="/pages/API/v2/Authentication" class="title">Authentication</a>
+                    <ul class="{% if page.url contains "/pages/API/v2/Authentication" %}shown{% endif %} tertiary">
+                    {% for Method in site.data.v2Methods %}
+                        {% if Method.Link contains "/pages/API/v2/Authentication" %}
+                            <li class= "{% if page.url contains Method.Link %}active{% endif %}">
+                                <a href="{{Method.Link}}">{{Method.Name}}</a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                    </ul>
                 </li>
-            </ul>
-              <ul class="secondary">
-                <li class="{% if page.url contains "/pages/API/Translation-Imports" %} active {% endif %}">
-                    <a href="/pages/API/Translation-Imports" class="title">Translation Imports</a>
-                </li>
-            </ul>
-             <ul class="secondary">
-                <li class="{% if page.url contains "/pages/API/Reset-Cache" %} active {% endif %}">
-                    <a href="/pages/API/Reset-Cache" class="title">Reset Cache (beta)</a>
+                <li class="">
+                    <a href="/pages/API/v2/FileAPI" class="title">Files</a>  
+                    <ul class="{% if page.url contains "/pages/API/v2/FileAPI" %}shown{% endif %} tertiary">
+
+                            <li class= "{% if page.url contains "/pages/API/v2/FileAPI/Upload-File/" %}active{% endif %}">
+                                <a href="/pages/API/v2/FileAPI/Upload-File/">Upload File</a>
+                            </li>
+                            <li>
+                                <a href="#Download" data-toggle="collapse">Download Tranlsated Files</a>
+                                    <ul id="Download" class="collapse {% if page.url contains "/pages/API/v2/FileAPI/Download-File/" %}in{% endif %}">
+                                        <li class= "file-2">
+                                            <a href="/pages/API/v2/FileAPI/Download-File/Original-File">Original File</a>
+                                        </li>
+                                        <li class= "file-2">
+                                            <a href="/pages/API/v2/FileAPI/Download-File/Single-Locale">Single Locale</a>
+                                        </li>
+                                        <li class= "file-2">
+                                            <a href="/pages/API/v2/FileAPI/Download-File/Multiple-Locales">Multiple Locales as .ZIP</a>
+                                        </li>
+                                        <li class= "file-2">
+                                            <a href="/pages/API/v2/FileAPI/Download-File/All-Locales">All Locales as .ZIP</a>
+                                        </li>
+                                        <li class= "file-2">
+                                            <a href="/pages/API/v2/FileAPI/Download-File/All-Locales-CSV">All Locales in one File - CSV</a>
+                                        </li>                                    
+                                    </ul>
+                            </li>
+                            <li class= "">
+                                <a href="/pages/API/v2/FileAPI/List/">List Files</a>
+                            </li>
+                            <li class= "">
+                                <a href="/pages/API/v2/FileAPI/List-File-Types/">List File Types</a>
+                            </li>
+                            <li>
+                                <a href="#Status" data-toggle="collapse">Status</a>
+                                <ul id="Status" class="collapse {% if page.url contains "/pages/API/v2/FileAPI/Status/" %}in{% endif %}">
+                                     <li class= "file-2">
+                                        <a href="/pages/API/v2/FileAPI/Status/All-Locales">All Locales</a>
+                                    </li>
+                                    <li class= "file-2">
+                                        <a href="/pages/API/v2/FileAPI/Status/Single-Locale">Single Locale / Extended Response</a>
+                                    </li>                               
+                                </ul>
+                            </li>
+
+                            <li class= "{% if page.url contains "/pages/API/v2/FileAPI/Rename/" %}active{% endif %}">
+                                <a href="/pages/API/v2/FileAPI/Rename/">Rename</a>
+                            </li>
+                            <li class= "{% if page.url contains "/pages/API/v2/FileAPI/Delete/" %}active{% endif %}">
+                                <a href="/pages/API/v2/FileAPI/Delete/">Delete</a>
+                            </li>
+                            <li>
+                                <a href="#LastModified" data-toggle="collapse">Last Modified</a>
+                                <ul id="LastModified" class="collapse {% if page.url contains "/pages/API/v2/FileAPI/Last-Modified/" %}in{% endif %}">
+                                    <li class= "file-2">
+                                        <a href="/pages/API/v2/FileAPI/Last-Modified/Single-Locale/">Single locale</a>
+                                     </li>
+                                    <li class= "file-2">
+                                        <a href="/pages/API/v2/FileAPI/Last-Modified/All-Locales/">All locales</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#AuthorizeContent" data-toggle="collapse">Authorize Content</a>
+                                <ul id="AuthorizeContent" class="collapse {% if page.url contains "/pages/API/v2/FileAPI/Authorize-Content/" %}in{% endif %}">
+                                    <li class= "file-2">
+                                        <a href="/pages/API/v2/FileAPI/Authorize-Content/List-Authorized-Locales">List Authorized Locales</a>
+                                    </li>
+                                    <li class= "file-2">
+                                        <a href="/pages/API/v2/FileAPI/Authorize-Content/Authorize">Authorize</a>
+                                    </li>
+                                    <li class= "file-2">
+                                        <a href="/pages/API/v2/FileAPI/Authorize-Content/Unauthorize">Unauthorize</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            
+                            <li class= "{% if page.url contains "/pages/API/v2/FileAPI/Import-Translations/" %}active{% endif %}">
+                                <a href="/pages/API/v2/FileAPI/Import-Translations/">Import Translations</a>
+                            </li>
+                            <li class= "{% if page.url contains "/pages/API/v2/FileAPI/Get-Translations/" %}active{% endif %}">
+                                <a href="/pages/API/v2/FileAPI/Get-Translations/">Get Translations</a>
+                            </li>
+                    </ul>
+                    
                 </li>
             </ul>
         </li>
 
-        <li class="{% if page.url contains "/pages/API/v2" %}shown{% endif %}"><a href="/pages/API/v2"><i class="fa fa-cogs"></i> API v2 (beta)</a>
-             <ul class="secondary">
-                <li class="">
-                    <a href="/pages/API/v2/New-in-v2" class="title">New in v2</a>
-                    <ul class="nav nav-tabs nav-stacked {% if page.url contains "/pages/API/New-in-v2" %}shown{% endif %} tertiary">                        
-                    </ul>
-                </li>
-                <li class="">
-                    <a href="/pages/API/v2/Response-Format" class="title">Response Format</a>
-                    <ul class="nav nav-tabs nav-stacked {% if page.url contains "/pages/API/Response-Format" %}shown{% endif %} tertiary">                        
-                    </ul>
-                </li>
-            </ul>           
-            <ul class="secondary" >
-                <li class="">
-                    <a href="/pages/API/v2/Authentication" class="title">Authentication</a>
-                    <ul class="nav nav-tabs nav-stacked {% if page.url contains "/pages/API/v2/Authentication" %}shown{% endif %} tertiary">
-                    {% for Method in site.data.v2Methods %}
-                        {% if Method.Link contains "/pages/API/v2/Authentication" %}
-                            <li class= "{% if page.url contains Method.Link %}active{% endif %}"><a href="{{Method.Link}}">{{Method.Name}}</a></li>
-                        {% endif %}
-                    {% endfor %}
-                    </ul>
-                </li>
-            </ul>
-
-
-
-            <!--<ul class="secondary" >
-                <li class="">
-                    <a href="/pages/API/v2/FileAPI" class="title">Files</a>
-                    <ul class="nav nav-tabs nav-stacked {% if page.url contains "/pages/API/v2/FileAPI" %}shown{% endif %} tertiary">
-                    {% for Method in site.data.v2Methods %}
-                        {% if Method.Link contains "/pages/API/v2/FileAPI" %}
-                            <li class= "{% if page.url contains Method.Link %}active{% endif %}"><a href="{{Method.Link}}">{{Method.Name}} ({{Method.Type}})</a></li>
-                        {% endif %}
-                    {% endfor %} 
-
-
-                    <li class= "{% if page.url contains Method.Link %}active{% endif %}"><a href="{{Method.Link}}">{{Method.Name}}</a></li>
-
-
-                    </ul>
-                </li>
-            </ul>-->
-
-                <ul class="secondary" >
-                <li class="">
-                    <a href="/pages/API/v2/FileAPI" class="title">Files</a>
-                    
-                    <ul class="nav nav-tabs nav-stacked {% if page.url contains "/pages/API/v2/FileAPI" %}shown{% endif %} tertiary">
-
-                            <li class= ""><a href="/pages/API/v2/FileAPI/Upload-File/">Upload File</a></li>
-                            <li><a>Download Tranlsated Files</a></li>
-                            <li class= "file-2"><a href="/pages/API/v2/FileAPI/Download-File/Original-File">Original File</a></li>
-                            <li class= "file-2"><a href="/pages/API/v2/FileAPI/Download-File/Single-Locale">Single Locale</a></li>
-                            <li class= "file-2"><a href="/pages/API/v2/FileAPI/Download-File/Multiple-Locales">Multiple Locales as .ZIP</a></li>
-                            <li class= "file-2"><a href="/pages/API/v2/FileAPI/Download-File/All-Locales">All Locales as .ZIP</a></li>
-                            <li class= "file-2"><a href="/pages/API/v2/FileAPI/Download-File/All-Locales-CSV">All Locales in one File - CSV</a></li>
-                            <li class= ""><a href="/pages/API/v2/FileAPI/List/">List Files</a></li>
-                            <li class= ""><a href="/pages/API/v2/FileAPI/List-File-Types/">List File Types</a></li>
-                            <li><a>Status</a></li>
-                            <li class= "file-2"><a href="/pages/API/v2/FileAPI/Status/All-Locales">All Locales</a></li>
-                            <li class= "file-2"><a href="/pages/API/v2/FileAPI/Status/Single-Locale">Single Locale / Extended Response</a></li>
-                            <li class= ""><a href="/pages/API/v2/FileAPI/Rename/">Rename</a></li>
-                            <li class= ""><a href="/pages/API/v2/FileAPI/Delete/">Delete</a></li>
-                            <li><a>Last Modified</a></li>
-                            <li class= "file-2"><a href="/pages/API/v2/FileAPI/Last-Modified/Single-Locale/">Single locale</a></li>
-                            <li class= "file-2"><a href="/pages/API/v2/FileAPI/Last-Modified/All-Locales/">All locales</a></li>
-                            <li><a>Authorize Content</a></li>
-                            <li class= "file-2"><a href="/pages/API/v2/FileAPI/Authorize-Content/List-Authorized-Locales">List Authorized Locales</a></li>
-                            <li class= "file-2"><a href="/pages/API/v2/FileAPI/Authorize-Content/Authorize">Authorize</a></li>
-                            <li class= "file-2"><a href="/pages/API/v2/FileAPI/Authorize-Content/Unauthorize">Unauthorize</a></li>
-                            <li class= ""><a href="/pages/API/v2/FileAPI/Import-Translations/">Import Translations</a></li>
-                            <li class= ""><a href="/pages/API/v2/FileAPI/Get-Translations/">Get Translations</a></li>
-                    </ul>
-                    
-                </li>
-            </ul>
-<!--
-            <ul class="secondary" >
-                <li class="">
-                    <a href="/pages/API/v2/Projects" class="title">Account &amp; Projects</a>
-                    <ul class="nav nav-tabs nav-stacked {% if page.url contains "/pages/API/v2/Projects" %}shown{% endif %} tertiary">
-                    {% for Method in site.data.v2Methods %}
-                        {% if Method.Link contains "/pages/API/v2/Projects" %}
-                            <li class= "{% if page.url contains Method.Link %}active{% endif %}"><a href="{{Method.Link}}">{{Method.Name}}</a></li>
-                        {% endif %}
-                    {% endfor %}
-                    </ul>
-                </li>
-            </ul>
-
-            <ul class="secondary" >
-                <li class="">
-                    <a href="/pages/API/v2/Content" class="title">Content</a>
-                    <ul class="nav nav-tabs nav-stacked {% if page.url contains "/pages/API/v2/Content" %}shown{% endif %} tertiary">
-                    {% for Method in site.data.v2Methods %}
-                        {% if Method.Link contains "/pages/API/v2/Content" %}
-                            <li class= "{% if page.url contains Method.Link %}active{% endif %}"><a href="{{Method.Link}}">{{Method.Name}}</a></li>
-                        {% endif %}
-                    {% endfor %}
-                    </ul>
-                </li>
-            </ul>
--->
-            <ul class="secondary" >
-                <li class="">
-                    <a href="/pages/API/v2/General-Information/Limit-and-Offset/" class="title">General Information</a>
-                </li>
-            </ul>
-            
-
         <li class="{% if page.url contains "/pages/supported-file-types" %}shown{% endif %}">
             <a href="/pages/supported-file-types"><i class="fa fa-thumbs-up"></i> Supported File Types</a>
-
-            <ul class="nav nav-tabs nav-stacked secondary">
-
+            <ul class="secondary">
                 {% for SupportedFileType in site.data.SupportedFileTypes %}
                 <li class= "{% if page.url contains SupportedFileType.link %}active{% endif %}"><a href="{{SupportedFileType.link}}">{{SupportedFileType.file_type}}</a></li>
                 {% endfor %}
             </ul>
         </li>
-        <li class="{% if page.url contains "/pages/SDKs/" %}shown{% endif %}"><a href="/pages/SDKs"><i class="fa fa-briefcase"></i> SDKs</a></li>
-        <li class="{% if page.url contains "/pages/Repository-Connector" %}shown{% endif %}"><a href="/pages/Repository-Connector/"><i class="fa fa-cloud-download"></i> Repository Connector</a>
-             <ul class="secondary">
+
+        <li class="{% if page.url contains "/pages/Repository-Connector" %}shown{% endif %}">
+            <a href="/pages/Repository-Connector/"><i class="fa fa-cloud-download"></i> Repository Connector</a>
+            <ul class="secondary">
                 <li class="{% if page.url contains "/pages/Repository-Connector/Install-and-Setup" %} active {% endif %}">
                     <a href="/pages/Repository-Connector/Install-and-Setup" class="title">Installation and Setup</a>
                 </li>
-            </ul>
-            <ul class="secondary">
                 <li class="{% if page.url contains "/pages/Repository-Connector/Repository-Configuration" %} active {% endif %}">
                     <a href="/pages/Repository-Connector/Repository-Configuration" class="title">Repository Configuration</a>
                 </li>
-            </ul>
-            <ul class="secondary">
                 <li class="{% if page.url contains "/pages/Repository-Connector/FAQ-and-Advanced" %} active {% endif %}">
                     <a href="/pages/Repository-Connector/FAQ-and-Advanced" class="title">FAQ and Advanced</a>
                 </li>
+                <li class="">
+                    <a href="http://support.smartling.com/hc/en-us/articles/204450637" class="title">Version History</a>
+                </li>
             </ul>
         </li>
-        <li class="{% if page.url contains "/pages/Shell-Scripts/" %}shown{% endif %}"><a href="/pages/Shell-Scripts"><i class="fa fa-desktop"></i> Command Line Scripts</a></li>
-        <li class="{% if page.url contains "/pages/Misc" %}shown{% endif %}"><a href="/pages/Misc"><i class="fa fa-plus-circle"></i> Misc</a>
-             <ul class="secondary">
+
+        <li class="{% if page.url contains "/pages/Misc" %}shown{% endif %}">
+            <a href="/pages/Misc"><i class="fa fa-plus-circle"></i> Misc</a>
+            <ul class="secondary">
                 <li class="{% if page.url contains "/pages/Misc/Language-Identifiers" %} active {% endif %}">
                     <a href="/pages/Misc/Language-Identifiers" class="title">Language Identifiers</a>
                 </li>
-            </ul>
-            <ul class="secondary">
                 <li class="{% if page.url contains "/pages/Misc/Ruby-Localization" %} active {% endif %}">
                     <a href="/pages/Misc/Ruby-Localization" class="title">Ruby Localization</a>
                 </li>
-            </ul>
-            <ul class="secondary">
                 <li class="{% if page.url contains "/pages/Misc/CSV-Download" %} active {% endif %}">
                     <a href="/pages/Misc/CSV-Download" class="title">CSV Download Options</a>
                 </li>
             </ul>
         </li>
-
-</ul>
+    </ul>
 </div>
-
-
-
 

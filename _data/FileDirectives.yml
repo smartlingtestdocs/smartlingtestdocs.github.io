@@ -122,7 +122,7 @@
     Values:         '<code>true</code> OR <code>false</code>'
     Description:    'If this directive is set to <code>true</code>, any comment in the file is ingested as an instruction for the next string.'
     Examples:
-        - Code: '&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;<br/>&lt;!-- smartling.instruction_comments_enabled = on --&gt;<br/>&lt;resources&gt;<br/>&lt;!-- Instruction for string1 --&gt;<br/>&nbsp;&lt;string name=&quot;string1&quot;&gt;string1&lt;/string&gt;'
+        - Code: '&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;<br/>&lt;!-- smartling.instruction_comments_enabled = true --&gt;<br/>&lt;resources&gt;<br/>&lt;!-- Instruction for string1 --&gt;<br/>&nbsp;&lt;string name=&quot;string1&quot;&gt;string1&lt;/string&gt;'
           Block: 'yes'
           Description: 'Smartling will capture String1 with the instruction "Instruction for String1"'
 
@@ -246,7 +246,12 @@
         - Code: 'smartling.xliff_tags_to_placeholder = g, mrk'
           Description: 'Content inside <code>g</code> and <code>mrk</code> tags will be captured as placeholders.'
 
-
+  - Directive:      'pseudo_inflation'
+    Values:         '<em>int</em> - Accepted values are 50-100'
+    Description:    'Sets the percentage by which original strings are inflated when downloading <a href="http://support.smartling.com/hc/en-us/articles/215601957">pseudo translations</a>. If this directive is not set, pseudo translations are 30 percent longer than the original strings.'
+    Examples:
+        - Code: 'smartling.pseudo_inflation = 80'
+          Description: 'Downloaded pseudo translations will increase the length of original strings by 80 percent.'
 
 
 

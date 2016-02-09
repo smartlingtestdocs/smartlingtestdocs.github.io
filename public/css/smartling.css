@@ -210,6 +210,11 @@ html {
   border: none;
   color: none;
 }
+.main-nav ul .tertiary > li > ul > li > a {
+  padding-left: 90px;
+  border: none;
+  color: none;
+}
 .main-nav ul .tertiary a:hover {
   background-color: #5d686a;
   border: none;
@@ -236,7 +241,7 @@ html {
   text-align: center;
   background-color: #000;
   overflow: auto;
-  width: 270px;
+  width: 300px;
   position: fixed;
   top: 0;
   bottom: 0;

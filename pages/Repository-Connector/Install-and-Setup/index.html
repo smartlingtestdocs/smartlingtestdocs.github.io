@@ -36,7 +36,7 @@ title:  Repository Connector - Install and Configure
 <h4>Install the connector</h4>
 
 <p>
-Download the <a href="https://smartling-connector-public.s3.amazonaws.com/repo_connector/repo-connector-1.4.3-bin.zip" rel="nofollow">Repository Connector package</a>
+Download the <a href="https://smartling-connector-public.s3.amazonaws.com/repo_connector/repo-connector-1.4.5-bin.zip" rel="nofollow">Repository Connector package</a>
     and unpack it into the desired folder. The application should be hosted on a server that is continuously available and publicly addressable, with Java
     version 7 or higher.
 </p>
@@ -155,26 +155,7 @@ Download the <a href="https://smartling-connector-public.s3.amazonaws.com/repo_c
                 </p>
             </li>
         </ul>
-
-        <li dir="ltr">
-            <p dir="ltr">
-                <code>downloadTranslations</code> - Settings for downloading tranlsated files from Smartling.
-            </p>
-        </li>
-        <ul>
-            <li dir="ltr">
-                <p dir="ltr">
-                    <code>trigger</code> - <code>COMPLETED</code> or <code>ONCHANGE</code> - determines when to download translated files from Smartling. <code>COMPLETED</code> downloads files only when all translations are complete. <code>ONCHANGE</code> downloads translated files whenever they are updated. Default is <code>COMPLETED.</code>
-                </p>
-            </li>
-            <li dir="ltr">
-                <p dir="ltr">
-                    <code>retrievalType</code> - Sets type of translation for downloaded files. Allowed values are <code>PUBLISHED</code> (default), <code>PENDING</code>, and <code>PSEUDO</code>. See <a href="http://docs.smartling.com/pages/API/FileAPI/Download-File/">Download Files</a> for more information on retrieval type.
-                </p>
-            </li>
-        </ul>
         
-
         <li dir="ltr">
             <p dir="ltr">
                 Other authentication options are included in the example file.

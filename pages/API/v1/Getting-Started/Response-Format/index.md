@@ -1,7 +1,9 @@
 ---
 layout: page
 title:  Response Format
-redirect_from: "/display/docs/Response+Format/"
+redirect_from: 
+  - "/display/docs/Response+Format/"
+  - "/pages/API/Response-Format"
 ---
 
 <p>Responses are encoded into a generalized JSON structure with three basic properties: a response code, messages describing any errors that occurred during processing and a custom data object.</p>

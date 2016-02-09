@@ -2,9 +2,9 @@
   - Method : UploadFile
     Name: 'Upload File'
     Url: /file/upload
-    Link: "/pages/API/FileAPI/Upload-File/"
+    Link: "/pages/API/v1/FileAPI/Upload-File/"
     Type : POST
-    Intro: '<p>Uploads original source content to Smartling (50MB limit for .ppt, .pptx; 25MB limit for .idml; 20MB limit for .doc, .docx; and 10MB limit for all others).</p><h4>''Resource Locked'' errors</h4><p>Uploading files can take some time, especially if the file is very large, or if it contains a high number of strings. Attempting another API request related to the file, such as a <a href="/pages/API/FileAPI/Download-File/">Download</a> or <a href="/pages/API/FileAPI/Status/">Status</a> request, before upload is complete will return a <code>423 - Resource Locked</code> <a href="/pages/API/Getting-Started/Response-Format/">error</a> in order to prevent incorrect information being returned due to an incomplete upload. Smartling manages incoming requests intelligently to minimize the time that a file will be locked. However, if you work with large files, we recommend building wait/retry mechanisms into any processes that request recently uploaded files.'
+    Intro: '<p>Uploads original source content to Smartling (50MB limit for .ppt, .pptx; 25MB limit for .idml; 20MB limit for .doc, .docx, and madcap; and 10MB limit for all others).</p><h4>''Resource Locked'' errors</h4><p>Uploading files can take some time, especially if the file is very large, or if it contains a high number of strings. Attempting another API request related to the file, such as a <a href="/pages/API/FileAPI/Download-File/">Download</a> or <a href="/pages/API/FileAPI/Status/">Status</a> request, before upload is complete will return a <code>423 - Resource Locked</code> <a href="/pages/API/Getting-Started/Response-Format/">error</a> in order to prevent incorrect information being returned due to an incomplete upload. Smartling manages incoming requests intelligently to minimize the time that a file will be locked. However, if you work with large files, we recommend building wait/retry mechanisms into any processes that request recently uploaded files.'
     CurlGist: 544f2205cc2e01784b74
     RubyGist: 24cf07a8ee9895311f31
     PHPGist:  
@@ -37,7 +37,7 @@
 
         - Name: fileType
           Required: required
-          Description: 'Unique identifier for the file type. Permitted values: android, ios, gettext, html, javaProperties, yaml, xliff, xml, json, docx, pptx, xlsx, idml, qt, resx, plaintext, cvs, stringsdict.'
+          Description: 'Unique identifier for the file type. Permitted values: android, ios, gettext, html, javaProperties, yaml, xliff, xml, json, docx, pptx, xlsx, idml, qt, madcap, resx, plaintext, cvs, stringsdict.'
           
         - Name: smartling.namespace
           Required: optional
@@ -69,7 +69,7 @@
   - Method : DownloadFiles
     Name: 'Download Files'
     Url: /file/get
-    Link: "/pages/API/FileAPI/Download-File/"
+    Link: "/pages/API/v1/FileAPI/Download-File/"
     Type : GET
     Intro: '<p>Downloads the requested file from Smartling.</p><p>It is important to check the HTTP response status code. If Smartling finds and returns the file normally, you will receive a 200 SUCCESS response. If you receive any other response status code than 200, the requested file will not be part of the response.</p><p>When you upload a UTF-16 character encoded file, then /file/get requests for that file will have a character encoding of UTF-16. All other uploaded files will return with a character encoding of UTF-8.</p><p>You can always use the content-type header in the response of a file/get request can always to determine the character encoding.</p>'
     CurlGist: 841003d3fec06c30e9af
@@ -123,7 +123,7 @@
   - Method: List
     Name: 'List'
     Url: /file/list
-    Link: "/pages/API/FileAPI/List/"
+    Link: "/pages/API/v1/FileAPI/List/"
     Type : GET
     Intro: 'Lists recently uploaded files. Returns a maximum of 500 files.'
     CurlGist: c56b65d0e517a584aa1c
@@ -201,7 +201,7 @@
   - Method: Status
     Name: 'Status'
     Url: /file/status
-    Link: "/pages/API/FileAPI/Status/"
+    Link: "/pages/API/v1/FileAPI/Status/"
     Type : GET
     CurlGist: 66243591ce9d0597afc6
     RubyGist: 1382ad68957bcb286efd
@@ -247,7 +247,7 @@
   - Method: Rename
     Name: 'Rename'
     Url: /file/rename
-    Link: "/pages/API/FileAPI/Rename/"
+    Link: "/pages/API/v1/FileAPI/Rename/"
     Type : POST
     Intro: 'Renames an uploaded file by changing the fileUri. After renaming the file, the file will only be identified by the new fileUri you provide.'
     CurlGist: 9ab484ace2fde35fa028
@@ -272,7 +272,7 @@
   - Method: Delete
     Name: 'Delete'
     Url: /file/delete
-    Link: "/pages/API/FileAPI/Delete/"
+    Link: "/pages/API/v1/FileAPI/Delete/"
     Type : DELETE
     Intro: '<p>Removes the file from Smartling. The file will no longer be available for download. Any complete translations for the file remain available for use within the system.</p><p>Smartling deletes files asynchronously and it typically takes a few minutes to complete. While deleting a file, you can not upload a file with the same fileUri.</p>'
     CurlGist: 8c293ba56605a38f0345
@@ -292,7 +292,7 @@
   - Method: LastModified
     Name: 'Last Modified'
     Url: file/last_modified
-    Link: "/pages/API/FileAPI/Last-Modified/"
+    Link: "/pages/API/v1/FileAPI/Last-Modified/"
     Type : GET
     Intro: '<p>Returns information about when a file was last modified for a particular locale, and allows you to filter by lastModified date and/or locale so that you can download only those files changed since their last download.</p><p><strong>Note:</strong></p><ul><li>The <code>lastModified</code> parameter can be updated for several reasons and may not reflect a new published translation. This means that you may not see changes in a downloaded file, even if the lastModified date is later than your most recent download. The <a href="http://docs.smartling.com/pages/API/FileAPI/#DownloadFiles">retrievalType</a> you have chosen will also affect whether a change will affect downloaded files. For example, if a new translation is saved, but not published, <code>lastModified</code> will be updated, but the downloaded file will only change if you have set your <code>retrievalType</code> to <code>pending</code>, not <code>published</code>.</li><li>When you add a new file, the lastModified date will originally be the creation date of the file. When you add a new locale, the lastModified date will originally be the date the site locale was added.</li></ul>'
     CurlGist: 73b2dffebc0dec2c51b8
@@ -328,3 +328,31 @@
           - Name: lastModified
             Description: 'The time and date the file was last modified - YYYY-MM-DDThh:mm:ss.'
 
+  - Method: GetTranslations
+    Name: 'Get Translations'
+    Url: file/get-translations
+    Link: "/pages/API/v1/FileAPI/Get-Translations/"
+    Type : POST
+    Intro: '<p>Temporarily uploads a file, then returns a translated version for requested locales.</p><p>This call can be used instead of a standard upload/download if you keep different versions of a file in multiple branches or are triggering rebuilds, and don’t want your files in Smartling to be overwritten by out-of-date versions of a file.</p><p>To use the call, you upload a file and identify the Smartling URI where the main version of that file is saved. Smartling will match strings shared between the uploaded file and the main file and return any available translations.</p>'
+    CurlGist: 67d940acc5bf5b3afe21
+    RubyGist: 
+    PHPGist:  
+    JavaGist: 
+    CsharpGist: 
+    PythonGist: 
+    Parameters:
+
+        - Name: file
+          Required: required
+          Description: 'The file contents to upload. This should be submitted via a multipart/form-data POST request.'
+
+        - Name: fileUri
+          Required: required
+          Description: 'Identifies an existing file in Smartling. Smartling will create namespace, directives and instructions for the temporary file based on this file.'
+
+        - Name: locale
+          Required: optional
+          Description: 'Filters the response to only the specified locale. You can find the list of locale codes for your project in the <a href="https://dashboard.smartling.com/settings/api">Smartling Dashboard</a>. The <code>all</code> value is supported for <a href="/pages/Misc/CSV-Download/">CSV files</a>'          
+
+    Return:
+        String: '<code>200 OK<br/>HEADER:<br/>Content-Disposition: attachment; filename=&quot;fname.ext&quot;<br/>translated file contents</code>'

@@ -1220,57 +1220,55 @@
         - Name: locales
           Description: 'Array of locales the file is authorized for'
 
-  -  Method: Authorize
-     Name: 'Authorize'
-     Url: '/files-api/v2/projects/{projectId}/file/authorized-locales'
-     Link: '/pages/API/v2/FileAPI/Authorize-Content/Authorize'
-     Type : PUT / POST
-     Intro: 'Authorize a file for translation in the specified locales.'
-     CurlGist: 
-     RubyGist: 
-     PHPGist:  
-     JavaGist: 
-     CsharpGist: 
-     PythonGist: 
-     Parameters:
-         - Name: fileUri
-           Required: required
-           Description: 'Value that uniquely identifies the file.'
+  - Method: Authorize
+    Name: 'Authorize'
+    Url: '/files-api/v2/projects/{projectId}/file/authorized-locales'
+    Link: '/pages/API/v2/FileAPI/Authorize-Content/Authorize'
+    Type : PUT / POST
+    Intro: 'Authorize a file for translation in the specified locales.'
+    CurlGist: 
+    RubyGist: 
+    PHPGist:  
+    JavaGist: 
+    CsharpGist: 
+    PythonGist: 
+    Parameters:
+      - Name: fileUri
+        Required: required
+        Description: 'Value that uniquely identifies the file.'
 
-     Parameters:
-         - Name: 'localeIds[]'
-           Type: array
-           Required: required
-           Description: 'Smartling codes for the locales to authorize'
+      - Name: 'localeIds[]'
+        Type: array
+        Required: required
+        Description: 'Smartling codes for the locales to authorize'
 
-     Return:
-         String: 'Smartling returns a standard response format. The response will contain a SUCCESS response code indicating the authorization / unauthorization is complete. The response includes no data.'
+    Return:
+        String: 'Smartling returns a standard response format. The response will contain a SUCCESS response code indicating the authorization / unauthorization is complete. The response includes no data.'
 
-  -  Method: Unauthorize
-     Name: 'Unauthorize'
-     Url: '/files-api/v2/projects/{projectId}/file/authorized-locales'
-     Link: '/pages/API/v2/FileAPI/Authorize-Content/Unauthorize'
-     Type : DELETE
-     Intro: 'Unauthorize a file for translation in the specified locales.'
-     CurlGist: 
-     RubyGist: 
-     PHPGist:  
-     JavaGist: 
-     CsharpGist: 
-     PythonGist: 
-     Parameters:
-         - Name: fileUri
-           Required: required
-           Description: 'Value that uniquely identifies the file.'
+  - Method: Unauthorize
+    Name: 'Unauthorize'
+    Url: '/files-api/v2/projects/{projectId}/file/authorized-locales'
+    Link: '/pages/API/v2/FileAPI/Authorize-Content/Unauthorize'
+    Type : DELETE
+    Intro: 'Unauthorize a file for translation in the specified locales.'
+    CurlGist: 
+    RubyGist: 
+    PHPGist:  
+    JavaGist: 
+    CsharpGist: 
+    PythonGist: 
+    Parameters:
+        - Name: fileUri
+          Required: required
+          Description: 'Value that uniquely identifies the file.'
 
-     Parameters:
-         - Name: 'localeIds[]'
-           Type: array
-           Required: required
-           Description: 'Smartling codes for the locales to unauthorize.'
+        - Name: 'localeIds[]'
+          Type: array
+          Required: required
+          Description: 'Smartling codes for the locales to unauthorize.'
 
-     Return:
-         String: 'Smartling returns a standard response format. The response will contain a SUCCESS response code indicating the authorization / unauthorization is complete. The response includes no data.'
+    Return:
+        String: 'Smartling returns a standard response format. The response will contain a SUCCESS response code indicating the authorization / unauthorization is complete. The response includes no data.'
 
   - Method: GetTranslations
     Name: 'Get Translations'
