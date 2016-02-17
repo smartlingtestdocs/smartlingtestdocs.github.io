@@ -1,0 +1,77 @@
+  - Method: CreateIssue
+    Name: 'Create Issue'
+    Url: '/issues-api/v1/projects/{projectId}/issues'
+    Link: ""
+    Type : POST
+    Intro: 'Creates a new issue for a string.'
+    CurlGist: 
+    RubyGist: 
+    PHPGist:  
+    JavaGist: 
+    CsharpGist: 
+    PythonGist: 
+    Parameters:
+        - Name: issueTypeCode
+          Required: 
+          Description: 'Type of issue. Either <code>SOURCE</code> or <code>TRANSLATION</code>.'
+
+        - Name: issueSubTypeCode
+          Required: 
+          Description: 'See [link] for allowed Sub-Types'
+
+        - Name: string.hashcode
+          Required: 
+          Description: ''          
+
+    Return:
+        String: 
+        Json: ''
+        Parameters:
+
+          - Name: 
+            Description: 
+
+          - Name: 
+            Description: 
+
+          - Name: 
+            Description: ''
+
+              - Method: 
+    Name: ''
+    Url: 
+    Link: ""
+    Type : 
+    Intro: ''
+    CurlGist: 
+    RubyGist: 
+    PHPGist:  
+    JavaGist: 
+    CsharpGist: 
+    PythonGist: 
+    Parameters:
+        - Name: 
+          Required: 
+          Description: ''
+
+        - Name: 
+          Required: 
+          Description: ''
+
+        - Name: 
+          Required: 
+          Description: ''          
+
+    Return:
+        String: 
+        Json: ''
+        Parameters:
+
+          - Name: 
+            Description: 
+
+          - Name: 
+            Description: 
+
+          - Name: 
+            Description: ''

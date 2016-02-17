@@ -1,0 +1,38 @@
+  - Method: 
+    Name: ''
+    Url: 
+    Link: ""
+    Type : 
+    Intro: ''
+    CurlGist: 
+    RubyGist: 
+    PHPGist:  
+    JavaGist: 
+    CsharpGist: 
+    PythonGist: 
+    Parameters:
+        - Name: 
+          Required: 
+          Description: ''
+
+        - Name: 
+          Required: 
+          Description: ''
+
+        - Name: 
+          Required: 
+          Description: ''          
+
+    Return:
+        String: 
+        Json: ''
+        Parameters:
+
+          - Name: 
+            Description: 
+
+          - Name: 
+            Description: 
+
+          - Name: 
+            Description: ''
