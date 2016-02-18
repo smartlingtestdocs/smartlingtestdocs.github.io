@@ -18,8 +18,8 @@ title: Issues API
 	    <div class="panel panel-default">
         <div class="panel-heading">Parameters</div>
         <div class="panel-body">
-        {% assign IssueParameters = site.data.IssueParameters | sort: 'Name' %}
-        {% for Parameter in IssueParameters%}
+
+        {% for Parameter in site.data.IssueParameters%}
             <div>
                 <h4>{{Parameter.Name}}</h4>
 
