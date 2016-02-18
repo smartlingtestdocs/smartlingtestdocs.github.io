@@ -1,4 +1,12 @@
+#Request and Response Parameters
+
     Parameters:
+        - Name: 'projectId'
+          Description: 'Unique identifier for a Smartling project containing an issue. Project ID can be found on the API page of the Smartling Dashboard.'
+
+        - Name: 'issueUid'
+          Description: 'Unique identifier for an issue within a Smartling project.'
+
         - Name: 'issueTypeCode & issueSubType Code'
           Description: '<p>Identifies the issue type. issueTypeCode is either <code>SOURCE</code> or <code>TRANSLATION</code>. Each have their own set of issueSubType values:</p><ul><li>SOURCE<ul><li>CLARIFICATION</li><li>MISSPELLIGN</li></ul></li><li>TRANSLATION<ul><li>POOR_TRANSLATION</li><li>DOES_NOT_FIT_SPACE</li><li>PLACEHOLDER_ISSUE</li><li>GENERAL_ISSUE</li><li>REVIEW_TRANSLATION</li></ul></li></ul>'
 
@@ -10,6 +18,9 @@
 
         - Name: 'issueStateCode'
           Description: 'Either <code>OPENED</code> or <code>RESOLVED</code>.'
+
+        - Name: 'issueText'
+          Description: 'Free text field explaining an issue.a'
 
         - Name: 'commentText'
           Description: 'Text of a comment on an issue.'
@@ -38,67 +49,15 @@
         - Name: 'createdDate'
           Description: 'Date an issue was created.'
 
-        - Name: ''
-          Description: ''
+        - Name: 'resolvedDate'
+          Description: 'Date an issue was closed.'
 
-        - Name: ''
-          Description: ''
+        - Name: 'sourceLocale'
+          Description: 'The Smartling locale code for the source language of a string with an issue'
 
-        - Name: ''
-          Description: ''
+        - Name: 'targetLocale'
+          Description: 'The Smartling locale code for the target language for a string with a translation issue'
 
-        - Name: ''
-          Description: ''
-
-        - Name: ''
-          Description: ''
-
-        - Name: ''
-          Description: ''
-
-        - Name: ''
-          Description: ''
-
-        - Name: ''
-          Description: ''
-
-        - Name: ''
-          Description: ''
-
-        - Name: ''
-          Description: ''
-
-        - Name: ''
-          Description: ''
-
-        - Name: ''
-          Description: ''
-
-        - Name: ''
-          Description: ''
-
-        - Name: ''
-          Description: ''
-
-        - Name: ''
-          Description: ''
-
-        - Name: ''
-          Description: ''
-
-        - Name: ''
-          Description: ''
-
-        - Name: ''
-          Description: ''
-
-        - Name: ''
-          Description: ''
-
-        - Name: ''
-          Description: ''
-
-\\\
 
 
 

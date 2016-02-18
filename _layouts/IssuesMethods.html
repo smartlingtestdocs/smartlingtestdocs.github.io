@@ -1,0 +1,35 @@
+---
+layout: default
+---
+
+<div class="page">
+{% for Method in site.data.v1IssuesMethods %}
+    {% if Method.Method == page.method %}
+
+    
+          <a class="anchor" id="{{Method.Method}}"></a>
+          <h2>{{Method.Name}}<br/>({{Method.Url}})</h2>
+           <p>{{Method.Intro}}</p>
+
+    {% if Method.Type != 'GET' %}
+    <div>
+        <h4>Sample Request Data</h4>
+        <pre><code>{{Method.Request.Json}}</code></pre>
+    </div>
+    {% endif %}
+
+    <div>
+        <h4>Sample Response Data</h4>
+        <pre><code>{{Method.Return.Json}}</code></pre>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">Examples</div>
+        <div class="panel-body">
+            {% include v2CodeExamples.html %}
+        </div>
+        <br/>
+    </div>
+
+    {% endif %}
+{% endfor %}
+</div>
