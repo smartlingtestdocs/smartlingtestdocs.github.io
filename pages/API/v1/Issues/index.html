@@ -3,7 +3,42 @@ layout: page
 title: Issues API
 ---
 
-<p>Test</p>
+<p>Issues are a way for Content Owners and Translation Resources to communicate about translation work. Each Issue is attached to one unique string in a Smartling project. An issue is either Open or Closed and can have any number of user comments attached. For more information about how Issues work in the Smartling Dashboard, see our user documentation.</p>
+
+<p>Smartling’s Issues API provides methods for Creating issues, changing the state of an issue, commenting on an issue and requesting detailed information and reports on issues and comments.</p>
+
+<h4>Authentication</h4>
+**Need to provide notes on how to authenticate for these calls**
+
+<h4>Parameter Dictionary</h4>
+
+<p>The following parameters may be used in Issues API requests and responses. See the pages for each method to find which parameters are available for that method.</p>
+		
+
+	    <div class="panel panel-default">
+        <div class="panel-heading">Parameters</div>
+        <div class="panel-body">
+		{% assign Parameters = site.data.IssueParameters.Parameters | sort: 'Name' %}
+        {% for Parameter in Parameters%}
+            <div>
+                <h4>{{Parameter.Name}}</h4>
+
+
+                <p>{{Parameter.Description}}</p>
+
+                {% if Parameter.Values.size > 0 %}
+                <table class="table">
+                {% for Value in Parameter.Values %}
+                    <tr>
+                        <th>{{Value.Value}} {% if Value.Default == 'YES' %}(default){% endif %}</th> <td>{{Value.Description}}</td>
+                    </tr>
+                {% endfor %}
+                </table>
+                {% endif %}
+            </div>
+        {% endfor %}
+        </div>
+    </div>
 
 
 

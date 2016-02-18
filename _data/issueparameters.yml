@@ -1,6 +1,6 @@
-#Request and Response Parameters
 
     Parameters:
+
         - Name: 'projectId'
           Description: 'Unique identifier for a Smartling project containing an issue. Project ID can be found on the API page of the Smartling Dashboard.'
 
@@ -31,7 +31,7 @@
         - Name: 'createdDateAfter'
           Description: 'Searches for Issues created after a given date. See <a href="/pages/API/v2#DateFormat">Date Format</a> for details.'
 
-        - Name: 'Offset / Limit'
+        - Name: 'offset / limit'
           Description: 'Determines page size for large result sets. See <a href="/pages/API/v2/General-Information/Limit-and-Offset/">Limit and Offset</a>'
 
         - Name: 'resolvedByUserUid'
@@ -42,9 +42,6 @@
 
         - Name: 'active'
           Description: 'Boolean - True if the issue has not been closed'
-
-
-#Response Only
 
         - Name: 'createdDate'
           Description: 'Date an issue was created.'
