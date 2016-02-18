@@ -19,6 +19,167 @@ title: Issues API
         <div class="panel-heading">Parameters</div>
         <div class="panel-body">
 
+ <div>
+                <h4>projectId</h4>
+
+
+                <p>Unique identifier for a Smartling project containing an issue. Project ID can be found on the API page of the Smartling Dashboard.</p>
+
+                
+            </div>
+        
+            <div>
+                <h4>issueUid</h4>
+
+
+                <p>Unique identifier for an issue within a Smartling project.</p>
+
+                
+            </div>
+        
+            <div>
+                <h4>issueTypeCode & issueSubType Code</h4>
+
+
+                <p><p>Identifies the issue type. issueTypeCode is either <code>SOURCE</code> or <code>TRANSLATION</code>. Each have their own set of issueSubType values:</p><ul><li>SOURCE<ul><li>CLARIFICATION</li><li>MISSPELLIGN</li></ul></li><li>TRANSLATION<ul><li>POOR_TRANSLATION</li><li>DOES_NOT_FIT_SPACE</li><li>PLACEHOLDER_ISSUE</li><li>GENERAL_ISSUE</li><li>REVIEW_TRANSLATION</li></ul></li></ul></p>
+
+                
+            </div>
+        
+            <div>
+                <h4>hashcode/hashcodes</h4>
+
+
+                <p>Unique identifier for a string in Smartling. Used by the Issues API to attach an issue to a string. Depending on the request, may be a single value or an array.</p>
+
+                
+            </div>
+        
+            <div>
+                <h4>localeId/localeIds</h4>
+
+
+                <p>An identifying code for a language in Smartling. See the <a href="/pages/Misc/Language-Identifiers/">full list of locale codes</a>.Depending on the request, may be a single value or an array.</p>
+
+                
+            </div>
+        
+            <div>
+                <h4>issueStateCode</h4>
+
+
+                <p>Either <code>OPENED</code> or <code>RESOLVED</code>.</p>
+
+                
+            </div>
+        
+            <div>
+                <h4>issueText</h4>
+
+
+                <p>Free text field explaining an issue.a</p>
+
+                
+            </div>
+        
+            <div>
+                <h4>commentText</h4>
+
+
+                <p>Text of a comment on an issue.</p>
+
+                
+            </div>
+        
+            <div>
+                <h4>createdDateBefore</h4>
+
+
+                <p>Searches for Issues created before a given date. See <a href="/pages/API/v2#DateFormat">Date Format</a> for details.</p>
+
+                
+            </div>
+        
+            <div>
+                <h4>createdDateAfter</h4>
+
+
+                <p>Searches for Issues created after a given date. See <a href="/pages/API/v2#DateFormat">Date Format</a> for details.</p>
+
+                
+            </div>
+        
+            <div>
+                <h4>offset / limit</h4>
+
+
+                <p>Determines page size for large result sets. See <a href="/pages/API/v2/General-Information/Limit-and-Offset/">Limit and Offset</a></p>
+
+                
+            </div>
+        
+            <div>
+                <h4>resolvedByUserUid</h4>
+
+
+                <p>Unique identifier for the user who closed the issue.</p>
+
+                
+            </div>
+        
+            <div>
+                <h4>reportedbyUserUid</h4>
+
+
+                <p>Unique identifier for the user who opened the issue.</p>
+
+                
+            </div>
+        
+            <div>
+                <h4>active</h4>
+
+
+                <p>Boolean - True if the issue has not been closed</p>
+
+                
+            </div>
+        
+            <div>
+                <h4>createdDate</h4>
+
+
+                <p>Date an issue was created.</p>
+
+                
+            </div>
+        
+            <div>
+                <h4>resolvedDate</h4>
+
+
+                <p>Date an issue was closed.</p>
+
+                
+            </div>
+        
+            <div>
+                <h4>sourceLocale</h4>
+
+
+                <p>The Smartling locale code for the source language of a string with an issue</p>
+
+                
+            </div>
+        
+            <div>
+                <h4>targetLocale</h4>
+
+
+                <p>The Smartling locale code for the target language for a string with a translation issue</p>
+
+
+
         {% for Parameter in site.data.IssueParameters %}
             <div>
                 <h4>{{Parameter.Name}}</h4>
