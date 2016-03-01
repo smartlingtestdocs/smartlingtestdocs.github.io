@@ -16,7 +16,21 @@ layout: default
         <h4>Sample Request Data</h4>
         <pre><code>{{Method.Request.Json}}</code></pre>
     </div>
+    
+    {% if Method.Required %}
+    {% if Method.Required = 'ALL' %}
+    <p>All parameters are required</p>
+    {% elsif Method.Required = 'NONE' %}
+    <p>All parameters are optional</p>
+    {% else %}
+    <p>Required parameters are:</p>
+    <ul>
+        {% for Required in Method.Required %}
+        <li><code>{{Required}}</code></li>
+        {% endfor %}
     {% endif %}
+    {% endif %}
+    </ul>
 
     <div>
         <h4>Sample Response Data</h4>

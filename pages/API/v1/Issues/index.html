@@ -3,12 +3,14 @@ layout: page
 title: Issues API
 ---
 
-<p>Issues are a way for Content Owners and Translation Resources to communicate about translation work. Each Issue is attached to one unique string in a Smartling project. An issue is either Open or Closed and can have any number of user comments attached. For more information about how Issues work in the Smartling Dashboard, see our <a href="http://support.smartling.com/hc/en-us/articles/201921378">user documentation</a>.</p>
+<p>Issues are a way for Content Owners and Translation Resources to communicate about translation work. Each Issue is attached to one unique source string in a Smartling project. The issue is either a Source string issue or a Translation issue.  If an issue is a translation issue then it is also associated with a specific target translation language.  An issue is either Open or Closed and can have any number of user comments attached. Source Issues are visible to all resources in a project who can see the associated string.  Translation Issues are visible only to resources who work on the language.  Automatic email notifications are generated through the lifecycle of issues, depending on individual user’s profile settings.</p>
+
+<p>For more information about how Issues work in the Smartling Dashboard, see our <a href="http://support.smartling.com/hc/en-us/articles/201921378">user documentation</a>.</p>
 
 <p>Smartling’s Issues API provides methods for Creating issues, changing the state of an issue, commenting on an issue and requesting detailed information and reports on issues and comments.</p>
 
 <h4>Authentication</h4>
-**Need to provide notes on how to authenticate for these calls**
+Issues API uses OAuth 2.0 authentication. Every request must include an Outh token in the header. See <a href="/pages/API/v2/Authentication/">Authentication</a> for more information.
 
 <h4>Parameters</h4>
 
@@ -63,7 +65,7 @@ title: Issues API
                 <h4>localeId/localeIds</h4>
 
 
-                <p>An identifying code for a language in Smartling. See the <a href="/pages/Misc/Language-Identifiers/">full list of locale codes</a>.Depending on the request, may be a single value or an array.</p>
+                <p>An identifying code for a language in Smartling. See the <a href="/pages/Misc/Language-Identifiers/">full list of locale codes</a>. Depending on the request, may be a single value or an array.</p>
 
                 
             </div>
@@ -81,7 +83,7 @@ title: Issues API
                 <h4>issueText</h4>
 
 
-                <p>Free text field explaining an issue.a</p>
+                <p>Unformatted plain text field explaining an issue.a</p>
 
                 
             </div>
@@ -90,7 +92,7 @@ title: Issues API
                 <h4>commentText</h4>
 
 
-                <p>Text of a comment on an issue.</p>
+                <p>Unformatted plain text of a comment on an issue.</p>
 
                 
             </div>
@@ -117,7 +119,7 @@ title: Issues API
                 <h4>offset / limit</h4>
 
 
-                <p>Determines page size for large result sets. See <a href="/pages/API/v2/General-Information/Limit-and-Offset/">Limit and Offset</a></p>
+                <p>Determines the number of results returned and index offset for large result sets. See <a href="/pages/API/v2/General-Information/Limit-and-Offset/">Limit and Offset</a></p>
 
                 
             </div>
@@ -144,7 +146,7 @@ title: Issues API
                 <h4>active</h4>
 
 
-                <p>Boolean - True if the issue has not been closed</p>
+                <p>Boolean - <code>true</code> if the string the issue is associated with is active in the Smartling Project, <code>false</code> if the string is inactive.</p>
 
                 
             </div>
@@ -162,7 +164,7 @@ title: Issues API
                 <h4>resolvedDate</h4>
 
 
-                <p>Date an issue was closed.</p>
+                <p>Date an issue was most recently closed.</p>
 
                 
             </div>
