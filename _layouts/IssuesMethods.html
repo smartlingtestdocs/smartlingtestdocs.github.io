@@ -8,7 +8,8 @@ layout: default
 
     
           <a class="anchor" id="{{Method.Method}}"></a>
-          <h2>{{Method.Name}}<br/>({{Method.Url}})</h2>
+          <h2>{{Method.Name}} ({{Method.Type}})<br/>({{Method.Url}})</h2>
+          <p></p>
            <p>{{Method.Intro}}</p>
 
     {% if Method.Type != 'GET' %}
@@ -17,20 +18,21 @@ layout: default
         <pre><code>{{Method.Request.Json}}</code></pre>
     </div>
     
-    {% if Method.Required %}
-    {% if Method.Required = 'ALL' %}
+    {% if Method.Request.Required %}
+    {% if Method.Request.Required == 'ALL' %}
     <p>All parameters are required</p>
-    {% elsif Method.Required = 'NONE' %}
+    {% elsif Method.Request.Required == 'NONE' %}
     <p>All parameters are optional</p>
     {% else %}
     <p>Required parameters are:</p>
     <ul>
-        {% for Required in Method.Required %}
+        {% for Required in Method.Request.Required %}
         <li><code>{{Required}}</code></li>
         {% endfor %}
-    {% endif %}
-    {% endif %}
     </ul>
+    {% endif %}
+    {% endif %}
+    {% endif %}
 
     <div>
         <h4>Sample Response Data</h4>
