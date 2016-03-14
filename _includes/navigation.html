@@ -46,70 +46,7 @@
                 <li class="{% if page.url contains "/pages/API/v1/Reset-Cache" %} active {% endif %}">
                     <a href="/pages/API/v1/Reset-Cache" class="title">Reset Cache</a>
                 </li>
-                <li class="">
-                    <a href="/pages/API/v1/Issues" class="title">Issues</a>
-                    <ul class="{% if page.url contains "/pages/API/v1/Issues" %}shown{% endif %} tertiary">
-                        <li>
-                            <a href="#Dictionaries" data-toggle="collapse">Dictionaries</a>
-                            <ul id="Dictionaries" class="collapse {% if page.url contains "/pages/API/v1/Issues/Dictionaries" %}in{% endif %}">
-                                <li class= "file-2">
-                                    <a href="/pages/API/v1/Issues/Dictionaries/Get-Issue-Types">Get Issue Types</a>
-                                </li>
-                                <li class= "file-2">
-                                    <a href="/pages/API/v1/Issues/Dictionaries/Get-Issue-States">Get Issue States</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#ManageIssues" data-toggle="collapse">Manage Issues</a>
-                            <ul id="ManageIssues" class="collapse {% if page.url contains "/pages/API/v1/Issues/Manage-Issues" %}in{% endif %}">
-                                <li class= "file-2">
-                                    <a href="/pages/API/v1/Issues/Manage-Issues/Create-Issue">Create Issue</a>
-                                </li>
-                                <li class= "file-2">
-                                    <a href="/pages/API/v1/Issues/Manage-Issues/Open-Close-Issue">Open or Close Issue</a>
-                                </li>
-                                <li class= "file-2">
-                                    <a href="/pages/API/v1/Issues/Manage-Issues/Get-Issue-Details">Get Issue Details</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#ManageComments" data-toggle="collapse">Manage Comments</a>
-                            <ul id="ManageComments" class="collapse {% if page.url contains "/pages/API/v1/Issues/Manage-Comments" %}in{% endif %}">
-                                <li class= "file-2">
-                                    <a href="/pages/API/v1/Issues/Manage-Comments/Create-Comment">Create Comment</a>
-                                </li>
-                                <li class= "file-2">
-                                    <a href="/pages/API/v1/Issues/Manage-Comments/Get-Comments">Get Comments</a>
-                                </li>
-                                <li class= "file-2">
-                                    <a href="/pages/API/v1/Issues/Manage-Comments/Get-Comment-Details">Get Comment Details</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#SearchesAndReports" data-toggle="collapse">Searches and Reports</a>
-                            <ul id="SearchesAndReports" class="collapse {% if page.url contains "/pages/API/v1/Issues/Searches-and-Reports" %}in{% endif %}">
-                                <li class= "file-2">
-                                    <a href="/pages/API/v1/Issues/Searches-and-Reports/Find-Issues">Find Issues</a>
-                                </li>
-                                <li class= "file-2">
-                                    <a href="/pages/API/v1/Issues/Searches-and-Reports/Count-Issues">Count Issues</a>
-                                </li>
-                                <li class= "file-2">
-                                    <a href="/pages/API/v1/Issues/Searches-and-Reports/Get-Summary-Report">Get Summary Report</a>
-                                </li>
-                                <li class= "file-2">
-                                    <a href="/pages/API/v1/Issues/Searches-and-Reports/Request-Issues-Report">Request Issues Report</a>
-                                </li>
-                                <li class= "file-2">
-                                    <a href="/pages/API/v1/Issues/Searches-and-Reports/Download-Issues-Report-CSV">Download Issues Report - CSV</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
+
             </ul>
         </li>
         <li class="{% if page.url contains "/pages/API/v2" %}shown{% endif %}">
@@ -221,6 +158,70 @@
                             </li>
                     </ul>
                     
+                </li>
+                <li class="">
+                    <a href="/pages/API/v2/Issues" class="title">Issues</a>
+                    <ul class="{% if page.url contains "/pages/API/v2/Issues" %}shown{% endif %} tertiary">
+                        <li>
+                            <a href="#Dictionaries" data-toggle="collapse">Dictionaries</a>
+                            <ul id="Dictionaries" class="collapse {% if page.url contains "/pages/API/v2/Issues/Dictionaries" %}in{% endif %}">
+                                <li class= "file-2">
+                                    <a href="/pages/API/v2/Issues/Dictionaries/Get-Issue-Types">Get Issue Types</a>
+                                </li>
+                                <li class= "file-2">
+                                    <a href="/pages/API/v2/Issues/Dictionaries/Get-Issue-States">Get Issue States</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#ManageIssues" data-toggle="collapse">Manage Issues</a>
+                            <ul id="ManageIssues" class="collapse {% if page.url contains "/pages/API/v2/Issues/Manage-Issues" %}in{% endif %}">
+                                <li class= "file-2">
+                                    <a href="/pages/API/v2/Issues/Manage-Issues/Create-Issue">Create Issue</a>
+                                </li>
+                                <li class= "file-2">
+                                    <a href="/pages/API/v2/Issues/Manage-Issues/Open-Close-Issue">Open or Close Issue</a>
+                                </li>
+                                <li class= "file-2">
+                                    <a href="/pages/API/v2/Issues/Manage-Issues/Get-Issue-Details">Get Issue Details</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#ManageComments" data-toggle="collapse">Manage Comments</a>
+                            <ul id="ManageComments" class="collapse {% if page.url contains "/pages/API/v2/Issues/Manage-Comments" %}in{% endif %}">
+                                <li class= "file-2">
+                                    <a href="/pages/API/v2/Issues/Manage-Comments/Create-Comment">Create Comment</a>
+                                </li>
+                                <li class= "file-2">
+                                    <a href="/pages/API/v2/Issues/Manage-Comments/Get-Comments">Get Comments</a>
+                                </li>
+                                <li class= "file-2">
+                                    <a href="/pages/API/v2/Issues/Manage-Comments/Get-Comment-Details">Get Comment Details</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#SearchesAndReports" data-toggle="collapse">Searches and Reports</a>
+                            <ul id="SearchesAndReports" class="collapse {% if page.url contains "/pages/API/v2/Issues/Searches-and-Reports" %}in{% endif %}">
+                                <li class= "file-2">
+                                    <a href="/pages/API/v2/Issues/Searches-and-Reports/Find-Issues">Find Issues</a>
+                                </li>
+                                <li class= "file-2">
+                                    <a href="/pages/API/v2/Issues/Searches-and-Reports/Count-Issues">Count Issues</a>
+                                </li>
+                                <li class= "file-2">
+                                    <a href="/pages/API/v2/Issues/Searches-and-Reports/Get-Summary-Report">Get Summary Report</a>
+                                </li>
+                                <li class= "file-2">
+                                    <a href="/pages/API/v2/Issues/Searches-and-Reports/Request-Issues-Report">Request Issues Report</a>
+                                </li>
+                                <li class= "file-2">
+                                    <a href="/pages/API/v2/Issues/Searches-and-Reports/Download-Issues-Report-CSV">Download Issues Report - CSV</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </li>
