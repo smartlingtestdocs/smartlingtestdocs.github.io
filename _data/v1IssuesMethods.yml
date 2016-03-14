@@ -1,7 +1,7 @@
   - Method: GetIssueTypes
     Name: 'Get Issue Types'
-    Url: '/issues-api/v1/dictionary/issue-types'
-    Link: "pages/API/v1/Issues/Get-Issue-Types"
+    Url: '/issues-api/v2/dictionary/issue-types'
+    Link: "pages/API/v2/Issues/Get-Issue-Types"
     Type: GET
     Intro: 'Smartling may occasionally add or change the list of allowed issue types. This request returns all current issue types.'
     CurlGist: 
@@ -15,8 +15,8 @@
 
   - Method: GetIssueStates
     Name: 'Get Issue States'
-    Url: '/issues-api/v1/dictionary/issue-states'
-    Link: "pages/API/v1/Issues/Get-Issue-States"
+    Url: '/issues-api/v2/dictionary/issue-states'
+    Link: "pages/API/v2/Issues/Get-Issue-States"
     Type: GET
     Intro: 'Currently the only allowed issue states are <code>OPENED</code> and <code>RESOLVED</code> but Smartling may introduce additional states in future. This request returns all current allowed states.'
     CurlGist: 
@@ -30,8 +30,8 @@
 
   - Method: CreateIssue
     Name: 'Create Issue'
-    Url: '/issues-api/v1/projects/{projectId}/issues'
-    Link: "pages/API/v1/Issues/Create-Issue"
+    Url: '/issues-api/v2/projects/{projectId}/issues'
+    Link: "pages/API/v2/Issues/Create-Issue"
     Type: POST
     Intro: 'Creates a new issue for a string.'
     CurlGist: 
@@ -49,8 +49,8 @@
 
   - Method: OpenCloseIssue
     Name: 'Open or Close Issue'
-    Url: '/issues-api/v1/projects/{projectId}/issues/{issueUid}/state'
-    Link: "pages/API/v1/Issues/Open-Close-Issue"
+    Url: '/issues-api/v2/projects/{projectId}/issues/{issueUid}/state'
+    Link: "pages/API/v2/Issues/Open-Close-Issue"
     Type: PUT
     Intro: 'Sets the state of an issue to <code>OPENED</code> or <code>RESOLVED</code>'
     CurlGist: 
@@ -67,8 +67,8 @@
 
   - Method: GetIssueDetails
     Name: 'Get Issue Details'
-    Url: '/issues-api/v1/projects/{projectId}/issues/{issueUid}'
-    Link: "pages/API/v1/Issues/Get-Issue-Details"
+    Url: '/issues-api/v2/projects/{projectId}/issues/{issueUid}'
+    Link: "pages/API/v2/Issues/Get-Issue-Details"
     Type: GET
     Intro: 'Returns detailed information on a single issue'
     CurlGist: 
@@ -82,8 +82,8 @@
 
   - Method: GetComments
     Name: 'Get Comments'
-    Url: '/issues-api/v1/projects/{projectId}/issues/{issueUid}/comments'
-    Link: "pages/API/v1/Issues/Get-Comments"
+    Url: '/issues-api/v2/projects/{projectId}/issues/{issueUid}/comments'
+    Link: "pages/API/v2/Issues/Get-Comments"
     Type: GET
     Intro: 'Returns all comments for a single issue.'
     CurlGist: 
@@ -97,8 +97,8 @@
 
   - Method: GetCommentDetails
     Name: 'Get Comment Details'
-    Url: '/issues-api/v1/projects/{projectId}/issues/{issueUid}/comments/{issueCommentUid}'
-    Link: "pages/API/v1/Issues/Get-Comment-Details"
+    Url: '/issues-api/v2/projects/{projectId}/issues/{issueUid}/comments/{issueCommentUid}'
+    Link: "pages/API/v2/Issues/Get-Comment-Details"
     Type: GET
     Intro: 'Returns detailed information on a single issue comment.'
     CurlGist: 
@@ -112,8 +112,8 @@
 
   - Method: CreateComment
     Name: 'Create Comment'
-    Url: '/issues-api/v1/projects/{projectId}/issues/{issueUid}/comments'
-    Link: "pages/API/v1/Issues/Create-Comment"
+    Url: '/issues-api/v2/projects/{projectId}/issues/{issueUid}/comments'
+    Link: "pages/API/v2/Issues/Create-Comment"
     Type: POST
     Intro: 'Create a comment for an issue.'
     CurlGist: 
@@ -130,8 +130,8 @@
 
   - Method: FindIssues
     Name: 'Find Issues'
-    Url: '/issues-api/v1/projects/{projectId}/issues/list'
-    Link: "pages/API/v1/Issues/Find-Issues"
+    Url: '/issues-api/v2/projects/{projectId}/issues/list'
+    Link: "pages/API/v2/Issues/Find-Issues"
     Type: POST
     Intro: 'Returns a list of issues matching specified filter options. You can filter based on the date issues were created, target languages, strings, issue types and states and the user who opened the issue. Unless otherwise specified, request will return a maximum of 30 results.'
     CurlGist: 
@@ -150,8 +150,8 @@
 
   - Method: CountIssues
     Name: 'Count Issues'
-    Url: '/issues-api/v1/projects/{projectId}/issues/count'
-    Link: "pages/API/v1/Issues/Count-Issues"
+    Url: '/issues-api/v2/projects/{projectId}/issues/count'
+    Link: "pages/API/v2/Issues/Count-Issues"
     Type: POST
     Intro: 'Returns a count of issues matching specified filter options. You can filter based on the date issues were created, strings, target languages, issue types and states and the user who opened the issue.'
     CurlGist: 
@@ -169,8 +169,8 @@
 
   - Method: GetSummaryReport
     Name: 'Get Summary Report'
-    Url: '/issues-api/v1/projects/{projectId}/reports/summary'
-    Link: "pages/API/v1/Issues/Get-Summary-Report"
+    Url: '/issues-api/v2/projects/{projectId}/reports/summary'
+    Link: "pages/API/v2/Issues/Get-Summary-Report"
     Type: GET
     Intro: 'Returns a count of all issues for the source language and each target language.'
     CurlGist: 
@@ -184,8 +184,8 @@
 
   - Method: RequestIssuesReport
     Name: 'Request Issues Report'
-    Url: '/issues-api/v1/projects/{projectId}/reports/general'
-    Link: "pages/API/v1/Issues/Request-Issues-Report"
+    Url: '/issues-api/v2/projects/{projectId}/reports/general'
+    Link: "pages/API/v2/Issues/Request-Issues-Report"
     Type: POST 
     Intro: 'Returns detailed information on all issues matching specified filter options. You can filter based on the date issues were created, strings, target languages, issue types and states and the user who opened the issue. Unless otherwise specified, only active issues will be returned.'
     CurlGist: 
@@ -205,8 +205,8 @@
 
   - Method: DownloadIssuesReportCSV
     Name: 'Download Issues Report (CSV)'
-    Url: ' /issues-api/v1/projects/{projectId}/reports/general.csv'
-    Link: "pages/API/v1/Issues/Download-Issues-Report-CSV"
+    Url: ' /issues-api/v2/projects/{projectId}/reports/general.csv'
+    Link: "pages/API/v2/Issues/Download-Issues-Report-CSV"
     Type: POST
     Intro: 'Returns detailed information on all issues matching specified filter options. You can filter based on the date issues were created, strings, target languages, issue types and states and the user who opened the issue. Unless otherwise specified, only active issues will be returned.'
     CurlGist: 
