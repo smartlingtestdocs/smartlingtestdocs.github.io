@@ -1,0 +1,24 @@
+---
+layout: page
+title:  Javascript Tests
+---
+
+<p>tests</p>
+
+<script>
+function foo() {return true;}
+sl_tr_start = foo;
+sl_tr_end = foo;
+
+console.log("javascript-function-sl-integration string1 is not especially integrated");
+
+function slLog()
+{
+sl_tr_start();
+console.log("javascript-function-sl-integration string2 is function integrated");
+ sl_tr_end();
+}
+
+slLog();
+
+</script>
