@@ -36,7 +36,11 @@ layout: default
 
     <div>
         <h4>Sample Response Data</h4>
+        {% if Method.Return.Json %}
         <pre><code>{{Method.Return.Json}}</code></pre>
+        {% elsif Method.Return.Block %}
+        <pre>{{Method.Return.Block}}</pre>
+        {% endif %}
 
     <div class="panel panel-default">
         <div class="panel-heading">Examples</div>
